@@ -113,6 +113,9 @@ The theme is applied via `data-theme="light"` or `data-theme="dark"` on the `<ht
 
 ### Option B — Custom domain (e.g. kanavverma.com)
 
+
+
+
 1. Follow Option A first
 2. In your domain registrar, add a CNAME record:
    - Name: `www`

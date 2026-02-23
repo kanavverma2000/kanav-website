@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Detail - Kanav Verma</title>
+  <meta name="description" content="Detailed project information for Kanav Verma." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
+</head>
+<body>
+<div class="main-content">
+
+  <div class="detail-hero">
+    <div class="container">
+      <a href="projects.html" style="font-size:0.875rem;color:var(--text-3);display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;">&larr; Back to Projects</a>
+      <div class="detail-meta" id="project-tags"></div>
+      <h1 id="project-title">Project Title</h1>
+      <p id="project-tagline" style="font-size:1.05rem;color:var(--text-2);max-width:700px;margin-top:12px;"></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="detail-grid">
+      <div class="detail-main">
+
+        <h2 style="margin-bottom:16px;">Overview</h2>
+        <div id="project-overview"></div>
+
+        <h2 style="margin-top:48px;margin-bottom:16px;">Key Contributions</h2>
+        <div id="project-points"></div>
+
+        <div id="metrics-block">
+          <h2 style="margin-top:48px;margin-bottom:16px;">Outcomes and Metrics</h2>
+          <div class="metrics-grid" id="project-metrics"></div>
+        </div>
+
+      </div>
+
+      <aside class="detail-sidebar">
+        <div class="detail-sidebar-block">
+          <h4>Tools Used</h4>
+          <div class="tools-row" id="project-tools" style="margin-top:8px;"></div>
+        </div>
+
+        <div class="detail-sidebar-block" id="role-block">
+          <h4>Role</h4>
+          <p style="font-size:0.875rem;margin-top:8px;" id="project-role"></p>
+        </div>
+
+        <div class="detail-sidebar-block" id="timeline-block">
+          <h4>Timeline</h4>
+          <p style="font-size:0.875rem;margin-top:8px;" id="project-timeline"></p>
+        </div>
+
+        <div class="detail-sidebar-block" id="team-block">
+          <h4>Team Size</h4>
+          <p style="font-size:0.875rem;margin-top:8px;" id="project-team"></p>
+        </div>
+
+        <div class="detail-sidebar-block" style="padding-top:16px;border-top:1px solid var(--border);">
+          <a href="projects.html" class="btn btn-secondary" style="width:100%;justify-content:center;">&larr; All Projects</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</div>
+<script src="assets/shared.js?v=20260223e"></script>
+<script>
+const PROJECTS = {
+  'turnover-model': {
+    title: 'Google Advanced Data Analytics Capstone - Employee Turnover Modelling',
+    tagline: '15,000-record HR dataset analyzed to identify turnover drivers and deliver retention recommendations.',
+    tags: [{ label: 'Data', cls: 'tag-data' }, { label: 'Modeling', cls: '' }],
+    tools: ['Python', 'Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost'],
+    overview: [
+      'Analyzed a 15,000-record HR dataset to identify key drivers of employee turnover.',
+      'Built and evaluated logistic regression and tree-based models balancing accuracy with interpretability.',
+      'Translated model insights into practical retention recommendations for non-technical stakeholders.'
+    ],
+    points: [
+      'Model comparison across decision tree, random forest, and XGBoost approaches.',
+      'Focus on interpretable drivers to enable practical action.',
+      'Stakeholder-ready communication of findings.'
+    ]
+  },
+  'wind-tool': {
+    title: 'Australian Wind Farm Analysis Tool (Python/Streamlit; AEMO data via NEMOSIS)',
+    tagline: 'Multi-farm wind analytics tool with capacity factors, forecasts, CO2 avoided estimates, and exportable reports.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Data', cls: 'tag-data' }],
+    tools: ['Python', 'Streamlit', 'NEMOSIS', 'AEMO data'],
+    overview: [
+      'Built a multi-farm analytics tool producing capacity factors, generation summaries, and forecasts.',
+      'Generated CO2 avoided estimates and exportable reporting outputs for repeatable analysis.'
+    ],
+    points: [
+      'Designed for model-as-a-product workflows.',
+      'Optimized for fast repeatability across multiple wind farms.'
+    ]
+  },
+  'hybrid-mini-grid': {
+    title: 'Hybrid Mini-Grid Economic and Environmental Impact Assessment',
+    tagline: 'Solar-wind-grid hybrid system reducing LCOE and NPC while avoiding CO2 emissions.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['HOMER Pro', 'Excel', 'Techno-economic modeling'],
+    overview: [
+      'Modelled a solar-wind-grid hybrid system for cost and emissions impact assessment.',
+      'Reduced Levelized Cost of Energy (LCOE) by 30% ($0.098 vs $0.144 / kWh).',
+      'Reduced Net Present Cost (NPC) by $13.4M while avoiding approximately 76 kt CO2e per year.'
+    ],
+    points: [
+      'Scenario comparison against conventional supply.',
+      'Investment-grade metrics with environmental impact reporting.'
+    ],
+    metrics: [
+      { value: '30%', label: 'LCOE reduction' },
+      { value: '$0.098/kWh', label: 'Hybrid LCOE' },
+      { value: '$13.4M', label: 'NPC reduction' },
+      { value: '~76 kt', label: 'CO2e avoided per year' }
+    ]
+  },
+  'utility-solar-p50': {
+    title: '117 MW Utility-Scale Solar - Yield and P50/P90 Analysis',
+    tagline: 'PVsyst yield model with ~246 GWh/year generation and 82% PR.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['PVsyst', 'Excel'],
+    overview: [
+      'Modelled generation of ~246 GWh/year using PVsyst (82% PR).',
+      'Conducted uncertainty analysis for investment-grade confidence.',
+      'Assessed O&M and revenue sensitivity factors.'
+    ],
+    points: [
+      'Delivered P50 and P90 outcomes for bankability decisions.'
+    ],
+    metrics: [
+      { value: '~246 GWh/yr', label: 'Estimated generation' },
+      { value: '82%', label: 'Performance ratio' }
+    ]
+  },
+  'agrivoltaics': {
+    title: '8 MW Agrivoltaics Solar Farm - NSW',
+    tagline: '10.1 MW DC solar + 27.4 MWh BESS financial model with 11% IRR and 8.4-year payback.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['Financial modeling', 'Excel'],
+    overview: [
+      'Developed a 10.1 MW DC solar + 27.4 MWh BESS financial model.',
+      'Achieved 11% IRR and 8.4-year payback.',
+      'Produced an investor-ready commercial summary.'
+    ],
+    points: [
+      'Focused on revenue resilience through storage integration.'
+    ],
+    metrics: [
+      { value: '10.1 MW DC', label: 'Solar capacity' },
+      { value: '27.4 MWh', label: 'BESS capacity' },
+      { value: '11%', label: 'IRR' },
+      { value: '8.4 years', label: 'Payback' }
+    ]
+  },
+  'dr-nem': {
+    title: 'Demand-Side Participation in the NEM Wholesale Market',
+    tagline: 'Modelled WDR and RERT participation logic and baseline methodologies for flexible loads.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Data', cls: 'tag-data' }, { label: 'Modeling', cls: '' }],
+    tools: ['Excel', 'PowerPoint'],
+    overview: [
+      'Analysed Demand Response mechanisms in the NEM, including WDR and RERT.',
+      'Modelled DR participation for co-generation and HVAC/chiller load-flex systems.',
+      'Developed baseline consumption methods and compared pre/post dispatch patterns.'
+    ],
+    points: [
+      'Demonstrated new revenue streams and energy cost reductions from DR participation.',
+      'Mapped operational flexibility to market value without infrastructure upgrades.'
+    ]
+  },
+  'moree-thesis': {
+    title: 'Evaluating the Economic and Environmental Impact of Hybrid Mini-Grid Systems (Moree, NSW)',
+    tagline: 'Thesis evaluating hybrid solar-wind-grid systems versus conventional supply.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['HOMER Pro', 'Excel'],
+    overview: [
+      'Modelled a hybrid solar-wind-grid system leveraging strong renewable resource availability.',
+      'Reduced LCOE from $0.144 to $0.0983/kWh and NPC from $367M to $354M.',
+      'Demonstrated 76.5 billion gCO2e/year reduction in emissions.',
+      'Developed policy-aligned recommendations for NSW Renewable Energy Zones.'
+    ],
+    points: [
+      'Production, consumption, and performance simulations to evaluate reliability and energy security.'
+    ],
+    metrics: [
+      { value: '$0.0983/kWh', label: 'Hybrid LCOE' },
+      { value: '$354M', label: 'Hybrid NPC' },
+      { value: '76.5B gCO2e/yr', label: 'Emission reduction' }
+    ]
+  },
+  'lca-straws': {
+    title: 'Comparative LCA of Plastic vs Paper Straws',
+    tagline: 'Gate-to-grave LCA using Ecoinvent and ReCiPe Midpoint (H).',
+    tags: [{ label: 'LCA', cls: '' }, { label: 'Modeling', cls: '' }],
+    tools: ['OpenLCA', 'Ecoinvent', 'ReCiPe'],
+    overview: [
+      'Modelled gate-to-grave inventory flows for paper and plastic straws.',
+      'Functional unit: 1 straw; paper straws ~3x heavier than plastic.',
+      'Paper straws showed ~2.5x higher climate change impact and ~4.5x higher human toxicity impact.'
+    ],
+    points: [
+      'Sensitivity analysis comparing freight rail vs lorry transport.',
+      'Highlighted the need for whole-lifecycle thinking in sustainability decisions.'
+    ],
+    metrics: [
+      { value: '~2.5x', label: 'Higher climate impact (paper)' },
+      { value: '~4.5x', label: 'Higher human toxicity (paper)' }
+    ]
+  },
+  'lca-sunpark': {
+    title: 'Life Cycle Assessment of the 70.4 kW SUNPARK PV System (UNSW)',
+    tagline: 'Cradle-to-gate LCA using OpenLCA + Ecoinvent under ReCiPe (H).',
+    tags: [{ label: 'LCA', cls: '' }, { label: 'Energy', cls: 'tag-energy' }],
+    tools: ['OpenLCA', 'Ecoinvent', 'ReCiPe'],
+    overview: [
+      'Functional unit: 1 kWh electricity over a 25-year lifetime.',
+      'Identified inverter and transformer as largest environmental hotspots.',
+      'PV electricity showed significantly reduced lifecycle emissions versus NSW grid electricity.'
+    ],
+    points: [
+      'Recommended materials substitution and end-of-life recycling strategies.'
+    ]
+  },
+  'bamyan-hres': {
+    title: 'Hybrid Renewable Energy System - Bamyan Hospital, Afghanistan',
+    tagline: 'HOMER-based design for a 150-bed remote hospital at 2,565 m elevation.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['HOMER Pro', 'AutoCAD'],
+    overview: [
+      'Developed seasonal weekday/weekend load profiles using limited real data and variability modelling.',
+      'Confirmed solar PV as primary renewable source due to seasonal irradiance variation.',
+      'Designed a three-generator diesel system with N-1 redundancy for reliability.',
+      'Modelled scenarios: Diesel Only (LCOE $2.30/kWh), Solar-Diesel Hybrid (30% RE, LCOE $2.28/kWh), Least Cost System (~69% PV contribution).' 
+    ],
+    points: [
+      'Recommended the 30% renewable hybrid system to balance reliability and cost stability.'
+    ],
+    metrics: [
+      { value: '$2.30/kWh', label: 'Diesel Only LCOE' },
+      { value: '$2.28/kWh', label: 'Hybrid LCOE' },
+      { value: '~69%', label: 'PV contribution' }
+    ]
+  },
+  'mount-garnet': {
+    title: 'Renewable Energy Mini-Grid - Mount Garnet, Queensland',
+    tagline: 'PV-BESS-diesel design for a 430-person remote community under an AEMO FoG tender.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['HOMER Pro', 'AutoCAD'],
+    overview: [
+      'Designed hybrid PV, battery storage, and diesel backup for a remote fringe-of-grid community.',
+      'Optimal system achieved ~89% renewable penetration with LCOE $0.172/kWh.',
+      'NPC reduced by ~68% (from $72M to $23M) versus diesel-only.',
+      'Sensitivity analysis showed LCOE could drop to $0.13/kWh with 50% storage cost reduction.'
+    ],
+    points: [
+      'Resource assessment confirmed solar viability and wind non-viability.',
+      'Dispatch strategy designed for reliability and cost optimization.'
+    ],
+    metrics: [
+      { value: '~89%', label: 'Renewable penetration' },
+      { value: '$0.172/kWh', label: 'LCOE' },
+      { value: '$23M', label: 'NPC (optimized)' },
+      { value: '$0.13/kWh', label: 'LCOE at 50% storage cost' }
+    ]
+  },
+  'moore-aero': {
+    title: '117 MWp Utility-Scale Solar Farm - Moore Aero, NSW',
+    tagline: '117.2 MWp single-axis tracking system with P50/P90 analysis.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['PVsyst', 'NREL', 'Solcast', 'Meteonorm', 'BOM'],
+    overview: [
+      'Selected NREL dataset due to lowest interannual variability.',
+      'Estimated annual generation of ~246 GWh/year with 82.2% PR.',
+      'P50 Year 1: 246.4 GWh; P90 Year 1: 237.4 GWh; 25-year long-term P50: ~178 GWh/year.'
+    ],
+    points: [
+      'Loss analysis identified temperature and mismatch as primary loss factors.'
+    ],
+    metrics: [
+      { value: '246.4 GWh', label: 'P50 Year 1' },
+      { value: '237.4 GWh', label: 'P90 Year 1' },
+      { value: '82.2%', label: 'Performance ratio' }
+    ]
+  },
+  'commercial-pv': {
+    title: 'Commercial PV Project with Tender Submission',
+    tagline: '107.17 kW DC commercial PV system with detailed compliance and cost analysis.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['SAM', 'AutoCAD'],
+    overview: [
+      'Designed system using 240 Bluesun BSM450M half-cut mono PERC modules (107.17 kW DC).',
+      'Selected CSI Solar 90 kW inverter with 10 MPPT inputs to simplify design and reduce BOS cost.',
+      'Verified compliance with AS/NZS 5033 and AS/NZS 4777 (fusing, SPDs, isolators).',
+      'Simulated performance in SAM, achieving ~16,716 kWh annual output.',
+      'Estimated CAPEX of ~$122k with installation sequencing for tender proposal.'
+    ],
+    points: [
+      'Load analysis identified 707.7 kWh/day average consumption and seasonal variation.'
+    ],
+    metrics: [
+      { value: '107.17 kW', label: 'DC capacity' },
+      { value: '~16,716 kWh', label: 'Annual output' },
+      { value: '$122k', label: 'CAPEX' }
+    ]
+  },
+  'rooftop-pv': {
+    title: 'Performance Analysis and Inverter Comparison of the TETB Rooftop PV System (UNSW)',
+    tagline: '150 kW rooftop PV system across 11 inverters with PVsyst validation.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['PVsyst'],
+    overview: [
+      'Conducted inverter performance benchmarking using normalized AC power.',
+      'Identified performance gaps across inverters and string-level issues.',
+      'Validated performance variations with PVsyst simulations (VC0 PR 81.7%, VC2 PR 81.6%, VC3 PR 82.2%).'
+    ],
+    points: [
+      'Recommended targeted maintenance and cleaning strategies for high-soiling months.'
+    ]
+  },
+  'murrumburrah': {
+    title: 'Utility Scale PV Project - Murrumburrah, NSW',
+    tagline: '8 MW AC (10.1 MW DC) agrivoltaic system with 27.4 MWh BESS and investor-grade financials.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['PVDesign', 'AutoCAD'],
+    overview: [
+      'Site selection optimized for solar resource, flat land, and 2.76 km proximity to substation.',
+      'Modelled yield of ~17.32 GWh/year at 83% PR.',
+      'Financial analysis showed $17.5M positive NPV, 11% IRR, and 8.4-year payback.',
+      'Integrated Tesla Megapack (27.4 MWh) to shift mid-day solar into evening peaks.'
+    ],
+    points: [
+      'Agrovoltaic strategy using berry crops improved land productivity and acceptance.'
+    ],
+    metrics: [
+      { value: '17.32 GWh/yr', label: 'Estimated yield' },
+      { value: '$17.5M', label: 'NPV' },
+      { value: '11%', label: 'IRR' },
+      { value: '8.4 years', label: 'Payback' }
+    ]
+  },
+  'offshore-wind': {
+    title: 'Offshore Wind Farm Feasibility Project (150 MW)',
+    tagline: 'Technical, financial, and regulatory feasibility for an offshore wind project.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['Windographer'],
+    overview: [
+      'Designed 66 kV and 110 kV armoured cable layouts for offshore and onshore transmission.',
+      'Evaluated capital costs at $5.3M/MW and developed funding scenarios (100% debt and 50:50 debt-equity).',
+      'Calculated nominal discount rate of 16.73% and assessed regulatory compliance.'
+    ],
+    points: [
+      'Recommended strategies to reduce transmission losses and improve project viability.'
+    ],
+    metrics: [
+      { value: '$5.3M/MW', label: 'Capital cost' },
+      { value: '16.73%', label: 'Discount rate' }
+    ]
+  },
+  'biomass-gasification': {
+    title: 'Biomass Gasification Equilibrium Modelling',
+    tagline: 'Thermodynamic modelling of a downdraft gasifier using Gibbs free-energy minimization.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }, { label: 'Modeling', cls: '' }],
+    tools: ['Python', 'Thermodynamic modeling'],
+    overview: [
+      'Simulated equilibrium gasification using NASA 7-term polynomials and Gibbs free-energy minimization.',
+      'Adiabatic flame temperature ~1341 K at AFR 3 with 20% moisture.',
+      'Syngas composition after cooling: CO 11.65 m3/kg, H2 7.37 m3/kg, CH4 3.99 m3/kg; LCV ~7.96 MJ/m3.'
+    ],
+    points: [
+      'Demonstrated AFR impact on gas quality and heating value.'
+    ],
+    metrics: [
+      { value: '1341 K', label: 'Adiabatic flame temperature' },
+      { value: '7.96 MJ/m3', label: 'Syngas LCV' }
+    ]
+  },
+  'offgrid-pv': {
+    title: 'Off-Grid Solar Home PV Project - Geraldton, WA',
+    tagline: 'Load assessment, sizing, and costing with Python-based automation.',
+    tags: [{ label: 'Energy', cls: 'tag-energy' }],
+    tools: ['Python', 'LTspice'],
+    overview: [
+      'Completed load assessment, component sizing, solar resource assessment, installation design, and costing.',
+      'Automated key calculations using Python and applied LTspice workshop skills.'
+    ],
+    points: [
+      'Structured approach to system design under remote-site constraints.'
+    ]
+  },
+  'cartier': {
+    title: 'Brand Audit and Strategic Growth Analysis - Cartier',
+    tagline: 'Brand equity, positioning, and strategic growth recommendations for a luxury brand.',
+    tags: [{ label: 'Data', cls: 'tag-data' }, { label: 'Modeling', cls: '' }],
+    tools: ['Market research', 'STP', 'SWOT'],
+    overview: [
+      'Mapped brand structure, essence, and identity coherence across product lines.',
+      'Benchmarked against Tiffany, Bulgari, and Swarovski for pricing and positioning.',
+      'Recommended selective innovation to modernize appeal without eroding exclusivity.'
+    ],
+    points: [
+      'Identified opportunities in youth-oriented design refresh and immersive digital retail.'
+    ]
+  },
+  'plantik': {
+    title: 'PLANTIK - Automated Hydroponics System',
+    tagline: 'Prototype hydroponics system with investment backing and final year project grade 10 CGPA.',
+    tags: [{ label: 'Data', cls: 'tag-data' }],
+    tools: ['Prototype development'],
+    overview: [
+      'Designed and built an automated hydroponics system for year-round growing with reduced water use.',
+      'Secured investors and college support, enabling prototype development.'
+    ],
+    points: [
+      'Final year project completed with 10 CGPA.'
+    ]
+  },
+  'slam-robot': {
+    title: 'Obstacle Detection Robot using SLAM',
+    tagline: 'SLAM-based robot for obstacle detection and avoidance (Indian military use case).',
+    tags: [{ label: 'Data', cls: 'tag-data' }],
+    tools: ['SLAM'],
+    overview: [
+      'Built a robot with obstacle detection and avoidance capabilities.',
+      'Designed for potential inter-robot communication and future patenting.'
+    ],
+    points: []
+  },
+  'smark': {
+    title: 'SMARK (Smart Parking)',
+    tagline: 'Sensor-based system to detect vacant slots and trigger reverse parking alerts.',
+    tags: [{ label: 'Data', cls: 'tag-data' }],
+    tools: ['Sensor systems'],
+    overview: [
+      'Designed a sensor system that detects vacant parking slots and provides reverse parking alerts.'
+    ],
+    points: []
+  }
+};
+
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const p = PROJECTS[id];
+  if (!p) return;
+
+  document.title = p.title + ' - Kanav Verma';
+  document.getElementById('project-title').textContent = p.title;
+  document.getElementById('project-tagline').textContent = p.tagline || '';
+
+  const tagsEl = document.getElementById('project-tags');
+  tagsEl.innerHTML = p.tags.map(t => `<span class="tag ${t.cls}">${t.label}</span>`).join('');
+
+  const overviewEl = document.getElementById('project-overview');
+  overviewEl.innerHTML = '<ul style="padding-left:20px;line-height:1.8;">' + p.overview.map(o => `<li>${o}</li>`).join('') + '</ul>';
+
+  const pointsEl = document.getElementById('project-points');
+  if (p.points && p.points.length) {
+    pointsEl.innerHTML = '<ul style="padding-left:20px;line-height:1.8;">' + p.points.map(o => `<li>${o}</li>`).join('') + '</ul>';
+  } else {
+    pointsEl.innerHTML = '<p style="color:var(--text-2);">No additional details provided.</p>';
+  }
+
+  const toolsEl = document.getElementById('project-tools');
+  toolsEl.innerHTML = (p.tools || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+  const metricsBlock = document.getElementById('metrics-block');
+  const metricsEl = document.getElementById('project-metrics');
+  if (p.metrics && p.metrics.length) {
+    metricsEl.innerHTML = p.metrics.map(m =>
+      `<div class="metric-card"><div class="metric-value">${m.value}</div><div class="metric-label">${m.label}</div></div>`
+    ).join('');
+  } else {
+    metricsBlock.style.display = 'none';
+  }
+
+  const roleBlock = document.getElementById('role-block');
+  const timelineBlock = document.getElementById('timeline-block');
+  const teamBlock = document.getElementById('team-block');
+  roleBlock.style.display = 'none';
+  timelineBlock.style.display = 'none';
+  teamBlock.style.display = 'none';
+})();
+</script>
+<script src="assets/main.js?v=20260223e"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

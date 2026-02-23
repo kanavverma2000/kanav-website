@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Kanav Verma</title>
+  <meta name="description" content="Get in touch with Kanav Verma - energy-market analytics and data-driven engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
+</head>
+<body>
+<div class="main-content">
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-label">Say Hello</span>
+      <h1>Contact</h1>
+      <p>Open to interesting conversations, collaborations, or just connecting over energy data. Response time: usually within 48 hrs.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <div>
+          <h2 style="margin-bottom:24px;">Send a message</h2>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me what's on your mind..." required></textarea>
+            </div>
+            <div id="form-status" style="font-size:0.85rem;color:var(--accent);display:none;padding:10px 0;"></div>
+            <button type="submit" class="btn btn-primary">Send Message -&gt;</button>
+            <p style="font-size:0.75rem;color:var(--text-3);margin-top:8px;">
+              This uses a mailto: fallback - your default email client will open with the message pre-filled.
+            </p>
+          </form>
+        </div>
+
+        <div>
+          <h2 style="margin-bottom:24px;">Direct links</h2>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">?</div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <a class="contact-info-value" href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">in</div>
+            <div>
+              <div class="contact-info-label">LinkedIn</div>
+              <a class="contact-info-value" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">linkedin.com/in/kanavverma</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">?</div>
+            <div>
+              <div class="contact-info-label">GitHub</div>
+              <a class="contact-info-value" href="https://github.com/kanavverma" target="_blank" rel="noopener">github.com/kanavverma</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">??</div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <span class="contact-info-value">Sydney, NSW</span>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;padding:20px;background:var(--accent-light);border-radius:var(--radius);border:1px solid rgba(247,197,43,0.2);">
+            <p style="font-size:0.875rem;color:var(--accent);font-weight:600;margin-bottom:6px;">Best for...</p>
+            <ul style="font-size:0.85rem;color:var(--text-2);padding-left:18px;line-height:1.9;">
+              <li>Full-time or contract data roles (energy/utilities preferred)</li>
+              <li>Collaboration on open energy data projects</li>
+              <li>Speaking or writing opportunities</li>
+              <li>Anything data + renewables</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260223e"></script>
+<script src="assets/main.js?v=20260223e"></script>
+<script>
+// Contact form - mailto fallback
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !message) {
+    const status = document.getElementById('form-status');
+    status.textContent = 'Please fill in your name, email, and message.';
+    status.style.color = '#c00';
+    status.style.display = 'block';
+    return;
+  }
+
+  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+  const mailto = `mailto:kanavverma2000@gmail.com?subject=${encodeURIComponent(subject || 'Contact from website')}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+
+  const status = document.getElementById('form-status');
+  status.textContent = 'Your email client should have opened - thanks for reaching out!';
+  status.style.color = 'var(--accent)';
+  status.style.display = 'block';
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

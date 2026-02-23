@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanav Verma - Welcome</title>
+  <meta name="description" content="Welcome to the official site of Kanav Verma - energy-market analytics and data-driven engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
+  <style>
+    /* Hero */
+    .hero {
+      padding: calc(var(--nav-height) + 80px) 0 72px;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px;
+    }
+    .hero-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+    .hero h1 { margin-bottom: 20px; }
+    .hero-position {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-2);
+      max-width: 680px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-media {
+      display: flex;
+      justify-content: center;
+    }
+    .hero-photo {
+      width: min(360px, 80vw);
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    /* About on home */
+    .home-about {
+      padding: 48px 0 96px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="hero-label">Welcome</p>
+        <h1>Kanav Verma</h1>
+        <p class="hero-position">
+          Energy-market analytics professional specializing in data-driven engineering, techno-economic modelling, and stakeholder-ready insights for Australia's power system.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="cv.html">View Resume</a>
+          <a class="btn btn-ghost" href="impact.html">About</a>
+          <a class="btn btn-secondary" href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img class="hero-photo" src="assets/images/unsw.jpg" alt="Kanav Verma portrait" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="home-about">
+    <div class="container about-grid">
+      <div>
+        <span class="section-label">About</span>
+        <h2 class="section-title">Energy, data, and real-world decisions</h2>
+        <p class="section-subtitle">
+          I combine engineering fundamentals with data-driven decision-making to translate complex problems into clear, actionable recommendations. My work spans energy-market analytics, Python-based data products, and stakeholder-ready communication across energy, logistics, and operations.
+        </p>
+        <a class="btn btn-primary" href="impact.html">Read the full story</a>
+      </div>
+      <div>
+        <img class="about-photo" src="assets/images/sunset.jpg" alt="Sunset over water" />
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260223e"></script>
+<script src="assets/main.js?v=20260223e"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

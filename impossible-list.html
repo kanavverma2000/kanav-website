@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impossible List - Kanav Verma</title>
+  <meta name="description" content="Kanav Verma's impossible list - now a playful project logbook." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
+</head>
+<body>
+<div class="main-content">
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-label">Goals</span>
+      <h1>Impossible List</h1>
+      <p>This page is now a fun, no-drama project logbook. Everything here is real and already shipped.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="il-controls">
+        <input type="text" id="il-search" class="search-input" placeholder="Search projects..." aria-label="Search projects" />
+        <div class="filter-chips" style="margin:0;">
+          <button class="chip il-cat-chip active" data-cat="all">All</button>
+          <button class="chip il-cat-chip" data-cat="energy">Energy</button>
+          <button class="chip il-cat-chip" data-cat="data">Data</button>
+          <button class="chip il-cat-chip" data-cat="model">Modeling</button>
+          <button class="chip il-cat-chip" data-cat="lca">LCA</button>
+          <button class="chip il-cat-chip" data-cat="systems">Systems</button>
+          <button class="chip il-cat-chip" data-cat="strategy">Strategy</button>
+        </div>
+        <label class="il-toggle" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+          <input type="checkbox" id="il-show-done" checked style="accent-color:var(--accent);" />
+          Show completed
+        </label>
+      </div>
+
+      <div class="il-category" data-cat="data">
+        <div class="il-category-title">Data</div>
+
+        <div class="il-item done" data-cat="data">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Employee Turnover Modelling (15,000-record HR dataset)</div>
+            <div class="il-meta">Done - logistic regression, decision tree, random forest, XGBoost.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="data">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Australian Wind Farm Analysis Tool (Python/Streamlit)</div>
+            <div class="il-meta">Done - capacity factors, forecasts, CO2 avoided, exportable reports.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-category" data-cat="energy">
+        <div class="il-category-title">Energy</div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">117 MW Utility-Scale Solar - Yield and P50/P90</div>
+            <div class="il-meta">Done - ~246 GWh/year and 82% PR in PVsyst.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">117 MWp Utility-Scale Solar - Moore Aero, NSW</div>
+            <div class="il-meta">Done - P50 246.4 GWh and P90 237.4 GWh (Year 1).</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Utility-Scale PV - Murrumburrah, NSW (8 MW AC / 10.1 MW DC)</div>
+            <div class="il-meta">Done - 27.4 MWh BESS, 11% IRR, 8.4-year payback.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Commercial PV Tender Submission (107.17 kW DC)</div>
+            <div class="il-meta">Done - SAM output ~16,716 kWh/year; CAPEX ~$122k.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Rooftop PV Inverter Performance (150 kW, 11 inverters)</div>
+            <div class="il-meta">Done - PVsyst validation with PR ~81-82%.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="energy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Off-Grid Solar Home PV - Geraldton, WA</div>
+            <div class="il-meta">Done - load assessment, sizing, and costing with Python automation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-category" data-cat="model">
+        <div class="il-category-title">Modeling</div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Hybrid Mini-Grid Economic and Environmental Impact Assessment</div>
+            <div class="il-meta">Done - LCOE $0.098 vs $0.144/kWh, NPC reduced by $13.4M.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Hybrid Mini-Grid Thesis - Moree, NSW</div>
+            <div class="il-meta">Done - NPC $367M to $354M and 76.5B gCO2e/year reduction.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Hybrid Renewable System - Bamyan Hospital (150-bed)</div>
+            <div class="il-meta">Done - Diesel Only LCOE $2.30/kWh; Hybrid LCOE $2.28/kWh.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Renewable Mini-Grid - Mount Garnet, QLD</div>
+            <div class="il-meta">Done - ~89% RE penetration and LCOE $0.172/kWh.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Demand-Side Participation in the NEM Wholesale Market</div>
+            <div class="il-meta">Done - WDR and RERT modelling for flexible loads.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Offshore Wind Feasibility Project (150 MW)</div>
+            <div class="il-meta">Done - $5.3M/MW capital cost and 16.73% discount rate.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="model">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Biomass Gasification Equilibrium Modelling</div>
+            <div class="il-meta">Done - 1341 K flame temperature and LCV ~7.96 MJ/m3.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-category" data-cat="lca">
+        <div class="il-category-title">LCA</div>
+
+        <div class="il-item done" data-cat="lca">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Comparative LCA: Plastic vs Paper Straws</div>
+            <div class="il-meta">Done - paper ~2.5x higher climate impact and ~4.5x higher human toxicity.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="lca">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">LCA: 70.4 kW SUNPARK PV System (UNSW)</div>
+            <div class="il-meta">Done - inverter and transformer as key hotspots; lower lifecycle emissions than NSW grid.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-category" data-cat="strategy">
+        <div class="il-category-title">Strategy</div>
+
+        <div class="il-item done" data-cat="strategy">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Brand Audit and Strategic Growth Analysis - Cartier</div>
+            <div class="il-meta">Done - STP and SWOT analysis with growth recommendations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-category" data-cat="systems">
+        <div class="il-category-title">Systems</div>
+
+        <div class="il-item done" data-cat="systems">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">PLANTIK - Automated Hydroponics System</div>
+            <div class="il-meta">Done - prototype built with investment backing (final project grade 10 CGPA).</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="systems">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">Obstacle Detection Robot (SLAM)</div>
+            <div class="il-meta">Done - obstacle detection and avoidance for a military use case.</div>
+          </div>
+        </div>
+
+        <div class="il-item done" data-cat="systems">
+          <div class="il-check">?</div>
+          <div class="il-text">
+            <div class="il-item-title">SMARK - Smart Parking</div>
+            <div class="il-meta">Done - sensor-based vacancy detection with reverse parking alert.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260223e"></script>
+<script src="assets/main.js?v=20260223e"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

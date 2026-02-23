@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Kanav Verma</title>
+  <meta name="description" content="Energy, analytics, and engineering projects by Kanav Verma." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
+</head>
+<body>
+<div class="main-content">
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-label">Work</span>
+      <h1>Projects</h1>
+      <p>Detailed engineering, analytics, and energy-market work across renewable systems, modelling, and data products.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="filter-chips" role="group" aria-label="Filter projects by category">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="energy">Energy</button>
+        <button class="chip" data-filter="data">Data</button>
+        <button class="chip" data-filter="model">Modeling</button>
+        <button class="chip" data-filter="lca">LCA</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=turnover-model">
+            <div class="card" data-tags="data,model">
+              <div class="project-tags">
+                <span class="tag tag-data">Data</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Employee Turnover Modelling</h3>
+              <p class="project-desc">15,000-record HR dataset; logistic regression and tree-based ML models; interpretability-driven retention insights.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=wind-tool">
+            <div class="card" data-tags="energy,data">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag tag-data">Data</span>
+              </div>
+              <h3 class="project-title">Australian Wind Farm Analysis Tool</h3>
+              <p class="project-desc">Python and Streamlit tool using AEMO data via NEMOSIS for capacity factors, forecasts, CO2 avoided, and exportable reports.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=hybrid-mini-grid">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Hybrid Mini-Grid Economic and Environmental Assessment</h3>
+              <p class="project-desc">Solar-wind-grid hybrid system with 30% LCOE reduction and $13.4M NPC reduction; avoided ~76 kt CO2e per year.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=utility-solar-p50">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">117 MW Utility-Scale Solar - P50/P90</h3>
+              <p class="project-desc">PVsyst yield model with ~246 GWh/year generation and 82% PR, plus investment-grade uncertainty analysis.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=agrivoltaics">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">8 MW Agrivoltaics Solar Farm - NSW</h3>
+              <p class="project-desc">10.1 MW DC solar + 27.4 MWh BESS financial model achieving 11% IRR and 8.4-year payback.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=dr-nem">
+            <div class="card" data-tags="energy,model,data">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+                <span class="tag tag-data">Data</span>
+              </div>
+              <h3 class="project-title">Demand-Side Participation in the NEM</h3>
+              <p class="project-desc">Modelled WDR and RERT participation logic, baseline methodologies, and pre/post dispatch analysis.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=moree-thesis">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Hybrid Mini-Grid Thesis - Moree, NSW</h3>
+              <p class="project-desc">Hybrid mini-grid vs conventional supply; LCOE from $0.144 to $0.0983/kWh and NPC from $367M to $354M.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=lca-straws">
+            <div class="card" data-tags="lca,model">
+              <div class="project-tags">
+                <span class="tag">LCA</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">LCA: Plastic vs Paper Straws</h3>
+              <p class="project-desc">Gate-to-grave LCA using Ecoinvent and ReCiPe; paper showed ~2.5x higher climate impact and ~4.5x higher human toxicity.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=lca-sunpark">
+            <div class="card" data-tags="lca,energy">
+              <div class="project-tags">
+                <span class="tag">LCA</span>
+                <span class="tag tag-energy">Energy</span>
+              </div>
+              <h3 class="project-title">LCA: 70.4 kW SUNPARK PV (UNSW)</h3>
+              <p class="project-desc">Cradle-to-gate LCA using OpenLCA + Ecoinvent + ReCiPe; inverter and transformer identified as hotspots.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=bamyan-hres">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Hybrid Renewable System - Bamyan Hospital</h3>
+              <p class="project-desc">HOMER-based scenarios for a 150-bed hospital at 2,565 m elevation; diesel-only vs hybrid comparisons.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=mount-garnet">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Renewable Mini-Grid - Mount Garnet, QLD</h3>
+              <p class="project-desc">PV-BESS-diesel system for a 430-person community; ~89% renewable penetration and LCOE $0.172/kWh.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=moore-aero">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">117 MWp Utility-Scale Solar - Moore Aero, NSW</h3>
+              <p class="project-desc">117.2 MWp single-axis tracking system; ~246 GWh/year at 82.2% PR; P50/P90 analysis.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=commercial-pv">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Commercial PV Tender Submission</h3>
+              <p class="project-desc">107.17 kW DC design; SAM output ~16,716 kWh/year; CAPEX ~$122k; compliance with AS/NZS 5033 and 4777.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=rooftop-pv">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Rooftop PV Inverter Performance (UNSW)</h3>
+              <p class="project-desc">150 kW PV system across 11 inverters; performance benchmarking with PVsyst validation.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=murrumburrah">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Utility-Scale PV - Murrumburrah, NSW</h3>
+              <p class="project-desc">8 MW AC (10.1 MW DC) agrivoltaic system with 27.4 MWh BESS; 11% IRR and $17.5M NPV.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=offshore-wind">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Offshore Wind Feasibility (150 MW)</h3>
+              <p class="project-desc">66 kV and 110 kV cable design, $5.3M/MW capital costs, and 16.73% nominal discount rate.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=biomass-gasification">
+            <div class="card" data-tags="energy,model">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Biomass Gasification Equilibrium Modelling</h3>
+              <p class="project-desc">Gibbs free-energy minimization with NASA 7-term polynomials; adiabatic flame temperature ~1341 K.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=offgrid-pv">
+            <div class="card" data-tags="energy">
+              <div class="project-tags">
+                <span class="tag tag-energy">Energy</span>
+              </div>
+              <h3 class="project-title">Off-Grid Solar Home PV - Geraldton, WA</h3>
+              <p class="project-desc">Load assessment, component sizing, solar resource assessment, and costing with Python automation.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=cartier">
+            <div class="card" data-tags="data,model">
+              <div class="project-tags">
+                <span class="tag tag-data">Data</span>
+                <span class="tag">Modeling</span>
+              </div>
+              <h3 class="project-title">Brand Audit and Strategic Growth Analysis - Cartier</h3>
+              <p class="project-desc">Brand equity, STP and SWOT analysis, competitive benchmarking, and growth recommendations.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=plantik">
+            <div class="card" data-tags="data">
+              <div class="project-tags">
+                <span class="tag tag-data">Data</span>
+              </div>
+              <h3 class="project-title">PLANTIK - Automated Hydroponics System</h3>
+              <p class="project-desc">Built a hydroponics prototype with investment backing and final year project grade 10 CGPA.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=slam-robot">
+            <div class="card" data-tags="data">
+              <div class="project-tags">
+                <span class="tag tag-data">Data</span>
+              </div>
+              <h3 class="project-title">Obstacle Detection Robot (SLAM)</h3>
+              <p class="project-desc">Built a SLAM-based obstacle detection and avoidance robot for an Indian military use case.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card-wrap">
+          <a class="project-card" href="project-detail.html?id=smark">
+            <div class="card" data-tags="data">
+              <div class="project-tags">
+                <span class="tag tag-data">Data</span>
+              </div>
+              <h3 class="project-title">SMARK - Smart Parking</h3>
+              <p class="project-desc">Sensor system to detect vacant slots and trigger reverse parking alerts.</p>
+              <span class="project-arrow">View project -&gt;</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260223e"></script>
+<script src="assets/main.js?v=20260223e"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

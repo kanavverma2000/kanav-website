@@ -1,134 +1,222 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kanav Verma - Welcome</title>
-  <meta name="description" content="Welcome to the official site of Kanav Verma - energy-market analytics and data-driven engineering." />
+  <title>ARIA - Advanced Renewable Intelligence & Analytics</title>
+  <meta name="description" content="ARIA turns Australia's electricity market data into clear, actionable intelligence for renewable energy professionals." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260223h" />
-  <style>
-    /* Hero */
-    .hero {
-      padding: calc(var(--nav-height) + 80px) 0 72px;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 24px;
-    }
-    .hero-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
-    .hero h1 { margin-bottom: 20px; }
-    .hero-position {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-2);
-      max-width: 680px;
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-media {
-      display: flex;
-      justify-content: center;
-    }
-    .hero-photo {
-      width: min(360px, 80vw);
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    /* About on home */
-    .home-about {
-      padding: 48px 0 96px;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-    .about-photo {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .hero { min-height: auto; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260520" />
 </head>
 <body>
 <div class="main-content">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="hero-label">Welcome</p>
-        <h1>Kanav Verma</h1>
-        <p class="hero-position">
-          Energy-market analytics professional specializing in data-driven engineering, techno-economic modelling, and stakeholder-ready insights for Australia's power system.
+  <section class="aria-hero">
+    <div class="container">
+      <div class="aria-hero-inner">
+        <span class="section-label">NEM Analytics Platform</span>
+        <h1><span class="gradient-text">ARIA</span></h1>
+        <p class="hero-sub">
+          We turn Australia's electricity market data into clear answers &mdash; who's generating, who's earning, who's curtailed, and what's coming next. Real-time intelligence for renewable energy.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="cv.html">View Resume</a>
-          <a class="btn btn-ghost" href="impact.html">About</a>
-          <a class="btn btn-secondary" href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="platform.html">Explore the Platform</a>
+          <a class="btn btn-ghost" href="about.html">About the Builder</a>
+        </div>
+
+        <!-- Tech stack -->
+        <div class="tech-stack">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Streamlit</span>
+          <span class="tech-pill">XGBoost</span>
+          <span class="tech-pill">PyArrow</span>
+          <span class="tech-pill">Plotly</span>
+          <span class="tech-pill">AEMO Data</span>
+          <span class="tech-pill">Machine Learning</span>
         </div>
       </div>
-      <div class="hero-media">
-        <img class="hero-photo" src="assets/images/unsw.jpg" alt="Kanav Verma portrait" />
+
+      <!-- Stats -->
+      <div class="aria-stats reveal">
+        <div class="aria-stat">
+          <div class="aria-stat-value gradient-text">500K+</div>
+          <div class="aria-stat-label">Data points per day</div>
+        </div>
+        <div class="aria-stat">
+          <div class="aria-stat-value gradient-text">5 min</div>
+          <div class="aria-stat-label">Dispatch resolution</div>
+        </div>
+        <div class="aria-stat">
+          <div class="aria-stat-value gradient-text">500+</div>
+          <div class="aria-stat-label">NEM generators tracked</div>
+        </div>
+        <div class="aria-stat">
+          <div class="aria-stat-value gradient-text">64M+</div>
+          <div class="aria-stat-label">Constraint rows processed</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT PREVIEW -->
-  <section class="home-about">
-    <div class="container about-grid">
-      <div>
-        <span class="section-label">About</span>
-        <h2 class="section-title">Energy, data, and real-world decisions</h2>
-        <p class="section-subtitle">
-          I combine engineering fundamentals with data-driven decision-making to translate complex problems into clear, actionable recommendations. My work spans energy-market analytics, Python-based data products, and stakeholder-ready communication across energy, logistics, and operations.
-        </p>
-        <a class="btn btn-primary" href="impact.html">Read the full story</a>
+  <!-- MOCKUP -->
+  <section style="padding-top: 0;">
+    <div class="container--wide">
+      <div class="aria-mockup reveal">
+        <div class="mockup-browser">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-url">aria-analytics.app</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mock-dashboard">
+              <div class="mock-widget">
+                <div class="mock-widget-title">Spot Price &mdash; NSW1</div>
+                <div class="mock-widget-value gradient-text">$87.42</div>
+                <div class="mock-sparkline"></div>
+              </div>
+              <div class="mock-widget">
+                <div class="mock-widget-title">Capture Ratio &mdash; Wind</div>
+                <div class="mock-widget-value gradient-text">0.94</div>
+                <div class="mock-sparkline"></div>
+              </div>
+              <div class="mock-widget">
+                <div class="mock-widget-title">Curtailment &mdash; Solar</div>
+                <div class="mock-widget-value gradient-text">4.2%</div>
+                <div class="mock-sparkline"></div>
+              </div>
+              <div class="mock-widget">
+                <div class="mock-widget-title">Demand &mdash; VIC1</div>
+                <div class="mock-widget-value gradient-text">6,840 MW</div>
+                <div class="mock-sparkline"></div>
+              </div>
+            </div>
+            <div class="mock-chart" style="margin-top: 20px;">
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <img class="about-photo" src="assets/images/sunset.jpg" alt="Sunset over water" />
+    </div>
+  </section>
+
+  <!-- INSIGHTS - The WOW section -->
+  <section style="padding: 80px 0 40px;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-label">What We Found</span>
+        <h2 class="section-title">The NEM Generates 500,000 Data Points a Day.<br><span class="gradient-text">We Made Them Talk.</span></h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">HIDDEN REVENUE LOSS</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">$2.4M left on the table</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">A single 200 MW wind farm loses $2.4M/year in revenue simply by generating at the wrong time relative to price signals. ARIA detects this pattern in seconds.</p>
+        </div>
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CURTAILMENT MYSTERY SOLVED</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">37% of curtailment isn't what you think</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Operators blame network constraints, but ARIA's decomposition reveals over a third is economic &mdash; generators choosing to switch off rather than being forced.</p>
+        </div>
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">PRICE SPIKE PREDICTION</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Saw the $15,100 spike 4 hours early</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">When NSW hit $15,100/MWh in February, ARIA's P90 forecast flagged the risk window hours before dispatch &mdash; while operators were still asleep.</p>
+        </div>
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE COAL CLIFF</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">3 closures = $47/MWh average price jump</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA models sequential coal exits. The next three scheduled retirements push average NEM prices from $78 to $125/MWh &mdash; fundamentally repricing every asset.</p>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 1rem; color: var(--text-3); font-style: italic;">These aren't hypothetical. These are patterns ARIA finds in live AEMO data every single day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES PREVIEW -->
+  <section>
+    <div class="container--wide">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="section-label">Capabilities</span>
+        <h2 class="section-title">What ARIA Delivers</h2>
+        <p class="section-subtitle" style="margin: 8px auto 0;">One platform. Every megawatt. Every answer.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#9889;</div>
+          <h3>Real-Time Operations</h3>
+          <p>Monitor hundreds of wind, solar, battery, and hydro assets at 5-minute granularity. Fleet benchmarking, capacity factors, and availability tracking.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128176;</div>
+          <h3>Revenue Intelligence</h3>
+          <p>Analyse how well assets capture market prices. Compare generation-weighted vs time-weighted pricing across assets, fleets, and regions.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#129302;</div>
+          <h3>AI Price Forecasting</h3>
+          <p>XGBoost quantile models producing P10/P50/P90 forecasts with volatility-aware scenario generation using EGARCH modelling.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128269;</div>
+          <h3>Curtailment Attribution</h3>
+          <p>Pinpoints why generators are told to reduce output &mdash; grid congestion, low prices, or network limits &mdash; using AEMO UIGF methodology.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#127981;</div>
+          <h3>Coal Exit Modelling</h3>
+          <p>Projects how coal plant retirements reshape electricity prices, reliability, and emissions across each Australian state.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128205;</div>
+          <h3>Investment Siting</h3>
+          <p>ISP-aligned REZ assessment, LCOE breakeven analysis, and development pipeline intelligence for new project decisions.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a class="btn btn-primary" href="platform.html">Deep Dive into the Platform</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 64px 0;">
+    <div class="container" style="text-align: center;">
+      <div class="card card-glass" style="padding: 48px 32px;">
+        <h2>Built for the Energy Transition</h2>
+        <p style="max-width: 520px; margin: 12px auto 28px; font-size: 1rem; line-height: 1.7;">
+          ARIA processes millions of AEMO dispatch intervals and presents them through intuitive dashboards designed for fast, informed decision-making.
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="contact.html">Get in Touch</a>
+          <a class="btn btn-secondary" href="projects.html">View Projects</a>
+        </div>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260223e"></script>
-<script src="assets/main.js?v=20260223e"></script>
+<script src="assets/shared.js?v=20260520"></script>
+<script src="assets/main.js?v=20260520"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Kanav - ARIA</title>
+  <meta name="description" content="About Kanav Verma - the builder behind ARIA, energy analytics professional and renewable energy engineer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=20260520" />
+  <style>
+    .about-hero {
+      padding: calc(var(--nav-height) + 80px) 0 64px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 240px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-content">
+
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <img class="about-photo" src="assets/images/unsw.jpg" alt="Kanav Verma portrait" />
+        </div>
+        <div>
+          <span class="section-label">The Builder</span>
+          <h1>Kanav Verma</h1>
+          <p style="margin: 16px 0; line-height: 1.8; font-size: 1.05rem;">
+            Energy-market analytics professional with a Master of Engineering Science in Renewable Energy from the University of New South Wales and a Google Advanced Data Analytics Professional Certificate.
+          </p>
+          <p style="line-height: 1.8;">
+            I combine engineering fundamentals with data-driven decision-making to translate complex energy problems into clear, actionable recommendations. My work spans energy-market analytics, Python-based data products, and stakeholder-ready communication.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="cv.html">View CV</a>
+            <a class="btn btn-ghost" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card" style="padding: 32px;">
+        <h2 style="margin-bottom: 12px;">Core Focus</h2>
+        <ul style="padding-left: 20px; line-height: 1.8; color: var(--text-2);">
+          <li><strong>Energy markets & modelling:</strong> NEM fundamentals, LCOE, NPC, NPV, IRR, scenario and sensitivity analysis, P50/P90.</li>
+          <li><strong>Data products:</strong> Python pipelines, SQL, Streamlit/Plotly dashboards, ML forecasting workflows.</li>
+          <li><strong>Operational analytics:</strong> Asset performance monitoring, preventive maintenance, KPI tracking, data validation.</li>
+          <li><strong>Tools:</strong> HOMER Pro, NREL SAM, PVsyst, Windographer, AutoCAD, OpenLCA (Ecoinvent/ReCiPe), IBM Maximo.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding: 32px; margin-top: 24px;">
+        <h2 style="margin-bottom: 12px;">At a Glance</h2>
+        <ul style="padding-left: 20px; line-height: 1.8; color: var(--text-2);">
+          <li><strong>Location:</strong> Sydney, NSW, Australia</li>
+          <li><strong>Education:</strong> MEng Science (Renewable Energy) &mdash; UNSW</li>
+          <li><strong>Contact:</strong> <a href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a> &mdash; <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260520"></script>
+<script src="assets/main.js?v=20260520"></script>
+</body>
+</html>

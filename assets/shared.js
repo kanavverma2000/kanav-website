@@ -1,5 +1,15 @@
-/* shared-components.js - injects nav + footer */
+/* shared-components.js - injects nav + footer + background effects */
 (function () {
+  // ===== Animated Background =====
+  const bgOrbs = document.createElement('div');
+  bgOrbs.className = 'bg-orbs';
+  bgOrbs.innerHTML = '<div class="bg-orb"></div><div class="bg-orb"></div><div class="bg-orb"></div>';
+  document.body.insertBefore(bgOrbs, document.body.firstChild);
+
+  const bgGrid = document.createElement('div');
+  bgGrid.className = 'bg-grid';
+  document.body.insertBefore(bgGrid, bgOrbs.nextSibling);
+
   // ===== Navigation =====
   const nav = document.createElement('nav');
   nav.className = 'nav';
@@ -7,15 +17,15 @@
   nav.setAttribute('aria-label', 'Main navigation');
   nav.innerHTML = `
 <div class="nav-inner">
-  <a class="nav-logo" href="index.html">Kanav<span>.</span></a>
+  <a class="nav-logo" href="index.html"><span>ARIA</span></a>
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="index.html">Home</a></li>
-    <li><a href="impact.html">About</a></li>
+    <li><a href="platform.html">Platform</a></li>
     <li><a href="projects.html">Projects</a></li>
     <li><a href="timeline.html">Timeline</a></li>
-    <li><a href="impossible-list.html">Impossible List</a></li>
     <li><a href="cv.html">CV</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="about.html">About Kanav</a></li>
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">Theme</button>
@@ -28,15 +38,24 @@
     </button>
   </div>
 </div>`;
-  document.body.insertBefore(nav, document.body.firstChild);
+  document.body.insertBefore(nav, document.querySelector('.main-content') || document.body.firstChild);
 
   // ===== Footer =====
   const footer = document.createElement('footer');
   footer.innerHTML = `
 <div class="container">
-  <p>© ${new Date().getFullYear()} Kanav Verma · <a href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a> · <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/kanavverma" target="_blank" rel="noopener">GitHub</a></p>
+  <p>&copy; ${new Date().getFullYear()} ARIA &mdash; Advanced Renewable Intelligence & Analytics &mdash; Built by <a href="about.html">Kanav Verma</a> &mdash; <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a> &mdash; <a href="https://github.com/kanavverma2000" target="_blank" rel="noopener">GitHub</a></p>
 </div>`;
   document.body.appendChild(footer);
+
+  // ===== Scroll Reveal =====
+  const reveals = document.querySelectorAll('.reveal');
+  if (reveals.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  }
 
   // ===== Simple auto-reload for local development =====
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
@@ -45,14 +64,9 @@
       try {
         const res = await fetch(location.href, { method: 'HEAD', cache: 'no-store' });
         const lm = res.headers.get('Last-Modified');
-        if (lastModified && lm && lm !== lastModified) {
-          location.reload();
-          return;
-        }
+        if (lastModified && lm && lm !== lastModified) { location.reload(); return; }
         if (lm) lastModified = lm;
-      } catch (e) {
-        // ignore polling errors during local development
-      }
+      } catch (e) {}
       setTimeout(check, 2000);
     };
     setTimeout(check, 2000);

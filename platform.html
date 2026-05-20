@@ -4,246 +4,507 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Platform - ARIA</title>
-  <meta name="description" content="ARIA platform capabilities - real-time NEM analytics, price forecasting, revenue capture, curtailment attribution." />
+  <meta name="description" content="ARIA platform - see what Australia's electricity market is really doing, in plain English." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260520c" />
+  <link rel="stylesheet" href="assets/style.css?v=20260520d" />
   <style>
-    .pillar { margin-bottom: 80px; }
-    .pillar-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; }
-    .pillar-num { font-size: 2.5rem; font-weight: 800; line-height: 1; min-width: 48px; }
-    .pillar-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 640px) { .pillar-details { grid-template-columns: 1fr; } }
-    .pillar-detail {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 20px; transition: all var(--transition);
-    }
-    .pillar-detail:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-    .pillar-detail h4 { font-size: 0.8rem; margin-bottom: 6px; }
-    .pillar-detail p { font-size: 0.88rem; }
+    .insight-block { margin-bottom: 96px; }
+    .insight-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .insight-title { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .insight-desc { font-size: 0.95rem; line-height: 1.8; color: var(--text-2); max-width: 600px; margin-bottom: 28px; }
+    .chart-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); overflow: hidden; }
 
-    .pipeline-visual {
-      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
-      gap: 0; margin: 48px 0;
-    }
-    .pipeline-step {
-      padding: 16px 24px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      text-align: center;
-      min-width: 160px;
-      transition: all var(--transition);
-    }
-    .pipeline-step:hover { border-color: var(--accent); }
-    .pipeline-step h4 { font-size: 0.7rem; margin-bottom: 4px; }
-    .pipeline-step p { font-size: 0.8rem; font-weight: 600; color: var(--text); }
-    .pipeline-arrow {
-      font-size: 1.4rem; color: var(--accent); padding: 0 8px;
-    }
-    @media (max-width: 700px) {
-      .pipeline-arrow { transform: rotate(90deg); padding: 8px 0; }
-      .pipeline-visual { flex-direction: column; }
-    }
+    /* Horizontal bar chart */
+    .hbar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .hbar-label { min-width: 50px; font-size: 0.8rem; font-weight: 600; color: var(--text-2); text-align: right; }
+    .hbar-track { flex: 1; height: 28px; background: var(--bg-2); border-radius: 6px; overflow: hidden; position: relative; }
+    .hbar-fill { height: 100%; border-radius: 6px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); width: 0; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+    .hbar-val { font-size: 0.75rem; font-weight: 700; color: #fff; white-space: nowrap; }
+
+    /* Vertical bars */
+    .vbar-row { display: flex; align-items: flex-end; gap: 16px; height: 220px; padding: 0 8px; }
+    .vbar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+    .vbar { width: 100%; border-radius: 6px 6px 0 0; transition: height 1.5s cubic-bezier(0.22, 1, 0.36, 1); height: 0; position: relative; min-height: 0; }
+    .vbar-tip { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .vbar-name { font-size: 0.72rem; color: var(--text-3); font-weight: 500; text-align: center; }
+
+    /* SVG line chart */
+    .line-chart-wrap { position: relative; }
+    .line-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+    .line-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text-2); }
+    .line-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* Timeline */
+    .coal-timeline { position: relative; padding: 20px 0; }
+    .coal-line { position: absolute; left: 60px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #ef4444, #f59e0b, #22c55e); border-radius: 3px; }
+    .coal-item { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; position: relative; }
+    .coal-year { min-width: 44px; font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-align: right; }
+    .coal-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--bg); z-index: 1; flex-shrink: 0; }
+    .coal-card { flex: 1; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; }
+    .coal-name { font-weight: 700; font-size: 0.9rem; }
+    .coal-meta { font-size: 0.78rem; color: var(--text-3); margin-top: 2px; }
+
+    /* Ring / donut */
+    .ring-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    @media (max-width: 640px) { .ring-grid { grid-template-columns: repeat(3, 1fr); } }
+    .ring-item { text-align: center; }
+    .ring-item svg { display: block; margin: 0 auto 8px; }
+    .ring-label { font-size: 0.78rem; font-weight: 600; color: var(--text); }
+    .ring-sub { font-size: 0.7rem; color: var(--text-3); }
+
+    /* Score cards */
+    .score-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    @media (max-width: 700px) { .score-grid { grid-template-columns: repeat(3, 1fr); } }
+    .score-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 12px; text-align: center; }
+    .score-val { font-size: 1.4rem; font-weight: 800; }
+    .score-label { font-size: 0.7rem; color: var(--text-3); margin-top: 2px; }
+    .score-sub { font-size: 0.68rem; color: var(--text-3); margin-top: 4px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <div class="main-content">
 
-  <div class="page-header" style="background: linear-gradient(180deg, rgba(59,130,246,0.08) 0%, var(--bg) 100%);">
+  <div class="page-header" style="background: linear-gradient(180deg, rgba(59,130,246,0.06) 0%, var(--bg) 100%);">
     <div class="container">
       <span class="section-label">ARIA Platform</span>
-      <h1>The <span class="gradient-text">Engine</span> Behind the Intelligence</h1>
-      <p>A full-stack analytics platform for Australia's National Electricity Market, delivering real-time intelligence across operations, trading, and investment.</p>
+      <h1>See What the Grid <span class="gradient-text">Actually</span> Does</h1>
+      <p>No jargon. No spreadsheets. Just Australia's electricity market, explained through live data and clear visuals.</p>
     </div>
   </div>
 
-  <!-- Data Pipeline -->
   <section>
     <div class="container--wide">
-      <div style="text-align: center; margin-bottom: 16px;">
-        <span class="section-label">Data Pipeline</span>
-        <h2 class="section-title">From Raw Data to Decision</h2>
+
+      <!-- 1. REAL-TIME PRICES -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">01 &mdash; Live Market Prices</div>
+            <div class="insight-title">Electricity prices change every 5 minutes. We watch all of them.</div>
+            <div class="insight-desc">
+              Right now, NSW is paying <strong>$98/MWh</strong> while Victoria is at just <strong>$9/MWh</strong>. That's a 10x difference between two states in the same country, at the same time. ARIA tracks every price tick across all five NEM regions so you never miss a signal.
+            </div>
+            <div class="score-grid" style="grid-template-columns: repeat(3, 1fr);">
+              <div class="score-card">
+                <div class="score-val" style="color: #ef4444;">$20,300</div>
+                <div class="score-label">Highest price hit</div>
+                <div class="score-sub">NSW &amp; SA, 2026</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val" style="color: #22c55e;">-$715</div>
+                <div class="score-label">Lowest price</div>
+                <div class="score-sub">VIC1, Feb 2026</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val gradient-text">30.6%</div>
+                <div class="score-label">SA negative prices</div>
+                <div class="score-sub">Nearly 1 in 3 intervals</div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-container" id="chart-prices">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">Latest Spot Prices ($/MWh)</div>
+            <div id="price-bars"></div>
+          </div>
+        </div>
       </div>
-      <div class="pipeline-visual reveal">
-        <div class="pipeline-step">
-          <h4>Source</h4>
-          <p>AEMO NEMWeb</p>
-        </div>
-        <span class="pipeline-arrow">&rarr;</span>
-        <div class="pipeline-step">
-          <h4>Ingest</h4>
-          <p>5-min Dispatch</p>
-        </div>
-        <span class="pipeline-arrow">&rarr;</span>
-        <div class="pipeline-step">
-          <h4>Store</h4>
-          <p>Validated Parquet</p>
-        </div>
-        <span class="pipeline-arrow">&rarr;</span>
-        <div class="pipeline-step">
-          <h4>Process</h4>
-          <p>PyArrow Streaming</p>
-        </div>
-        <span class="pipeline-arrow">&rarr;</span>
-        <div class="pipeline-step">
-          <h4>Deliver</h4>
-          <p>Streamlit UI</p>
+
+      <div class="glow-line"></div>
+
+      <!-- 2. CURTAILMENT -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">02 &mdash; Curtailment</div>
+            <div class="insight-title">Half of SA's solar output is being thrown away.</div>
+            <div class="insight-desc">
+              When there's too much renewable energy and not enough demand, generators are told to switch off. South Australia is curtailing <strong>50.7%</strong> of its solar — that's every second megawatt, wasted. Victoria isn't far behind at 27%. ARIA breaks down exactly why each region loses power, and how much money it costs.
+            </div>
+          </div>
+          <div class="chart-container">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:20px; text-transform:uppercase; letter-spacing:0.08em;">Solar Curtailment by Region</div>
+            <div class="ring-grid" id="curtail-rings"></div>
+            <div style="margin-top: 24px; font-size:0.75rem; color:var(--text-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px;">Wind Curtailment</div>
+            <div id="wind-curtail-bars"></div>
+          </div>
         </div>
       </div>
+
+      <div class="glow-line"></div>
+
+      <!-- 3. PRICE FORECASTING -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">03 &mdash; Price Forecasting</div>
+            <div class="insight-title">Where are prices heading? We model 4 scenarios to 2030.</div>
+            <div class="insight-desc">
+              Our AI analyses demand patterns, weather, fuel costs, and coal closures to forecast prices years ahead. The base case says NSW settles around <strong>$68/MWh</strong> in 2026 — but if gas prices spike, that jumps to <strong>$80+</strong>. If renewables flood in faster, SA could hit the <strong>$25 floor</strong> by 2028.
+            </div>
+          </div>
+          <div class="chart-container">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">NSW1 Price Forecast Scenarios ($/MWh)</div>
+            <svg id="forecast-chart" width="100%" height="240" style="overflow:visible;"></svg>
+            <div class="line-legend">
+              <div class="line-legend-item"><div class="line-legend-dot" style="background:#60a5fa;"></div> Base Case</div>
+              <div class="line-legend-item"><div class="line-legend-dot" style="background:#f87171;"></div> Gas Crisis</div>
+              <div class="line-legend-item"><div class="line-legend-dot" style="background:#4ade80;"></div> RE Boom</div>
+              <div class="line-legend-item"><div class="line-legend-dot" style="background:#fbbf24;"></div> Data Centre Surge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow-line"></div>
+
+      <!-- 4. REVENUE CAPTURE -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">04 &mdash; Revenue Capture</div>
+            <div class="insight-title">Queensland wind farms earn more than the market. Victorian ones lose 24%.</div>
+            <div class="insight-desc">
+              A capture ratio of 1.0 means you earn exactly the market average. Above 1.0, you're beating the market. Below, you're underperforming. QLD wind farms average <strong>1.08</strong> — they generate when prices are high. VIC wind averages <strong>0.76</strong> — generating when prices crash. ARIA shows every asset where the money is going.
+            </div>
+          </div>
+          <div class="chart-container">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">Wind Capture Ratio by Region</div>
+            <div id="capture-bars"></div>
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);">
+              <div style="font-size:0.72rem; color:var(--text-3); margin-bottom:8px;">Best &amp; Worst Performers</div>
+              <div style="display:flex; gap: 12px;">
+                <div style="flex:1; background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); border-radius:8px; padding:10px;">
+                  <div style="font-size:0.7rem; color:#4ade80; font-weight:700;">BEST</div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-top:2px;">Kaban Wind (QLD)</div>
+                  <div style="font-size:0.78rem; color:var(--text-3);">Capture: 1.12</div>
+                </div>
+                <div style="flex:1; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.2); border-radius:8px; padding:10px;">
+                  <div style="font-size:0.7rem; color:#f87171; font-weight:700;">WORST</div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text); margin-top:2px;">Stockyard Hill (VIC)</div>
+                  <div style="font-size:0.78rem; color:var(--text-3);">Capture: 0.57</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow-line"></div>
+
+      <!-- 5. COAL CLOSURES -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">05 &mdash; Coal Exit Timeline</div>
+            <div class="insight-title">6,000 MW of coal disappears by 2029. What fills the gap?</div>
+            <div class="insight-desc">
+              Yallourn, Eraring, and Gladstone are all closing within three years — that's enough power for 4 million homes gone from the grid. ARIA models what happens to prices, reliability, and emissions as each plant exits. Spoiler: prices go up, and the race to build replacements is already behind schedule.
+            </div>
+          </div>
+          <div class="chart-container">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">Announced Coal Retirements</div>
+            <div class="coal-timeline" id="coal-timeline">
+              <div class="coal-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow-line"></div>
+
+      <!-- 6. MARKET INTELLIGENCE -->
+      <div class="insight-block reveal">
+        <div class="two-col">
+          <div>
+            <div class="insight-label gradient-text">06 &mdash; The Big Picture</div>
+            <div class="insight-title">Renewables just crossed 51%. Batteries are changing everything.</div>
+            <div class="insight-desc">
+              Q4 2025 was the first quarter where renewables generated more than half the NEM's electricity. Batteries are now setting prices in <strong>32% of intervals</strong>. The fleet has grown to 12.4 GW and is heading for 30 GW by 2030. Meanwhile, 64 GW of new projects are stuck in the connection queue. ARIA makes sense of all of it.
+            </div>
+          </div>
+          <div class="chart-container">
+            <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">NEM at a Glance</div>
+            <div class="score-grid">
+              <div class="score-card">
+                <div class="score-val gradient-text">51%</div>
+                <div class="score-label">Renewable Share</div>
+                <div class="score-sub">Q4 2025</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val gradient-text">12.4 GW</div>
+                <div class="score-label">Battery Fleet</div>
+                <div class="score-sub">Q1 2026</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val gradient-text">32%</div>
+                <div class="score-label">BESS Price-Setting</div>
+                <div class="score-sub">of intervals</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val gradient-text">64 GW</div>
+                <div class="score-label">Connection Queue</div>
+                <div class="score-sub">Projects waiting</div>
+              </div>
+              <div class="score-card">
+                <div class="score-val gradient-text">8 TWh</div>
+                <div class="score-label">Curtailed in 2025</div>
+                <div class="score-sub">Up 62% YoY</div>
+              </div>
+            </div>
+            <div style="margin-top: 20px;">
+              <div style="font-size:0.72rem; color:var(--text-3); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Where to Build Next</div>
+              <div id="fit-bars"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Pillars -->
-  <section style="padding-top: 0;">
-    <div class="container">
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">01</div>
-          <div>
-            <h2>Operational Analytics</h2>
-            <p style="margin-top: 6px;">Real-time monitoring of 500+ NEM generators across wind, solar, battery, and hydro at 5-minute dispatch resolution.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>Asset Registry</h4>
-            <p>Every DUID tracked by fuel type, region, capacity, and connection point. Fleet-level and technology-level aggregation.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>Performance Metrics</h4>
-            <p>Capacity factor, availability, curtailment rate, MLF impact, volume-weighted price &mdash; all at dispatch-interval resolution.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">02</div>
-          <div>
-            <h2>Revenue & Capture Intelligence</h2>
-            <p style="margin-top: 6px;">Understands how well every asset converts generation into revenue relative to market benchmarks.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>Capture Price</h4>
-            <p>Generation-weighted average spot price (GWAP) vs time-weighted average (TWAP). Measures revenue quality against baseload.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>Revenue Decomposition</h4>
-            <p>Spot revenue = output x price x MLF across every dispatch interval. Hourly, daily, monthly heatmaps and seasonal evolution.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">03</div>
-          <div>
-            <h2>AI Price Forecasting</h2>
-            <p style="margin-top: 6px;">Machine learning models that predict electricity prices hours and days ahead across all NEM regions.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>XGBoost Quantile</h4>
-            <p>P10/P50/P90 price forecasts using demand, temperature, solar/wind traces, interconnector flows, and time features.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>Volatility Modelling</h4>
-            <p>STL seasonal decomposition + EGARCH volatility clustering + Monte Carlo scenario generation for risk assessment.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">04</div>
-          <div>
-            <h2>Curtailment Attribution</h2>
-            <p style="margin-top: 6px;">Pinpoints exactly why renewable generators are told to switch off &mdash; and how much revenue they're losing.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>UIGF Methodology</h4>
-            <p>Uses AEMO's Unconstrained Intermittent Generation Forecast to measure lost output. Audit-grade P90 to UIGF correction.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>Decomposition</h4>
-            <p>Separates economic curtailment (negative prices), network constraints, and self-curtailment with rolling 30-day attribution.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">05</div>
-          <div>
-            <h2>Coal Exit & Market Intelligence</h2>
-            <p style="margin-top: 6px;">Models what happens to prices, reliability, and emissions as coal plants retire from the NEM.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>Closure Scenarios</h4>
-            <p>Replacement adequacy, regional price uplift, and CO2 intensity trajectories per sequential retirement scenario.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>Constraint & Demand</h4>
-            <p>Binding constraint frequency, shadow prices, interconnector flows, and regional demand patterns from 64M+ rows.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pillar reveal">
-        <div class="pillar-header">
-          <div class="pillar-num gradient-text">06</div>
-          <div>
-            <h2>Investment Siting & ISP</h2>
-            <p style="margin-top: 6px;">Evaluates where new renewable projects should be built based on grid capacity, resource quality, and market opportunity.</p>
-          </div>
-        </div>
-        <div class="pillar-details">
-          <div class="pillar-detail">
-            <h4>REZ Assessment</h4>
-            <p>AEMO ISP-aligned Renewable Energy Zone evaluation &mdash; resource quality, grid connection, development pipeline density.</p>
-          </div>
-          <div class="pillar-detail">
-            <h4>New Entrant Economics</h4>
-            <p>LCOE breakeven against forward price curves for wind, solar, and battery. Asset ranking by capture, capacity factor, revenue/MW.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Data Integrity -->
-  <section>
+  <!-- CTA -->
+  <section style="padding: 48px 0 80px;">
     <div class="container" style="text-align: center;">
       <div class="card card-glass reveal" style="padding: 48px 32px;">
-        <span class="section-label">Data Integrity</span>
-        <h2 style="margin-top: 12px;">Validated at Every Layer</h2>
-        <p style="max-width: 560px; margin: 12px auto 28px; font-size: 0.95rem; line-height: 1.7;">
-          Every parquet file is validated for nulls, timestamp gaps, duplicate records, schema compliance, region consistency, and price bounds ($-1,000 to $20,300 MPC). Foundation lock protects 20 core files with SHA-256 integrity hashing.
+        <h2>All of this. One platform. <span class="gradient-text">Updated every 5 minutes.</span></h2>
+        <p style="max-width: 520px; margin: 12px auto 28px; font-size: 1rem; line-height: 1.7; color: var(--text-2);">
+          ARIA processes 500,000+ data points daily from AEMO and presents them through dashboards anyone can understand.
         </p>
-        <div class="tech-stack" style="justify-content: center; margin-top: 20px;">
-          <span class="tech-pill">9 Dataset Schemas</span>
-          <span class="tech-pill">Cross-File Consistency</span>
-          <span class="tech-pill">SHA-256 Lock</span>
-          <span class="tech-pill">PyArrow Streaming</span>
-          <span class="tech-pill">Sub-second Caching</span>
-        </div>
+        <a class="btn btn-primary" href="contact.html">Get in Touch</a>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260520c"></script>
-<script src="assets/main.js?v=20260520c"></script>
+<script src="assets/shared.js?v=20260520d"></script>
+<script src="assets/main.js?v=20260520d"></script>
+<script>
+(function() {
+  const g1='#60a5fa', g2='#a78bfa', g3='#22d3ee', red='#f87171', green='#4ade80', amber='#fbbf24';
+
+  // ===== 1. Price horizontal bars =====
+  function initPriceBars() {
+    const c = document.getElementById('price-bars');
+    if (!c) return;
+    const data = [
+      { label: 'NSW1', val: 98.14, color: g1 },
+      { label: 'QLD1', val: 95.81, color: g2 },
+      { label: 'TAS1', val: 96.18, color: g3 },
+      { label: 'SA1', val: 49.89, color: amber },
+      { label: 'VIC1', val: 8.95, color: green },
+    ];
+    const max = 120;
+    data.forEach((d, i) => {
+      const row = document.createElement('div');
+      row.className = 'hbar';
+      row.innerHTML = '<div class="hbar-label">' + d.label + '</div>' +
+        '<div class="hbar-track"><div class="hbar-fill" id="pbar-' + i + '" style="background:' + d.color + ';"><span class="hbar-val">$' + d.val.toFixed(0) + '</span></div></div>';
+      c.appendChild(row);
+      setTimeout(() => {
+        document.getElementById('pbar-' + i).style.width = (d.val / max * 100) + '%';
+      }, 200 + i * 120);
+    });
+  }
+
+  // ===== 2. Curtailment rings =====
+  function drawRing(parent, pct, label, color) {
+    const size = 80, r = 32, circ = 2 * Math.PI * r;
+    const item = document.createElement('div');
+    item.className = 'ring-item';
+    const dashLen = (pct / 100) * circ;
+    item.innerHTML = '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">' +
+      '<circle cx="40" cy="40" r="' + r + '" fill="none" stroke="var(--bg-3)" stroke-width="6"/>' +
+      '<circle cx="40" cy="40" r="' + r + '" fill="none" stroke="' + color + '" stroke-width="6" ' +
+      'stroke-dasharray="' + dashLen + ' ' + (circ - dashLen) + '" stroke-dashoffset="' + (circ * 0.25) + '" ' +
+      'stroke-linecap="round" style="transition: stroke-dasharray 1.5s ease;"/>' +
+      '<text x="40" y="44" text-anchor="middle" fill="' + color + '" font-size="14" font-weight="800">' + pct + '%</text>' +
+      '</svg><div class="ring-label">' + label + '</div>';
+    parent.appendChild(item);
+  }
+  function initCurtailRings() {
+    const c = document.getElementById('curtail-rings');
+    if (!c) return;
+    drawRing(c, 50.7, 'SA1', red);
+    drawRing(c, 27.3, 'VIC1', amber);
+    drawRing(c, 18.5, 'NSW1', g1);
+    drawRing(c, 7.7, 'QLD1', g2);
+    drawRing(c, 0, 'TAS1', g3);
+  }
+  function initWindCurtail() {
+    const c = document.getElementById('wind-curtail-bars');
+    if (!c) return;
+    const data = [
+      { label: 'VIC1', val: 20.3, color: red },
+      { label: 'SA1', val: 15.2, color: amber },
+      { label: 'NSW1', val: 2.2, color: g1 },
+      { label: 'QLD1', val: 1.8, color: g2 },
+      { label: 'TAS1', val: 0.3, color: g3 },
+    ];
+    data.forEach((d, i) => {
+      const row = document.createElement('div');
+      row.className = 'hbar';
+      row.innerHTML = '<div class="hbar-label">' + d.label + '</div>' +
+        '<div class="hbar-track"><div class="hbar-fill" id="wbar-' + i + '" style="background:' + d.color + ';"><span class="hbar-val">' + d.val + '%</span></div></div>';
+      c.appendChild(row);
+      setTimeout(() => { document.getElementById('wbar-' + i).style.width = (d.val / 25 * 100) + '%'; }, 300 + i * 120);
+    });
+  }
+
+  // ===== 3. Forecast line chart =====
+  function initForecast() {
+    const svg = document.getElementById('forecast-chart');
+    if (!svg) return;
+    const w = 440, h = 220, px = 40, py = 20;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    const years = [2026, 2028, 2030];
+    const scenarios = [
+      { name: 'Base', data: [63.2, 58.8, 74.5], color: g1 },
+      { name: 'Gas Crisis', data: [79.5, 92.1, 109.2], color: red },
+      { name: 'RE Boom', data: [60.0, 45.3, 51.4], color: green },
+      { name: 'Data Centre', data: [66.6, 72.7, 94.9], color: amber },
+    ];
+    const allVals = scenarios.flatMap(s => s.data);
+    const minV = Math.min(...allVals) - 5, maxV = Math.max(...allVals) + 5;
+    const xScale = (i) => px + (i / (years.length - 1)) * (w - px * 2);
+    const yScale = (v) => py + (1 - (v - minV) / (maxV - minV)) * (h - py * 2);
+
+    // Grid lines
+    let gridHtml = '';
+    [40, 60, 80, 100].forEach(v => {
+      const y = yScale(v);
+      gridHtml += '<line x1="' + px + '" y1="' + y + '" x2="' + (w - px) + '" y2="' + y + '" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 4"/>';
+      gridHtml += '<text x="' + (px - 6) + '" y="' + (y + 4) + '" text-anchor="end" fill="var(--text-3)" font-size="10">$' + v + '</text>';
+    });
+    years.forEach((yr, i) => {
+      gridHtml += '<text x="' + xScale(i) + '" y="' + (h - 2) + '" text-anchor="middle" fill="var(--text-3)" font-size="10">' + yr + '</text>';
+    });
+
+    // Lines + dots
+    let linesHtml = '';
+    scenarios.forEach(s => {
+      const pts = s.data.map((v, i) => xScale(i) + ',' + yScale(v));
+      const pathLen = 800;
+      linesHtml += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + s.color + '" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="' + pathLen + '" stroke-dashoffset="' + pathLen + '" style="animation: drawLine 2s ease forwards;"/>';
+      s.data.forEach((v, i) => {
+        linesHtml += '<circle cx="' + xScale(i) + '" cy="' + yScale(v) + '" r="4" fill="' + s.color + '" opacity="0" style="animation: dotFade 0.5s ease ' + (1 + i * 0.3) + 's forwards;"/>';
+        linesHtml += '<text x="' + xScale(i) + '" y="' + (yScale(v) - 8) + '" text-anchor="middle" fill="' + s.color + '" font-size="9" font-weight="700" opacity="0" style="animation: dotFade 0.5s ease ' + (1.2 + i * 0.3) + 's forwards;">$' + Math.round(v) + '</text>';
+      });
+    });
+
+    svg.innerHTML = '<style>@keyframes drawLine{to{stroke-dashoffset:0}}@keyframes dotFade{to{opacity:1}}</style>' + gridHtml + linesHtml;
+  }
+
+  // ===== 4. Capture ratio bars =====
+  function initCapture() {
+    const c = document.getElementById('capture-bars');
+    if (!c) return;
+    const data = [
+      { label: 'QLD1', val: 1.077, color: green },
+      { label: 'TAS1', val: 0.952, color: g3 },
+      { label: 'NSW1', val: 0.931, color: g1 },
+      { label: 'SA1', val: 0.842, color: amber },
+      { label: 'VIC1', val: 0.763, color: red },
+    ];
+    data.forEach((d, i) => {
+      const pct = (d.val / 1.2) * 100;
+      const row = document.createElement('div');
+      row.className = 'hbar';
+      row.innerHTML = '<div class="hbar-label">' + d.label + '</div>' +
+        '<div class="hbar-track" style="position:relative;">' +
+        '<div class="hbar-fill" id="cbar-' + i + '" style="background:' + d.color + ';"><span class="hbar-val">' + d.val.toFixed(2) + '</span></div>' +
+        '<div style="position:absolute;left:' + (1.0/1.2*100) + '%;top:0;bottom:0;width:2px;background:var(--text-3);opacity:0.4;" title="Market average"></div>' +
+        '</div>';
+      c.appendChild(row);
+      setTimeout(() => { document.getElementById('cbar-' + i).style.width = pct + '%'; }, 300 + i * 120);
+    });
+    const note = document.createElement('div');
+    note.style.cssText = 'font-size:0.7rem; color:var(--text-3); margin-top:8px; text-align:right;';
+    note.textContent = 'Vertical line = 1.0 (market average)';
+    c.appendChild(note);
+  }
+
+  // ===== 5. Coal timeline =====
+  function initCoal() {
+    const c = document.getElementById('coal-timeline');
+    if (!c) return;
+    const plants = [
+      { year: '2028', name: 'Yallourn W', region: 'VIC', mw: '1,480 MW', color: red },
+      { year: '2029', name: 'Eraring', region: 'NSW', mw: '2,880 MW', color: red },
+      { year: '2029', name: 'Gladstone', region: 'QLD', mw: '1,680 MW', color: red },
+      { year: '2031', name: 'Callide B', region: 'QLD', mw: '700 MW', color: amber },
+      { year: '2033', name: 'Bayswater', region: 'NSW', mw: '2,640 MW', color: amber },
+      { year: '2033', name: 'Vales Point', region: 'NSW', mw: '1,320 MW', color: amber },
+      { year: '2035', name: 'Loy Yang A', region: 'VIC', mw: '2,210 MW', color: green },
+    ];
+    plants.forEach((p, i) => {
+      const item = document.createElement('div');
+      item.className = 'coal-item';
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-10px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      item.style.transitionDelay = (i * 0.15) + 's';
+      item.innerHTML = '<div class="coal-year">' + p.year + '</div>' +
+        '<div class="coal-dot" style="background:' + p.color + ';"></div>' +
+        '<div class="coal-card"><div class="coal-name">' + p.name + '</div>' +
+        '<div class="coal-meta">' + p.region + ' &mdash; ' + p.mw + '</div></div>';
+      c.appendChild(item);
+      setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateX(0)'; }, 400 + i * 150);
+    });
+  }
+
+  // ===== 6. Technology fit bars =====
+  function initFit() {
+    const c = document.getElementById('fit-bars');
+    if (!c) return;
+    const data = [
+      { label: 'NSW1', wind: 5, solar: 4, bess: 4 },
+      { label: 'QLD1', wind: 5, solar: 3, bess: 3 },
+      { label: 'VIC1', wind: 2, solar: 1, bess: 5 },
+      { label: 'SA1', wind: 2, solar: 1, bess: 5 },
+      { label: 'TAS1', wind: 3, solar: 1, bess: 1 },
+    ];
+    const legend = document.createElement('div');
+    legend.style.cssText = 'display:flex; gap:16px; margin-bottom:12px;';
+    legend.innerHTML = '<span style="font-size:0.7rem;color:var(--text-3);display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:' + g1 + ';"></span>Wind</span>' +
+      '<span style="font-size:0.7rem;color:var(--text-3);display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:' + amber + ';"></span>Solar</span>' +
+      '<span style="font-size:0.7rem;color:var(--text-3);display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:' + g2 + ';"></span>Battery</span>';
+    c.appendChild(legend);
+    data.forEach(d => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:8px;';
+      const dots = (score, color) => {
+        let html = '';
+        for (let i = 0; i < 5; i++) {
+          html += '<div style="width:14px;height:14px;border-radius:50%;background:' + (i < score ? color : 'var(--bg-3)') + ';transition:background 0.3s;"></div>';
+        }
+        return html;
+      };
+      row.innerHTML = '<div style="min-width:40px;font-size:0.75rem;font-weight:600;color:var(--text-2);">' + d.label + '</div>' +
+        '<div style="display:flex;gap:3px;">' + dots(d.wind, g1) + '</div>' +
+        '<div style="width:8px;"></div>' +
+        '<div style="display:flex;gap:3px;">' + dots(d.solar, amber) + '</div>' +
+        '<div style="width:8px;"></div>' +
+        '<div style="display:flex;gap:3px;">' + dots(d.bess, g2) + '</div>';
+      c.appendChild(row);
+    });
+  }
+
+  // Init all on load
+  setTimeout(() => {
+    initPriceBars();
+    initCurtailRings();
+    initWindCurtail();
+    initForecast();
+    initCapture();
+    initCoal();
+    initFit();
+  }, 300);
+})();
+</script>
 </body>
 </html>

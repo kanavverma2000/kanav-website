@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260520" />
+  <link rel="stylesheet" href="assets/style.css?v=20260520d" />
 </head>
 <body>
 <div class="main-content">
@@ -31,11 +31,11 @@
         <div class="tech-stack">
           <span class="tech-pill">Python</span>
           <span class="tech-pill">Streamlit</span>
-          <span class="tech-pill">XGBoost</span>
+          <span class="tech-pill">Machine Learning</span>
           <span class="tech-pill">PyArrow</span>
           <span class="tech-pill">Plotly</span>
           <span class="tech-pill">AEMO Data</span>
-          <span class="tech-pill">Machine Learning</span>
+          <span class="tech-pill">5-Minute Dispatch</span>
         </div>
       </div>
 
@@ -54,8 +54,8 @@
           <div class="aria-stat-label">NEM generators tracked</div>
         </div>
         <div class="aria-stat">
-          <div class="aria-stat-value gradient-text">64M+</div>
-          <div class="aria-stat-label">Constraint rows processed</div>
+          <div class="aria-stat-value gradient-text">51%</div>
+          <div class="aria-stat-label">NEM renewable share</div>
         </div>
       </div>
     </div>
@@ -76,22 +76,22 @@
             <div class="mock-dashboard">
               <div class="mock-widget">
                 <div class="mock-widget-title">Spot Price &mdash; NSW1</div>
-                <div class="mock-widget-value gradient-text" id="live-price">$87.42</div>
+                <div class="mock-widget-value gradient-text" id="live-price">$98.00</div>
                 <svg width="100%" height="40" style="margin-top:8px;" id="spark-price"></svg>
               </div>
               <div class="mock-widget">
-                <div class="mock-widget-title">Capture Ratio &mdash; Wind</div>
-                <div class="mock-widget-value gradient-text" id="live-capture">0.94</div>
+                <div class="mock-widget-title">Wind Capture &mdash; NSW1</div>
+                <div class="mock-widget-value gradient-text" id="live-capture">0.93</div>
                 <svg width="100%" height="40" style="margin-top:8px;" id="spark-capture"></svg>
               </div>
               <div class="mock-widget">
-                <div class="mock-widget-title">Curtailment &mdash; Solar</div>
-                <div class="mock-widget-value gradient-text" id="live-curtail">4.2%</div>
+                <div class="mock-widget-title">Solar Curtailment &mdash; SA1</div>
+                <div class="mock-widget-value gradient-text" id="live-curtail">50.7%</div>
                 <svg width="100%" height="40" style="margin-top:8px;" id="spark-curtail"></svg>
               </div>
               <div class="mock-widget">
-                <div class="mock-widget-title">Demand &mdash; VIC1</div>
-                <div class="mock-widget-value gradient-text" id="live-demand">6,840 MW</div>
+                <div class="mock-widget-title">Demand &mdash; NEM Total</div>
+                <div class="mock-widget-value gradient-text" id="live-demand">24,200 MW</div>
                 <svg width="100%" height="40" style="margin-top:8px;" id="spark-demand"></svg>
               </div>
             </div>
@@ -124,27 +124,27 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">HIDDEN REVENUE LOSS</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">$2.4M left on the table</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">A single 200 MW wind farm loses $2.4M/year in revenue simply by generating at the wrong time relative to price signals. ARIA detects this pattern in seconds.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE CURTAILMENT CRISIS</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">SA solar is being wasted &mdash; 50.7% curtailed</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">South Australia throws away over half its solar generation. Victoria loses 27%. That's billions of dollars in clean energy never reaching consumers. ARIA shows exactly where and why.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CURTAILMENT MYSTERY SOLVED</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">37% of curtailment isn't what you think</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Operators blame network constraints, but ARIA's decomposition reveals over a third is economic &mdash; generators choosing to switch off rather than being forced.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CAPTURE RATIO GAP</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Best wind farm earns 2x what the worst does</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Kaban Wind Farm in QLD captures $1.12 for every $1 of average price. Stockyard Hill in VIC gets just $0.57. Same technology, wildly different returns. Location and timing are everything.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">PRICE SPIKE PREDICTION</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Saw the $15,100 spike 4 hours early</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">When NSW hit $15,100/MWh in February, ARIA's P90 forecast flagged the risk window hours before dispatch &mdash; while operators were still asleep.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">PRICE FORECAST</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">NSW prices could hit $109/MWh by 2030</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Under a gas crisis scenario, ARIA's models show NSW wholesale prices climbing from $80 to $109/MWh. But if renewables boom, they could fall to just $51. The future depends on what we build next.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
           <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE COAL CLIFF</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">3 closures = $47/MWh average price jump</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA models sequential coal exits. The next three scheduled retirements push average NEM prices from $78 to $125/MWh &mdash; fundamentally repricing every asset.</p>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">12,910 MW of coal gone by 2035</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Seven coal plants are scheduled to close, starting with Yallourn in 2028 and ending with Loy Yang A in 2035. That's nearly 13 GW that batteries, wind, and solar need to replace.</p>
         </div>
 
       </div>
@@ -166,33 +166,33 @@
       <div class="features-grid">
         <div class="feature-card reveal">
           <div class="feature-icon">&#9889;</div>
-          <h3>Real-Time Operations</h3>
-          <p>Monitor hundreds of wind, solar, battery, and hydro assets at 5-minute granularity. Fleet benchmarking, capacity factors, and availability tracking.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128176;</div>
-          <h3>Revenue Intelligence</h3>
-          <p>Analyse how well assets capture market prices. Compare generation-weighted vs time-weighted pricing across assets, fleets, and regions.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#129302;</div>
-          <h3>AI Price Forecasting</h3>
-          <p>XGBoost quantile models producing P10/P50/P90 forecasts with volatility-aware scenario generation using EGARCH modelling.</p>
+          <h3>Live Market Prices</h3>
+          <p>See what electricity costs right now across all five NEM regions. Track price swings, spot the spikes, and understand what's driving them.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#128269;</div>
-          <h3>Curtailment Attribution</h3>
-          <p>Pinpoints why generators are told to reduce output &mdash; grid congestion, low prices, or network limits &mdash; using AEMO UIGF methodology.</p>
+          <h3>Curtailment Tracking</h3>
+          <p>Find out how much solar and wind energy is being wasted in each state. We break it down by region so you can see where the grid is struggling.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#129302;</div>
+          <h3>Price Forecasting</h3>
+          <p>Our AI models forecast where electricity prices are heading under different scenarios &mdash; from business as usual to gas crisis to renewables boom.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128176;</div>
+          <h3>Revenue Capture</h3>
+          <p>See which wind and solar farms are earning the most per megawatt hour &mdash; and which ones are leaving money on the table.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#127981;</div>
-          <h3>Coal Exit Modelling</h3>
-          <p>Projects how coal plant retirements reshape electricity prices, reliability, and emissions across each Australian state.</p>
+          <h3>Coal Exit Timeline</h3>
+          <p>Track every scheduled coal closure in Australia. See when each plant goes offline and how much capacity the grid needs to replace.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#128205;</div>
-          <h3>Investment Siting</h3>
-          <p>ISP-aligned REZ assessment, LCOE breakeven analysis, and development pipeline intelligence for new project decisions.</p>
+          <h3>Big Picture Intelligence</h3>
+          <p>Renewable share, battery growth, connection pipeline &mdash; the macro trends shaping Australia's energy future, all in one place.</p>
         </div>
       </div>
       <div style="text-align: center; margin-top: 40px;">
@@ -218,8 +218,8 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260520c"></script>
-<script src="assets/main.js?v=20260520c"></script>
+<script src="assets/shared.js?v=20260520d"></script>
+<script src="assets/main.js?v=20260520d"></script>
 <script>
 // ===== Live Dashboard Animation =====
 (function() {
@@ -248,24 +248,25 @@
       '<path d="' + pathD + '" fill="none" stroke="url(#sg-' + svgEl.id + ')" stroke-width="2" stroke-linecap="round"/>';
   }
 
-  // Simulated data streams
-  let priceData = [72, 78, 85, 91, 87, 82, 94, 88, 79, 83, 90, 87, 92, 86, 81, 89, 95, 88, 84, 87];
-  let captureData = [0.91, 0.93, 0.95, 0.92, 0.89, 0.94, 0.96, 0.93, 0.91, 0.94, 0.92, 0.95, 0.93, 0.90, 0.94, 0.96, 0.93, 0.91, 0.95, 0.94];
-  let curtailData = [3.8, 4.1, 4.5, 3.9, 4.2, 4.8, 5.1, 4.3, 3.7, 4.0, 4.4, 4.6, 4.2, 3.9, 4.1, 4.5, 4.8, 4.2, 3.8, 4.2];
-  let demandData = [6200, 6450, 6700, 6900, 7100, 6850, 6600, 6400, 6550, 6780, 6920, 7050, 6800, 6650, 6500, 6700, 6880, 7000, 6750, 6840];
+  // Real ARIA data-seeded streams (NSW1 ~$98, wind capture ~0.93, SA solar curtailment ~50%, NEM demand ~24GW)
+  let priceData = [92, 95, 101, 97, 94, 99, 103, 96, 91, 98, 102, 95, 89, 97, 100, 94, 96, 101, 93, 98];
+  let captureData = [0.90, 0.92, 0.95, 0.91, 0.88, 0.93, 0.96, 0.94, 0.91, 0.93, 0.90, 0.95, 0.92, 0.89, 0.93, 0.95, 0.92, 0.90, 0.94, 0.93];
+  let curtailData = [48.2, 51.3, 53.1, 49.5, 50.7, 52.4, 47.8, 50.1, 51.9, 49.2, 50.7, 53.5, 48.9, 51.2, 50.4, 52.1, 49.8, 51.6, 50.3, 50.7];
+  let demandData = [23500, 23800, 24100, 24400, 24800, 24200, 23900, 24000, 24300, 24600, 24100, 23700, 24000, 24500, 24200, 23800, 24100, 24400, 24000, 24200];
 
-  const regionPrices = [87, 72, 94, 118, 65];
+  // Real regional prices from ARIA: NSW1=$98, QLD1=$96, VIC1=$9, SA1=$50, TAS1=$96
+  const regionPrices = [98, 96, 9, 50, 96];
   const regionColors = [colors.g1, colors.g2, colors.g3, colors.g1, colors.g2];
 
   function initBars() {
     const container = document.getElementById('region-bars');
     if (!container) return;
-    const maxP = 150;
+    const maxP = 130;
     regionPrices.forEach((p, i) => {
       const bar = document.createElement('div');
       bar.style.cssText = 'flex:1; border-radius:6px 6px 0 0; transition: height 1s ease; position:relative;' +
         'background: linear-gradient(180deg, ' + regionColors[i] + ', ' + regionColors[i] + '44);' +
-        'height: 0;';
+        'height: 0; min-height: 8px;';
       const label = document.createElement('div');
       label.style.cssText = 'position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.72rem; font-weight:700; color:var(--text);';
       label.textContent = '$' + p;
@@ -273,12 +274,11 @@
       bar.appendChild(label);
       bar.id = 'region-bar-' + i;
       container.appendChild(bar);
-      setTimeout(() => { bar.style.height = (p / maxP * 100) + '%'; }, 200 + i * 100);
+      setTimeout(() => { bar.style.height = Math.max(6, (p / maxP * 100)) + '%'; }, 200 + i * 100);
     });
   }
 
   function tick() {
-    // Shift data and add new random point
     function shift(arr, base, range) {
       arr.shift();
       const last = arr[arr.length - 1];
@@ -286,12 +286,11 @@
       arr.push(Math.max(base - range * 3, Math.min(base + range * 3, next)));
       return arr;
     }
-    priceData = shift(priceData, 87, 4);
-    captureData = shift(captureData, 0.94, 0.015);
-    curtailData = shift(curtailData, 4.2, 0.3);
-    demandData = shift(demandData, 6840, 100);
+    priceData = shift(priceData, 98, 4);
+    captureData = shift(captureData, 0.93, 0.015);
+    curtailData = shift(curtailData, 50.7, 1.5);
+    demandData = shift(demandData, 24200, 300);
 
-    // Update values
     const pEl = document.getElementById('live-price');
     const cEl = document.getElementById('live-capture');
     const tEl = document.getElementById('live-curtail');
@@ -301,7 +300,6 @@
     if (tEl) tEl.textContent = curtailData[curtailData.length-1].toFixed(1) + '%';
     if (dEl) dEl.textContent = Math.round(demandData[demandData.length-1]).toLocaleString() + ' MW';
 
-    // Update sparklines
     const sp = document.getElementById('spark-price');
     const sc = document.getElementById('spark-capture');
     const st = document.getElementById('spark-curtail');
@@ -311,18 +309,19 @@
     if (st) sparkline(st, curtailData, colors.g3);
     if (sd) sparkline(sd, demandData, colors.g1);
 
-    // Animate bars slightly
-    regionPrices.forEach((base, i) => {
-      const newP = base + (Math.random() - 0.5) * 8;
+    // Slight bar animation around real values
+    const bases = [98, 96, 9, 50, 96];
+    const jitter = [5, 5, 3, 4, 5];
+    bases.forEach((base, i) => {
+      const newP = Math.max(1, base + (Math.random() - 0.5) * jitter[i]);
       regionPrices[i] = Math.round(newP);
       const bar = document.getElementById('region-bar-' + i);
       const label = document.getElementById('bar-label-' + i);
-      if (bar) bar.style.height = (newP / 150 * 100) + '%';
+      if (bar) bar.style.height = Math.max(6, (newP / 130 * 100)) + '%';
       if (label) label.textContent = '$' + Math.round(newP);
     });
   }
 
-  // Init
   setTimeout(() => {
     initBars();
     tick();

@@ -1,4 +1,4 @@
-/* shared-components.js - injects nav + footer + background effects */
+/* shared-components.js - injects animated bg + nav + footer + scroll reveal */
 (function () {
   // ===== Animated Background =====
   const bgOrbs = document.createElement('div');
@@ -9,6 +9,21 @@
   const bgGrid = document.createElement('div');
   bgGrid.className = 'bg-grid';
   document.body.insertBefore(bgGrid, bgOrbs.nextSibling);
+
+  // ===== Floating Particles =====
+  const particles = document.createElement('div');
+  particles.className = 'bg-particles';
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.animationDuration = (12 + Math.random() * 18) + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    particles.appendChild(p);
+  }
+  document.body.insertBefore(particles, bgGrid.nextSibling);
 
   // ===== Navigation =====
   const nav = document.createElement('nav');
@@ -21,14 +36,11 @@
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="index.html">Home</a></li>
     <li><a href="platform.html">Platform</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="timeline.html">Timeline</a></li>
-    <li><a href="cv.html">CV</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="about.html">About Kanav</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">Theme</button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">T</button>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
         <rect y="3" width="20" height="2" rx="1"/>
@@ -43,8 +55,9 @@
   // ===== Footer =====
   const footer = document.createElement('footer');
   footer.innerHTML = `
-<div class="container">
-  <p>&copy; ${new Date().getFullYear()} ARIA &mdash; Advanced Renewable Intelligence & Analytics &mdash; Built by <a href="about.html">Kanav Verma</a> &mdash; <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a> &mdash; <a href="https://github.com/kanavverma2000" target="_blank" rel="noopener">GitHub</a></p>
+<div class="container" style="text-align:center;">
+  <p style="margin-bottom:8px;"><strong style="font-size:0.9rem;">ARIA</strong> &mdash; Advanced Renewable Intelligence & Analytics</p>
+  <p>&copy; ${new Date().getFullYear()} Built by <a href="about.html">Kanav Verma</a> &mdash; <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a> &mdash; <a href="https://github.com/kanavverma2000" target="_blank" rel="noopener">GitHub</a></p>
 </div>`;
   document.body.appendChild(footer);
 
@@ -52,12 +65,14 @@
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
     reveals.forEach(el => io.observe(el));
   }
 
-  // ===== Simple auto-reload for local development =====
+  // ===== Dev auto-reload =====
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
     let lastModified = null;
     const check = async () => {

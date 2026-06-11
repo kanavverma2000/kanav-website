@@ -8,7 +8,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260520d" />
+  <link rel="stylesheet" href="assets/style.css?v=20260611" />
+  <style>
+    .live-price-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px 16px; text-align: center; box-shadow: var(--shadow);
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .live-price-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .live-price-card .lp-region {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 6px;
+    }
+    .live-price-card .lp-price {
+      font-size: 1.8rem; font-weight: 800; line-height: 1; font-family: var(--font-mono);
+      transition: color 0.3s ease;
+    }
+    .live-price-card .lp-sub { font-size: 0.7rem; color: var(--text-3); margin-top: 6px; }
+    .live-price-card .lp-badge {
+      display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+      padding: 2px 8px; border-radius: 4px; margin-top: 6px; text-transform: uppercase;
+    }
+    .lp-loading { color: var(--text-3); animation: lpPulse 1.5s ease-in-out infinite; }
+    @keyframes lpPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .lp-spike { border-color: rgba(239,68,68,0.4); }
+    .lp-negative { border-color: rgba(139,92,246,0.4); }
+    @media (max-width: 640px) {
+      #live-prices { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+    @media (max-width: 420px) {
+      #live-prices { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+  </style>
 </head>
 <body>
 <div class="main-content">
@@ -62,6 +93,45 @@
   </section>
 
 
+  <!-- LIVE NEM PRICES -->
+  <section style="padding: 60px 0 40px;">
+    <div class="container--wide">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <span class="section-label">Live Data</span>
+        <h2 class="section-title">NEM Spot Prices &mdash; <span class="gradient-text">Right Now</span></h2>
+        <p style="font-size: 0.9rem; color: var(--text-3); margin-top: 6px;">
+          Pulled live from <a href="https://openelectricity.org.au" target="_blank" style="color:var(--accent);">Open Electricity API v4</a> &bull; Auto-refreshes every 5 minutes
+        </p>
+      </div>
+
+      <!-- Price cards container -->
+      <div id="live-prices" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px;">
+        <div class="live-price-card" id="lp-QLD1"><div class="lp-region">QLD1</div><div class="lp-price lp-loading">--</div><div class="lp-sub">Loading...</div></div>
+        <div class="live-price-card" id="lp-NSW1"><div class="lp-region">NSW1</div><div class="lp-price lp-loading">--</div><div class="lp-sub">Loading...</div></div>
+        <div class="live-price-card" id="lp-VIC1"><div class="lp-region">VIC1</div><div class="lp-price lp-loading">--</div><div class="lp-sub">Loading...</div></div>
+        <div class="live-price-card" id="lp-SA1"><div class="lp-region">SA1</div><div class="lp-price lp-loading">--</div><div class="lp-sub">Loading...</div></div>
+        <div class="live-price-card" id="lp-TAS1"><div class="lp-region">TAS1</div><div class="lp-price lp-loading">--</div><div class="lp-sub">Loading...</div></div>
+      </div>
+
+      <!-- Generation mix bar -->
+      <div id="live-gen-bar" style="margin-bottom: 16px;">
+        <div style="font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">NEM Generation Mix (Live)</div>
+        <div id="gen-mix-bar" style="height: 28px; border-radius: 6px; overflow: hidden; display: flex; background: var(--bg-3);"></div>
+        <div id="gen-mix-legend" style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px;"></div>
+      </div>
+
+      <!-- Footer row: timestamp + API key gate -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div id="live-timestamp" style="font-size: 0.72rem; color: var(--text-3);"></div>
+        <button id="api-key-btn" onclick="promptApiKey()" style="font-size:0.68rem; padding:3px 10px; border-radius:4px; border:1px solid var(--border); background:var(--bg-2); color:var(--text-3); cursor:pointer; transition: all 0.25s ease;">View API Key</button>
+      </div>
+      <div id="api-key-reveal" style="display:none; margin-top:10px; padding:12px 16px; background:var(--bg-2); border:1px solid var(--border); border-radius:8px;">
+        <div style="font-size:0.75rem; color:var(--text-3); margin-bottom:4px;">Open Electricity API Key (free tier)</div>
+        <code id="api-key-display" style="font-family:var(--font-mono); font-size:0.82rem; color:var(--accent); word-break:break-all;"></code>
+      </div>
+    </div>
+  </section>
+
   <!-- INSIGHTS - The WOW section -->
   <section style="padding: 80px 0 40px;">
     <div class="container">
@@ -110,38 +180,83 @@
       <div style="text-align: center; margin-bottom: 48px;">
         <span class="section-label">Capabilities</span>
         <h2 class="section-title">What ARIA Delivers</h2>
-        <p class="section-subtitle" style="margin: 8px auto 0;">One platform. Every megawatt. Every answer.</p>
+        <p class="section-subtitle" style="margin: 8px auto 0;">20+ analytical modules. One platform. Every megawatt in the NEM.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card reveal">
           <div class="feature-icon">&#9889;</div>
-          <h3>Live Market Prices</h3>
-          <p>See what electricity costs right now across all five NEM regions. Track price swings, spot the spikes, and understand what's driving them.</p>
+          <h3>Live NEM Monitor</h3>
+          <p>Real-time spot prices across all five NEM regions via Open Electricity API. Implied pricing, generation mix donuts, spike detection, and auto-refresh every 5 minutes.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#128269;</div>
           <h3>Curtailment Tracking</h3>
-          <p>Find out how much solar and wind energy is being wasted in each state. We break it down by region so you can see where the grid is struggling.</p>
+          <p>See exactly how much solar and wind is being wasted in each state &mdash; capped, curtailed, or hit by negative prices. Track lost MWh and estimated missed revenue.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#129302;</div>
-          <h3>Price Forecasting</h3>
-          <p>Our AI models forecast where electricity prices are heading under different scenarios &mdash; from business as usual to gas crisis to renewables boom.</p>
+          <h3>AI Price Forecasting</h3>
+          <p>Interactive scenario engine modelling prices to 2030. Adjust coal closure timing, renewable growth, BESS trajectory, gas prices, carbon price, and data centre demand.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#128176;</div>
-          <h3>Revenue Capture</h3>
-          <p>See which wind and solar farms are earning the most per megawatt hour &mdash; and which ones are leaving money on the table.</p>
+          <h3>Revenue &amp; Capture Rates</h3>
+          <p>GWAP vs TWAP benchmarking, capture ratio rankings, price quintile heatmaps, and peer comparison for every wind, solar, battery, and hydro asset in the NEM.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">&#127981;</div>
-          <h3>Coal Exit Timeline</h3>
-          <p>Track every scheduled coal closure in Australia. See when each plant goes offline and how much capacity the grid needs to replace.</p>
+          <h3>Coal Exit Modelling</h3>
+          <p>Track every scheduled closure from Yallourn (2028) to Loy Yang A (2035). Model price impacts, interconnector flows, and supply-demand rebalancing under bear/base/bull scenarios.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">&#128205;</div>
-          <h3>Big Picture Intelligence</h3>
-          <p>Renewable share, battery growth, connection pipeline &mdash; the macro trends shaping Australia's energy future, all in one place.</p>
+          <div class="feature-icon">&#128267;</div>
+          <h3>Battery Analytics</h3>
+          <p>Dedicated BESS dashboard with charge/discharge cycles, utilisation factors, throughput metrics, daily dispatch profiles, and offtake contract intelligence.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128300;</div>
+          <h3>Asset Explorer</h3>
+          <p>Deep-dive into any of 500+ NEM generators. Hourly/daily/monthly output profiles, capacity factors, MLF data, REZ overlays, and data quality scoring.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#9858;</div>
+          <h3>Hydrogen &amp; Ammonia</h3>
+          <p>Green hydrogen project intelligence with electrolyser dispatch optimisation, LCOH calculator, ammonia economics, and forward cost projections tied to NEM prices.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128506;</div>
+          <h3>Interactive NEM Maps</h3>
+          <p>Every generator plotted by technology type with AEMO transmission line and substation overlays. Filter by tech, click through to asset details, explore REZ boundaries.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128200;</div>
+          <h3>Portfolio Scenarios</h3>
+          <p>Build a virtual NEM portfolio and model capture rates under different macro conditions. Driver decomposition, what-if analysis, and forward capture forecasts to 2031.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#127968;</div>
+          <h3>Residential DER</h3>
+          <p>Rooftop solar capacity, underlying demand trends, home battery payback economics, and virtual power plant aggregation potential across every state.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128736;</div>
+          <h3>Project Pipeline</h3>
+          <p>Full development timeline analytics &mdash; DA/EPBC approval durations, grid connection queues, commissioning history, and the 2030 renewables target gap tracker.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128202;</div>
+          <h3>NEM Raw Analytics</h3>
+          <p>Six-dimensional AEMO dispatch analytics: regional demand, binding constraints, forecast accuracy, per-DUID generation, interconnector flows, and data health monitoring.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128161;</div>
+          <h3>Investment Intelligence</h3>
+          <p>CSIRO GenCost benchmarks, regional investment rankings, risk-adjusted scoring, construction timelines, and technology fit matrices for every NEM region.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#129516;</div>
+          <h3>AI Copilot</h3>
+          <p>Context-aware AI assistant embedded in every page. Ask questions about any asset, region, or metric &mdash; get instant answers powered by ARIA's knowledge base and Claude.</p>
         </div>
       </div>
       <div style="text-align: center; margin-top: 40px;">
@@ -167,7 +282,234 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260520d"></script>
-<script src="assets/main.js?v=20260520d"></script>
+<script src="assets/shared.js?v=20260611"></script>
+<script src="assets/main.js?v=20260611"></script>
+<script>
+(function() {
+  // Key is split + reversed for basic obfuscation — not in plaintext
+  const _p = ['M','cdnn','tQGR','BAQt','2c5i','B1VN','oe_M'];
+  function _k() { return _p.slice().reverse().join(''); }
+
+  const API = 'https://api.openelectricity.org.au/v4';
+  const REGIONS = ['QLD1','NSW1','VIC1','SA1','TAS1'];
+  const RCOLORS = { QLD1:'#F59E0B', NSW1:'#3B82F6', VIC1:'#8B5CF6', SA1:'#EF4444', TAS1:'#10B981' };
+  const FUEL_COLORS = {
+    solar_utility:'#FCD34D', solar_rooftop:'#FDE68A', wind:'#6EE7B7', hydro:'#60A5FA',
+    gas_ccgt:'#F87171', gas_ocgt:'#FCA5A5', coal_black:'#6B7280', coal_brown:'#92400E',
+    battery_discharging:'#A78BFA', battery_charging:'#C4B5FD', bioenergy_biomass:'#86EFAC',
+    pumps:'#BAE6FD', distillate:'#FB923C'
+  };
+  const FUEL_LABELS = {
+    solar_utility:'Solar', solar_rooftop:'Rooftop', wind:'Wind', hydro:'Hydro',
+    gas_ccgt:'Gas CCGT', gas_ocgt:'Gas OCGT', coal_black:'Coal', coal_brown:'Brown Coal',
+    battery_discharging:'Battery', battery_charging:'Battery Chg', bioenergy_biomass:'Bio',
+    pumps:'Pumped Hydro', distillate:'Distillate'
+  };
+  const RENEWABLE = new Set(['solar_utility','solar_rooftop','wind','hydro','bioenergy_biomass']);
+
+  function dtStr(d) { return d.toISOString().slice(0,19); }
+
+  async function fetchNEM(metrics, groupings, hours) {
+    const now = new Date();
+    const start = new Date(now.getTime() - hours * 3600000);
+    const params = new URLSearchParams({
+      metrics: metrics,
+      interval: '5m',
+      date_start: dtStr(start),
+      primary_grouping: 'network_region'
+    });
+    if (groupings) params.set('secondary_grouping', groupings);
+    const resp = await fetch(API + '/data/network/NEM?' + params.toString(), {
+      headers: { 'Authorization': 'Bearer ' + _k() }
+    });
+    if (!resp.ok) throw new Error('API ' + resp.status);
+    return resp.json();
+  }
+
+  function parseData(raw) {
+    const rows = [];
+    if (!raw || !raw.data) return rows;
+    for (const series of raw.data) {
+      for (const result of (series.results || [])) {
+        const name = result.name || '';
+        let region, fueltech = null;
+        if (name.includes('|')) {
+          const [left, ft] = name.split('|', 2);
+          region = left.split('_').pop();
+          fueltech = ft;
+        } else {
+          region = name.split('_').pop();
+        }
+        for (const dp of (result.data || [])) {
+          if (!Array.isArray(dp) || dp.length < 2) continue;
+          const val = dp[1] !== null ? parseFloat(dp[1]) : 0;
+          const row = { ts: dp[0], region, value: val };
+          if (fueltech) row.fueltech = fueltech;
+          rows.push(row);
+        }
+      }
+    }
+    return rows;
+  }
+
+  function regime(price) {
+    if (price >= 300) return { label: 'SPIKE', color: '#FF3B30', bg: 'rgba(255,59,48,0.1)', border: 'rgba(255,59,48,0.35)', cls: 'lp-spike' };
+    if (price >= 100) return { label: 'HIGH', color: '#FF9500', bg: 'rgba(255,149,0,0.1)', border: 'rgba(255,149,0,0.35)', cls: '' };
+    if (price >= 0) return { label: 'NORMAL', color: '#30D158', bg: 'rgba(48,209,88,0.1)', border: 'rgba(48,209,88,0.35)', cls: '' };
+    return { label: 'NEGATIVE', color: '#BF5AF2', bg: 'rgba(191,90,242,0.1)', border: 'rgba(191,90,242,0.35)', cls: 'lp-negative' };
+  }
+
+  function updateCard(region, price, renewPct) {
+    const card = document.getElementById('lp-' + region);
+    if (!card) return;
+    const r = regime(price);
+    const priceEl = card.querySelector('.lp-price');
+    const subEl = card.querySelector('.lp-sub');
+    priceEl.textContent = '$' + Math.round(price);
+    priceEl.className = 'lp-price';
+    priceEl.style.color = RCOLORS[region] || 'var(--text)';
+    card.className = 'live-price-card' + (r.cls ? ' ' + r.cls : '');
+
+    let html = '<span style="font-size:0.72rem;color:var(--text-3);">$/MWh</span>';
+    if (renewPct !== null) html += ' &bull; <span style="color:#10B981;">' + renewPct.toFixed(0) + '% RE</span>';
+    html += '<br><span class="lp-badge" style="color:' + r.color + ';background:' + r.bg + ';border:1px solid ' + r.border + ';">' + r.label + '</span>';
+    subEl.innerHTML = html;
+  }
+
+  function updateGenMix(powerRows) {
+    const bar = document.getElementById('gen-mix-bar');
+    const legend = document.getElementById('gen-mix-legend');
+    if (!bar || !powerRows.length) return;
+
+    // Get latest timestamp
+    const allTs = powerRows.map(r => r.ts).sort();
+    const latestTs = allTs[allTs.length - 1];
+    const latest = powerRows.filter(r => r.ts === latestTs && r.value > 0);
+
+    // Aggregate by fueltech
+    const byFuel = {};
+    let total = 0;
+    for (const r of latest) {
+      if (!r.fueltech) continue;
+      byFuel[r.fueltech] = (byFuel[r.fueltech] || 0) + r.value;
+      total += r.value;
+    }
+    if (total === 0) return;
+
+    // Sort by size desc
+    const fuels = Object.entries(byFuel).sort((a, b) => b[1] - a[1]);
+    bar.innerHTML = '';
+    legend.innerHTML = '';
+    for (const [ft, mw] of fuels) {
+      const pct = (mw / total * 100);
+      if (pct < 0.5) continue;
+      const color = FUEL_COLORS[ft] || '#888';
+      const label = FUEL_LABELS[ft] || ft;
+      const seg = document.createElement('div');
+      seg.style.cssText = 'width:' + pct + '%;background:' + color + ';transition:width 1s ease;';
+      seg.title = label + ': ' + Math.round(mw) + ' MW (' + pct.toFixed(1) + '%)';
+      bar.appendChild(seg);
+
+      const li = document.createElement('span');
+      li.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--text-3);';
+      li.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:' + color + ';flex-shrink:0;"></span>' + label + ' ' + pct.toFixed(0) + '%';
+      legend.appendChild(li);
+    }
+  }
+
+  async function loadLivePrices() {
+    try {
+      const [mvRaw, pwRaw] = await Promise.all([
+        fetchNEM('market_value', null, 1),
+        fetchNEM('power', 'fueltech', 1)
+      ]);
+
+      const mvRows = parseData(mvRaw).filter(r => REGIONS.includes(r.region));
+      const pwRows = parseData(pwRaw).filter(r => REGIONS.includes(r.region));
+
+      // Calculate implied price per region (latest interval)
+      const mvByRegion = {};
+      const pwByRegion = {};
+      const renewByRegion = {};
+
+      for (const r of mvRows) {
+        if (!mvByRegion[r.region] || r.ts > mvByRegion[r.region].ts) mvByRegion[r.region] = r;
+      }
+
+      // Sum power by region+ts for latest
+      const pwLatest = {};
+      const pwRenew = {};
+      for (const r of pwRows) {
+        const key = r.region;
+        if (!pwLatest[key]) { pwLatest[key] = {}; pwRenew[key] = 0; }
+        if (!pwLatest[key][r.ts]) pwLatest[key][r.ts] = 0;
+        pwLatest[key][r.ts] += r.value;
+        if (r.fueltech && RENEWABLE.has(r.fueltech)) {
+          pwRenew[key] += r.value > 0 ? r.value : 0;
+        }
+      }
+
+      for (const region of REGIONS) {
+        let price = 0;
+        let renewPct = null;
+        const mv = mvByRegion[region];
+        if (mv && pwLatest[region]) {
+          const timestamps = Object.keys(pwLatest[region]).sort();
+          const latestTs = timestamps[timestamps.length - 1];
+          const totalMW = pwLatest[region][latestTs] || 0;
+          if (totalMW > 10) {
+            price = mv.value / (totalMW * 5 / 60);
+          }
+        }
+        // Renewable % for this region
+        const regionPw = pwRows.filter(r => r.region === region);
+        if (regionPw.length) {
+          const allTs2 = regionPw.map(r => r.ts).sort();
+          const lt = allTs2[allTs2.length - 1];
+          const snap = regionPw.filter(r => r.ts === lt && r.value > 0);
+          const totalSnap = snap.reduce((s, r) => s + r.value, 0);
+          const renSnap = snap.filter(r => RENEWABLE.has(r.fueltech)).reduce((s, r) => s + r.value, 0);
+          if (totalSnap > 0) renewPct = (renSnap / totalSnap) * 100;
+        }
+        updateCard(region, price, renewPct);
+      }
+
+      updateGenMix(pwRows);
+
+      // Timestamp
+      const tsEl = document.getElementById('live-timestamp');
+      if (tsEl) {
+        const now = new Date();
+        tsEl.innerHTML = '<span style="color:#10B981;">&#9679;</span> Live &mdash; Updated ' +
+          now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', timeZone: 'Australia/Brisbane' }) +
+          ' AEST &mdash; Open Electricity API v4';
+      }
+    } catch (err) {
+      console.error('ARIA live price fetch:', err);
+      document.getElementById('live-timestamp').textContent = 'Unable to load live data. API may be temporarily unavailable.';
+    }
+  }
+
+  // Load on page ready, then refresh every 5 minutes
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadLivePrices);
+  } else {
+    loadLivePrices();
+  }
+  setInterval(loadLivePrices, 300000);
+
+  // Password-protected API key reveal
+  window.promptApiKey = function() {
+    const pw = prompt('Enter password to view the API key:');
+    if (pw === 'aria2026') {
+      document.getElementById('api-key-reveal').style.display = 'block';
+      document.getElementById('api-key-display').textContent = _k();
+      document.getElementById('api-key-btn').style.display = 'none';
+    } else if (pw !== null) {
+      alert('Incorrect password.');
+    }
+  };
+})();
+</script>
 </body>
 </html>

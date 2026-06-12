@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:kanavverma2000.github.io)",
+      "Bash(node:*)",
+      "Bash(curl -s -w n%{http_code} -H 'Authorization: Bearer oe_MB1VN2c5iBAQttQGRcdnnM' https://api.openelectricity.org.au/v4/me)",
+      "Bash(curl -s -I -H 'Origin: https://kanavverma2000.github.io' -H 'Authorization: Bearer oe_MB1VN2c5iBAQttQGRcdnnM' https://api.openelectricity.org.au/v4/me)",
+      "Bash(curl -s -I -X OPTIONS -H 'Origin: https://kanavverma2000.github.io' -H 'Access-Control-Request-Method: GET' -H 'Access-Control-Request-Headers: Authorization' https://api.openelectricity.org.au/v4/me)",
+      "Bash(curl -s -w n%{http_code} -H 'Authorization: Bearer oe_MB1VN2c5iBAQttQGRcdnnM' https://corsproxy.io/?url=https%3A%2F%2Fapi.openelectricity.org.au%2Fv4%2Fme)"
+    ]
+  }
+}

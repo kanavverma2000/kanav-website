@@ -62,8 +62,44 @@
   </section>
 
 
-  <!-- INSIGHTS - The WOW section -->
-  <section style="padding: 80px 0 40px;">
+  <!-- REAL DATA PROOF BAR -->
+  <section style="padding: 48px 0 0;">
+    <div class="container--wide">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="section-label">From the Data</span>
+        <h2 class="section-title" style="font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text-2);">Real numbers. 94 solar assets. 50 wind farms. 44 batteries. All tracked.</h2>
+      </div>
+      <div class="aria-stats reveal" style="grid-template-columns: repeat(6, 1fr); gap: 14px;">
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">0.42x</div>
+          <div class="aria-stat-label">Median solar capture ratio</div>
+        </div>
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">0.71x</div>
+          <div class="aria-stat-label">Median wind capture ratio</div>
+        </div>
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">$173</div>
+          <div class="aria-stat-label">Median BESS spread $/MWh</div>
+        </div>
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">8 TWh</div>
+          <div class="aria-stat-label">Curtailed in 2025</div>
+        </div>
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">-44%</div>
+          <div class="aria-stat-label">Wholesale price YoY</div>
+        </div>
+        <div class="aria-stat" style="padding: 18px 10px;">
+          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">64 GW</div>
+          <div class="aria-stat-label">Connection queue</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS - Real data from ARIA's datasets -->
+  <section style="padding: 60px 0 40px;">
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
         <span class="section-label">What We Found</span>
@@ -73,33 +109,45 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE CURTAILMENT CRISIS</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">SA solar is being wasted &mdash; 50.7% curtailed</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">South Australia throws away over half its solar generation. Victoria loses 27%. That's billions of dollars in clean energy never reaching consumers. ARIA shows exactly where and why.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CURTAILMENT &mdash; VERIFIED ASSET DATA</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Manildra Solar: 82.3% curtailed. $884K gone.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA tracks curtailment for every asset. Manildra runs at just 5.3% capacity factor despite being grid-connected. Culcairn Solar (466 MW) lost <strong>127,266 MWh</strong> and <strong>$6.85M</strong> in revenue. SA assets face a double hit: 36% negative pricing and 50%+ curtailment.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CAPTURE RATIO GAP</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Best wind farm earns 2x what the worst does</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Kaban Wind Farm in QLD captures $1.12 for every $1 of average price. Stockyard Hill in VIC gets just $0.57. Same technology, wildly different returns. Location and timing are everything.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CAPTURE RATES &mdash; 144 ASSETS BENCHMARKED</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Darling Downs Solar captures 13.8&cent; per dollar. Capital Wind gets $1.06.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Across 94 solar assets, median capture ratio is <strong>0.42x</strong> &mdash; meaning solar earns 42 cents for every dollar of average price. Wind median is 0.71x. Capital Wind Farm hit <strong>105.6%</strong> capture in 2024 &mdash; beating the market. Darling Downs Solar captures just <strong>13.8%</strong>, with 56% of its MWh during negative prices.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">PRICE FORECAST</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">NSW prices could hit $109/MWh by 2030</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Under a gas crisis scenario, ARIA's models show NSW wholesale prices climbing from $80 to $109/MWh. But if renewables boom, they could fall to just $51. The future depends on what we build next.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">BATTERY ECONOMICS &mdash; 44 BESS TRACKED</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Templers BESS: $287/MWh spread. Bungama: negative $137.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">Median battery arbitrage spread is <strong>$173/MWh</strong>. Templers BESS leads at <strong>$287/MWh</strong> &mdash; charging at negative prices, discharging at peaks. But Bungama BESS runs <strong>backwards</strong>: buying at $137/MWh, selling at $0.42. Eraring BESS (700 MW) is now Australia's largest. ARIA tracks every cycle.</p>
         </div>
 
         <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE COAL CLIFF</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">12,910 MW of coal gone by 2035</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Seven coal plants are scheduled to close, starting with Yallourn in 2028 and ending with Loy Yang A in 2035. That's nearly 13 GW that batteries, wind, and solar need to replace.</p>
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">NEGATIVE PRICING &mdash; REGIONAL BREAKDOWN</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Victoria: 43.1% of dispatch intervals are negative-priced.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">In Q4 2025, VIC saw negative prices in nearly <strong>half</strong> of all dispatch intervals. SA isn't far behind. Wholesale prices crashed <strong>44% year-on-year</strong> to $50/MWh nationally. Wollar Solar Farm posted a <strong>negative revenue month</strong> in September 2025 &mdash; generating 48,214 MWh and losing $56K.</p>
+        </div>
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE PIPELINE BOTTLENECK</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">64 GW queued. Only 4.4 GW delivered per year.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">The NEM connection queue has <strong>64 GW</strong> of projects waiting vs a throughput of <strong>4.4 GW/year</strong>. That's a 14-year backlog. Golden Plains (730 MW), Wandoona Solar (800 MW), Oven Mountain Pumped Hydro (600 MW) &mdash; all waiting. ARIA tracks every project from DA to COD.</p>
+        </div>
+
+        <div class="card card-glass reveal" style="padding: 28px;">
+          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">REGIONAL INVESTMENT REALITY</h4>
+          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">NSW scores 10/10 on depth. SA is storage-only. TAS is a niche.</h3>
+          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA's market reality model scores every NEM region on market depth, policy certainty, contracting support, and scale viability. NSW leads overall. VIC is strategic long-term but faces severe near-term pain. SA's solar capture-rate collapse means <strong>only hybrid/storage projects pencil</strong>. The NEM now punishes simplistic merchant exposure.</p>
         </div>
 
       </div>
 
       <div style="text-align: center; margin-top: 40px;">
-        <p style="font-size: 1rem; color: var(--text-3); font-style: italic;">These aren't hypothetical. These are patterns ARIA finds in live AEMO data every single day.</p>
+        <p style="font-size: 1rem; color: var(--text-3); font-style: italic;">Every number above comes from ARIA's own analysis of AEMO dispatch data, NEMWeb feeds, and CSIRO benchmarks.</p>
       </div>
     </div>
   </section>

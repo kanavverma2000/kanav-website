@@ -389,6 +389,7 @@ footer a:hover { color: var(--accent); opacity: 1; }
   gap: 20px;
   margin-top: 64px;
 }
+@media (max-width: 860px) { .aria-stats { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) { .aria-stats { grid-template-columns: repeat(2, 1fr); } }
 .aria-stat {
   text-align: center;

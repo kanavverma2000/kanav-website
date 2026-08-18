@@ -3,12 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARIA - Advanced Renewable Intelligence & Analytics</title>
-  <meta name="description" content="ARIA turns Australia's electricity market data into clear, actionable intelligence for renewable energy professionals." />
+  <title>ARIA - Advanced Renewable Intelligence &amp; Analytics</title>
+  <meta name="description" content="ARIA reproduces AEMO's published market numbers, then answers the question they don't: what would have happened. Counterfactual analytics for Australia's National Electricity Market." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260612" />
+  <link rel="stylesheet" href="assets/style.css?v=20260819" />
+  <style>
+    .proof-table-wrap { overflow-x: auto; }
+    table.proof {
+      width: 100%; border-collapse: collapse; font-size: 0.88rem;
+      font-variant-numeric: tabular-nums; min-width: 460px;
+    }
+    table.proof th, table.proof td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--border); }
+    table.proof th:first-child, table.proof td:first-child { text-align: left; }
+    table.proof thead th {
+      font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--text-3); font-weight: 600; border-bottom: 1px solid var(--text-3);
+    }
+    table.proof tbody tr:last-child td { border-bottom: none; }
+    table.proof .num { font-family: var(--font-mono); }
+    table.proof .ok { color: #16a34a; font-weight: 600; }
+    [data-theme="dark"] table.proof .ok { color: #4ade80; }
+
+    .find-card { padding: 26px; }
+    .find-tag {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block;
+    }
+    .find-card h3 { font-size: 1.16rem; line-height: 1.35; margin-bottom: 10px; }
+    .find-card p { font-size: 0.88rem; line-height: 1.72; color: var(--text-2); }
+    .find-card .src {
+      display: block; margin-top: 14px; padding-top: 11px; border-top: 1px solid var(--border);
+      font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-3); line-height: 1.5;
+    }
+
+    .nots { border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; background: var(--card-bg); }
+    .nots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    @media (max-width: 720px) { .nots-grid { grid-template-columns: 1fr; } }
+    .nots h4 {
+      font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+      font-family: var(--font-mono); margin-bottom: 12px;
+    }
+    .nots ul { list-style: none; }
+    .nots li { font-size: 0.85rem; line-height: 1.6; padding: 7px 0 7px 21px; position: relative; color: var(--text-2); }
+    .nots .do h4 { color: #16a34a; }
+    [data-theme="dark"] .nots .do h4 { color: #4ade80; }
+    .nots .do li::before { content: "\2713"; position: absolute; left: 0; color: #16a34a; font-weight: 700; }
+    [data-theme="dark"] .nots .do li::before { color: #4ade80; }
+    .nots .dont h4 { color: var(--text-3); }
+    .nots .dont li::before { content: "\2013"; position: absolute; left: 0; color: var(--text-3); font-weight: 700; }
+  </style>
 </head>
 <body>
 <div class="main-content">
@@ -17,239 +62,250 @@
   <section class="aria-hero">
     <div class="container">
       <div class="aria-hero-inner">
-        <span class="section-label">NEM Analytics Platform</span>
+        <span class="section-label">NEM Counterfactual Analytics</span>
         <h1><span class="gradient-text">ARIA</span></h1>
         <p class="hero-sub">
-          We turn Australia's electricity market data into clear answers &mdash; who's generating, who's earning, who's curtailed, and what's coming next. Real-time intelligence for renewable energy.
+          We reproduce AEMO's published market numbers to the dollar &mdash; then answer the
+          question they don't: <strong>what would have happened?</strong> Per-unit curtailment
+          attribution, revenue capture, and counterfactual closure analysis for Australia's
+          National Electricity Market.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="platform.html">Explore the Platform</a>
-          <a class="btn btn-ghost" href="about.html">About the Builder</a>
+          <a class="btn btn-primary" href="research.html">See the Research</a>
+          <a class="btn btn-ghost" href="platform.html">Explore the Platform</a>
         </div>
 
-        <!-- Tech stack -->
         <div class="tech-stack">
+          <span class="tech-pill">AEMO Dispatch Data</span>
+          <span class="tech-pill">5-Minute Resolution</span>
           <span class="tech-pill">Python</span>
-          <span class="tech-pill">Streamlit</span>
-          <span class="tech-pill">Machine Learning</span>
-          <span class="tech-pill">PyArrow</span>
-          <span class="tech-pill">Plotly</span>
-          <span class="tech-pill">AEMO Data</span>
-          <span class="tech-pill">5-Minute Dispatch</span>
+          <span class="tech-pill">DuckDB</span>
+          <span class="tech-pill">Merit-Order Clearing</span>
+          <span class="tech-pill">36 Weather Years</span>
         </div>
       </div>
 
-      <!-- Stats -->
+      <!-- Coverage stats -->
       <div class="aria-stats reveal">
         <div class="aria-stat">
-          <div class="aria-stat-value gradient-text">500K+</div>
-          <div class="aria-stat-label">Data points per day</div>
+          <div class="aria-stat-value gradient-text">24.5M</div>
+          <div class="aria-stat-label">Hourly generation records</div>
         </div>
         <div class="aria-stat">
-          <div class="aria-stat-value gradient-text">5 min</div>
-          <div class="aria-stat-label">Dispatch resolution</div>
+          <div class="aria-stat-value gradient-text">17 yrs</div>
+          <div class="aria-stat-label">Price history, 2009&ndash;today</div>
         </div>
         <div class="aria-stat">
-          <div class="aria-stat-value gradient-text">500+</div>
-          <div class="aria-stat-label">NEM generators tracked</div>
+          <div class="aria-stat-value gradient-text">562</div>
+          <div class="aria-stat-label">Registered units tracked</div>
         </div>
         <div class="aria-stat">
-          <div class="aria-stat-value gradient-text">51%</div>
-          <div class="aria-stat-label">NEM renewable share</div>
+          <div class="aria-stat-value gradient-text">22.3M</div>
+          <div class="aria-stat-label">Per-unit revenue records</div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- REAL DATA PROOF BAR -->
-  <section style="padding: 48px 0 0;">
-    <div class="container--wide">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <span class="section-label">From the Data</span>
-        <h2 class="section-title" style="font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text-2);">Real numbers. 94 solar assets. 50 wind farms. 44 batteries. All tracked.</h2>
-      </div>
-      <div class="aria-stats reveal" style="grid-template-columns: repeat(6, 1fr); gap: 14px;">
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">0.42x</div>
-          <div class="aria-stat-label">Median solar capture ratio</div>
-        </div>
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">0.71x</div>
-          <div class="aria-stat-label">Median wind capture ratio</div>
-        </div>
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">$173</div>
-          <div class="aria-stat-label">Median BESS spread $/MWh</div>
-        </div>
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">8 TWh</div>
-          <div class="aria-stat-label">Curtailed in 2025</div>
-        </div>
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">-44%</div>
-          <div class="aria-stat-label">Wholesale price YoY</div>
-        </div>
-        <div class="aria-stat" style="padding: 18px 10px;">
-          <div class="aria-stat-value gradient-text" style="font-size: 1.6rem;">64 GW</div>
-          <div class="aria-stat-label">Connection queue</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSIGHTS - Real data from ARIA's datasets -->
-  <section style="padding: 60px 0 40px;">
+  <!-- PROOF -->
+  <section style="padding: 56px 0 8px;">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 48px;">
-        <span class="section-label">What We Found</span>
-        <h2 class="section-title">The NEM Generates 500,000 Data Points a Day.<br><span class="gradient-text">We Made Them Talk.</span></h2>
+      <div style="text-align: center; margin-bottom: 26px;">
+        <span class="section-label">The credibility test</span>
+        <h2 class="section-title">Before a new claim,<br><span class="gradient-text">the reproduction.</span></h2>
+        <p class="section-subtitle" style="margin: 10px auto 0; max-width: 620px;">
+          Computed independently from raw dispatch data, then compared to AEMO's own published
+          Quarterly Energy Dynamics headline for Q2 2026. Nothing was tuned to match.
+        </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CURTAILMENT &mdash; VERIFIED ASSET DATA</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Manildra Solar: 82.3% curtailed. $884K gone.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA tracks curtailment for every asset. Manildra runs at just 5.3% capacity factor despite being grid-connected. Culcairn Solar (466 MW) lost <strong>127,266 MWh</strong> and <strong>$6.85M</strong> in revenue. SA assets face a double hit: 36% negative pricing and 50%+ curtailment.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <div class="card card-glass reveal" style="padding: 24px;">
+          <div style="font-size:0.7rem; color:var(--text-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:14px;">Generation change, Q2 2025 &rarr; Q2 2026</div>
+          <div class="proof-table-wrap">
+            <table class="proof">
+              <thead><tr><th>Fuel</th><th>ARIA</th><th>AEMO</th></tr></thead>
+              <tbody>
+                <tr><td>Coal</td><td class="num">&minus;5.0%</td><td class="num ok">&minus;5%</td></tr>
+                <tr><td>Wind</td><td class="num">+20.3%</td><td class="num ok">+20%</td></tr>
+                <tr><td>Utility solar</td><td class="num">+11.8%</td><td class="num ok">+12%</td></tr>
+                <tr><td>Gas</td><td class="num">&minus;29.9%</td><td class="num ok">&minus;30%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">CAPTURE RATES &mdash; 144 ASSETS BENCHMARKED</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Darling Downs Solar captures 13.8&cent; per dollar. Capital Wind gets $1.06.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Across 94 solar assets, median capture ratio is <strong>0.42x</strong> &mdash; meaning solar earns 42 cents for every dollar of average price. Wind median is 0.71x. Capital Wind Farm hit <strong>105.6%</strong> capture in 2024 &mdash; beating the market. Darling Downs Solar captures just <strong>13.8%</strong>, with 56% of its MWh during negative prices.</p>
+        <div class="card card-glass reveal" style="padding: 24px;">
+          <div style="font-size:0.7rem; color:var(--text-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:14px;">Average price, Q2 2026 ($/MWh)</div>
+          <div class="proof-table-wrap">
+            <table class="proof">
+              <thead><tr><th>Region</th><th>ARIA</th><th>AEMO</th></tr></thead>
+              <tbody>
+                <tr><td>NSW1</td><td class="num">75.09</td><td class="num ok">$75</td></tr>
+                <tr><td>QLD1</td><td class="num">67.12</td><td class="num ok">$67</td></tr>
+                <tr><td>SA1</td><td class="num">86.37</td><td class="num ok">$86</td></tr>
+                <tr><td>VIC1</td><td class="num">55.85</td><td class="num ok">$56</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center; font-size:0.8rem; color:var(--text-3); margin-top:18px; line-height:1.6;">
+        Ten of ten across both the time-weighted and volume-weighted price series in all five
+        regions. <a href="research.html#reproduction" style="color:var(--accent);">See the full reproduction &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FINDINGS -->
+  <section style="padding: 56px 0 40px;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="section-label">What we found</span>
+        <h2 class="section-title">Six findings the market<br><span class="gradient-text">hasn't priced in.</span></h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px;">
+
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Gas &mdash; displacement, not weather</span>
+          <h3>The 30% gas collapse happened in six hours a day.</h3>
+          <p>
+            Total sent-out energy was <strong>flat at +0.5%</strong>, so gas was displaced, not
+            switched off. <strong>76%</strong> of the 963 GWh decline sits between 16:00 and 21:00,
+            and <strong>78%</strong> of the battery growth is in the same six hours. The kill shot:
+            midday gas <em>rose</em> 30 GWh, because charging batteries adds load. Weather is a
+            level effect &mdash; it cannot do both.
+          </p>
+          <span class="src">generation_hourly &times; duid_capacity &middot; Q2 2025 vs Q2 2026</span>
         </div>
 
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">BATTERY ECONOMICS &mdash; 44 BESS TRACKED</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Templers BESS: $287/MWh spread. Bungama: negative $137.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">Median battery arbitrage spread is <strong>$173/MWh</strong>. Templers BESS leads at <strong>$287/MWh</strong> &mdash; charging at negative prices, discharging at peaks. But Bungama BESS runs <strong>backwards</strong>: buying at $137/MWh, selling at $0.42. Eraring BESS (700 MW) is now Australia's largest. ARIA tracks every cycle.</p>
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Curtailment &mdash; cause attribution</span>
+          <h3>Curtailment grew 5&times;. Network constraints didn't.</h3>
+          <p>
+            Network curtailment has been flat at roughly <strong>1 TWh a year since 2021</strong>.
+            Economic curtailment &mdash; the plant choosing not to generate &mdash; is up
+            <strong>420%</strong>. In 2025, <strong>85% of curtailed renewable energy was a price
+            decision, not a grid limit</strong>. That inverts the usual transmission-build
+            conclusion.
+          </p>
+          <span class="src">212 semi-scheduled units in 2025 &middot; monthly, per unit, 2021&ndash;2025</span>
         </div>
 
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">NEGATIVE PRICING &mdash; REGIONAL BREAKDOWN</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Victoria: 43.1% of dispatch intervals are negative-priced.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">In Q4 2025, VIC saw negative prices in nearly <strong>half</strong> of all dispatch intervals. SA isn't far behind. Wholesale prices crashed <strong>44% year-on-year</strong> to $50/MWh nationally. Wollar Solar Farm posted a <strong>negative revenue month</strong> in September 2025 &mdash; generating 48,214 MWh and losing $56K.</p>
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Capture &mdash; locational divergence</span>
+          <h3>Best and worst asset in the NEM: same region.</h3>
+          <p>
+            Coopers Gap Wind captured <strong>106.6%</strong> of the Queensland average price in
+            2025. Darling Downs Solar, in the same region, captured <strong>12.9%</strong> &mdash;
+            an eight-fold spread inside one settlement price. Fleet medians: wind 72.1%, solar
+            39.8%. No regional price curve tells you which one you are buying.
+          </p>
+          <span class="src">125 assets &gt;150 GWh &middot; GWAP &divide; regional TWAP &middot; CY2025</span>
         </div>
 
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">THE PIPELINE BOTTLENECK</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">64 GW queued. Only 4.4 GW delivered per year.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">The NEM connection queue has <strong>64 GW</strong> of projects waiting vs a throughput of <strong>4.4 GW/year</strong>. That's a 14-year backlog. Golden Plains (730 MW), Wandoona Solar (800 MW), Oven Mountain Pumped Hydro (600 MW) &mdash; all waiting. ARIA tracks every project from DA to COD.</p>
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Counterfactual &mdash; two bounds</span>
+          <h3>A coal closure is worth $1/MWh or $20/MWh. Both are true.</h3>
+          <p>
+            Re-clearing the market at what plant <em>costs</em> gives <strong>~$1&ndash;2/MWh</strong>.
+            Re-clearing at what participants actually <em>bid</em> gives
+            <strong>$14&ndash;21/MWh</strong>. The gap between the two bounds is the markup
+            component &mdash; the part that comes from conduct rather than physics. A single number
+            cannot show you that.
+          </p>
+          <span class="src">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit offer stack</span>
         </div>
 
-        <div class="card card-glass reveal" style="padding: 28px;">
-          <h4 style="color: var(--accent); font-size: 0.7rem; margin-bottom: 8px;">REGIONAL INVESTMENT REALITY</h4>
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">NSW scores 10/10 on depth. SA is storage-only. TAS is a niche.</h3>
-          <p style="font-size: 0.9rem; line-height: 1.7;">ARIA's market reality model scores every NEM region on market depth, policy certainty, contracting support, and scale viability. NSW leads overall. VIC is strategic long-term but faces severe near-term pain. SA's solar capture-rate collapse means <strong>only hybrid/storage projects pencil</strong>. The NEM now punishes simplistic merchant exposure.</p>
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Supply curve &mdash; structure</span>
+          <h3>The bid stack barely moves. That's why prices swing.</h3>
+          <p>
+            The offer ladder is identical to the previous trading day in <strong>92.8%</strong> of
+            unit-days, and band volumes are unchanged in <strong>98.6%</strong> of consecutive
+            intervals. But the curve is violently non-linear: the median step between used bands is
+            <strong>$0</strong> and the maximum is <strong>$15,795</strong>. Volatility is demand
+            crossing a cliff &mdash; and since 2009 the cheap middle has thinned 61%.
+          </p>
+          <span class="src">163 months of AEMO offer archive &middot; capped at unit availability</span>
+        </div>
+
+        <div class="card card-glass reveal find-card">
+          <span class="find-tag">Adequacy &mdash; coincidence, not average</span>
+          <h3>The worst weather year is not the worst reliability year.</h3>
+          <p>
+            Across 36 reconstructed weather years, <strong>1992 has the worst mean resource in the
+            record and produces zero unserved energy</strong>. 2009 is mid-pack on average and
+            breaches the reliability standard by <strong>25&times;</strong>, because it holds the
+            third-deepest 72-hour renewable drought. Sampling by average finds the dangerous year
+            only by luck.
+          </p>
+          <span class="src">36 weather years 1990&ndash;2025 &middot; 3,000 outage realisations</span>
         </div>
 
       </div>
 
-      <div style="text-align: center; margin-top: 40px;">
-        <p style="font-size: 1rem; color: var(--text-3); font-style: italic;">Every number above comes from ARIA's own analysis of AEMO dispatch data, NEMWeb feeds, and CSIRO benchmarks.</p>
+      <div style="text-align: center; margin-top: 36px;">
+        <a class="btn btn-primary" href="research.html">Read the full research, including what failed</a>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES PREVIEW -->
-  <section>
-    <div class="container--wide">
-      <div style="text-align: center; margin-bottom: 48px;">
-        <span class="section-label">Capabilities</span>
-        <h2 class="section-title">What ARIA Delivers</h2>
-        <p class="section-subtitle" style="margin: 8px auto 0;">20+ analytical modules. One platform. Every megawatt in the NEM.</p>
+  <!-- WHAT WE DO / DON'T -->
+  <section style="padding: 30px 0 50px;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span class="section-label">Scope</span>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 3vw, 1.9rem);">Built, serving, and honestly bounded.</h2>
       </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#9889;</div>
-          <h3>Live NEM Monitor</h3>
-          <p>Real-time spot prices across all five NEM regions via Open Electricity API. Implied pricing, generation mix donuts, spike detection, and auto-refresh every 5 minutes.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128269;</div>
-          <h3>Curtailment Tracking</h3>
-          <p>See exactly how much solar and wind is being wasted in each state &mdash; capped, curtailed, or hit by negative prices. Track lost MWh and estimated missed revenue.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#129302;</div>
-          <h3>AI Price Forecasting</h3>
-          <p>Interactive scenario engine modelling prices to 2030. Adjust coal closure timing, renewable growth, BESS trajectory, gas prices, carbon price, and data centre demand.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128176;</div>
-          <h3>Revenue &amp; Capture Rates</h3>
-          <p>GWAP vs TWAP benchmarking, capture ratio rankings, price quintile heatmaps, and peer comparison for every wind, solar, battery, and hydro asset in the NEM.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#127981;</div>
-          <h3>Coal Exit Modelling</h3>
-          <p>Track every scheduled closure from Yallourn (2028) to Loy Yang A (2035). Model price impacts, interconnector flows, and supply-demand rebalancing under bear/base/bull scenarios.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128267;</div>
-          <h3>Battery Analytics</h3>
-          <p>Dedicated BESS dashboard with charge/discharge cycles, utilisation factors, throughput metrics, daily dispatch profiles, and offtake contract intelligence.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128300;</div>
-          <h3>Asset Explorer</h3>
-          <p>Deep-dive into any of 500+ NEM generators. Hourly/daily/monthly output profiles, capacity factors, MLF data, REZ overlays, and data quality scoring.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#9858;</div>
-          <h3>Hydrogen &amp; Ammonia</h3>
-          <p>Green hydrogen project intelligence with electrolyser dispatch optimisation, LCOH calculator, ammonia economics, and forward cost projections tied to NEM prices.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128506;</div>
-          <h3>Interactive NEM Maps</h3>
-          <p>Every generator plotted by technology type with AEMO transmission line and substation overlays. Filter by tech, click through to asset details, explore REZ boundaries.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128200;</div>
-          <h3>Portfolio Scenarios</h3>
-          <p>Build a virtual NEM portfolio and model capture rates under different macro conditions. Driver decomposition, what-if analysis, and forward capture forecasts to 2031.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#127968;</div>
-          <h3>Residential DER</h3>
-          <p>Rooftop solar capacity, underlying demand trends, home battery payback economics, and virtual power plant aggregation potential across every state.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128736;</div>
-          <h3>Project Pipeline</h3>
-          <p>Full development timeline analytics &mdash; DA/EPBC approval durations, grid connection queues, commissioning history, and the 2030 renewables target gap tracker.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128202;</div>
-          <h3>NEM Raw Analytics</h3>
-          <p>Six-dimensional AEMO dispatch analytics: regional demand, binding constraints, forecast accuracy, per-DUID generation, interconnector flows, and data health monitoring.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#128161;</div>
-          <h3>Investment Intelligence</h3>
-          <p>CSIRO GenCost benchmarks, regional investment rankings, risk-adjusted scoring, construction timelines, and technology fit matrices for every NEM region.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">&#129516;</div>
-          <h3>AI Copilot</h3>
-          <p>Context-aware AI assistant embedded in every page. Ask questions about any asset, region, or metric &mdash; get instant answers powered by ARIA's knowledge base and Claude.</p>
+
+      <div class="nots reveal">
+        <div class="nots-grid">
+          <div class="do">
+            <h4>What ARIA does</h4>
+            <ul>
+              <li>Per-unit curtailment with an economic-versus-network cause split</li>
+              <li>Merit-order counterfactual clearing, with cost and conduct bounds published separately</li>
+              <li>Per-unit revenue capture at five-minute granularity, benchmarked to the correct time-weighted denominator</li>
+              <li>Coal closure impact modelling from per-unit costs traced to AEMO's own workbook</li>
+              <li>36 weather years of reconstructed wind and solar across 286 projects</li>
+              <li>Five-region capacity-expansion modelling with transmission priced inside the optimisation</li>
+              <li>Battery dispatch, cycling and event-based valuation</li>
+              <li>Quantile price-path scenarios with pre-dispatch bias correction</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h4>What ARIA does not claim</h4>
+            <ul>
+              <li>No AI price forecasting &mdash; the scenario engine is an explicit merit-order clear with published assumptions</li>
+              <li>No forward marginal-loss-factor product &mdash; Cornwall Insight and Aurora already sell one</li>
+              <li>No spike-prediction edge &mdash; ours beats a naive rule by 1.1%, so it is not sold</li>
+              <li>No real-time monitoring &mdash; ez2view and gridIQ are the tools for that</li>
+              <li>No automated bidding &mdash; running an optimiser and benchmarking one is a conflict</li>
+              <li>No Western Australian market coverage</li>
+              <li>No interval-level accuracy on the conduct-based clear &mdash; only the mean is readable</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a class="btn btn-primary" href="platform.html">Deep Dive into the Platform</a>
-      </div>
+
+      <p style="text-align:center; font-size:0.85rem; color:var(--text-3); margin-top:22px;">
+        <a href="positioning.html" style="color:var(--accent);">See how that compares to the rest of the market &rarr;</a>
+      </p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section style="padding: 64px 0;">
+  <section style="padding: 40px 0 72px;">
     <div class="container" style="text-align: center;">
       <div class="card card-glass" style="padding: 48px 32px;">
-        <h2>Built for the Energy Transition</h2>
-        <p style="max-width: 520px; margin: 12px auto 28px; font-size: 1rem; line-height: 1.7;">
-          ARIA processes millions of AEMO dispatch intervals and presents them through intuitive dashboards designed for fast, informed decision-making.
+        <h2>Built for people who will check the numbers</h2>
+        <p style="max-width: 560px; margin: 12px auto 28px; font-size: 1rem; line-height: 1.7;">
+          Every figure on this site traces back to a query against AEMO's published data, and the
+          error bands are published alongside. Happy to walk through the method &mdash; including
+          where it breaks.
         </p>
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
           <a class="btn btn-primary" href="contact.html">Get in Touch</a>
@@ -260,7 +316,7 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260612"></script>
-<script src="assets/main.js?v=20260612"></script>
+<script src="assets/shared.js?v=20260819"></script>
+<script src="assets/main.js?v=20260819"></script>
 </body>
 </html>

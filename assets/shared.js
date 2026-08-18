@@ -35,6 +35,8 @@
   <a class="nav-logo" href="index.html"><span>ARIA</span></a>
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="positioning.html">Positioning</a></li>
     <li><a href="platform.html">Platform</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="about.html">About Kanav</a></li>

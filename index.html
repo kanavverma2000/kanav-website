@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<link rel="stylesheet" href="assets/style.css?v=20260819v">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -226,6 +226,37 @@
   </section>
 
   <!-- ═══════════ SCOPE ═══════════ -->
+
+  <!-- VISUAL: the mechanism -->
+  <section class="band band-3">
+    <div class="shell">
+      <span class="eyebrow js-fade">The mechanism, in one chart</span>
+      <h2 class="h-lg js-lines" style="max-width:20ch;">Evening gas down.<br><span class="accent">Midday gas up.</span></h2>
+      <p class="lede js-fade" style="margin-bottom:34px;">
+        Change in energy by hour of day, Q2 2025 to Q2 2026. Weather is a level effect &mdash; it
+        cannot pull the evening down and push the middle of the day up at the same time.
+      </p>
+      <div class="split">
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Gas, change by hour (GWh)</span>
+          <div id="gasLine"></div>
+          <p class="chart-note">
+            Negative through the evening, <strong>positive from 11:00 to 14:00</strong> as batteries
+            charge. That midday rise is the finding.
+          </p>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Solar capture, first half of each year</span>
+          <div id="captureLine"></div>
+          <p class="chart-note">
+            The 2026 uptick isn't recovery. Capture is a ratio and the denominator collapsed &mdash;
+            solar earned <strong>less</strong> per MWh in H1 2026 ($40.18) than in H1 2025 ($47.38).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-3">
     <div class="shell">
       <span class="eyebrow js-fade">Scope</span>
@@ -266,6 +297,27 @@
   </section>
 
   <!-- ═══════════ CTA ═══════════ -->
+
+  <!-- DEMO -->
+  <section class="band band-tight band-4" id="demo">
+    <div class="shell">
+      <div class="card js-fade" style="text-align:center;">
+        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
+          Want a demo of ARIA? Reach out on LinkedIn or email me.
+        </h2>
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
+          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+          split, or just the query behind a number you don't believe.
+        </p>
+        <div class="btn-row center">
+          <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-glass" href="mailto:kanavverma2000@gmail.com?subject=ARIA%20demo">kanavverma2000@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
@@ -276,13 +328,35 @@
       </p>
       <div class="btn-row center js-fade">
         <a class="btn btn-signal" href="contact.html">Get in touch</a>
-        <a class="btn btn-glass" href="about.html">About me</a>
+        <a class="btn btn-glass" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow me on LinkedIn</a>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819t"></script>
-<script src="assets/main.js?v=20260819t"></script>
+
+<script>
+window.addEventListener('load', function () {
+  if (!window.ariaLine) return;
+  var HOURS = [[0,-17.8],[1,-6.0],[2,-0.2],[3,1.0],[4,-0.6],[5,-7.9],[6,-31.4],[7,-48.0],
+               [8,-34.0],[9,-13.2],[10,-0.1],[11,6.6],[12,9.3],[13,9.6],[14,4.7],[15,-12.1],
+               [16,-64.0],[17,-138.9],[18,-159.6],[19,-150.0],[20,-126.3],[21,-92.4],[22,-57.7],[23,-34.5]];
+  ariaLine('gasLine', [{ name:'Gas', colour:'var(--signal)', points:HOURS }], {
+    yMin:-170, yMax:20, yTicks:4, height:250,
+    xLabels:[[0,'00:00'],[6,'06:00'],[12,'12:00'],[18,'18:00'],[23,'23:00']],
+    yFmt:function(v){return Math.round(v);},
+    alt:'Change in gas generation by hour of day, negative in the evening and positive at midday'
+  });
+  ariaLine('captureLine', [
+    { name:'Solar', colour:'var(--signal)', points:[[2022,64.2],[2023,56.8],[2024,53.1],[2025,41.9],[2026,58.7]] },
+    { name:'Wind',  colour:'var(--accent)', points:[[2022,90.3],[2023,76.6],[2024,83.2],[2025,71.9],[2026,79.6]] }
+  ], { yMin:0, yMax:100, yTicks:4, height:250,
+       xLabels:[[2022,'2022'],[2023,'2023'],[2024,'2024'],[2025,'2025'],[2026,'2026']],
+       yFmt:function(v){return Math.round(v)+'%';},
+       alt:'Fleet capture ratio for solar and wind, first half of each year 2022 to 2026' });
+});
+</script>
+<script src="assets/shared.js?v=20260819v"></script>
+<script src="assets/main.js?v=20260819v"></script>
 </body>
 </html>

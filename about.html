@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<link rel="stylesheet" href="assets/style.css?v=20260819v">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -73,7 +73,7 @@
   <!-- ═══════════ PROFILE ═══════════ -->
   <section class="band band-2" style="padding-top:clamp(40px,5vw,64px);">
     <div class="shell">
-      <div class="split">
+      <div>
         <div>
           <div class="mod-num js-fade">Background</div>
           <h2 class="mod-title js-lines" style="max-width:16ch;">What I actually <span class="accent">do.</span></h2>
@@ -112,34 +112,37 @@
           </div>
         </div>
 
-        <div class="js-fade">
-          <div class="card">
-            <span class="eyebrow" style="margin-bottom:14px;">Skills &amp; expertise</span>
-            <div class="chips">
-              <span class="chip">AEMO MMS &amp; NEMWeb</span>
-              <span class="chip">NEMOSIS / NEMSEER</span>
-              <span class="chip">Capture pricing (GWAP/TWAP)</span>
-              <span class="chip">Curtailment decomposition</span>
-              <span class="chip">BESS dispatch &amp; revenue stacking</span>
-              <span class="chip">MLF &amp; FCAS</span>
-              <span class="chip">ISP / REZ analysis</span>
-              <span class="chip">CIS / LTESA frameworks</span>
-              <span class="chip">Python (advanced)</span>
-              <span class="chip">SQL / DuckDB / BigQuery</span>
-              <span class="chip">FastAPI / Next.js / Streamlit</span>
-              <span class="chip">XGBoost / STL / EGARCH</span>
-              <span class="chip">ETL pipeline design</span>
-              <span class="chip">LCOE / NPV / IRR</span>
-              <span class="chip">P50/P90 yield</span>
-              <span class="chip">PVsyst / HOMER Pro</span>
-              <span class="chip">Power BI</span>
-              <span class="chip">Solar PV, BESS &amp; EV infrastructure</span>
-            </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VISUAL -->
+  <section class="band band-2">
+    <div class="shell">
+      <span class="eyebrow js-fade">The two halves</span>
+      <h2 class="h-md js-lines" style="max-width:20ch;">Consulting delivery, and <span class="accent">the tooling under it.</span></h2>
+      <div class="split" style="margin-top:26px;">
+        <div class="card js-fade" style="text-align:center;">
+          <span class="eyebrow" style="margin-bottom:16px;">At GSES</span>
+          <div class="ring-row"><div class="ring-item"><div id="ringGses"></div></div></div>
+          <p class="prose" style="font-size:.9rem;margin-top:14px;">
+            Back-office minutes removed per inspection site, across 1,066 active inspections.
+            Seven tools in four weeks.
+          </p>
+          <div class="btn-row center" style="margin-top:18px;">
+            <a class="btn btn-glass btn-sm" href="gses.html">What I built</a>
           </div>
-          <div class="fact-row">
-            <div class="fact"><div class="fact-k">Education</div><div class="fact-v">UNSW Sydney</div><div class="fact-s">MEng Renewable Energy</div></div>
-            <div class="fact"><div class="fact-k">Based</div><div class="fact-v">Sydney</div><div class="fact-s">NSW, Australia</div></div>
-            <div class="fact"><div class="fact-k">Building</div><div class="fact-v">ARIA</div><div class="fact-s">Founder &amp; developer</div></div>
+        </div>
+        <div class="card js-fade" style="text-align:center;">
+          <span class="eyebrow" style="margin-bottom:16px;">On ARIA</span>
+          <div class="ring-row"><div class="ring-item"><div id="ringAria"></div></div></div>
+          <p class="prose" style="font-size:.9rem;margin-top:14px;">
+            Coal reproduced against AEMO's published quarterly to the gigawatt-hour, and every
+            regional price to the dollar &mdash; before making a claim of my own.
+          </p>
+          <div class="btn-row center" style="margin-top:18px;">
+            <a class="btn btn-glass btn-sm" href="research.html">The research</a>
           </div>
         </div>
       </div>
@@ -332,19 +335,50 @@
   </section>
 
   <!-- CTA -->
+
+  <!-- DEMO -->
+  <section class="band band-tight band-4" id="demo">
+    <div class="shell">
+      <div class="card js-fade" style="text-align:center;">
+        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
+          Want a demo of ARIA? Reach out on LinkedIn or email me.
+        </h2>
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
+          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+          split, or just the query behind a number you don't believe.
+        </p>
+        <div class="btn-row center">
+          <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-glass" href="mailto:kanavverma2000@gmail.com?subject=ARIA%20demo">kanavverma2000@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
       <h2 class="h-lg js-lines" style="margin:0 auto;max-width:16ch;">Let's talk about<br><span class="accent">the numbers.</span></h2>
       <div class="btn-row center js-fade" style="margin-top:34px;">
         <a class="btn btn-signal" href="contact.html">Get in touch</a>
-        <a class="btn btn-glass" href="research.html">See the research</a>
+        <a class="btn btn-glass" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow me on LinkedIn</a>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819t"></script>
-<script src="assets/main.js?v=20260819t"></script>
+
+<script>
+window.addEventListener('load', function () {
+  if (!window.ariaRing) return;
+  ariaRing('ringGses', 86, { label:'83 min', sub:'saved per site', colour:'var(--good)', size:150,
+    alt:'83 minutes of back-office work removed per inspection site' });
+  ariaRing('ringAria', 100, { label:'10 / 10', sub:'price checks passed', colour:'var(--accent)', size:150,
+    alt:'Ten of ten AEMO price figures reproduced' });
+});
+</script>
+<script src="assets/shared.js?v=20260819v"></script>
+<script src="assets/main.js?v=20260819v"></script>
 </body>
 </html>

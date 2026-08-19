@@ -35,11 +35,11 @@
      you are inside one, so the top bar never grows past five items. */
   var SECTIONS = [
     { href: 'aria.html',     label: 'ARIA',
-      sub: [['aria.html','Platform'], ['aria.html#fits','Where it fits'], ['research.html','Research']] },
+      sub: [['aria.html','Platform'], ['positioning.html','Where it fits'], ['research.html','Research']] },
     { href: 'insights.html', label: 'Insights',
-      sub: [['insights.html','The analysis'], ['insights.html#method','How I write them']] },
+      sub: [] },
     { href: 'about.html',    label: 'About',
-      sub: [['about.html','Profile'], ['gses.html','GSES work'], ['cv.html','Full CV']] }
+      sub: [['about.html','Profile'], ['gses.html','GSES work']] }
   ];
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 

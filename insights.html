@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<link rel="stylesheet" href="assets/style.css?v=20260819v">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -113,6 +113,10 @@
                 </tbody>
               </table>
             </div>
+            <div class="ring-row" style="margin:18px 0 6px;">
+              <div class="ring-item"><div id="ringWind"></div><p>Wind &mdash; effective revenue factor</p></div>
+              <div class="ring-item"><div id="ringSolar"></div><p>Solar &mdash; effective revenue factor</p></div>
+            </div>
             <p class="caption">
               7 wind farms, 37 solar farms, 10.4 TWh. Units with a full calendar year of data,
               energy-weighted, regional time-weighted price as the denominator. Energy revenue only
@@ -128,146 +132,30 @@
   <section class="band band-3" id="work">
     <div class="shell">
       <div class="mod-num js-fade">Selected work</div>
-      <h2 class="h-md js-lines" style="max-width:24ch;">&ldquo;Why did our capture rate fall, and <span class="accent">could we have seen it coming?</span>&rdquo;</h2>
-      <p class="prose js-fade">
-        A NSW portfolio owner &mdash; <strong>Beijing Energy International (Australia)</strong>
-        &mdash; watched dispatch-weighted capture across three assets slide from about 85&ndash;90%
-        to roughly 75%, and asked two questions. What caused it, and was it forecastable.
-      </p>
+      <h2 class="h-md js-lines" style="max-width:22ch;">Why capture fell, and whether <span class="accent">it was forecastable.</span></h2>
 
-      <div class="split js-fade" style="margin-top:26px;">
-        <div class="card">
-          <span class="eyebrow" style="margin-bottom:14px;">1. What actually happened</span>
-          <p class="prose" style="font-size:.9rem;margin-bottom:14px;">
-            I pulled five-minute SCADA and price data across the full operating history of all three
-            assets, December 2019 to January 2026. The deterioration is real, and it accelerated.
+      <div class="split" style="align-items:center;margin-top:20px;">
+        <div class="prose js-fade">
+          <p>
+            <strong>Beijing Energy International (Australia)</strong> watched dispatch-weighted
+            capture across three NSW assets slide from about 85&ndash;90% to roughly 75%, and asked
+            what caused it. I pulled five-minute SCADA and price data across the full operating
+            history: Gullen Range fell 84% to 67%, Biala 80% to 70%, Wollar Solar sat at 25%. The
+            causes were VRE cannibalisation, negative prices hitting 25.1% of NSW intervals, a duck
+            curve that deepened from 0.29 to 0.17, and batteries taking 40% of evening-peak price
+            setting. <strong>It was forecastable 12 to 18 months ahead</strong> &mdash; so I built
+            the probability-weighted forward model to 2031 across seven scenarios.
           </p>
-          <div class="table-wrap">
-            <table class="data">
-              <thead><tr><th>Capture rate</th><th>2020</th><th>2023</th><th>2024</th><th>2025</th><th>Q1 26</th></tr></thead>
-              <tbody>
-                <tr><td>Gullen Range Wind</td><td class="num">84%</td><td class="num">87%</td><td class="num">70%</td><td class="num">73%</td><td class="num bad">67%</td></tr>
-                <tr><td>Biala Wind</td><td class="num">80%</td><td class="num">89%</td><td class="num">75%</td><td class="num">75%</td><td class="num bad">70%</td></tr>
-                <tr><td>Wollar Solar</td><td class="num dim">&mdash;</td><td class="num dim">&mdash;</td><td class="num dim">&mdash;</td><td class="num bad">25%</td><td class="num dim">&mdash;</td></tr>
-              </tbody>
-            </table>
+          <div class="btn-row" style="margin-top:22px;">
+            <a class="btn btn-glass" href="assets/docs/forward-capture-rate-scenarios-2026-05.pdf" target="_blank" rel="noopener">Read the scenario report</a>
           </div>
-          <p class="caption">Wollar has data only from late 2024. Public DUIDs, public prices &mdash; anyone can reproduce this.</p>
         </div>
-
-        <div class="card">
-          <span class="eyebrow" style="margin-bottom:14px;">2. Why</span>
-          <ul class="plain">
-            <li><strong>VRE cannibalisation.</strong> NSW average VRE output doubled in four years &mdash; 957 MW in Jan 2021 to 2,171 MW in Jan 2025. More generation in the same hours.</li>
-            <li><strong>Negative prices.</strong> NSW went from ~0.2% of intervals in 2020 to <strong>25.1% in Q4 2025</strong>. Gullen Range now generates 19% of its output at negative prices. Wollar Solar, 51%.</li>
-            <li><strong>The duck curve deepened.</strong> Solar-hours price over evening-peak price fell from 0.29 in 2021 to <strong>0.17 in 2025</strong> &mdash; $40.3/MWh midday against $236.6 at the peak.</li>
-            <li><strong>Batteries took the peak.</strong> Setting the marginal price in 40% of evening-peak intervals by Q4 2025, up from under 5% a year earlier.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="note note-accent js-fade">
-        <span class="note-title">3. Could it have been forecast?</span>
-        <strong>Yes &mdash; 12 to 18 months ahead.</strong> The negative-price trend was visibly
-        exponential; a regression on quarterly data flags it by mid-2023. The solar-to-peak spread
-        compressed 0.29 &rarr; 0.27 &rarr; 0.23 across 2021&ndash;2024, which makes 2025's 0.17
-        highly predictable. Rolling three-month capture fell below 80% from mid-2023 and never
-        recovered. The connection pipeline was public the whole time.
-      </div>
-
-      <div class="card js-fade" style="margin-top:22px;">
-        <span class="eyebrow" style="margin-bottom:12px;">4. Then the forward model</span>
-        <p class="prose" style="font-size:.92rem;">
-          The follow-on question was where it goes. I built a probability-weighted forward capture
-          model to 2031 across <strong>seven scenarios</strong> &mdash; ISP Step Change as the base
-          at 35%, plus accelerated VRE, coal life extension, BESS saturation, demand uplift,
-          regulatory delay and a combined stress case.
-        </p>
-        <p class="prose" style="font-size:.92rem;margin-top:12px;">
-          The central result: capture keeps falling under <em>every</em> scenario. Eraring's April
-          2029 closure gives a temporary price uplift and does not reverse the trend. Wind capture
-          runs <strong>69.3% today to 43.5% by 2031</strong>; the solar asset from 23.3% to 6.3%.
-          The coal-extension case is the counter-intuitive one &mdash; keeping 8,240 MW online
-          suppresses wholesale prices and makes the capture floor <em>lower</em>, not higher.
-        </p>
-        <div class="btn-row" style="margin-top:22px;">
-          <a class="btn btn-glass" href="assets/docs/forward-capture-rate-scenarios-2026-05.pdf" target="_blank" rel="noopener">Read the scenario report (PDF)</a>
-        </div>
-        <p class="caption" style="margin-top:16px;">
-          Prepared May 2026 as an indicative analytical piece to demonstrate the framework, not for
-          formal commercial or investment use. Asset-level figures derive from public AEMO dispatch
-          and price data; commercial terms are excluded.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ NUMBERS ═══ -->
-  <section class="band band-tight band-2">
-    <div class="shell">
-      <div class="stat-grid js-fade" data-stagger=".stat-card">
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="59">0</span></div>
-          <div class="stat-lbl">Original posts</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="6708">0</span></div>
-          <div class="stat-lbl">Best post, impressions</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="3.3" data-dp="1">0</span><span class="stat-sfx">%</span></div>
-          <div class="stat-lbl">Highest engagement rate</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="2273">0</span></div>
-          <div class="stat-lbl">LinkedIn followers</div>
-        </div>
-      </div>
-      <p class="caption js-fade" style="text-align:center;margin-top:18px;">
-        May&ndash;Aug 2026, personal profile. Median ~1,300 impressions, median ~13 reactions.
-        I calibrate against my own distribution, not a generic benchmark.
-      </p>
-    </div>
-  </section>
-
-  <!-- ═══ TOP POST ═══ -->
-  <section class="band band-1">
-    <div class="shell">
-      <div class="mod-num js-fade">Most-read post</div>
-      <h2 class="h-md js-lines" style="max-width:22ch;">Operational demand is <span class="accent">the wrong number.</span></h2>
-      <div class="card top-post js-fade" style="margin-top:20px;">
-        <div class="split" style="gap:28px;align-items:center;">
-          <div>
-            <p class="prose" style="font-size:.95rem;">
-              The post that went furthest wasn't a forecast or a hot take. It was an argument that the
-              metric everyone quotes &mdash; operational demand &mdash; systematically mismeasures what
-              the system is actually doing, because it nets off the fastest-growing generator in the
-              country before you ever see it.
-            </p>
-            <p class="prose" style="font-size:.95rem;margin-top:12px;">
-              <strong>6,708 impressions.</strong> Roughly five times my median. The lesson I took from
-              it: the highest-reach posts aren't predictions, they're corrections to a number people
-              already use every day.
-            </p>
-          </div>
-          <div class="mini-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
-            <div class="stat-card" style="padding:18px 12px;">
-              <div class="stat-num" style="font-size:1.5rem;">6,708</div>
-              <div class="stat-lbl">Impressions</div>
-            </div>
-            <div class="stat-card" style="padding:18px 12px;">
-              <div class="stat-num" style="font-size:1.5rem;">5&times;</div>
-              <div class="stat-lbl">Above my median</div>
-            </div>
-            <div class="stat-card" style="padding:18px 12px;">
-              <div class="stat-num" style="font-size:1.5rem;">25</div>
-              <div class="stat-lbl">Most comments on one post</div>
-            </div>
-            <div class="stat-card" style="padding:18px 12px;">
-              <div class="stat-num" style="font-size:1.5rem;">4.5&times;</div>
-              <div class="stat-lbl">Australian-number opens beat foreign ones</div>
-            </div>
-          </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Capture rate, NSW portfolio</span>
+          <div id="bjeiChart" data-bars></div>
+          <p class="caption">
+            Public DUIDs, public prices &mdash; reproducible by anyone. Commercial terms excluded.
+          </p>
         </div>
       </div>
     </div>
@@ -296,50 +184,28 @@
     </div>
   </section>
 
-  <!-- ═══ METHOD ═══ -->
-  <section class="band band-3" id="method">
+  <!-- CTA -->
+
+  <!-- DEMO -->
+  <section class="band band-tight band-4" id="demo">
     <div class="shell">
-      <div class="mod-num js-fade">How I write them</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">Rules I set after<br><span class="accent">reading my own data.</span></h2>
-      <p class="prose js-fade">
-        I pulled the engagement on all 59 posts and let it decide the format rather than guessing.
-        Some of what it said was unflattering.
-      </p>
-
-      <div class="split" style="margin-top:24px;">
-        <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">What the data said to do</span>
-          <div class="rule"><div class="rule-n">01</div><div class="rule-t"><b>Open with a bare Australian figure.</b> Number alone on line one, named on line two. Australian-number opens averaged 2,617 impressions against 577 for foreign ones &mdash; about 4.5&times;.</div></div>
-          <div class="rule"><div class="rule-n">02</div><div class="rule-t"><b>Provenance first, number second, mechanism third.</b> "I processed 5.1 million dispatch intervals to answer one question." That line is the whole difference between analysis and commentary.</div></div>
-          <div class="rule"><div class="rule-n">03</div><div class="rule-t"><b>Name real assets, DUIDs and constraint IDs.</b> Manildra, Coopers Gap, LD01&ndash;04, Q_NIL_STRGTH_CKWF. Specificity <em>is</em> the credibility.</div></div>
-          <div class="rule"><div class="rule-n">04</div><div class="rule-t"><b>Close with one question I genuinely can't answer from my own data</b>, addressed to a specific role. The post that did that and credited a named person got 25 comments on 1,383 impressions &mdash; my highest engagement rate.</div></div>
-          <div class="rule"><div class="rule-n">05</div><div class="rule-t"><b>Publish the negative result.</b> Including my own. Almost nobody in this market does, and it consistently reads above median.</div></div>
+      <div class="card js-fade" style="text-align:center;">
+        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
+          Want a demo of ARIA? Reach out on LinkedIn or email me.
+        </h2>
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
+          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+          split, or just the query behind a number you don't believe.
+        </p>
+        <div class="btn-row center">
+          <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-glass" href="mailto:kanavverma2000@gmail.com?subject=ARIA%20demo">kanavverma2000@gmail.com</a>
         </div>
-
-        <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">What the data said to stop</span>
-          <ul class="crossed">
-            <li><strong>Foreign-number cold opens.</strong> My four worst posts all opened with a Germany, UK, Texas or California figure. Average 6 reactions. The material is fine &mdash; as a second beat, never the first line.</li>
-            <li><strong>Hashtag stuffing.</strong> 20&ndash;30 per post, some mid-sentence, which breaks the prose. My highest-reach post used 8. Now 3&ndash;5, at the end.</li>
-            <li><strong>Generic closers.</strong> "Any thoughts?" does nothing when no real question is being asked.</li>
-            <li><strong>Curiosity-gap hooks.</strong> "Here's what the ISP isn't telling you." My own data doesn't reward them either.</li>
-            <li><strong>Mid-sentence caps and multiple exclamation marks.</strong> Sharp is on-voice. Melodramatic isn't.</li>
-            <li><strong>Publishing the same post twice.</strong> I did that once. Process failure, not style.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="note note-accent js-fade">
-        <span class="note-title">The standing rule</span>
-        <strong>Re-derive every figure the morning it goes out.</strong> No placeholder numbers,
-        ever. A figure read off a rendered chart is not a figure from the model &mdash; I learned
-        that when a curtailment projection I published at 84% turned out to come from a hard-coded
-        array while the model said 78.4%.
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
@@ -349,7 +215,7 @@
         the query is the point.
       </p>
       <div class="btn-row center js-fade">
-        <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow on LinkedIn</a>
+        <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow me on LinkedIn</a>
         <a class="btn btn-glass" href="research.html">The deeper research</a>
       </div>
     </div>
@@ -441,7 +307,23 @@ var POSTS = [
   });
 })();
 </script>
-<script src="assets/shared.js?v=20260819t"></script>
-<script src="assets/main.js?v=20260819t"></script>
+
+<script>
+window.addEventListener('load', function () {
+  if (window.ariaRing) {
+    ariaRing('ringWind', 99.8, { label:'99.8%', colour:'var(--good)', size:126, alt:'Wind effective revenue factor 99.8 per cent' });
+    ariaRing('ringSolar', 27.1, { label:'27.1%', colour:'var(--signal)', size:126, alt:'Solar effective revenue factor 27.1 per cent' });
+  }
+  if (window.ariaBars) {
+    ariaBars('bjeiChart', [
+      ['Gullen Range', 67, '84% \u2192 67%'],
+      ['Biala', 70, '80% \u2192 70%'],
+      ['Wollar Solar', 25, '25%']
+    ], { max: 100, colour: function (r) { return r[1] < 40 ? 'var(--signal)' : 'var(--accent)'; } });
+  }
+});
+</script>
+<script src="assets/shared.js?v=20260819v"></script>
+<script src="assets/main.js?v=20260819v"></script>
 </body>
 </html>

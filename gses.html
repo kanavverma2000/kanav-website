@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<link rel="stylesheet" href="assets/style.css?v=20260819v">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -412,6 +412,15 @@
         them as measured.
       </p>
 
+      <div class="card js-fade" style="margin-top:24px;">
+        <span class="eyebrow" style="margin-bottom:16px;">Minutes per inspection site, before and after</span>
+        <div id="savedBars"></div>
+        <p class="chart-note">
+          Six back-office workflows. The regulator portal submission was the single biggest
+          &mdash; about 150 fields, keyed by hand, per site.
+        </p>
+      </div>
+
       <div class="table-wrap js-fade" style="margin-top:24px;">
         <table class="data">
           <thead><tr><th>Workflow</th><th>Tool</th><th>Before</th><th>After</th><th>Saved</th></tr></thead>
@@ -447,6 +456,27 @@
   </section>
 
   <!-- CTA -->
+
+  <!-- DEMO -->
+  <section class="band band-tight band-4" id="demo">
+    <div class="shell">
+      <div class="card js-fade" style="text-align:center;">
+        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
+          Want a demo of ARIA? Reach out on LinkedIn or email me.
+        </h2>
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
+          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+          split, or just the query behind a number you don't believe.
+        </p>
+        <div class="btn-row center">
+          <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-glass" href="mailto:kanavverma2000@gmail.com?subject=ARIA%20demo">kanavverma2000@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
@@ -457,13 +487,27 @@
       </p>
       <div class="btn-row center js-fade">
         <a class="btn btn-primary" href="research.html">The NEM research</a>
-        <a class="btn btn-glass" href="about.html">Back to about</a>
+        <a class="btn btn-glass" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow me on LinkedIn</a>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819t"></script>
-<script src="assets/main.js?v=20260819t"></script>
+
+<script>
+window.addEventListener('load', function () {
+  if (!window.ariaCompare) return;
+  ariaCompare('savedBars', [
+    ['CER submission', 30, 5, '\u221225'],
+    ['Photo metadata', 20, 1.5, '\u221218'],
+    ['Draft report', 20, 2.5, '\u221217.5'],
+    ['Consent & dispatch', 10, 1, '\u22129'],
+    ['Intake & allocation', 10, 1.5, '\u22128.5'],
+    ['Reconciliation', 6, 0.5, '\u22125.5']
+  ], { max: 32, aLabel: 'Manual', bLabel: 'With the tool', bColour: 'var(--good)' });
+});
+</script>
+<script src="assets/shared.js?v=20260819v"></script>
+<script src="assets/main.js?v=20260819v"></script>
 </body>
 </html>

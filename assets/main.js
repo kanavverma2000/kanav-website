@@ -241,3 +241,95 @@ window.ariaBars = function (elId, rows, opts) {
       '</div>';
   }).join('');
 };
+
+
+/* ═══════════════════════════════════════════════════════════
+   ARIA — chart toolkit. Plain SVG/CSS, theme-aware, no library.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Paired before/after bars — one row per item, two tracks. */
+window.ariaCompare = function (elId, rows, opts) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  opts = opts || {};
+  var max = opts.max || Math.max.apply(null, rows.map(function (r) { return Math.max(r[1], r[2]); }));
+  var a = opts.aColour || 'var(--ink-28)';
+  var bC = opts.bColour || 'var(--accent)';
+  el.setAttribute('data-bars', '');
+  el.innerHTML =
+    '<div class="cmp-key">' +
+      '<span><i style="background:' + a + '"></i>' + (opts.aLabel || 'Before') + '</span>' +
+      '<span><i style="background:' + bC + '"></i>' + (opts.bLabel || 'After') + '</span>' +
+    '</div>' +
+    rows.map(function (r) {
+      var col = typeof opts.bColour === 'function' ? opts.bColour(r) : bC;
+      return '<div class="cmp-row">' +
+        '<div class="cmp-lab">' + r[0] + '</div>' +
+        '<div class="cmp-tracks">' +
+          '<div class="cmp-track"><div class="bar-fill" style="width:' + (r[1] / max * 100).toFixed(1) + '%;background:' + a + ';"></div></div>' +
+          '<div class="cmp-track"><div class="bar-fill" style="width:' + (r[2] / max * 100).toFixed(1) + '%;background:' + col + ';"></div></div>' +
+        '</div>' +
+        '<div class="cmp-val">' + (r[3] || '') + '</div>' +
+      '</div>';
+    }).join('');
+};
+
+/* Multi-series line chart in inline SVG. series = [{name,colour,points:[[x,y]…]}] */
+window.ariaLine = function (elId, series, opts) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  opts = opts || {};
+  var W = 560, H = opts.height || 240, P = { t: 16, r: 14, b: 30, l: 40 };
+  var xs = [], ys = [];
+  series.forEach(function (s) { s.points.forEach(function (p) { xs.push(p[0]); ys.push(p[1]); }); });
+  var x0 = opts.xMin !== undefined ? opts.xMin : Math.min.apply(null, xs);
+  var x1 = opts.xMax !== undefined ? opts.xMax : Math.max.apply(null, xs);
+  var y0 = opts.yMin !== undefined ? opts.yMin : 0;
+  var y1 = opts.yMax !== undefined ? opts.yMax : Math.max.apply(null, ys);
+  function px(v) { return P.l + (v - x0) / (x1 - x0 || 1) * (W - P.l - P.r); }
+  function py(v) { return H - P.b - (v - y0) / (y1 - y0 || 1) * (H - P.t - P.b); }
+
+  var grid = '', ticks = opts.yTicks || 4;
+  for (var i = 0; i <= ticks; i++) {
+    var v = y0 + (y1 - y0) * i / ticks, y = py(v);
+    grid += '<line x1="' + P.l + '" y1="' + y + '" x2="' + (W - P.r) + '" y2="' + y + '" stroke="currentColor" stroke-opacity=".12"/>' +
+            '<text x="' + (P.l - 7) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="currentColor" fill-opacity=".5">' +
+            (opts.yFmt ? opts.yFmt(v) : Math.round(v)) + '</text>';
+  }
+  var xlab = (opts.xLabels || []).map(function (l) {
+    return '<text x="' + px(l[0]) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".5">' + l[1] + '</text>';
+  }).join('');
+
+  var paths = series.map(function (s) {
+    var d = s.points.map(function (p, i) { return (i ? 'L' : 'M') + px(p[0]).toFixed(1) + ' ' + py(p[1]).toFixed(1); }).join(' ');
+    var dots = s.points.map(function (p) {
+      return '<circle cx="' + px(p[0]).toFixed(1) + '" cy="' + py(p[1]).toFixed(1) + '" r="3.2" fill="' + s.colour + '"/>';
+    }).join('');
+    return '<path d="' + d + '" fill="none" stroke="' + s.colour + '" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' + dots;
+  }).join('');
+
+  var legend = series.length > 1
+    ? '<div class="cmp-key">' + series.map(function (s) {
+        return '<span><i style="background:' + s.colour + '"></i>' + s.name + '</span>'; }).join('') + '</div>'
+    : '';
+
+  el.innerHTML = legend +
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="' + (opts.alt || 'chart') + '" ' +
+    'style="color:var(--ink);overflow:visible;">' + grid + xlab + paths + '</svg>';
+};
+
+/* Donut / share ring for a single headline proportion. */
+window.ariaRing = function (elId, pct, opts) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  opts = opts || {};
+  var R = 54, C = 2 * Math.PI * R, on = C * Math.min(pct, 100) / 100;
+  el.innerHTML =
+    '<svg viewBox="0 0 140 140" width="' + (opts.size || 140) + '" height="' + (opts.size || 140) + '" role="img" aria-label="' + (opts.alt || pct + '%') + '">' +
+      '<circle cx="70" cy="70" r="' + R + '" fill="none" stroke="currentColor" stroke-opacity=".12" stroke-width="13"/>' +
+      '<circle cx="70" cy="70" r="' + R + '" fill="none" stroke="' + (opts.colour || 'var(--accent)') + '" stroke-width="13" ' +
+        'stroke-linecap="round" stroke-dasharray="' + on.toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 70 70)"/>' +
+      '<text x="70" y="72" text-anchor="middle" font-size="26" font-weight="900" fill="currentColor" letter-spacing="-1">' + (opts.label || pct + '%') + '</text>' +
+      (opts.sub ? '<text x="70" y="92" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".55">' + opts.sub + '</text>' : '') +
+    '</svg>';
+};

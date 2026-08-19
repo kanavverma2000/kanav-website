@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<link rel="stylesheet" href="assets/style.css?v=20260819v">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -88,10 +88,7 @@
       <div class="chips js-fade" style="margin-top:26px;">
         <a class="chip" href="#modules">What it does</a>
         <a class="chip" href="#data">Data basis</a>
-        <a class="chip" href="#fits">Where it fits</a>
-        <a class="chip" href="#matrix">Capability map</a>
-        <a class="chip" href="#edge">The differentiation</a>
-        <a class="chip" href="#price">Price</a>
+        <a class="chip" href="positioning.html">Where it fits &rarr;</a>
       </div>
     </div>
   </header>
@@ -230,268 +227,90 @@
   </section>
 
   <!-- ═══ WHERE IT FITS ═══ -->
-  <section class="band band-3" id="fits">
+
+  <!-- VISUAL -->
+  <section class="band band-3">
     <div class="shell">
-      <div class="mod-num js-fade">Where it fits</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">Three questions.<br><span class="accent">Two are crowded.</span></h2>
-      <p class="prose js-fade">
-        Every product in this market answers one of three questions. Two are served by mature,
-        well-funded incumbents and there's no point competing there. The third is the one people
-        actually get asked in board papers.
-      </p>
-
-      <div class="qframe js-fade" data-stagger=".q">
-        <div class="card q">
-          <div class="q-tense">Past tense</div>
-          <div class="q-q">What happened?</div>
-          <p class="prose" style="font-size:.86rem;">
-            Real-time and forensic data. <strong>Global-Roam</strong> (ez2view, NEMreview),
-            <strong>gridIQ</strong>. Fast and accurate.
+      <span class="eyebrow js-fade">What the split shows</span>
+      <h2 class="h-md js-lines" style="max-width:22ch;">Network curtailment is flat.<br><span class="accent">Economic curtailment isn't.</span></h2>
+      <div class="split" style="margin-top:28px;">
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Curtailed energy by cause (TWh)</span>
+          <div id="curtLine"></div>
+          <p class="chart-note">
+            The grid line barely moves. Everything else is price. That is the whole argument for
+            splitting the number instead of reporting one total.
           </p>
-          <div class="q-verdict"><span class="d dv"></span> Well served &mdash; don't compete</div>
         </div>
-        <div class="card q">
-          <div class="q-tense">Future tense</div>
-          <div class="q-q">What might happen?</div>
-          <p class="prose" style="font-size:.86rem;">
-            Long-horizon projections. <strong>Aurora</strong>, <strong>Endgame</strong>,
-            <strong>Cornwall Insight</strong>. Prices, mix and loss factors to 2050 under named
-            scenarios.
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">2025 curtailment, by cause</span>
+          <div class="ring-row" style="margin-top:8px;">
+            <div class="ring-item"><div id="ringEcon"></div><p>Economic &mdash; a price decision</p></div>
+            <div class="ring-item"><div id="ringNet"></div><p>Network &mdash; a grid limit</p></div>
+          </div>
+          <p class="chart-note">
+            Of the 7.60 TWh attributable by cause in 2025. The remaining 0.77 TWh stays
+            unattributed rather than guessed.
           </p>
-          <div class="q-verdict"><span class="d dv"></span> Well served &mdash; don't compete</div>
         </div>
-        <div class="card q open">
-          <div class="q-tense">Subjunctive</div>
-          <div class="q-q">What <em>would have</em> happened?</div>
-          <p class="prose" style="font-size:.86rem;">
-            What would this unit have earned but for that constraint? What did that closure actually
-            do to price, as opposed to what coincided with it? How much of this curtailment is the
-            grid?
-          </p>
-          <div class="q-verdict"><span class="d dv"></span> This is where I work</div>
-        </div>
-      </div>
-
-      <p class="prose js-fade" style="margin-top:26px;">
-        A forecast gives you a price. A counterfactual gives you <em>why</em> &mdash; the only form
-        you can argue in a negotiation, defend in an investment committee, or size a contract against.
-      </p>
-
-      <h3 class="h-sm js-fade" style="margin-top:44px;">Who actually sells what</h3>
-      <p class="caption js-fade" style="margin-top:6px;">Read from each vendor's own product pages, August 2026.</p>
-
-      <div class="vend js-fade" data-stagger=".card">
-        <article class="card card-hover">
-          <div class="role">Real-time &amp; forensic</div>
-          <h4>Global-Roam &mdash; ez2view / NEMreview</h4>
-          <p>Real-time monitoring plus after-the-fact forensics. 50+ widgets including a Bid Explorer and bid stack charts, unit and station dashboards, constraint-equation tooling.</p>
-          <div class="ov"><b>Overlap:</b> substantial on history and bid visibility. ez2view genuinely has bid-stack tooling. The difference is that it <em>shows</em> the stack; I <em>re-clear</em> it.</div>
-        </article>
-        <article class="card card-hover">
-          <div class="role">Live data &amp; AI delivery</div>
-          <h4>gridIQ</h4>
-          <p>Live NEM and WEM across six regions, bid stack reconstruction, rebid monitor, curtailment analysis, PPA and IRSR spreads, a price forecast and an AI assistant.</p>
-          <div class="ov"><b>Overlap:</b> the closest competitor, and the only one covering both markets. My separation is cause attribution and counterfactual clearing, not coverage.</div>
-        </article>
-        <article class="card card-hover">
-          <div class="role">Long-horizon fundamentals</div>
-          <h4>Aurora Energy Research</h4>
-          <p>Price forecasts across six scenarios in five regions to 2050. A separate quarterly add-on gives annual MLFs to 2050 under two scenarios for operational and committed wind and solar.</p>
-          <div class="ov"><b>Overlap:</b> none on history, total on forward loss factors. Which is why I don't sell MLF forecasting.</div>
-        </article>
-        <article class="card card-hover">
-          <div class="role">Dispatch simulation</div>
-          <h4>Endgame Economics</h4>
-          <p>Half-hourly forecasts of pool prices and plant output, three house scenarios refreshed every six months, raw outcomes in CSV over a 20&ndash;25 year horizon.</p>
-          <div class="ov"><b>Overlap:</b> they simulate dispatch forward at half-hourly resolution &mdash; genuinely deep. I re-clear backwards against what was actually bid.</div>
-        </article>
-        <article class="card card-hover">
-          <div class="role">Loss factors</div>
-          <h4>Cornwall Insight Australia</h4>
-          <p>Network Forecasts (AUS) carries a forward MLF curve for all current NEM generators and selected REZ connection points, as an annual databook by state, zone and unit.</p>
-          <div class="ov"><b>Overlap:</b> forward MLF is theirs, and it's a real product. I treat it as occupied ground.</div>
-        </article>
-        <article class="card card-hover">
-          <div class="role">Storage benchmarking</div>
-          <h4>Modo Energy</h4>
-          <p>The ME BESS AUS NEM Index &mdash; a standardised benchmark for battery revenues and operations across five regions, with MLFs in every revenue calculation.</p>
-          <div class="ov"><b>Overlap:</b> battery benchmarking is theirs and they're the reference. I cover storage as one technology, not a specialised index.</div>
-        </article>
-      </div>
-
-      <div class="note js-fade">
-        <span class="note-title">What I won't say about competitors</span>
-        It's tempting to claim an incumbent "doesn't model dispatch" or "has no bid-stack tooling".
-        I tested those against the vendors' own material and they didn't survive.
-        <strong>Absence of a phrase from a marketing page is not absence of a capability</strong>,
-        and anyone in this market can check.
       </div>
     </div>
   </section>
 
-  <!-- ═══ MATRIX ═══ -->
-  <section class="band band-1" id="matrix">
-    <div class="shell">
-      <div class="mod-num js-fade">Capability map</div>
-      <h2 class="h-md js-lines" style="max-width:18ch;">Where the lines <span class="accent">actually fall.</span></h2>
 
-      <div class="mx-wrap js-fade">
-        <p class="caption scroll-cue" style="margin:0 0 10px;">Scroll sideways to see every vendor &rarr;</p>
-        <table class="mx">
-          <thead>
-            <tr><th>Capability</th><th class="acol">ARIA</th><th>Global-Roam</th><th>gridIQ</th>
-                <th>Aurora</th><th>Endgame</th><th>Cornwall</th><th>Modo</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Historical dispatch &amp; price</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
-            <tr><td>Real-time monitoring</td><td class="acol no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Bid / offer stack visibility</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Per-unit capture benchmarking</td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
-            <tr><td>Curtailment measurement</td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Curtailment cause split</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Counterfactual re-clearing</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Cost and conduct bounds, separated</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Long-horizon projection to 2050</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
-            <tr><td>Forward marginal loss factors</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Battery revenue index</td><td class="acol part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td></tr>
-            <tr><td>Western Australia (WEM)</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Published AEMO reproduction</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Published error bands and failures</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Published price list</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-          </tbody>
-        </table>
-        <p class="caption">
-          <span class="yes"><span class="d"></span></span> core published capability &middot;
-          <span class="part"><span class="d"></span></span> partial or a by-product &middot;
-          <span class="no"><span class="d"></span></span> not advertised. A dash means the vendor doesn't advertise
-          it, not that they can't do it &mdash; several are quote-only. Bold rows are where the map
-          is genuinely thin. If one is wrong, tell me and I'll fix it.
+  <!-- DEMO -->
+  <section class="band band-tight band-4" id="demo">
+    <div class="shell">
+      <div class="card js-fade" style="text-align:center;">
+        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
+          Want a demo of ARIA? Reach out on LinkedIn or email me.
+        </h2>
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
+          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+          split, or just the query behind a number you don't believe.
         </p>
+        <div class="btn-row center">
+          <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-glass" href="mailto:kanavverma2000@gmail.com?subject=ARIA%20demo">kanavverma2000@gmail.com</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ EDGE ═══ -->
-  <section class="band band-2" id="edge">
-    <div class="shell">
-      <div class="mod-num js-fade">The differentiation</div>
-      <h2 class="h-md js-lines" style="max-width:22ch;">Five things I couldn't find <span class="accent">sold anywhere else.</span></h2>
-
-      <ul class="numbered js-fade" style="margin-top:16px;">
-        <li>
-          <h4>The counterfactual has two bounds, and the gap is market power.</h4>
-          <p>
-            Re-clear at cost: ~$1&ndash;2/MWh. Re-clear at what was actually offered:
-            $14&ndash;21/MWh. Both real, neither alone the answer. The difference separates physical
-            substitution from bidding conduct &mdash; a decomposition a single price number
-            structurally cannot give you.
-          </p>
-          <span class="proof-chip">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit stack</span>
-        </li>
-        <li>
-          <h4>Curtailment split by cause, and it overturns the usual conclusion.</h4>
-          <p>
-            Everyone reports volume. Splitting network from economic shows network flat near 1 TWh
-            since 2021 while economic rose 5.2&times;. In 2025, <strong>85% was a price decision,
-            not a grid limit</strong>. That inverts the investment implication.
-          </p>
-          <span class="proof-chip">217 semi-scheduled units &middot; monthly, per unit</span>
-        </li>
-        <li>
-          <h4>Every cost traces to a published AEMO workbook cell.</h4>
-          <p>
-            169 units priced from AEMO's own heat rates, station fuel prices and variable O&amp;M,
-            each carrying its source. Glass box, not calibrated black box. Doing it reversed the NSW
-            coal order and recovered the country's largest brown-coal station from a silent
-            name-matching bug.
-          </p>
-          <span class="proof-chip">Coal coverage 99.5&ndash;100% in NSW, QLD, VIC</span>
-        </li>
-        <li>
-          <h4>The reproduction test is published before the claim.</h4>
-          <p>
-            Coal agreeing to the gigawatt-hour, both price series in all five regions to the dollar
-            &mdash; published <em>first</em>. Cheap to pass, expensive to fake, and it turns "trust
-            my model" into "check my arithmetic against the market operator's".
-          </p>
-          <span class="proof-chip">Q2 2026 &middot; 10 of 10 on price &middot; coal to 0.00%</span>
-        </li>
-        <li>
-          <h4>The failures are published too.</h4>
-          <p>
-            A better weather dataset that turned out worse. A spike classifier that beats a naive
-            rule by 1.1%. A hydro hypothesis that made the model worse when tested. A registry field
-            wrong by 83&times;. A figure of mine that came from a hard-coded array. Every vendor here
-            publishes forecasts; I haven't found one that publishes the validations it failed.
-          </p>
-          <span class="proof-chip"><a href="research.html#negative" style="color:inherit;">See all six &rarr;</a></span>
-        </li>
-      </ul>
-
-      <h3 class="h-sm js-fade" style="margin-top:44px;">And where I have no advantage</h3>
-      <div class="card js-fade" style="margin-top:16px;">
-        <ul class="crossed">
-          <li><strong>Forward MLFs are occupied ground.</strong> Cornwall and Aurora both sell one. I don't forecast MLFs.</li>
-          <li><strong>Bid-stack visualisation isn't novel.</strong> ez2view has a Bid Explorer; gridIQ advertises reconstruction. I use offers for counterfactual clearing, not to be first to show them.</li>
-          <li><strong>No real-time product.</strong> For intraday, ez2view and gridIQ are the tools.</li>
-          <li><strong>Battery benchmarking belongs to Modo.</strong> Their index is the reference.</li>
-          <li><strong>No WEM coverage.</strong> gridIQ covers both markets; Aurora models both.</li>
-          <li><strong>No live offer feed.</strong> AEMO publishes bids next day. "Live" would be false; next-day is the truth.</li>
-          <li><strong>No track record.</strong> I'm new. Which is exactly why the reproduction test and the error bands exist &mdash; they're what a new entrant can offer instead of a reputation.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PRICE ═══ -->
-  <section class="band band-1" id="price">
-    <div class="shell">
-      <div class="mod-num js-fade">Price</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">The market prices on breadth, <span class="accent">not seats.</span></h2>
-      <p class="prose js-fade">
-        One directly comparable NEM product publishes a price list. Its structure is the instructive
-        part: one user to twenty adds 22%, while five datasets to forty-one doubles the price.
-        Content is the meter.
-      </p>
-
-      <div class="table-wrap js-fade" style="margin-top:22px;">
-        <table class="price">
-          <thead><tr><th>NEMreview v6 (Global-Roam)</th><th>1 user</th><th>2&ndash;5</th><th>6&ndash;20</th><th>Included</th></tr></thead>
-          <tbody>
-            <tr><td>Bronze</td><td>$4,500</td><td>$5,000</td><td>$5,500</td><td>5 core AEMO datasets</td></tr>
-            <tr><td>Silver</td><td>$9,000</td><td>$10,000</td><td>$11,000</td><td>27 core + 14 derived</td></tr>
-          </tbody>
-        </table>
-        <p class="caption">AUD/year ex-GST, nemreview.info, August 2026. ez2view, Modo, Cornwall, Aurora and Endgame are quote-only.</p>
-      </div>
-
-      <p class="prose js-fade" style="margin-top:22px;">
-        I follow the same structure &mdash; gated on analytical breadth, seats effectively free
-        inside a band. The buyers are small analyst teams inside large organisations, and per-seat
-        pricing punishes exactly the internal spread you want. The counterfactual layer is what
-        justifies the top tier; dataset count alone wouldn't.
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
-      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">Think a row in that table<br><span class="accent">is wrong?</span></h2>
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:16ch;">Nine tools do this.<br><span class="accent">One does it backwards.</span></h2>
       <p class="lede js-fade" style="margin:24px auto 38px;max-width:520px;">
-        Good &mdash; tell me and it gets corrected. The map is built from public product pages, and
-        public product pages understate what vendors can do.
+        Where this sits against Global-Roam, gridIQ, Aurora, Endgame, Cornwall Insight and Modo
+        &mdash; including the places I have no advantage at all.
       </p>
       <div class="btn-row center js-fade">
-        <a class="btn btn-signal" href="contact.html">Get in touch</a>
+        <a class="btn btn-primary" href="positioning.html">Where it fits</a>
         <a class="btn btn-glass" href="research.html">The research</a>
       </div>
     </div>
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819t"></script>
-<script src="assets/main.js?v=20260819t"></script>
+
+<script>
+window.addEventListener('load', function () {
+  if (!window.ariaLine) return;
+  ariaLine('curtLine', [
+    { name:'Economic', colour:'var(--signal)', points:[[2021,1.24],[2022,1.36],[2023,3.03],[2024,3.65],[2025,6.44]] },
+    { name:'Network',  colour:'var(--accent)', points:[[2021,1.04],[2022,1.13],[2023,1.07],[2024,1.04],[2025,1.16]] }
+  ], { yMin:0, yMax:7, yTicks:in4(), height:250,
+       xLabels:[[2021,'2021'],[2022,'2022'],[2023,'2023'],[2024,'2024'],[2025,'2025']],
+       yFmt:function(v){return v.toFixed(0);},
+       alt:'Economic curtailment rises five-fold while network curtailment stays flat' });
+  ariaRing('ringEcon', 85, { label:'85%', colour:'var(--signal)', size:132, alt:'85 per cent economic' });
+  ariaRing('ringNet', 15, { label:'15%', colour:'var(--accent)', size:132, alt:'15 per cent network' });
+  function in4(){ return 4; }
+});
+</script>
+<script src="assets/shared.js?v=20260819v"></script>
+<script src="assets/main.js?v=20260819v"></script>
 </body>
 </html>

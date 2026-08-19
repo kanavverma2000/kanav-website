@@ -825,89 +825,161 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
   .band-glow { display: none; }
 }
 
-
 /* ── Build the Grid ────────────────────────────────────────────────────────
-   Five-series palette, validated with the dataviz checker against both
-   surfaces (all-pairs, not just adjacent, because it stacks). Brown for coal
-   failed every time: it is low-chroma and collides with the red under
-   protanopia, so coal takes the maroon and gas takes the blue of its flame. */
+   Five-series palette, run through the colourblind checker against both
+   surfaces on all pairs, not just adjacent ones, because it stacks. Brown for
+   coal failed every attempt: it is low-chroma and collides with red under
+   protanopia. So coal takes the maroon and gas takes the blue of its flame.
+   Each band also carries its own SVG texture, which is the secondary encoding
+   a five-series stack needs, and happens to give each fuel a personality. */
 :root {
   --g-solar: #B8811F;
   --g-wind:  #46A06F;
   --g-batt:  #9A76BA;
+  --g-coal:  #9E2F2C;
   --g-gas:   #1B5C9E;
+  --g-demand: #101014;
+  --g-demand-glow: rgba(255,255,255,.92);
+  --g-short: #F2551B;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --g-solar: #B9841F; --g-wind: #45A06D; --g-batt: #A883C6;
+    --g-solar:#B9841F; --g-wind:#45A06D; --g-batt:#A883C6;
+    --g-coal:#B03B36;  --g-gas:#2E72B4;
+    --g-demand:#FFFFFF; --g-demand-glow: rgba(150,196,255,.8);
+    --g-short: #FF7A45;
   }
 }
 :root[data-theme="dark"] {
-  --g-solar: #B9841F; --g-wind: #45A06D; --g-batt: #A883C6;
+  --g-solar:#B9841F; --g-wind:#45A06D; --g-batt:#A883C6;
+  --g-coal:#B03B36;  --g-gas:#2E72B4;
+  --g-demand:#FFFFFF; --g-demand-glow: rgba(150,196,255,.8);
+  --g-short: #FF7A45;
 }
 
-.game { max-width: 940px; margin: 0 auto; }
+.game { max-width: 960px; margin: 0 auto; }
+
 .g-chart {
-  background: var(--card);
-  border: 1px solid var(--ink-08);
-  border-radius: var(--radius-lg, 18px);
-  padding: 14px 10px 6px;
-  overflow: hidden;
+  background: var(--card); border: 1px solid var(--ink-08);
+  border-radius: 18px; padding: 14px 10px 6px; overflow: hidden;
 }
 .g-chart svg { display: block; width: 100%; height: auto; }
+.g-shortfall { animation: gPulse 1.5s ease-in-out infinite; }
+@keyframes gPulse { 0%,100% { opacity:.9 } 50% { opacity:.42 } }
 
 .g-legend {
-  display: flex; flex-wrap: wrap; gap: 6px 18px;
-  margin: 14px 0 20px; font-size: .78rem; font-weight: 600; color: var(--ink-60);
+  display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 18px;
+  font-size: .78rem; font-weight: 600; color: var(--ink-60);
 }
 .g-key { display: inline-flex; align-items: center; gap: 7px; }
 .g-key i { width: 11px; height: 11px; border-radius: 3px; flex: none; }
-.g-key-line { height: 3px !important; border-radius: 2px !important; background: var(--ink); }
+.g-key-line { height: 3px !important; border-radius: 2px !important; background: var(--g-demand); }
+
+/* the coach */
+.g-hint {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 14px 18px; margin-bottom: 20px; border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  opacity: 0; transform: translateY(5px);
+  transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out),
+              background 260ms ease, border-color 260ms ease;
+}
+.g-hint.is-in { opacity: 1; transform: none; }
+.g-hint b { font-size: .93rem; font-weight: 800; letter-spacing: -.01em; }
+.g-hint span { font-size: .84rem; color: var(--ink-60); line-height: 1.55; }
+.g-hint.is-bad {
+  background: color-mix(in srgb, var(--signal) 9%, transparent);
+  border-color: color-mix(in srgb, var(--signal) 26%, transparent);
+}
+.g-hint.is-bad b { color: var(--signal); }
 
 .g-score {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px; margin-bottom: 26px;
 }
 .g-stat {
   background: var(--card); border: 1px solid var(--ink-08);
-  border-radius: 14px; padding: 15px 16px;
+  border-radius: 14px; padding: 15px 16px; transition: border-color 220ms ease;
 }
 .g-stat-v {
-  font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 900; letter-spacing: -.04em;
+  font-size: clamp(1.65rem, 3.4vw, 2.15rem); font-weight: 900; letter-spacing: -.04em;
   line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums;
 }
-.g-stat-v span { font-size: .5em; font-weight: 700; color: var(--ink-45); letter-spacing: 0; }
+.g-stat-v em { font-style: normal; font-size: .48em; font-weight: 700; color: var(--ink-45); }
 .g-stat-k { font-size: .72rem; font-weight: 600; color: var(--ink-52); margin-top: 8px; line-height: 1.4; }
 .g-stat.is-ok  .g-stat-v { color: var(--good); }
 .g-stat.is-bad .g-stat-v { color: var(--signal); }
 .g-stat.is-bad { border-color: color-mix(in srgb, var(--signal) 36%, transparent); }
 .g-stat-best { border-style: dashed; }
 
-.g-dials { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+/* ── the fuel cards ─────────────────────────────────────────────────────── */
+.g-dials { display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 14px; }
 .g-dial {
+  position: relative; overflow: hidden;
   background: var(--card); border: 1px solid var(--ink-08);
-  border-radius: 14px; padding: 14px 16px 12px;
+  border-radius: 16px; padding: 15px 17px 13px;
+  transition: border-color 220ms ease;
 }
-.g-dial-head { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
-.g-dial-head i { width: 11px; height: 11px; border-radius: 3px; flex: none; }
-.g-dial-n { font-size: .86rem; font-weight: 800; }
+.g-dial::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px;
+  background: var(--c); opacity: .85;
+}
+.g-dial:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+.g-dial-head { display: flex; align-items: center; gap: 9px; margin-bottom: 13px; }
+.g-ico { width: 19px; height: 19px; flex: none; color: var(--c); }
+.g-dial-n { font-size: .92rem; font-weight: 800; letter-spacing: -.01em; }
+.g-dial-tag {
+  font-size: .64rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 999px; white-space: nowrap;
+  color: var(--c); background: color-mix(in srgb, var(--c) 13%, transparent);
+}
 .g-dial-v {
-  margin-left: auto; font-size: .84rem; font-weight: 800;
-  font-variant-numeric: tabular-nums; color: var(--accent);
+  margin-left: auto; font-size: .95rem; font-weight: 900; color: var(--c);
+  font-variant-numeric: tabular-nums; cursor: ew-resize; user-select: none;
+  padding: 3px 6px; border-radius: 7px; touch-action: none;
+  transition: background 160ms ease, transform 160ms var(--ease-out);
 }
-.g-dial-ctl { display: flex; align-items: center; gap: 10px; }
-.g-btn {
-  width: 34px; height: 34px; flex: none; border-radius: 50%;
-  border: 1px solid var(--ink-14); background: transparent;
-  color: var(--ink); font-size: 1.05rem; font-weight: 700; line-height: 1;
-  cursor: pointer; transition: transform 140ms var(--ease-out), background 140ms ease;
-}
-.g-btn:hover { background: var(--ink-08); }
-.g-btn:active { transform: scale(.92); }
-.g-bar { flex: 1; height: 7px; border-radius: 4px; background: var(--ink-08); overflow: hidden; }
-.g-bar span { display: block; height: 100%; border-radius: 4px; transition: width 200ms var(--ease-out); }
-.g-dial-note { font-size: .74rem; color: var(--ink-45); margin-top: 10px; line-height: 1.5; }
+.g-dial-v em { font-style: normal; font-size: .62em; font-weight: 700; opacity: .6; margin-left: 2px; }
+.g-dial-v:hover { background: color-mix(in srgb, var(--c) 12%, transparent); }
+.g-dial-v.is-scrub { background: color-mix(in srgb, var(--c) 20%, transparent); transform: scale(1.06); }
 
+/* ── the slider ─────────────────────────────────────────────────────────── */
+.g-slider {
+  position: relative; height: 30px; cursor: grab;
+  touch-action: none; display: flex; align-items: center;
+}
+.g-slider.is-drag { cursor: grabbing; }
+.g-slider:focus-visible { outline: none; }
+.g-slider:focus-visible .g-track {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 32%, transparent);
+}
+.g-track {
+  position: absolute; inset: auto 0; height: 8px; border-radius: 5px;
+  background: var(--ink-08); overflow: hidden; transition: box-shadow 180ms ease;
+}
+.g-fill {
+  display: block; height: 100%; border-radius: 5px; background: var(--c);
+  transition: width 220ms var(--ease-out);
+}
+.g-thumb {
+  position: absolute; top: 50%; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--surface); border: 2.5px solid var(--c);
+  transform: translate(-50%, -50%); box-shadow: 0 2px 7px rgba(0,0,0,.13);
+  transition: left 220ms var(--ease-out), width 160ms var(--ease-out),
+              height 160ms var(--ease-out), box-shadow 160ms ease;
+  pointer-events: none;
+}
+.g-slider:hover .g-thumb { width: 23px; height: 23px; }
+.g-slider.is-drag .g-thumb {
+  width: 26px; height: 26px;
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 16%, transparent), 0 3px 10px rgba(0,0,0,.16);
+  transition: width 120ms var(--ease-out), height 120ms var(--ease-out), box-shadow 160ms ease;
+}
+.g-slider.is-drag .g-fill { transition: none; }
+.g-dial-note { font-size: .755rem; color: var(--ink-45); margin-top: 11px; line-height: 1.55; }
+
+/* ── stress buttons ─────────────────────────────────────────────────────── */
 .g-stress { margin-top: 26px; }
 .g-stress-k {
   display: block; font-size: .72rem; font-weight: 700; letter-spacing: .13em;
@@ -915,31 +987,30 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
 }
 .g-stress-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .g-stress-btn {
-  flex: 1 1 170px; text-align: left; cursor: pointer;
+  flex: 1 1 180px; text-align: left; cursor: pointer; color: inherit;
   background: var(--card); border: 1px solid var(--ink-14);
-  border-radius: 12px; padding: 12px 14px; color: inherit;
-  transition: transform 140ms var(--ease-out), border-color 140ms ease, background 140ms ease;
+  border-radius: 12px; padding: 12px 15px;
+  transition: transform 150ms var(--ease-out), border-color 150ms ease, background 150ms ease;
 }
-.g-stress-btn b { display: block; font-size: .84rem; font-weight: 800; margin-bottom: 3px; }
+.g-stress-btn b { display: block; font-size: .85rem; font-weight: 800; margin-bottom: 3px; }
 .g-stress-btn span { font-size: .74rem; color: var(--ink-52); }
 .g-stress-btn:hover { border-color: var(--ink-28); }
-.g-stress-btn:active { transform: scale(.98); }
+.g-stress-btn:active { transform: scale(.975); }
 .g-stress-btn.is-on {
   background: color-mix(in srgb, var(--signal) 10%, transparent);
   border-color: color-mix(in srgb, var(--signal) 42%, transparent);
 }
 .g-stress-btn.is-on b { color: var(--signal); }
 
-.g-live {
-  margin-top: 18px; font-size: .84rem; color: var(--ink-60);
-  min-height: 1.3em; font-weight: 600;
-}
+.g-live { margin-top: 18px; font-size: .84rem; color: var(--ink-60); min-height: 1.3em; font-weight: 600; }
 
-@media (max-width: 560px) {
+@media (max-width: 620px) {
   .g-dials { grid-template-columns: 1fr; }
   .g-score { grid-template-columns: repeat(2, 1fr); }
+  .g-dial-tag { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .g-bar span { transition: none; }
-  .g-btn:active, .g-stress-btn:active { transform: none; }
+  .g-fill, .g-thumb, .g-hint, .g-dial, .g-dial-v { transition: none; }
+  .g-shortfall { animation: none; }
+  .g-stress-btn:active { transform: none; }
 }

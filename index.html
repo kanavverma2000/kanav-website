@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820j">
+<link rel="stylesheet" href="assets/style.css?v=20260820k">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -57,10 +57,11 @@
   <section class="band band-1" id="game">
     <div class="shell">
       <div class="mod-num js-fade">Build the Grid</div>
-      <h2 class="h-lg js-lines" style="max-width:19ch;">Four dials. One day.<br><span class="accent">Don't go dark.</span></h2>
+      <h2 class="h-lg js-lines" style="max-width:19ch;">Five fuels. One day.<br><span class="accent">Don't go dark.</span></h2>
       <p class="lede js-fade" style="max-width:56ch;margin-bottom:34px;">
-        Add capacity until the colour covers the black demand line every hour. Then get
-        it cheap. Then press the buttons underneath and watch your beautiful plan fall over.
+        Drag the sliders, or grab a number and pull it sideways. Get the colour over the
+        glowing demand line every hour, then get it cheap. Each fuel has a personality and
+        one of them will absolutely betray you.
       </p>
 
       <div class="game js-fade" id="grid"></div>
@@ -73,16 +74,22 @@
           real hourly profiles, which is why wind blows hardest overnight and solar does
           nothing after six.</p>
           <p>The clearing is genuine merit order: free renewables first, then whatever is
-          in the battery, then gas. Cost is capital annualised over 25 years at 8% plus
-          fuel, divided by the energy actually delivered. That last part is why parking
-          40 GW of gas is not the free win it looks like.</p>
+          in the battery, then coal, then gas. Cost is capital annualised over 25 years at
+          8% plus fuel, divided by the energy actually delivered. That last part is why
+          parking 40 GW of anything is never the free win it looks like.</p>
+          <p>Coal carries its real constraint: it will not drop below 45% of its capacity,
+          because in life you cannot idle a coal unit down to nothing and get it back in a
+          hurry. Build coal and solar together and the coal simply will not move out of the
+          way at midday, so your free energy gets thrown away. That is not a quirk of the
+          game, it is the single biggest reason the actual grid is hard.</p>
           <p>Two things the real market has that this doesn't: transmission between
           regions, and generators choosing what price to bid. The second one is most of
           my actual work.</p>
-          <p><strong>If you want the answer:</strong> the cheapest mix that survives an
-          average day lands near $113/MWh. The cheapest one that also survives a still,
-          cloudy evening is about $122. That $9 gap is the price of insurance, and
-          arguing over it is roughly the entire Australian energy debate.</p>
+          <p><strong>If you want the answer:</strong> the cheapest mix that keeps the
+          lights on across an average day lands near $104/MWh, and it is a balanced one,
+          heavy on wind and solar with a little coal and a battery. The cheapest mix that
+          also survives a still, cloudy evening costs about $110. That gap is the price of
+          insurance, and arguing over it is roughly the entire Australian energy debate.</p>
         </div>
       </details>
     </div>
@@ -109,6 +116,7 @@
           <span class="eyebrow" style="margin-bottom:16px;">What the game leaves out</span>
           <ul class="crossed" style="margin-top:4px;">
             <li><strong>Bidding.</strong> Real generators choose a price. That choice is worth billions, and measuring it is most of what I do.</li>
+            <li><strong>Ramp rates.</strong> Coal here has a floor but no speed limit. The real thing takes hours to move.</li>
             <li><strong>Transmission.</strong> The power has to physically get there, and sometimes it can't.</li>
             <li><strong>Weather that isn't average.</strong> One still, cloudy evening in a bad week is the entire risk.</li>
             <li><strong>Being wrong.</strong> The real one publishes its error bands. This one just tells you the answer.</li>
@@ -168,13 +176,13 @@
 
 </div>
 
-<script src="assets/game.js?v=20260820j"></script>
+<script src="assets/game.js?v=20260820k"></script>
 <script>
 window.addEventListener('load', function () {
   if (window.buildGridGame) buildGridGame('grid');
 });
 </script>
-<script src="assets/shared.js?v=20260820j"></script>
-<script src="assets/main.js?v=20260820j"></script>
+<script src="assets/shared.js?v=20260820k"></script>
+<script src="assets/main.js?v=20260820k"></script>
 </body>
 </html>

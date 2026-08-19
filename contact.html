@@ -1,84 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - ARIA</title>
-  <meta name="description" content="Get in touch about ARIA, energy analytics, or collaboration opportunities." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260819" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ARIA</title>
+<meta name="description" content="Get in touch about ARIA, NEM counterfactual analytics, curtailment attribution or collaboration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260819b">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .field { margin-bottom: 18px; }
+  .field label {
+    display:block; font-size:.72rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ink-52); margin-bottom:8px;
+  }
+  .field input, .field textarea {
+    width:100%; padding:14px 16px; border-radius:var(--radius-sm);
+    border:1px solid var(--ink-14); background:var(--glass); color:var(--ink);
+    font-family:var(--font); font-size:.94rem; line-height:1.5;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .field textarea { min-height:150px; resize:vertical; }
+  .field input:focus, .field textarea:focus {
+    outline:none; border-color:var(--accent); background:var(--glass-hi);
+  }
+  .field input::placeholder, .field textarea::placeholder { color:var(--ink-28); }
+  .direct { display:grid; gap:12px; }
+  .direct-item {
+    padding:18px 20px; border-radius:var(--radius-sm); background:var(--glass);
+    border:1px solid var(--glass-edge); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    transition:border-color .3s ease;
+  }
+  [data-theme="dark"] .direct-item { border-color:var(--ink-08); }
+  .direct-item:hover { border-color:var(--accent-40); }
+  .direct-k { font-size:.68rem; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-45); font-weight:700; margin-bottom:6px; }
+  .direct-v { font-size:.95rem; font-weight:600; }
+  .open-list { list-style:none; margin-top:12px; }
+  .open-list li { font-size:.88rem; line-height:1.65; padding:7px 0 7px 22px; position:relative; color:var(--ink-60); }
+  .open-list li::before { content:"\2192"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+</style>
 </head>
 <body>
-<div class="main-content">
+<div class="main">
 
-  <div class="page-header" style="background: linear-gradient(180deg, rgba(6,182,212,0.06) 0%, var(--bg) 100%);">
-    <div class="container">
-      <span class="section-label">Connect</span>
-      <h1>Let's <span class="gradient-text">Talk</span></h1>
-      <p>Interested in ARIA, energy analytics, renewable data, or collaboration? I'd love to hear from you.</p>
+  <header class="page-head">
+    <div class="band-glow" style="top:-14%;right:-6%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">Connect</span>
+      <h1 class="js-lines">Happy to walk through<br><span class="accent">the method.</span></h1>
+      <p class="lede js-fade">
+        Including where it breaks. If a number on this site looks wrong, that is the most useful
+        message you can send.
+      </p>
     </div>
-  </div>
+  </header>
 
-  <section>
-    <div class="container">
-      <div class="contact-grid">
+  <section class="band band-2" style="padding-top:clamp(40px,5vw,64px);">
+    <div class="shell">
+      <div class="split">
 
-        <div class="reveal">
-          <h2 style="margin-bottom:24px;">Send a message</h2>
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-group">
+        <div class="js-fade">
+          <h2 class="h-sm" style="margin-bottom:22px;">Send a message</h2>
+          <form id="contactForm" novalidate>
+            <div class="field">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
             </div>
-            <div class="form-group">
+            <div class="field">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
             </div>
-            <div class="form-group">
+            <div class="field">
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+              <input type="text" id="subject" name="subject" placeholder="What's this about?">
             </div>
-            <div class="form-group">
+            <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell me what's on your mind..." required></textarea>
+              <textarea id="message" name="message" placeholder="What would you like to know?" required></textarea>
             </div>
-            <div id="form-status" style="font-size:0.85rem;color:var(--accent);display:none;padding:10px 0;"></div>
-            <button type="submit" class="btn btn-primary">Send Message &rarr;</button>
+            <div id="formStatus" role="status" style="font-size:.85rem;color:var(--signal);display:none;padding:6px 0 12px;"></div>
+            <button type="submit" class="btn btn-primary">Send message &rarr;</button>
           </form>
         </div>
 
-        <div class="reveal">
-          <h2 style="margin-bottom:24px;">Direct</h2>
-
-          <div class="card" style="padding: 20px; margin-bottom: 16px;">
-            <div style="font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Email</div>
-            <a href="mailto:kanavverma2000@gmail.com" style="font-size: 0.95rem; font-weight: 600;">kanavverma2000@gmail.com</a>
+        <div class="js-fade">
+          <h2 class="h-sm" style="margin-bottom:22px;">Direct</h2>
+          <div class="direct">
+            <div class="direct-item">
+              <div class="direct-k">Email</div>
+              <a class="direct-v" href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a>
+            </div>
+            <div class="direct-item">
+              <div class="direct-k">LinkedIn</div>
+              <a class="direct-v" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">linkedin.com/in/kanavverma</a>
+            </div>
+            <div class="direct-item">
+              <div class="direct-k">GitHub</div>
+              <a class="direct-v" href="https://github.com/kanavverma2000" target="_blank" rel="noopener">github.com/kanavverma2000</a>
+            </div>
+            <div class="direct-item">
+              <div class="direct-k">Location</div>
+              <span class="direct-v">Sydney, NSW, Australia</span>
+            </div>
           </div>
 
-          <div class="card" style="padding: 20px; margin-bottom: 16px;">
-            <div style="font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">LinkedIn</div>
-            <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener" style="font-size: 0.95rem; font-weight: 600;">linkedin.com/in/kanavverma</a>
-          </div>
-
-          <div class="card" style="padding: 20px; margin-bottom: 16px;">
-            <div style="font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">GitHub</div>
-            <a href="https://github.com/kanavverma2000" target="_blank" rel="noopener" style="font-size: 0.95rem; font-weight: 600;">github.com/kanavverma2000</a>
-          </div>
-
-          <div class="card" style="padding: 20px; margin-bottom: 16px;">
-            <div style="font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Location</div>
-            <span style="font-size: 0.95rem; font-weight: 600; color: var(--text);">Sydney, NSW, Australia</span>
-          </div>
-
-          <div class="card card-glass" style="padding: 20px; margin-top: 24px; border-color: var(--accent);">
-            <p style="font-size: 0.88rem; font-weight: 600; color: var(--accent); margin-bottom: 6px;">Open to</p>
-            <ul style="font-size: 0.85rem; color: var(--text-2); padding-left: 18px; line-height: 1.9;">
+          <div class="card" style="margin-top:22px;">
+            <div class="direct-k" style="color:var(--accent);">Open to</div>
+            <ul class="open-list">
               <li>Energy analytics roles and contracts</li>
               <li>Collaboration on NEM data projects</li>
               <li>ARIA platform partnerships</li>
-              <li>Speaking and writing opportunities</li>
+              <li>Corrections to anything published here</li>
             </ul>
           </div>
         </div>
@@ -88,27 +126,36 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819"></script>
-<script src="assets/main.js?v=20260819"></script>
+
 <script>
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const subject = document.getElementById('subject').value.trim();
-  const message = document.getElementById('message').value.trim();
-  if (!name || !email || !message) {
-    const s = document.getElementById('form-status');
-    s.textContent = 'Please fill in name, email, and message.';
-    s.style.color = '#f87171'; s.style.display = 'block';
-    return;
-  }
-  const body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
-  window.location.href = 'mailto:kanavverma2000@gmail.com?subject=' + encodeURIComponent(subject || 'ARIA website enquiry') + '&body=' + encodeURIComponent(body);
-  const s = document.getElementById('form-status');
-  s.textContent = 'Your email client should open shortly.';
-  s.style.color = 'var(--accent)'; s.style.display = 'block';
-});
+(function () {
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var msg = form.message.value.trim();
+    if (!name || !email || !msg) {
+      status.textContent = 'Please fill in your name, email and message.';
+      status.style.color = 'var(--signal)';
+      status.style.display = 'block';
+      return;
+    }
+    /* Static site — no backend. Hand the message to the visitor's mail client. */
+    var subject = form.subject.value.trim() || ('Website enquiry from ' + name);
+    var body = msg + '\n\n—\n' + name + '\n' + email;
+    status.textContent = 'Opening your email client…';
+    status.style.color = 'var(--accent)';
+    status.style.display = 'block';
+    window.location.href = 'mailto:kanavverma2000@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
 </script>
+<script src="assets/shared.js?v=20260819b"></script>
+<script src="assets/main.js?v=20260819b"></script>
 </body>
 </html>

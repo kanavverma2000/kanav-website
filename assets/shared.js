@@ -39,7 +39,7 @@
     { href: 'insights.html', label: 'Insights',
       sub: [['insights.html','The analysis'], ['insights.html#method','How I write them']] },
     { href: 'about.html',    label: 'About',
-      sub: [['about.html','Profile'], ['cv.html','Full CV']] }
+      sub: [['about.html','Profile'], ['gses.html','GSES work'], ['cv.html','Full CV']] }
   ];
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 

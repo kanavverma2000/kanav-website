@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What I built at GSES — Kanav Verma</title>
+<meta name="description" content="Seven tools built at GSES in four weeks: an inspection pipeline platform, CER portal automation, QLD Government SSFR reporting, sales automation, a photo evidence tool and a website rebuild.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260819t">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .tool-head { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px; }
+  .tool-n { font-size:.74rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  .tool-status {
+    font-size:.68rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+    padding:4px 11px; border-radius:var(--radius-pill); background:var(--good-10); color:var(--good);
+  }
+  .tool-status.build { background:var(--accent-10); color:var(--accent); }
+  .tool-status.hold  { background:var(--ink-08); color:var(--ink-52); }
+  .stack { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+  .stack span {
+    font-size:.72rem; font-weight:500; padding:5px 11px; border-radius:var(--radius-pill);
+    border:1px solid var(--ink-14); color:var(--ink-52);
+  }
+  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:11px; margin-top:20px; }
+  .kpi div { background:var(--ink-08); border-radius:var(--radius-sm); padding:15px 12px; text-align:center; }
+  .kpi b { display:block; font-size:1.25rem; font-weight:900; letter-spacing:-.04em; color:var(--accent);
+           font-variant-numeric:tabular-nums; }
+  .kpi small { display:block; font-size:.72rem; color:var(--ink-52); margin-top:5px; line-height:1.45; }
+  .evolved { margin-top:18px; padding-left:15px; border-left:2px solid var(--ink-14);
+             font-size:.84rem; line-height:1.7; color:var(--ink-52); }
+  .evolved b { color:var(--ink-70); font-weight:600; }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <header class="page-head">
+    <div class="band-glow" style="top:-12%;left:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">GSES &middot; Renewable Project Engineer</span>
+      <h1 class="js-lines" style="max-width:16ch;">Seven tools,<br><span class="accent">four weeks.</span></h1>
+      <p class="lede js-fade">
+        I joined to deliver Solar PV, BESS and EV consulting. I also kept noticing the same thing:
+        the engineering was fine, and the process around it was manual. So I built the process.
+      </p>
+      <div class="chips js-fade" style="margin-top:26px;">
+        <a class="chip" href="#pipeline">Inspection pipeline</a>
+        <a class="chip" href="#formfiller">CER form filler</a>
+        <a class="chip" href="#ssfr">QLD SSFR reporting</a>
+        <a class="chip" href="#sales">Sales automation</a>
+        <a class="chip" href="#photo">Photo evidence tool</a>
+        <a class="chip" href="#website">Website rebuild</a>
+        <a class="chip" href="#tracker">Work tracker</a>
+        <a class="chip" href="#impact">What it saved</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section class="band band-tight band-2">
+    <div class="shell">
+      <div class="stat-grid js-fade" data-stagger=".stat-card">
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="7">0</span></div>
+          <div class="stat-lbl">Tools built</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="83">0</span><span class="stat-sfx">min</span></div>
+          <div class="stat-lbl">Saved per inspection site</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="1066">0</span></div>
+          <div class="stat-lbl">Active inspections in scope</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="1600">0</span><span class="stat-sfx">h</span></div>
+          <div class="stat-lbl">Person-hours removed</div>
+        </div>
+      </div>
+      <p class="caption js-fade" style="text-align:center;margin-top:18px;">
+        Built 14 June to 13 July 2026. Volumes are taken from the live workbooks; per-task minute
+        figures are reasoned estimates, and I've said which is which.
+      </p>
+    </div>
+  </section>
+
+  <!-- 01 PIPELINE -->
+  <section class="band band-1" id="pipeline">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">01 &mdash; Ops platform</span>
+        <span class="tool-status">Live</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:22ch;">Inspection Pipeline Tool &mdash; <span class="accent">the flagship.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              End-to-end management for national solar and battery inspections. Homeowner consent,
+              dispatch, inspector scheduling and matching, a live status board, SafetyCulture sync,
+              ops dashboards, reconciliation against the Clean Energy Regulator's records, the
+              inspector registry, the report pipeline, and CER portal form-fill.
+            </p>
+            <p>
+              Web, mobile and API. It powers national CER residential battery and PV inspections
+              plus the QLD Battery Booster program.
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>How it grew.</b> v0.3 CER/SRES compliance &rarr; v0.4 GPS and geocoding &rarr;
+            v0.5 CEC product validation and PDF reports &rarr; v0.8 SafetyCulture ingest,
+            reconciliation and the CER filler. Then a template registry, unified inspector
+            profiles, a dispatch matching engine, a mobile "My Jobs" view with a dynamic form
+            renderer, bulk email campaigns, three-way login with inspector self-application, the
+            QLD SSFR portal, and go-live on Railway.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>105</b><small>Commits</small></div>
+            <div><b>190</b><small>Inspector profiles</small></div>
+            <div><b>3</b><small>Live CER templates</small></div>
+            <div><b>50+</b><small>Tests</small></div>
+          </div>
+          <div class="stack">
+            <span>FastAPI</span><span>Next.js</span><span>Expo / React Native</span>
+            <span>SQLite (WAL)</span><span>Playwright</span><span>Railway</span>
+          </div>
+          <p class="caption" style="margin-top:16px;">
+            Used by the inspections ops team for dispatch and status, by field inspectors through
+            the mobile app, and by management for the KPI dashboards.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 FORM FILLER -->
+  <section class="band band-2" id="formfiller">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">02 &mdash; Automation / RPA</span>
+        <span class="tool-status build">Pre-production</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">CER Form Filler &mdash; <span class="accent">150 fields, never submitted.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              Browser automation that opens a Clean Energy Regulator draft submission and fills
+              every field from a single canonical inspection record, PV and battery. Around
+              <strong>150 fields</strong> that were being keyed by hand, per site.
+            </p>
+            <p>
+              <strong>It never clicks Submit.</strong> That is a design constraint, not an
+              oversight &mdash; a human reviews the filled form and submits it. Regulatory
+              submissions are not somewhere to put a fully autonomous agent.
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>How it grew.</b> Born inside the pipeline tool, then split out. Field maps grounded
+            in three real SafetyCulture templates, attach-to-existing-browser so two-factor auth is
+            never replayed, self-healing locators, screenshots at each step. Validated read-only
+            against <strong>50 real draft submissions</strong> before anything was written.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>~150</b><small>Fields per submission</small></div>
+            <div><b>50</b><small>Real drafts crawled</small></div>
+            <div><b>~30&rarr;5</b><small>Minutes per submission</small></div>
+            <div><b>0</b><small>Auto-submits, by design</small></div>
+          </div>
+          <div class="stack">
+            <span>Python</span><span>Playwright</span><span>Chrome DevTools Protocol</span><span>PyInstaller</span>
+          </div>
+          <p class="caption" style="margin-top:16px;">
+            Ships with a reconnaissance recorder that maps the portal read-only, reference
+            checklists, a data standardiser and a knowledge base.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SSFR -->
+  <section class="band band-3" id="ssfr">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">03 &mdash; Reporting / BI</span>
+        <span class="tool-status">Built</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">QLD Government SSFR reporting &mdash; <span class="accent">written by code, not by hand.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              Reporting for <strong>Supercharged Solar for Renters</strong>, run under the
+              Queensland Government Energy Programs Inspectorate. Three pages: programme overview
+              with the scheduling pipeline and LGA spread, contractor and equipment allocation, and
+              inspection outcomes with pre- and post-rectification tranche matrices.
+            </p>
+            <p>
+              The unusual part is that the report isn't clicked together. Two Python scripts author
+              the data model, the report JSON, the theme and the logo programmatically, so the whole
+              thing is reproducible and diffable rather than a binary somebody has to remember how
+              to rebuild.
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>Why that matters.</b> Government reporting recurs on a schedule. A hand-built report
+            decays the moment the person who made it is unavailable; a generated one regenerates.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>3</b><small>Report pages</small></div>
+            <div><b>~3h&rarr;15m</b><small>Per reporting period</small></div>
+            <div><b>2</b><small>Generator scripts</small></div>
+            <div><b>QLD</b><small>Government branded theme</small></div>
+          </div>
+          <div class="stack"><span>Python</span><span>Power BI (PBIP)</span><span>Pillow</span></div>
+          <p class="caption" style="margin-top:16px;">
+            Program OE2220, Queensland Government Energy Programs Inspectorate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SALES -->
+  <section class="band band-1" id="sales">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">04 &mdash; Sales / CRM</span>
+        <span class="tool-status">Delivered</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Sales automation &mdash; <span class="accent">with the guardrails in the code.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              An account-based workflow: seed the CRM with target companies, confirm decision-makers
+              manually, enrich business emails, and draft personalised intro emails into Outlook.
+              The CRM stays the system of record and everything is logged against the organisation
+              and contact.
+            </p>
+            <p>
+              Three guarantees are enforced in code rather than in a policy document:
+              <strong>no automated LinkedIn actions, no auto-send, nothing leaves as a draft you
+              haven't read.</strong> Outreach tooling that can send on its own is a reputational
+              liability, and the constraint belongs where it can't be forgotten.
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>Delivered</b> as a self-contained web app with idempotent CRM setup and
+            credit-guarded enrichment, packaged and handed to the Managing Director.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>8</b><small>Pipeline stages</small></div>
+            <div><b>33</b><small>Tests</small></div>
+            <div><b>~25&rarr;3</b><small>Minutes per prospect</small></div>
+            <div><b>0</b><small>Auto-sends, by design</small></div>
+          </div>
+          <div class="stack">
+            <span>FastAPI</span><span>Plain JS</span><span>SQLite</span>
+            <span>Pipedrive API</span><span>Hunter</span><span>MS Graph</span><span>Anthropic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PHOTO -->
+  <section class="band band-2" id="photo">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">05 &mdash; Desktop utility</span>
+        <span class="tool-status">Packaged</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Photo evidence tool &mdash; <span class="accent">defensible metadata.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              A desktop app that corrects and stamps capture timestamps and applies watermarks to
+              battery inspection photos, so field evidence carries consistent, defensible metadata
+              when it goes to the regulator.
+            </p>
+            <p>
+              Small problem, real consequence: an inspection photo whose timestamp can't be trusted
+              is an inspection photo that can be challenged. Handles HEIC and HEIF alongside JPG and
+              PNG, because that's what phones actually produce.
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>How it grew.</b> A metadata-amending script that turned into a full GUI with an
+            auto-installer, then bundled into a one-click Windows executable with desktop shortcuts
+            so inspectors never see a terminal.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>5</b><small>Image formats</small></div>
+            <div><b>~20&rarr;1.5</b><small>Minutes per site</small></div>
+            <div><b>1</b><small>Click to run</small></div>
+          </div>
+          <div class="stack">
+            <span>Python</span><span>CustomTkinter</span><span>Pillow</span>
+            <span>pillow-heif</span><span>PyInstaller</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 WEBSITE -->
+  <section class="band band-3" id="website">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">06 &mdash; Marketing / web</span>
+        <span class="tool-status build">In build</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Website rebuild &mdash; <span class="accent">and a repositioning.</span></h2>
+
+      <div class="split" style="margin-top:22px;">
+        <div>
+          <div class="prose js-fade">
+            <p>
+              A rebuild of the public site, repositioning the company from "a training company that
+              also consults" to independent renewable energy engineering and assurance. Static
+              multi-page build on a custom design system, with an interactive world map of the 40+
+              project countries.
+            </p>
+            <p>
+              The part I'd argue for hardest isn't visual. I compiled a knowledge base from the live
+              site, the rebrand draft and internal documents, and flagged every claim that needed
+              verifying before publication. <strong>A compliance and assurance brand cannot afford
+              an unverified claim on its own website.</strong>
+            </p>
+          </div>
+          <div class="evolved js-fade">
+            <b>Note.</b> This site you're reading now runs a descendant of that design system.
+          </div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
+          <div class="kpi">
+            <div><b>4</b><small>Pages</small></div>
+            <div><b>9</b><small>Commits</small></div>
+            <div><b>40+</b><small>Project countries mapped</small></div>
+            <div><b>0</b><small>Build step</small></div>
+          </div>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GSAP</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 TRACKER -->
+  <section class="band band-1" id="tracker">
+    <div class="shell">
+      <div class="tool-head js-fade">
+        <span class="tool-n">07 &mdash; Measurement</span>
+        <span class="tool-status">Live</span>
+      </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Work tracker &mdash; <span class="accent">so the claims have a source.</span></h2>
+      <div class="prose js-fade" style="margin-top:6px;">
+        <p>
+          Every figure on this page comes from a tracker I built to record what was made, when, what
+          it replaced and what it saved &mdash; alongside the improvement backlog and the known
+          gaps in each tool.
+        </p>
+        <p>
+          It exists for the same reason the research page publishes its error bands. A time-saving
+          claim with no method behind it is a number somebody made up, and I would rather be able to
+          show the working than be believed on assertion.
+        </p>
+      </div>
+      <div class="stack js-fade" style="margin-top:18px;">
+        <span>Excel / openpyxl</span><span>Python</span><span>PowerShell</span><span>Markdown mirror for diffing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="band band-2" id="impact">
+    <div class="shell">
+      <div class="mod-num js-fade">What it saved</div>
+      <h2 class="h-md js-lines" style="max-width:20ch;">83 minutes a site, <span class="accent">1,066 sites.</span></h2>
+      <p class="prose js-fade">
+        Per-inspection back-office time, before and after. Volumes come from the live workbooks; the
+        minute figures are reasoned estimates, and I've labelled them as such rather than presenting
+        them as measured.
+      </p>
+
+      <div class="table-wrap js-fade" style="margin-top:24px;">
+        <table class="data">
+          <thead><tr><th>Workflow</th><th>Tool</th><th>Before</th><th>After</th><th>Saved</th></tr></thead>
+          <tbody>
+            <tr><td>CER portal draft submission</td><td>Form Filler</td><td class="num">~30 min</td><td class="num">~5 min</td><td class="num ok">~25 min</td></tr>
+            <tr><td>Photo timestamp + watermark</td><td>Photo tool</td><td class="num">~20 min</td><td class="num">~1.5 min</td><td class="num ok">~18 min</td></tr>
+            <tr><td>Draft report generation</td><td>Pipeline</td><td class="num">~20 min</td><td class="num">~2.5 min</td><td class="num ok">~17.5 min</td></tr>
+            <tr><td>Consent &amp; homeowner dispatch</td><td>Pipeline</td><td class="num">~10 min</td><td class="num">~1 min</td><td class="num ok">~9 min</td></tr>
+            <tr><td>Intake &rarr; inspector allocation</td><td>Pipeline</td><td class="num">~10 min</td><td class="num">~1.5 min</td><td class="num ok">~8.5 min</td></tr>
+            <tr><td>SafetyCulture &harr; CER reconciliation</td><td>Pipeline</td><td class="num">~6 min</td><td class="num">~0.5 min</td><td class="num ok">~5.5 min</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>Per inspection site</td><td></td><td class="num">~96 min</td><td class="num">~12 min</td><td class="num ok">~83 min</td></tr>
+          </tfoot>
+        </table>
+        <p class="caption">
+          Plus the report-level work: fortnightly progress reports ~120 &rarr; ~18 min, the QLD SSFR
+          report ~3 h &rarr; ~15 min, inspector applications ~6 &rarr; ~1 min, sales prospecting
+          ~25 &rarr; ~3 min. Across the active inspection volume that lands near
+          <strong>1,600&ndash;1,700 person-hours</strong>.
+        </p>
+      </div>
+
+      <div class="note js-fade">
+        <span class="note-title">What is still manual, and should be</span>
+        On-site capture still takes one to two hours per site and residential report writing is
+        still a person. Those are the two largest remaining costs, and neither is a good automation
+        candidate &mdash; one is physical inspection, the other is professional judgement being
+        written down. Automating the wrong half of a process is how you end up with a fast pipeline
+        producing work nobody trusts.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band band-4" style="text-align:center;overflow:hidden;">
+    <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
+    <div class="shell-narrow">
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">Same instinct,<br><span class="accent">different market.</span></h2>
+      <p class="lede js-fade" style="margin:24px auto 38px;max-width:540px;">
+        The tools above and ARIA come from the same place: the answer usually exists in data
+        somebody already has, and the work is building the thing that gets it out.
+      </p>
+      <div class="btn-row center js-fade">
+        <a class="btn btn-primary" href="research.html">The NEM research</a>
+        <a class="btn btn-glass" href="about.html">Back to about</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="assets/shared.js?v=20260819t"></script>
+<script src="assets/main.js?v=20260819t"></script>
+</body>
+</html>

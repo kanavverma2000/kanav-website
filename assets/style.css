@@ -916,14 +916,14 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
 /* ── the fuel cards ─────────────────────────────────────────────────────── */
 .g-dials { display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 14px; }
 .g-dial {
-  position: relative; overflow: hidden;
+  position: relative;                 /* not overflow:hidden - it would clip the sparks */
   background: var(--card); border: 1px solid var(--ink-08);
   border-radius: 16px; padding: 15px 17px 13px;
   transition: border-color 220ms ease;
 }
 .g-dial::before {
-  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px;
-  background: var(--c); opacity: .85;
+  content: ""; position: absolute; inset: 14px auto 14px 0; width: 3px;
+  border-radius: 0 3px 3px 0; background: var(--c); opacity: .85;
 }
 .g-dial:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); }
 .g-dial-head { display: flex; align-items: center; gap: 9px; margin-bottom: 13px; }
@@ -962,21 +962,6 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
   display: block; height: 100%; border-radius: 5px; background: var(--c);
   transition: width 220ms var(--ease-out);
 }
-.g-thumb {
-  position: absolute; top: 50%; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--surface); border: 2.5px solid var(--c);
-  transform: translate(-50%, -50%); box-shadow: 0 2px 7px rgba(0,0,0,.13);
-  transition: left 220ms var(--ease-out), width 160ms var(--ease-out),
-              height 160ms var(--ease-out), box-shadow 160ms ease;
-  pointer-events: none;
-}
-.g-slider:hover .g-thumb { width: 23px; height: 23px; }
-.g-slider.is-drag .g-thumb {
-  width: 26px; height: 26px;
-  box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 16%, transparent), 0 3px 10px rgba(0,0,0,.16);
-  transition: width 120ms var(--ease-out), height 120ms var(--ease-out), box-shadow 160ms ease;
-}
-.g-slider.is-drag .g-fill { transition: none; }
 .g-dial-note { font-size: .755rem; color: var(--ink-45); margin-top: 11px; line-height: 1.55; }
 
 /* ── stress buttons ─────────────────────────────────────────────────────── */
@@ -1013,4 +998,110 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
   .g-fill, .g-thumb, .g-hint, .g-dial, .g-dial-v { transition: none; }
   .g-shortfall { animation: none; }
   .g-stress-btn:active { transform: none; }
+}
+
+/* ── the thumb is the fuel ─────────────────────────────────────────────────
+   Grab the sun and it throws rays. Grab the wind and it trails gusts behind
+   your finger. The battery flicks electrons, coal coughs soot, gas licks
+   flame. None of it is load-bearing, so all of it goes under reduced motion. */
+.g-thumb {
+  position: absolute; top: 50%; left: 0;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--surface); border: 2px solid var(--c); color: var(--c);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: left 220ms var(--ease-out), transform 160ms var(--ease-out),
+              box-shadow 180ms ease;
+  pointer-events: none; z-index: 2;
+}
+.g-thumb svg { width: 17px; height: 17px; display: block; }
+.g-slider:hover .g-thumb { transform: translate(-50%, -50%) scale(1.09); }
+.g-slider.is-drag .g-thumb {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--c) 15%, transparent), 0 4px 12px rgba(0,0,0,.2);
+  transition: transform 130ms var(--ease-out), box-shadow 160ms ease;
+}
+.g-slider.is-drag .g-fill { transition: none; }
+.g-slider.is-drag .g-thumb { transition-property: transform, box-shadow; }
+
+/* each fuel animates its own icon while you hold it */
+.g-slider.is-drag #t-solar svg { animation: gSpin 2.6s linear infinite; }
+.g-slider.is-drag #t-wind  svg { animation: gGust .55s ease-in-out infinite; }
+.g-slider.is-drag #t-batt  svg { animation: gBuzz .28s steps(2) infinite; }
+.g-slider.is-drag #t-coal  svg { animation: gRumble .16s ease-in-out infinite; }
+.g-slider.is-drag #t-gas   svg { animation: gFlicker .34s ease-in-out infinite; }
+@keyframes gSpin    { to { transform: rotate(360deg) } }
+@keyframes gGust    { 0%,100% { transform: translateX(-1.4px) } 50% { transform: translateX(1.4px) } }
+@keyframes gBuzz    { 0% { opacity: 1 } 50% { opacity: .45 } 100% { opacity: 1 } }
+@keyframes gRumble  { 0%,100% { transform: translate(0,0) } 50% { transform: translate(.7px,.7px) } }
+@keyframes gFlicker { 0%,100% { transform: scaleY(1) } 50% { transform: scaleY(1.16) } }
+
+/* ── the particles ─────────────────────────────────────────────────────── */
+.g-p {
+  position: absolute; top: 50%; pointer-events: none;
+  will-change: transform, opacity; z-index: 1;
+}
+
+/* solar: hard little rays straight out from the middle */
+.g-p-solar {
+  width: 2px; height: 7px; border-radius: 1px; background: var(--g-solar);
+  transform: translate(-50%, -50%) rotate(var(--a)) translateY(0);
+  animation: gRay 520ms ease-out forwards;
+}
+@keyframes gRay {
+  from { transform: translate(-50%,-50%) rotate(var(--a)) translateY(-2px) scaleY(.5); opacity: .95 }
+  to   { transform: translate(-50%,-50%) rotate(var(--a)) translateY(calc(var(--d) * -1)) scaleY(1); opacity: 0 }
+}
+
+/* wind: thin gusts streaming off behind the drag */
+.g-p-wind {
+  width: var(--w); height: 2px; border-radius: 2px; background: var(--g-wind);
+  animation: gGustP 620ms cubic-bezier(.2,.7,.3,1) forwards;
+}
+@keyframes gGustP {
+  from { transform: translate(-50%,-50%); opacity: .85 }
+  to   { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scaleX(.35); opacity: 0 }
+}
+
+/* battery: electrons flicking off, each with a bright core */
+.g-p-batt {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--g-batt);
+  box-shadow: 0 0 5px color-mix(in srgb, var(--g-batt) 75%, transparent);
+  animation: gElectron 620ms cubic-bezier(.25,.8,.35,1) forwards;
+}
+@keyframes gElectron {
+  from { transform: translate(-50%,-50%) scale(1); opacity: 1 }
+  to   { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.2); opacity: 0 }
+}
+
+/* coal: soot, slow and swelling as it goes */
+.g-p-coal {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: color-mix(in srgb, var(--g-coal) 62%, transparent);
+  filter: blur(1px);
+  animation: gSoot 900ms ease-out forwards;
+}
+@keyframes gSoot {
+  from { transform: translate(-50%,-50%) scale(.4); opacity: .75 }
+  to   { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s)); opacity: 0 }
+}
+
+/* gas: flame licks rising and pinching out */
+.g-p-gas {
+  width: 6px; height: 9px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: var(--g-gas);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--g-gas) 60%, transparent);
+  animation: gFlame 560ms ease-out forwards;
+}
+@keyframes gFlame {
+  from { transform: translate(-50%,-50%) scale(1) }
+  to   { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.25) rotate(12deg); opacity: 0 }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-p { display: none; }
+  .g-slider.is-drag .g-thumb svg { animation: none; }
+  .g-thumb { transition: none; }
+  .g-slider:hover .g-thumb, .g-slider.is-drag .g-thumb { transform: translate(-50%,-50%); }
 }

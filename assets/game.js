@@ -333,7 +333,10 @@
           ' aria-label="' + t.name + ' capacity in gigawatts"' +
           ' aria-valuemin="0" aria-valuemax="' + MAX_GW + '" aria-valuenow="' + mix[t.key] + '">' +
           '<span class="g-track"><span class="g-fill" id="f-' + t.key + '"></span></span>' +
-          '<span class="g-thumb" id="t-' + t.key + '"></span>' +
+          '<span class="g-thumb" id="t-' + t.key + '">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"' +
+            ' stroke="currentColor" stroke-width="1.6">' + ICON[t.key] + '</svg>' +
+          '</span>' +
         '</div>' +
         '<p class="g-dial-note">' + t.note + '</p>';
       dials.appendChild(row);
@@ -439,6 +442,50 @@
         : 'Dark for ' + res.dark + ' ' + (res.dark === 1 ? 'hour' : 'hours') + '.';
     }
 
+    /* ── each fuel throws off what a fuel throws off ─────────────────────
+       Solar sheds rays, wind trails gusts, the battery flicks electrons, coal
+       coughs soot, gas licks flame. Purely for the joy of it, so the whole
+       thing is skipped under prefers-reduced-motion and capped hard: a slider
+       people scrub for a minute must not quietly grow a thousand DOM nodes. */
+    var COUNT = { solar: 3, wind: 2, batt: 3, coal: 2, gas: 2 };
+    var alive = 0, MAX_ALIVE = 90;
+
+    function emit(t, sl, pct, dir) {
+      if (reduce || alive > MAX_ALIVE) return;
+      var n = COUNT[t.key];
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement('i');
+        b.className = 'g-p g-p-' + t.key;
+        b.style.left = pct + '%';
+
+        if (t.key === 'solar') {                       /* rays, straight out */
+          b.style.setProperty('--a', (Math.random() * 360) + 'deg');
+          b.style.setProperty('--d', (13 + Math.random() * 13) + 'px');
+        } else if (t.key === 'wind') {                 /* gusts, trailing behind */
+          b.style.setProperty('--dx', (-dir * (26 + Math.random() * 30)) + 'px');
+          b.style.setProperty('--dy', ((Math.random() - 0.5) * 15) + 'px');
+          b.style.setProperty('--w', (9 + Math.random() * 12) + 'px');
+        } else if (t.key === 'batt') {                 /* electrons, scattering */
+          b.style.setProperty('--dx', ((Math.random() - 0.5) * 44) + 'px');
+          b.style.setProperty('--dy', (-8 - Math.random() * 20) + 'px');
+        } else if (t.key === 'coal') {                 /* soot, drifting up slow */
+          b.style.setProperty('--dx', ((Math.random() - 0.5) * 22) + 'px');
+          b.style.setProperty('--dy', (-16 - Math.random() * 16) + 'px');
+          b.style.setProperty('--s', (0.7 + Math.random() * 1.5).toFixed(2));
+        } else {                                       /* flame, rising and wobbling */
+          b.style.setProperty('--dx', ((Math.random() - 0.5) * 15) + 'px');
+          b.style.setProperty('--dy', (-15 - Math.random() * 15) + 'px');
+        }
+        b.style.animationDelay = (Math.random() * 55) + 'ms';
+        sl.appendChild(b);
+        alive++;
+        b.addEventListener('animationend', function () {
+          if (this.parentNode) this.parentNode.removeChild(this);
+          alive--;
+        });
+      }
+    }
+
     /* ── dragging: the slider, and the number itself ─────────────────────── */
     function setVal(k, v) {
       v = Math.max(0, Math.min(MAX_GW, Math.round(v)));
@@ -449,9 +496,23 @@
 
     TECHS.forEach(function (t) {
       var sl = mount.querySelector('#s-' + t.key);
+      var lastV = mix[t.key], lastEmit = 0;
+
+      function puff(dir) {
+        var now = performance.now();
+        if (now - lastEmit < 45) return;               /* throttled to ~22 a second */
+        lastEmit = now;
+        emit(t, sl, mix[t.key] / MAX_GW * 100, dir || 1);
+      }
+      function changed() {
+        if (mix[t.key] === lastV) return;
+        puff(mix[t.key] > lastV ? 1 : -1);
+        lastV = mix[t.key];
+      }
       function fromX(clientX) {
         var r = sl.getBoundingClientRect();
         setVal(t.key, ((clientX - r.left) / r.width) * MAX_GW);
+        changed();
       }
       sl.addEventListener('pointerdown', function (e) {
         sl.setPointerCapture(e.pointerId);
@@ -467,11 +528,11 @@
       });
       sl.addEventListener('keydown', function (e) {
         var d = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[e.key];
-        if (d !== undefined) { setVal(t.key, mix[t.key] + d * (e.shiftKey ? 5 : 1)); e.preventDefault(); return; }
-        if (e.key === 'Home')     { setVal(t.key, 0); e.preventDefault(); }
-        if (e.key === 'End')      { setVal(t.key, MAX_GW); e.preventDefault(); }
-        if (e.key === 'PageUp')   { setVal(t.key, mix[t.key] + 5); e.preventDefault(); }
-        if (e.key === 'PageDown') { setVal(t.key, mix[t.key] - 5); e.preventDefault(); }
+        if (d !== undefined) { setVal(t.key, mix[t.key] + d * (e.shiftKey ? 5 : 1)); changed(); e.preventDefault(); return; }
+        if (e.key === 'Home')     { setVal(t.key, 0); changed(); e.preventDefault(); }
+        if (e.key === 'End')      { setVal(t.key, MAX_GW); changed(); e.preventDefault(); }
+        if (e.key === 'PageUp')   { setVal(t.key, mix[t.key] + 5); changed(); e.preventDefault(); }
+        if (e.key === 'PageDown') { setVal(t.key, mix[t.key] - 5); changed(); e.preventDefault(); }
       });
 
       /* scrub the number sideways, the way a design tool does it */
@@ -483,7 +544,9 @@
         e.preventDefault();
       });
       vEl.addEventListener('pointermove', function (e) {
-        if (vEl.hasPointerCapture(e.pointerId)) setVal(t.key, sv + (e.clientX - sx) / 9);
+        if (!vEl.hasPointerCapture(e.pointerId)) return;
+        setVal(t.key, sv + (e.clientX - sx) / 9);
+        changed();
       });
       ['pointerup', 'pointercancel'].forEach(function (ev) {
         vEl.addEventListener(ev, function () { vEl.classList.remove('is-scrub'); });

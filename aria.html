@@ -79,6 +79,57 @@
   .find p  { font-size:.89rem; line-height:1.66; color:var(--ink-60); }
   .find .src { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
                font-size:.76rem; color:var(--ink-45); line-height:1.5; }
+
+  /* ---- The 45-second rewind ---- */
+  .rw-head { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:26px; }
+  .rw-clock { display:inline-flex; align-items:center; gap:8px; padding:6px 13px; border-radius:999px;
+              background:var(--accent-10); color:var(--accent); font-size:.74rem; font-weight:800;
+              letter-spacing:.1em; text-transform:uppercase; }
+  .rw-clock .rw-tick { width:7px; height:7px; border-radius:50%; background:currentColor; }
+  .rw-note { font-size:.78rem; color:var(--ink-45); }
+  .rw { max-width:34em; }
+  .rw p { font-size:clamp(.99rem,1.6vw,1.12rem); line-height:1.62; letter-spacing:-.01em;
+          margin:0 0 20px; color:var(--ink-52); }
+  /* the skim path: four dark lines that carry the whole argument on their own */
+  .rw p.lead, .rw p.turn, .rw p.you, .rw .qs b {
+    font-size:clamp(1.16rem,2.2vw,1.44rem); line-height:1.4; color:var(--ink);
+    letter-spacing:-.025em; }
+  .rw p.lead { font-weight:700; }
+  .rw p.turn { font-weight:800; font-size:clamp(1.32rem,2.7vw,1.78rem); line-height:1.26;
+               letter-spacing:-.035em; margin-bottom:24px; }
+  .rw p.turn .accent { color:var(--accent); }
+  .rw p.quiet { color:var(--ink-52); }
+  .rw p.you { font-weight:800; padding-top:20px; border-top:1px solid var(--ink-08); }
+  .rw .qs { display:block; margin:0 0 22px; padding-left:18px;
+            border-left:2px solid var(--accent); }
+  .rw .qs b { display:block; font-weight:600; margin-bottom:10px; }
+  .rw .qs b:last-child { margin-bottom:0; }
+
+  /* the tape */
+  .tape { margin:6px 0 30px; }
+  .tape svg { display:block; width:100%; height:auto; overflow:visible; }
+  .tape .tp-cap { margin-top:10px; font-size:.75rem; color:var(--ink-45); }
+  .tape .tp-gap { fill:var(--signal); opacity:0; transition:opacity 700ms ease 1500ms; }
+  .tape .tp-a, .tape .tp-b { fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .tape .tp-a { stroke:var(--accent); }
+  .tape .tp-b { stroke:var(--signal); stroke-dasharray:5 4; }
+  .tape .tp-a, .tape .tp-b { stroke-dashoffset:var(--len); }
+  .tape .tp-lbl { font-size:11px; font-weight:700; letter-spacing:.02em; opacity:0;
+                  transition:opacity 500ms ease; }
+  .tape .tp-lbl.a { fill:var(--accent); }
+  .tape .tp-lbl.b { fill:var(--signal); }
+  .tape .tp-lbl.g { fill:var(--ink-45); }
+  .tape.run .tp-a { transition:stroke-dashoffset 900ms var(--ease-out); stroke-dashoffset:0; }
+  .tape.run .tp-b { transition:stroke-dashoffset 1000ms var(--ease-out) 700ms; stroke-dashoffset:0; }
+  .tape.run .tp-gap { opacity:.13; }
+  .tape.run .tp-lbl.a { opacity:1; transition-delay:900ms; }
+  .tape.run .tp-lbl.b { opacity:1; transition-delay:1650ms; }
+  .tape.run .tp-lbl.g { opacity:1; transition-delay:2200ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .tape .tp-a, .tape .tp-b { stroke-dashoffset:0 !important; transition:none !important; }
+    .tape .tp-gap { opacity:.13 !important; transition:none !important; }
+    .tape .tp-lbl { opacity:1 !important; transition:none !important; }
+  }
 </style>
 </head>
 <body>
@@ -90,8 +141,9 @@
       <span class="eyebrow js-fade">The platform</span>
       <h1 class="js-lines" style="max-width:15ch;">The whole market, rebuilt.<br><span class="accent">Then rewound.</span></h1>
       <p class="lede js-fade">
-        Each one states what it measures, the figure it returns today, and the condition under which
-        it stops being reliable. That last part is the one most tools leave out.
+        Australia's electricity market keeps a receipt for every five minutes since 2009.
+        I rebuilt all of it from the raw files, then ran it again with one thing taken out,
+        to find out what that one thing was worth.
       </p>
       <div class="chips js-fade" style="margin-top:26px;">
         <a class="chip" href="#modules">What it does</a>
@@ -101,116 +153,68 @@
     </div>
   </header>
 
-  <!-- ═══════════ STATS ═══════════ -->
-  <section class="band band-tight band-1">
+  <!-- =========== THE 45-SECOND VERSION =========== -->
+  <section class="band band-tight band-1" id="short">
     <div class="shell">
-      <div class="stat-grid js-fade" data-stagger=".stat-card">
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="24.5" data-dp="1">0</span><span class="stat-sfx">M</span></div>
-          <div class="stat-lbl">Hourly generation records</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="17">0</span><span class="stat-sfx">yrs</span></div>
-          <div class="stat-lbl">Price history, 2009&ndash;today</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="562">0</span></div>
-          <div class="stat-lbl">Registered units tracked</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="22.3" data-dp="1">0</span><span class="stat-sfx">M</span></div>
-          <div class="stat-lbl">Per-unit revenue records</div>
-        </div>
+
+      <div class="rw-head js-fade">
+        <span class="rw-clock"><span class="rw-tick"></span>The whole thing, in one minute</span>
+        <span class="rw-note">Or under thirty seconds, if you only read the dark lines.</span>
       </div>
+
+      <div class="rw">
+        <p class="lead js-fade">Every five minutes, Australia's electricity market writes down what it
+          just did. Who generated. What it cost. Who got paid.</p>
+
+        <p class="js-fade">Seventeen years of that. Nobody argues about the receipt.</p>
+
+        <p class="turn js-fade">They argue about <span class="accent">what isn't on it.</span></p>
+
+        <span class="qs js-fade">
+          <b>Would that farm have earned more if the grid hadn't switched it off?</b>
+          <b>Did closing that power station lift your bill, or did something else?</b>
+        </span>
+
+        <p class="js-fade">Everyone has an opinion. Nobody has the run of history where it
+          didn't happen.</p>
+
+        <p class="turn js-fade">So I rebuilt the market from the raw files. All of it.<br>
+          <span class="accent">Then I ran it again with one thing taken out.</span></p>
+
+        <div class="tape js-fade" id="tape">
+          <svg viewBox="0 0 600 132" role="img"
+               aria-label="Two price lines. One is what happened. The other is the same day re-cleared with one power station removed. The shaded area between them is the difference.">
+            <polygon class="tp-gap" points="20,86 66,80 112,74 158,58 204,44 250,62 296,70 342,40 388,22 434,34 480,58 526,74 580,80 580,74 526,64 480,40 434,12 388,6 342,22 296,58 250,52 204,36 158,50 112,70 66,78 20,85"></polygon>
+            <path class="tp-a" d="M20,86 L66,80 L112,74 L158,58 L204,44 L250,62 L296,70 L342,40 L388,22 L434,34 L480,58 L526,74 L580,80"></path>
+            <path class="tp-b" d="M580,74 L526,64 L480,40 L434,12 L388,6 L342,22 L296,58 L250,52 L204,36 L158,50 L112,70 L66,78 L20,85"></path>
+            <text class="tp-lbl a" x="20" y="107">what happened</text>
+            <text class="tp-lbl b" x="20" y="122">what would have happened</text>
+            <text class="tp-lbl g" x="356" y="122">the gap is the answer</text>
+          </svg>
+          <p class="tp-cap">Illustration of the method, not a result. Every real number below traces
+            to a query.</p>
+        </div>
+
+        <p class="js-fade">ARIA is that, eight ways: why a farm was switched off, what a closure
+          was worth, whether a battery is long enough.</p>
+
+        <p class="quiet js-fade">I publish the proof that I can reproduce AEMO's own numbers, and
+          the six things I tested that failed.</p>
+
+        <p class="you js-fade">If you own an asset, finance one, or have to defend a number to a
+          room that pushes back: <span class="accent">that is who it is for.</span></p>
+      </div>
+
+      <div class="chips js-fade" style="margin-top:30px;">
+        <a class="chip" href="for-you.html">Which one is me? &rarr;</a>
+        <a class="chip" href="#proof">Show me you can reproduce AEMO</a>
+      </div>
+
     </div>
   </section>
 
-  <!-- ═══ MODULES ═══ -->
-  <section class="band band-2" id="modules">
-    <div class="shell">
-      <div class="mod-num js-fade">What it does</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">Eight modules.<br><span class="accent">Every one owns up.</span></h2>
-
-      <div class="mods js-fade" data-stagger=".card" style="margin-top:8px;">
-
-        <article class="card card-hover mod-card">
-          <div class="n">01, Curtailment attribution</div>
-          <h3>Not how much was lost. Why.</h3>
-          <p class="scan-line">Measured against each unit's unconstrained forecast, then split by cause.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Measured against each unit's unconstrained forecast, then split by cause. A semi-dispatch
-            cap means the network stopped you. Everything else is you responding to price.
-            Network has been flat near <strong>1 TWh a year since 2021</strong>; economic is up
-            <strong>420%</strong>.</p><p><b>Limit.</b> The split is attributed over the capped subset: 7.60 of 8.37 TWh in 2025. The rest stays unattributed rather than guessed. No behind-the-meter.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">02, Revenue capture</div>
-          <h3>Against the right denominator.</h3>
-          <p class="scan-line">Generation-weighted price over the region's time-weighted average, per unit, at
-            five-minute resolution across 22.3M records. Use the volum</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Generation-weighted price over the region's <em>time</em>-weighted average, per unit, at
-            five-minute resolution across 22.3M records. Use the volume-weighted denominator instead
-            and you understate every renewable asset in the market.</p><p><b>Limit.</b> Both halves move. Fleet solar capture "recovered" 41.9% &rarr; 58.7% in H1 2026 while earnings <em>fell</em> $47.38 &rarr; $40.18/MWh. I always show both.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">03, Counterfactual engine</div>
-          <h3>Clear it twice. Report the difference.</h3>
-          <p class="scan-line">169 units priced from AEMO's own heat rates, fuel prices and variable O&amp;M.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>169 units priced from AEMO's own heat rates, fuel prices and variable O&amp;M. Clear the
-            stack with and without a unit. Then do it again at what participants actually
-            <em>bid</em>, over a 227-unit stack. <strong>The gap between the two bounds is the
-            markup.</strong></p><p><b>Limit.</b> The conduct bound's level is unvalidated: $43.77 modelled vs $94.84 observed, corr 0.415. Only the mean is readable. Published as a range.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">04, Coal exit</div>
-          <h3>45 units. 21.1 GW. What's left after.</h3>
-          <p class="scan-line">Retirement schedule, closure history, station context, fleet outlook, interconnector
-            flows and supply&ndash;demand balance. Closure impact</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Retirement schedule, closure history, station context, fleet outlook, interconnector
-            flows and supply&ndash;demand balance. Closure impact runs through the counterfactual
-            engine, not a rule of thumb.</p><p><b>Limit.</b> Announced dates are policy statements, not physics, and they have moved. I report the schedule and model sensitivity to it. I don't forecast whether a date holds.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">05, Storage economics</div>
-          <h3>Half a battery's value is invisible to a spread.</h3>
-          <p class="scan-line">Charge, discharge, cycling, utilisation, price heatmaps, strategy clustering, offtake.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Charge, discharge, cycling, utilisation, price heatmaps, strategy clustering, offtake.
-            Scarcity events run a mean of 7.3 hours and <strong>84.7% exceed four</strong>, so
-            a four-hour battery empties partway through most events it was bought for.
-            <strong>$287,776/MW/yr at 4h, $442,879 at 8h.</strong></p><p><b>Limit.</b> The 8-hour result survives a capex scenario switch, but I no longer call it "the optimum", switching scenarios zeroes a whole 19 GW four-hour fleet.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">06, Weather &amp; resource</div>
-          <h3>36 years, so the drought year shows up.</h3>
-          <p class="scan-line">Hourly wind and solar rebuilt for 286 projects, 50,168 MW, 1990&ndash;2025,
-            calibrated to the unconstrained forecast rather than metered o</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Hourly wind and solar rebuilt for <strong>286 projects, 50,168 MW, 1990&ndash;2025</strong>,
-            calibrated to the unconstrained forecast rather than metered output, metered is
-            already depressed by curtailment, so calibrating to it bakes the curtailment in.</p><p><b>Limit.</b> Calibration is regional, not per-site: five scalars serve 286 projects and between-site variation runs 0.935&ndash;1.331.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">07, System model</div>
-          <h3>Five regions, transmission priced inside.</h3>
-          <p class="scan-line">Least-cost expansion across five regions and six interconnectors, plus pumped hydro,
-            hydrogen storage and a reserve margin. Interconnector</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Least-cost expansion across five regions and six interconnectors, plus pumped hydro,
-            hydrogen storage and a reserve margin. Interconnector limits derived from AEMO's own
-            dispatch-interval limits against eight years of realised flow: not asserted.</p><p><b>Limit.</b> <b>The capacity mix is a function of the capex scenario, not a result.</b> Switching published scenarios moves solar &minus;41%, wind +61%, and a 19 GW battery fleet to zero. Mine included.</p></div></details>
-        </article>
-
-        <article class="card card-hover mod-card">
-          <div class="n">08, Scenarios &amp; forecast error</div>
-          <h3>An explicit clear. Not a black box.</h3>
-          <p class="scan-line">Scenarios are the merit-order stack re-cleared under changed inputs, every assumption
-            exposed and versioned. Alongside it, a decomposition</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Scenarios are the merit-order stack re-cleared under changed inputs, every assumption
-            exposed and versioned. Alongside it, a decomposition of where AEMO's own pre-dispatch
-            goes wrong. <strong>Spikes are ~99% of five-minute error.</strong></p><p><b>Limit.</b> My spike classifier beats a naive "pre-dispatch above $300" rule by <b>1.1%</b>. So I don't sell it. The bias correction is the part that survives.</p></div></details>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ REPRODUCTION ═══════════ -->
-  <section class="band band-2">
+  <!-- =========== REPRODUCTION: the credibility gate, first =========== -->
+  <section class="band band-2" id="proof">
     <div class="band-glow" style="top:10%;left:-8%;" aria-hidden="true"></div>
     <div class="shell">
       <span class="eyebrow js-fade">The test I run first</span>
@@ -279,11 +283,92 @@
     </div>
   </section>
 
+  <!-- =========== WHAT IT DOES =========== -->
+  <section class="band band-1" id="modules">
+    <div class="shell">
+      <div class="mod-num js-fade">What it does</div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Eight questions.<br><span class="accent">And where each answer stops.</span></h2>
+
+      <div class="mods js-fade" data-stagger=".card" style="margin-top:8px;">
+
+        <article class="card card-hover mod-card">
+          <div class="n">01, Curtailment attribution</div>
+          <h3>Your farm was switched off. Was it the grid, or was it the price?</h3>
+          <p class="scan-line">Measured against each unit's own unconstrained forecast, then split by cause. Either the network stopped you, or you chose not to sell.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Measured against each unit's unconstrained forecast, then split by cause. A semi-dispatch
+            cap means the network stopped you. Everything else is you responding to price.
+            Network has been flat near <strong>1 TWh a year since 2021</strong>; economic is up
+            <strong>420%</strong>.</p><p><b>Limit.</b> The split is attributed over the capped subset: 7.60 of 8.37 TWh in 2025. The rest stays unattributed rather than guessed. No behind-the-meter.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">02, Revenue capture</div>
+          <h3>The market price is not the price you got.</h3>
+          <p class="scan-line">Your generation-weighted price against the region's time-weighted average, per unit, at five-minute resolution.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Generation-weighted price over the region's <em>time</em>-weighted average, per unit, at
+            five-minute resolution across 22.3M records. Use the volume-weighted denominator instead
+            and you understate every renewable asset in the market.</p><p><b>Limit.</b> Both halves move. Fleet solar capture "recovered" 41.9% &rarr; 58.7% in H1 2026 while earnings <em>fell</em> $47.38 &rarr; $40.18/MWh. I always show both.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">03, Counterfactual engine</div>
+          <h3>Run the day again with one power station deleted. The difference is what it was worth.</h3>
+          <p class="scan-line">169 units priced from AEMO's own heat rates, fuel prices and variable O&amp;M, then cleared with and without.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>169 units priced from AEMO's own heat rates, fuel prices and variable O&amp;M. Clear the
+            stack with and without a unit. Then do it again at what participants actually
+            <em>bid</em>, over a 227-unit stack. <strong>The gap between the two bounds is the
+            markup.</strong></p><p><b>Limit.</b> The conduct bound's level is unvalidated: $43.77 modelled vs $94.84 observed, corr 0.415. Only the mean is readable. Published as a range.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">04, Coal exit</div>
+          <h3>Every coal unit has a closing date. Here is what the price does when each one goes.</h3>
+          <p class="scan-line">Retirement schedule, closure history, fleet outlook and interconnector flows, across 45 units and 21.1 GW.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Retirement schedule, closure history, station context, fleet outlook, interconnector
+            flows and supply&ndash;demand balance. Closure impact runs through the counterfactual
+            engine, not a rule of thumb.</p><p><b>Limit.</b> Announced dates are policy statements, not physics, and they have moved. I report the schedule and model sensitivity to it. I don't forecast whether a date holds.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">05, Storage economics</div>
+          <h3>Most batteries are built four hours long. Most of the events they were bought for last longer.</h3>
+          <p class="scan-line">Half a battery's value is invisible to a price spread. Charge, discharge, cycling, utilisation, strategy clustering, offtake.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Charge, discharge, cycling, utilisation, price heatmaps, strategy clustering, offtake.
+            Scarcity events run a mean of 7.3 hours and <strong>84.7% exceed four</strong>, so
+            a four-hour battery empties partway through most events it was bought for.
+            <strong>$287,776/MW/yr at 4h, $442,879 at 8h.</strong></p><p><b>Limit.</b> The 8-hour result survives a capex scenario switch, but I no longer call it "the optimum", switching scenarios zeroes a whole 19 GW four-hour fleet.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">06, Weather &amp; resource</div>
+          <h3>One bad year in thirty&#8209;six decides whether a project works. Here is that year.</h3>
+          <p class="scan-line">Hourly wind and solar rebuilt for 286 projects and 50,168 MW, 1990 to 2025, so the bad year is in the sample.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Hourly wind and solar rebuilt for <strong>286 projects, 50,168 MW, 1990&ndash;2025</strong>,
+            calibrated to the unconstrained forecast rather than metered output, metered is
+            already depressed by curtailment, so calibrating to it bakes the curtailment in.</p><p><b>Limit.</b> Calibration is regional, not per-site: five scalars serve 286 projects and between-site variation runs 0.935&ndash;1.331.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">07, System model</div>
+          <h3>What should we build next? The honest answer depends on a number nobody knows.</h3>
+          <p class="scan-line">Least-cost expansion across five regions and six interconnectors, with transmission priced inside the optimisation rather than bolted on.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Least-cost expansion across five regions and six interconnectors, plus pumped hydro,
+            hydrogen storage and a reserve margin. Interconnector limits derived from AEMO's own
+            dispatch-interval limits against eight years of realised flow: not asserted.</p><p><b>Limit.</b> <b>The capacity mix is a function of the capex scenario, not a result.</b> Switching published scenarios moves solar &minus;41%, wind +61%, and a 19 GW battery fleet to zero. Mine included.</p></div></details>
+        </article>
+
+        <article class="card card-hover mod-card">
+          <div class="n">08, Scenarios &amp; forecast error</div>
+          <h3>Change one assumption and watch the market move. You will see which assumption I changed.</h3>
+          <p class="scan-line">The merit-order stack re-cleared under changed inputs, with every assumption exposed and versioned.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Detail and limits</summary><div class="working-body"><p>Scenarios are the merit-order stack re-cleared under changed inputs, every assumption
+            exposed and versioned. Alongside it, a decomposition of where AEMO's own pre-dispatch
+            goes wrong. <strong>Spikes are ~99% of five-minute error.</strong></p><p><b>Limit.</b> My spike classifier beats a naive "pre-dispatch above $300" rule by <b>1.1%</b>. So I don't sell it. The bias correction is the part that survives.</p></div></details>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+
   <!-- ═══════════ FINDINGS ═══════════ -->
   <section class="band band-1">
     <div class="shell">
       <span class="eyebrow js-fade">What I found</span>
-      <h2 class="h-lg max-20 js-lines">Six things the market<br><span class="accent">hasn't caught up with.</span></h2>
+      <h2 class="h-lg max-20 js-lines">Six things in the data<br><span class="accent">that surprised me.</span></h2>
 
       <div class="grid-auto js-fade" data-stagger=".card" style="margin-top:8px;">
 
@@ -295,19 +380,19 @@
 
         <article class="card card-hover find">
           <div class="big-num">85%</div>
-          <h3>Curtailment is a price decision, not a grid limit</h3>
+          <h3>Most switched&#8209;off wind isn't a full grid. It's a price nobody wants to sell at.</h3>
           <p class="scan-line">Network curtailment has sat near 1 TWh a year since 2021.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission, so your exposure is to what gets built <em>around</em> you.</p></div></details><span class="src">212 semi-scheduled units, 2021&ndash;2025.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">8&times;</div>
-          <h3>Best and worst asset in the NEM, same region</h3>
+          <h3>The best and the worst asset in the country sit in the same state.</h3>
           <p class="scan-line">Coopers Gap Wind captured 106.6% of the Queensland average in 2025.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Coopers Gap Wind captured <strong>106.6%</strong> of the Queensland average in 2025. Darling Downs Solar captured <strong>12.9%</strong>. About 100 km apart, same settlement price. No regional curve tells you which one you bought.</p></div></details><span class="src">125 assets over 150 GWh. Wind median 72.1%, solar 39.8%.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">$1 or $20</div>
-          <h3>A coal closure is worth both. Per MWh.</h3>
+          <h3>What did closing Hazelwood really cost? There are two right answers.</h3>
           <p class="scan-line">Clear at what plant costs: ~$1&ndash;2/MWh.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Clear at what plant <em>costs</em>: ~$1&ndash;2/MWh. Clear at what they actually <em>bid</em>: $14&ndash;21/MWh. The gap between the bounds is the markup component. One number can't show you that.</p></div></details><span class="src">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit offer stack.</span>
         </article>
 
@@ -364,7 +449,7 @@
   <section class="band band-3">
     <div class="shell">
       <span class="eyebrow js-fade">Scope</span>
-      <h2 class="h-lg max-20 js-lines">What it does.<br><span class="accent">And what it refuses to.</span></h2>
+      <h2 class="h-lg max-20 js-lines">What it does, and what it<br><span class="accent">won't pretend to do.</span></h2>
 
       <div class="scope js-fade" data-stagger=".scope-col">
         <div class="scope-col scope-yes">
@@ -404,7 +489,7 @@
   <section class="band band-1" id="data">
     <div class="shell">
       <div class="mod-num js-fade">Data basis</div>
-      <h2 class="h-md js-lines" style="max-width:18ch;">The floor <span class="accent">everything stands on.</span></h2>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Every number here starts as<br><span class="accent">a row you can count.</span></h2>
       <div class="card js-fade" style="margin-top:20px;">
         <div class="table-wrap">
           <table class="data">
@@ -417,6 +502,7 @@
               <tr><td>Reconstructed offer stack</td><td colspan="2">163 months held, 12 built</td><td class="num">22.7M rows</td></tr>
               <tr><td>Weather traces</td><td>1990</td><td>2025</td><td class="num">36 yrs &times; 5 regions</td></tr>
               <tr><td>Development pipeline</td><td colspan="2">announcement to commissioning</td><td class="num">2,083 projects</td></tr>
+              <tr><td>Registered units tracked</td><td colspan="2">AEMO registration list</td><td class="num">562 units</td></tr>
             </tbody>
           </table>
         </div>
@@ -436,7 +522,7 @@
   <section class="band band-3">
     <div class="shell">
       <span class="eyebrow js-fade">What the split shows</span>
-      <h2 class="h-md js-lines" style="max-width:22ch;">Network curtailment is flat.<br><span class="accent">Economic curtailment isn't.</span></h2>
+      <h2 class="h-md js-lines" style="max-width:26ch;">The grid's share hasn't grown since 2021.<br><span class="accent">The price's share has grown five times over.</span></h2>
       <div class="split" style="margin-top:28px;">
         <div class="card js-fade">
           <span class="eyebrow" style="margin-bottom:14px;">Curtailed energy by cause (TWh)</span>
@@ -466,13 +552,12 @@
   <section class="band band-tight band-4" id="demo">
     <div class="shell">
       <div class="card js-fade" style="text-align:center;">
-        <span class="eyebrow" style="margin-bottom:12px;">Want to see it run?</span>
+        <span class="eyebrow" style="margin-bottom:12px;">Want to watch it re-clear a day?</span>
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
-          Want a demo of ARIA? Reach out on LinkedIn or email me.
+          Pick a day, pick a unit, and I'll run it with and without.
         </h2>
         <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live: the counterfactual engine, the curtailment
-          split, or just the query behind a number you don't believe.
+          Live, on a call. The counterfactual engine on a real closure, or the curtailment split on an asset you know, or just the query behind a number on this page.
         </p>
         <div class="btn-row center">
           <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
@@ -533,6 +618,29 @@ window.addEventListener('load', function () {
        yFmt:function(v){return Math.round(v)+'%';},
        alt:'Fleet capture ratio for solar and wind, first half of each year 2022 to 2026' });
 });
+</script>
+<script>
+/* The tape draws once, when it first comes into view. No CDN dependency. */
+(function () {
+  var tape = document.getElementById('tape');
+  if (!tape) return;
+  var paths = tape.querySelectorAll('.tp-a, .tp-b');
+  for (var i = 0; i < paths.length; i++) {
+    var len = paths[i].getTotalLength();
+    paths[i].style.setProperty('--len', len);
+    paths[i].style.strokeDasharray = (paths[i].classList.contains('tp-b'))
+      ? '5 4' : len + ' ' + len;
+    if (paths[i].classList.contains('tp-b')) paths[i].style.strokeDasharray = len + ' ' + len;
+  }
+  function run() { tape.classList.add('run'); }
+  if (!('IntersectionObserver' in window)) { run(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    for (var k = 0; k < entries.length; k++) {
+      if (entries[k].isIntersecting) { run(); io.disconnect(); }
+    }
+  }, { threshold: 0.35 });
+  io.observe(tape);
+})();
 </script>
 <script src="assets/shared.js?v=20260820m"></script>
 <script src="assets/main.js?v=20260820m"></script>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who it's for &mdash; ARIA Energy</title>
+<meta name="description" content="Five kinds of people, and the one question each of them loses money on. Find the line that sounds like you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260820m">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .who { display:grid; gap:16px; margin-top:30px; }
+  .who-card { padding:26px 26px 24px; }
+  .who-card .tag { display:inline-block; margin-bottom:14px; padding:5px 11px; border-radius:999px;
+                   background:var(--accent-10); color:var(--accent); font-size:.68rem; font-weight:800;
+                   letter-spacing:.12em; text-transform:uppercase; }
+  .who-card h2 { font-size:clamp(1.14rem,2.1vw,1.42rem); font-weight:800; letter-spacing:-.03em;
+                 line-height:1.3; margin-bottom:12px; max-width:30ch; }
+  .who-card .ans { font-size:.94rem; line-height:1.68; color:var(--ink-70); max-width:62ch; }
+  .who-card .rests { display:block; margin-top:16px; padding-top:13px; border-top:1px solid var(--ink-08);
+                     font-size:.79rem; line-height:1.6; color:var(--ink-52); }
+  .who-card .rests b { color:var(--ink-70); font-weight:600; }
+  .not { margin-top:16px; }
+  .not li { margin-bottom:11px; }
+  .not li b { color:var(--ink-70); }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <header class="page-head">
+    <div class="band-glow" style="top:-12%;right:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">Who it's for</span>
+      <h1 class="js-lines" style="max-width:19ch;">One of these lines<br><span class="accent">sounds like you.</span></h1>
+      <p class="lede js-fade">
+        Five kinds of people, and the one question each of them loses money on. Find yours,
+        and the rest of the site will make sense. If none of them fit, that is useful to
+        know too, and the last section says so plainly.
+      </p>
+      <div class="chips js-fade" style="margin-top:26px;">
+        <a class="chip" href="aria.html#short">The 45&#8209;second version</a>
+        <a class="chip" href="positioning.html">Why it exists &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========== THE FIVE =========== -->
+  <section class="band band-1">
+    <div class="shell">
+      <div class="who">
+
+        <article class="card card-hover who-card js-fade">
+          <span class="tag">If you own one</span>
+          <h2>You own a wind farm, and it earned less than the market price.</h2>
+          <p class="ans">
+            Everyone in your region got the average. You got less than that, and the board wants
+            to know why. So: how much of the gap was the grid switching you off, and how much was
+            you choosing not to sell into a price you didn't like? Those are two completely
+            different problems with two completely different fixes, and almost nothing on the
+            market separates them for you. This does, per unit, per month, measured against your
+            own unconstrained forecast rather than against a regional average.
+          </p>
+          <span class="rests">
+            <b>Rests on:</b> curtailment split by cause, economic against network, over 217
+            semi&#8209;scheduled units. Per&#8209;unit capture at five&#8209;minute resolution
+            across 22.3M records.
+            <b>Limit:</b> the split is attributed over the capped subset, 7.60 of 8.37 TWh in
+            2025. The rest stays unattributed rather than guessed.
+          </span>
+        </article>
+
+        <article class="card card-hover who-card js-fade">
+          <span class="tag">If you're choosing where</span>
+          <h2>You're deciding where to build, and the brochure only shows you good years.</h2>
+          <p class="ans">
+            A resource assessment built on ten years of wind has never seen the year that
+            decides whether your project works. Thirty&#8209;six years of hourly wind and sun,
+            rebuilt for 286 projects and 50,168 MW, means the bad year is in the sample instead
+            of averaged out of it. The traces are calibrated to what units were forecast to be
+            able to generate, not to what they actually sent out, because metered output is
+            already depressed by curtailment and calibrating to it quietly bakes the curtailment
+            into your resource.
+          </p>
+          <span class="rests">
+            <b>Rests on:</b> hourly wind and solar, 1990 to 2025, calibrated to unconstrained
+            forecast.
+            <b>Limit:</b> calibration is regional, not per&#8209;site. Five scalars serve 286
+            projects and between&#8209;site variation runs 0.935 to 1.331. Ask me for the
+            number on your site before you rely on it.
+          </span>
+        </article>
+
+        <article class="card card-hover who-card js-fade">
+          <span class="tag">If you have to defend it</span>
+          <h2>You have to defend a number to people whose job is to push back on it.</h2>
+          <p class="ans">
+            An investment committee, a counterparty, a regulator, a court. A single figure with
+            a confident tone does not survive that room. What survives is a figure that arrives
+            as a range, with the method attached and the weak point named before anyone else
+            finds it. Every counterfactual here comes as two bounds: re&#8209;clear the market at
+            what it costs to run, and re&#8209;clear it at what participants actually offered.
+            The gap between those two is bidding conduct rather than physics, and naming it as
+            such is a decomposition a single price number structurally cannot give you.
+          </p>
+          <span class="rests">
+            <b>Rests on:</b> 169 units priced from AEMO's own heat rates, fuel prices and
+            variable O&amp;M, each carrying its source cell. A 227&#8209;unit offer stack.
+            <b>Limit:</b> the conduct bound's level is unvalidated, $43.77 modelled against
+            $94.84 observed, correlation 0.415. Only the mean is readable, and it is published
+            as a range for exactly that reason.
+          </span>
+        </article>
+
+        <article class="card card-hover who-card js-fade">
+          <span class="tag">If you have to explain it</span>
+          <h2>You're writing about a closure, and everyone is quoting a different number.</h2>
+          <p class="ans">
+            Every coal closure produces a spread of confident estimates and no way to choose
+            between them, because most of them are a rule of thumb wearing a decimal point. Here
+            the closure is re&#8209;cleared through the same engine that reproduces the market
+            it is changing, for 45 units and 21.1 GW of announced retirements, and it comes back
+            with both bounds rather than one headline. Hazelwood is in there as the worked
+            example, because it already happened and can therefore be checked.
+          </p>
+          <span class="rests">
+            <b>Rests on:</b> coal exit module plus the counterfactual engine.
+            <b>Limit:</b> announced closure dates are policy statements, not physics, and they
+            have moved before. I report the schedule and model sensitivity to it. I do not
+            forecast whether a date holds.
+          </span>
+        </article>
+
+        <article class="card card-hover who-card js-fade">
+          <span class="tag">If you're just curious</span>
+          <h2>You just want to know why your power bill does what it does.</h2>
+          <p class="ans">
+            Start with the game on the front page. Ten minutes, no jargon, and you have to keep
+            the lights on for a day using five fuels. Most people fail the first time on the same
+            thing: the sun clocks off about an hour before demand peaks. Once you have felt that
+            once, most of the commentary about the energy transition reads differently, including
+            the confident parts.
+          </p>
+          <span class="rests">
+            <b>Rests on:</b> a capacity&#8209;planning model on a 32 GW system, cleared in
+            genuine merit order.
+            <b>Limit:</b> no transmission and no bidding, which are the two things that make the
+            real market hard. The expander under the game says so.
+          </span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== NOT FOR YOU =========== -->
+  <section class="band band-2">
+    <div class="shell-narrow">
+      <div class="mod-num js-fade">And if none of them fit</div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Four people I'd send<br><span class="accent">somewhere else.</span></h2>
+      <p class="lede js-fade" style="margin-bottom:8px;">
+        Saying who something isn't for is the cheapest way to prove the rest is honest.
+      </p>
+      <div class="card js-fade" style="margin-top:22px;">
+        <ul class="crossed not">
+          <li><b>You need to know where prices are going.</b> I don't sell a price forecast. My
+            own spike classifier beats a naive rule by 1.1%, which is why it isn't a product. The
+            part that survives is the bias correction on the market operator's own
+            pre&#8209;dispatch, and that is a much smaller claim.</li>
+          <li><b>You need a forward loss factor for your site.</b> I don't forecast marginal loss
+            factors, and established products already sell that curve. Buy it from them.</li>
+          <li><b>You need to act on something right now, today.</b> Intraday monitoring is a
+            solved problem with good tools in it. Offers are published next day, so anything I
+            called "live" would be a lie.</li>
+          <li><b>You need Western Australia.</b> This is the National Electricity Market only.</li>
+        </ul>
+      </div>
+      <p class="lede js-fade" style="margin-top:26px;">
+        The longer version of that list, with seven entries and who does each one better, is on
+        the <a href="positioning.html">why it exists</a> page.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========== CTA =========== -->
+  <section class="band band-4" style="text-align:center;overflow:hidden;">
+    <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
+    <div class="shell-narrow">
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:17ch;">Not sure which one<br><span class="accent">is you?</span></h2>
+      <p class="lede js-fade" style="margin:24px auto 38px;max-width:520px;">
+        Tell me the decision you're trying to make and I'll tell you whether this helps, including
+        when the answer is no.
+      </p>
+      <div class="btn-row center js-fade">
+        <a class="btn btn-signal" href="contact.html">Get in touch</a>
+        <a class="btn btn-glass" href="aria.html#short">The 45&#8209;second version</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/shared.js?v=20260820m"></script>
+<script src="assets/main.js?v=20260820m"></script>
+</body>
+</html>

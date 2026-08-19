@@ -34,11 +34,15 @@
      Three sections. Each owns its subpages, and the sub-nav only appears when
      you are inside one, so the top bar never grows past five items. */
   var SECTIONS = [
-    { href: 'aria.html',     label: 'ARIA',
-      sub: [['aria.html','Platform'], ['positioning.html','Where it fits'], ['research.html','Research']] },
-    { href: 'insights.html', label: 'Insights',
+    { href: 'positioning.html', label: 'Why',
       sub: [] },
-    { href: 'about.html',    label: 'About',
+    { href: 'for-you.html',     label: "Who it's for",
+      sub: [] },
+    { href: 'aria.html',        label: 'ARIA',
+      sub: [['aria.html','Platform'], ['aria.html#short','In 45 seconds'], ['aria.html#proof','The AEMO test']] },
+    { href: 'research.html',    label: 'Findings',
+      sub: [['research.html','Research'], ['insights.html','Published']] },
+    { href: 'about.html',       label: 'About',
       sub: [['about.html','Profile'], ['gses.html','GSES work']] }
   ];
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -136,10 +140,13 @@
         '<div class="footer-copy" style="margin-top:6px;">Advanced Renewable Intelligent Analytics Energy</div>' +
       '</div>' +
       '<div class="footer-links">' +
+        '<a href="positioning.html">Why</a>' +
+        '<a href="for-you.html">Who it\'s for</a>' +
         '<a href="aria.html">ARIA</a>' +
         '<a href="research.html">Research</a>' +
-        '<a href="insights.html">Insights</a>' +
+        '<a href="insights.html">Published</a>' +
         '<a href="about.html">About</a>' +
+        '<a href="gses.html">GSES work</a>' +
         '<a href="contact.html">Contact</a>' +
         '<a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a>' +
       '</div>' +

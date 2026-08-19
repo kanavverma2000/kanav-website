@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820i">
+<link rel="stylesheet" href="assets/style.css?v=20260820j">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -71,6 +71,14 @@
   .d { display:inline-block; width:9px; height:9px; border-radius:50%; background:currentColor; vertical-align:middle; }
   .no .d { width:11px; height:2px; border-radius:1px; opacity:.9; }
   .dv { width:7px; height:7px; margin-right:5px; }
+
+  /* moved here with the findings and reproduction sections */
+  .big-num { font-size:clamp(2.1rem,4.6vw,3.2rem); font-weight:900; letter-spacing:-.05em;
+             line-height:1; font-variant-numeric:tabular-nums; color:var(--accent); margin-bottom:12px; }
+  .find h3 { font-size:1.02rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; margin-bottom:9px; }
+  .find p  { font-size:.89rem; line-height:1.66; color:var(--ink-60); }
+  .find .src { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
+               font-size:.76rem; color:var(--ink-45); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -80,7 +88,7 @@
     <div class="band-glow" style="top:-12%;left:-8%;" aria-hidden="true"></div>
     <div class="shell">
       <span class="eyebrow js-fade">The platform</span>
-      <h1 class="js-lines" style="max-width:15ch;">Eight layers over<br><span class="accent">17 years of AEMO data.</span></h1>
+      <h1 class="js-lines" style="max-width:15ch;">The whole market, rebuilt.<br><span class="accent">Then rewound.</span></h1>
       <p class="lede js-fade">
         Each one states what it measures, the figure it returns today, and the condition under which
         it stops being reliable. That last part is the one most tools leave out.
@@ -93,11 +101,35 @@
     </div>
   </header>
 
+  <!-- ═══════════ STATS ═══════════ -->
+  <section class="band band-tight band-1">
+    <div class="shell">
+      <div class="stat-grid js-fade" data-stagger=".stat-card">
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="24.5" data-dp="1">0</span><span class="stat-sfx">M</span></div>
+          <div class="stat-lbl">Hourly generation records</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="17">0</span><span class="stat-sfx">yrs</span></div>
+          <div class="stat-lbl">Price history, 2009&ndash;today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="562">0</span></div>
+          <div class="stat-lbl">Registered units tracked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="22.3" data-dp="1">0</span><span class="stat-sfx">M</span></div>
+          <div class="stat-lbl">Per-unit revenue records</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ MODULES ═══ -->
   <section class="band band-2" id="modules">
     <div class="shell">
       <div class="mod-num js-fade">What it does</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">Eight modules. Every one<br><span class="accent">ships its own limit.</span></h2>
+      <h2 class="h-md js-lines" style="max-width:20ch;">Eight modules.<br><span class="accent">Every one owns up.</span></h2>
 
       <div class="mods js-fade" data-stagger=".card" style="margin-top:8px;">
 
@@ -177,11 +209,202 @@
     </div>
   </section>
 
+  <!-- ═══════════ REPRODUCTION ═══════════ -->
+  <section class="band band-2">
+    <div class="band-glow" style="top:10%;left:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">The test I run first</span>
+      <h2 class="h-lg max-20 js-lines">Match their numbers first.<br><span class="accent">Then you can hear mine.</span></h2>
+      <p class="lede js-fade" style="margin-bottom:44px;">
+        AEMO publishes a 91-page quarterly. I rebuilt it from raw dispatch data and compared it
+        line by line. Nothing was tuned to match.
+      </p>
+
+      <div class="split">
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Generation, Q2 2026</span>
+          <div class="table-wrap">
+            <table class="data">
+              <thead>
+                <tr><th>Fuel</th><th>AEMO avg MW</th><th>Implied GWh</th><th>ARIA GWh</th><th>Gap</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Coal</td><td class="num">13,158</td><td class="num">28,737.1</td><td class="num">28,737.1</td><td class="num ok">0.00%</td></tr>
+                <tr><td>Grid solar</td><td class="num">1,860</td><td class="num">4,062.2</td><td class="num">4,060.2</td><td class="num ok">0.05%</td></tr>
+                <tr><td>Wind</td><td class="num">4,198</td><td class="num">9,168.4</td><td class="num">9,075.8</td><td class="num ok">1.01%</td></tr>
+                <tr><td>Gas</td><td class="num">1,050</td><td class="num">2,293.2</td><td class="num">2,257.5</td><td class="num ok">1.56%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption">
+            <strong>Coal agrees to the gigawatt-hour.</strong> Wind and gas run ~1% under because I
+            sum positive intervals only and drop the biogas family: a stated basis difference,
+            not an error.
+          </p>
+        </div>
+
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Price, Q2 2026, both weightings</span>
+          <div class="table-wrap">
+            <table class="data">
+              <thead>
+                <tr><th>Region</th><th>ARIA TWAP</th><th>AEMO</th><th>ARIA VWAP</th><th>AEMO</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>NSW1</td><td class="num">75.09</td><td class="num ok">$75</td><td class="num">77.92</td><td class="num ok">$78</td></tr>
+                <tr><td>QLD1</td><td class="num">67.12</td><td class="num ok">$67</td><td class="num">69.32</td><td class="num ok">$69</td></tr>
+                <tr><td>SA1</td><td class="num">86.37</td><td class="num ok">$86</td><td class="num">95.09</td><td class="num ok">$95</td></tr>
+                <tr><td>TAS1</td><td class="num">86.18</td><td class="num ok">$86</td><td class="num">86.89</td><td class="num ok">$87</td></tr>
+                <tr><td>VIC1</td><td class="num">55.85</td><td class="num ok">$56</td><td class="num">60.24</td><td class="num ok">$60</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td>NEM headline</td><td class="num">74.12</td><td class="num ok">$74</td><td class="num dim">&mdash;</td><td class="num dim">n/a</td></tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="caption">
+            <strong>Ten of ten.</strong> The headline fell $66.06 against AEMO's stated &minus;$66.
+          </p>
+        </div>
+      </div>
+
+      <div class="note note-accent js-fade">
+        <span class="note-title">Why it isn't trivial</span>
+        AEMO's headline is a <strong>time-weighted</strong> average over five-minute dispatch
+        periods. Its separate volume-weighted series is weighted by <strong>initial supply plus
+        total intermittent generation</strong>: not total demand. Use total demand, the
+        obvious guess, and you run <strong>$1&ndash;2/MWh high in every region</strong>. That one
+        wrong choice quietly invalidates any capture benchmark built on it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FINDINGS ═══════════ -->
+  <section class="band band-1">
+    <div class="shell">
+      <span class="eyebrow js-fade">What I found</span>
+      <h2 class="h-lg max-20 js-lines">Six things the market<br><span class="accent">hasn't caught up with.</span></h2>
+
+      <div class="grid-auto js-fade" data-stagger=".card" style="margin-top:8px;">
+
+        <article class="card card-hover find">
+          <div class="big-num">+30 GWh</div>
+          <h3>Midday gas <em>rose</em> while evening gas collapsed</h3>
+          <p class="scan-line">Gas fell 30% over the year.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Gas fell 30% over the year. AEMO reports the evening window and names batteries. It doesn't report that midday output went <strong>up</strong>, charging adds load. Weather is a level effect. It can't do both.</p></div></details><span class="src">Total sent-out flat at +0.5%. Substitution 1:1 at 16:00 and 17:00.</span>
+        </article>
+
+        <article class="card card-hover find">
+          <div class="big-num">85%</div>
+          <h3>Curtailment is a price decision, not a grid limit</h3>
+          <p class="scan-line">Network curtailment has sat near 1 TWh a year since 2021.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission, so your exposure is to what gets built <em>around</em> you.</p></div></details><span class="src">212 semi-scheduled units, 2021&ndash;2025.</span>
+        </article>
+
+        <article class="card card-hover find">
+          <div class="big-num">8&times;</div>
+          <h3>Best and worst asset in the NEM, same region</h3>
+          <p class="scan-line">Coopers Gap Wind captured 106.6% of the Queensland average in 2025.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Coopers Gap Wind captured <strong>106.6%</strong> of the Queensland average in 2025. Darling Downs Solar captured <strong>12.9%</strong>. About 100 km apart, same settlement price. No regional curve tells you which one you bought.</p></div></details><span class="src">125 assets over 150 GWh. Wind median 72.1%, solar 39.8%.</span>
+        </article>
+
+        <article class="card card-hover find">
+          <div class="big-num">$1 or $20</div>
+          <h3>A coal closure is worth both. Per MWh.</h3>
+          <p class="scan-line">Clear at what plant costs: ~$1&ndash;2/MWh.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Clear at what plant <em>costs</em>: ~$1&ndash;2/MWh. Clear at what they actually <em>bid</em>: $14&ndash;21/MWh. The gap between the bounds is the markup component. One number can't show you that.</p></div></details><span class="src">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit offer stack.</span>
+        </article>
+
+        <article class="card card-hover find">
+          <div class="big-num">92.8%</div>
+          <h3>The bid stack barely moves. That's <em>why</em> prices swing.</h3>
+          <p class="scan-line">Ladders identical to yesterday in 92.8% of unit-days, volumes unchanged in 98.6% of intervals.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Ladders identical to yesterday in 92.8% of unit-days, volumes unchanged in 98.6% of intervals. But the median step between used bands is <strong>$0</strong> and the maximum is <strong>$15,795</strong>. Flat, flat, flat, cliff.</p></div></details><span class="src">163 months of AEMO offers. Cheap middle down 61% since 2009.</span>
+        </article>
+
+        <article class="card card-hover find">
+          <div class="big-num">25&times;</div>
+          <h3>The worst weather year caused no blackouts</h3>
+          <p class="scan-line">1992 has the worst mean resource in 36 years and returns zero unserved energy.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>1992 has the worst mean resource in 36 years and returns zero unserved energy. 2009 is mid-pack and breaches the standard 25-fold, because it holds the third-deepest 72-hour drought. Adequacy is coincidence, not average.</p></div></details><span class="src">1990&ndash;2025 &middot; 3,000 outage draws.</span>
+        </article>
+
+      </div>
+
+      <div class="btn-row center js-fade" style="margin-top:44px;">
+        <a class="btn btn-primary" href="research.html">Full method, and what failed</a>
+        <a class="btn btn-glass" href="insights.html">Published analysis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL: the mechanism -->
+  <section class="band band-3">
+    <div class="shell">
+      <span class="eyebrow js-fade">The mechanism, in one chart</span>
+      <h2 class="h-lg js-lines" style="max-width:20ch;">Evening gas down.<br><span class="accent">Midday gas up.</span></h2>
+      <p class="lede js-fade" style="margin-bottom:34px;">
+        Change in energy by hour of day, Q2 2025 to Q2 2026. Weather is a level effect, it
+        cannot pull the evening down and push the middle of the day up at the same time.
+      </p>
+      <div class="split">
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Gas, change by hour (GWh)</span>
+          <div id="gasLine"></div>
+          <p class="chart-note">
+            Negative through the evening, <strong>positive from 11:00 to 14:00</strong> as batteries
+            charge. That midday rise is the finding.
+          </p>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Solar capture, first half of each year</span>
+          <div id="captureLine"></div>
+          <p class="chart-note">
+            The 2026 uptick isn't recovery. Capture is a ratio and the denominator collapsed, solar earned <strong>less</strong> per MWh in H1 2026 ($40.18) than in H1 2025 ($47.38).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-3">
+    <div class="shell">
+      <span class="eyebrow js-fade">Scope</span>
+      <h2 class="h-lg max-20 js-lines">What it does.<br><span class="accent">And what it refuses to.</span></h2>
+
+      <div class="scope js-fade" data-stagger=".scope-col">
+        <div class="scope-col scope-yes">
+          <h4>Does</h4>
+          <ul>
+            <li>Per-unit curtailment with an <strong>economic-versus-network cause split</strong></li>
+            <li>Merit-order counterfactual clearing, cost and conduct bounds published separately</li>
+            <li>Per-unit revenue capture at five-minute granularity, against the correct time-weighted denominator</li>
+            <li>Closure impact from per-unit costs traced to AEMO's own workbook cells</li>
+            <li>36 weather years of reconstructed wind and solar across 286 projects</li>
+            <li>Five-region capacity expansion with transmission priced inside the optimisation</li>
+            <li>Battery dispatch, cycling and event-based valuation</li>
+            <li>Scenario price paths with pre-dispatch bias correction</li>
+          </ul>
+        </div>
+        <div class="scope-col scope-no">
+          <h4>Doesn't</h4>
+          <ul>
+            <li><strong>No AI price forecasting</strong>: the scenario engine is an explicit merit-order clear with published assumptions</li>
+            <li><strong>No forward loss-factor product</strong>, that ground is already well occupied</li>
+            <li><strong>No spike-prediction edge</strong>, ours beats a naive rule by 1.1%, so it isn't sold</li>
+            <li><strong>No real-time monitoring</strong>, dedicated intraday tools do that better</li>
+            <li><strong>No automated bidding</strong>, running an optimiser and benchmarking one is a conflict</li>
+            <li><strong>No Western Australian coverage</strong></li>
+            <li>No interval-level accuracy on the conduct clear, only the mean is readable</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="btn-row center js-fade" style="margin-top:38px;">
+        <a class="btn btn-glass" href="aria.html">How it compares to the rest of the market</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ DATA BASIS ═══ -->
   <section class="band band-1" id="data">
     <div class="shell">
       <div class="mod-num js-fade">Data basis</div>
-      <h2 class="h-md js-lines" style="max-width:18ch;">What's <span class="accent">underneath all of it.</span></h2>
+      <h2 class="h-md js-lines" style="max-width:18ch;">The floor <span class="accent">everything stands on.</span></h2>
       <div class="card js-fade" style="margin-top:20px;">
         <div class="table-wrap">
           <table class="data">
@@ -290,7 +513,28 @@ window.addEventListener('load', function () {
   function in4(){ return 4; }
 });
 </script>
-<script src="assets/shared.js?v=20260820i"></script>
-<script src="assets/main.js?v=20260820i"></script>
+<script>
+window.addEventListener('load', function () {
+  if (!window.ariaLine) return;
+  var HOURS = [[0,-17.8],[1,-6.0],[2,-0.2],[3,1.0],[4,-0.6],[5,-7.9],[6,-31.4],[7,-48.0],
+               [8,-34.0],[9,-13.2],[10,-0.1],[11,6.6],[12,9.3],[13,9.6],[14,4.7],[15,-12.1],
+               [16,-64.0],[17,-138.9],[18,-159.6],[19,-150.0],[20,-126.3],[21,-92.4],[22,-57.7],[23,-34.5]];
+  ariaLine('gasLine', [{ name:'Gas', colour:'var(--signal)', points:HOURS }], {
+    yMin:-170, yMax:20, yTicks:4, height:250,
+    xLabels:[[0,'00:00'],[6,'06:00'],[12,'12:00'],[18,'18:00'],[23,'23:00']],
+    yFmt:function(v){return Math.round(v);},
+    alt:'Change in gas generation by hour of day, negative in the evening and positive at midday'
+  });
+  ariaLine('captureLine', [
+    { name:'Solar', colour:'var(--signal)', points:[[2022,64.2],[2023,56.8],[2024,53.1],[2025,41.9],[2026,58.7]] },
+    { name:'Wind',  colour:'var(--accent)', points:[[2022,90.3],[2023,76.6],[2024,83.2],[2025,71.9],[2026,79.6]] }
+  ], { yMin:0, yMax:100, yTicks:4, height:250,
+       xLabels:[[2022,'2022'],[2023,'2023'],[2024,'2024'],[2025,'2025'],[2026,'2026']],
+       yFmt:function(v){return Math.round(v)+'%';},
+       alt:'Fleet capture ratio for solar and wind, first half of each year 2022 to 2026' });
+});
+</script>
+<script src="assets/shared.js?v=20260820j"></script>
+<script src="assets/main.js?v=20260820j"></script>
 </body>
 </html>

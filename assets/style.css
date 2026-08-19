@@ -442,9 +442,16 @@ table.data td.num, .num { font-variant-numeric: tabular-nums; }
 .dim  { color: var(--ink-45); }
 /* Identity is never colour-alone: a match carries a check, a miss a dot, so a
    reader who cannot separate the teal from the red still gets the signal. */
-.ok::before  { content: "¹3 a0"; font-weight: 700; }
-.bad::before { content: "CF a0"; font-size: .7em; vertical-align: .1em; }
-td.ok::before, td.bad::before { opacity: .75; }
+.ok::before {
+  content: ""; display: inline-block; width: 4px; height: 8px; margin-right: 7px;
+  border: solid var(--good); border-width: 0 1.8px 1.8px 0;
+  transform: rotate(43deg) translateY(-1px);
+}
+.bad::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px;
+  border-radius: 50%; background: var(--signal); vertical-align: 1px;
+}
+th.ok::before, th.bad::before { display: none; }
 
 .caption { font-size: .78rem; color: var(--ink-45); line-height: 1.65; margin-top: 12px; }
 .caption strong { color: var(--ink-70); }

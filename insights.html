@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819n">
+<link rel="stylesheet" href="assets/style.css?v=20260819q">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -49,6 +49,12 @@
   .rule-n { font-size: .8rem; font-weight: 800; color: var(--accent); flex-shrink: 0; width: 22px; font-variant-numeric: tabular-nums; }
   .rule-t { font-size: .9rem; line-height: 1.68; color: var(--ink-60); }
   .rule-t b { color: var(--ink); font-weight: 600; }
+  .feature { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset, var(--shadow-lg); }
+  ul.plain { list-style: none; }
+  ul.plain li { font-size: .88rem; line-height: 1.68; color: var(--ink-60);
+                padding: 11px 0; border-bottom: 1px solid var(--ink-08); }
+  ul.plain li:last-child { border-bottom: none; }
+  ul.plain li strong { color: var(--ink); font-weight: 600; }
   @media (max-width: 820px) { .filters button { padding: 11px 16px; } }
 </style>
 </head>
@@ -67,6 +73,135 @@
     </div>
   </header>
 
+  <!-- RECOGNITION -->
+  <section class="band band-1" id="recognition">
+    <div class="shell">
+      <div class="mod-num js-fade">Recognition</div>
+      <h2 class="h-md js-lines" style="max-width:20ch;">Picked up and <span class="accent">republished.</span></h2>
+
+      <div class="card feature js-fade" style="margin-top:22px;">
+        <div class="split" style="gap:30px;align-items:center;">
+          <div>
+            <span class="pill pill-hot" style="display:inline-block;margin-bottom:14px;">Published &middot; 14 August 2026</span>
+            <h3 class="h-sm" style="margin-bottom:12px;">&ldquo;$3.70 against $1.00 &mdash; a Queensland scenario&rdquo;</h3>
+            <p class="prose" style="font-size:.93rem;">
+              Run as the Analysis feature in <strong>AltEnergy Watts News</strong>, pages 8&ndash;9,
+              credited to ARIA Energy. Same grid, same year, same prices &mdash; and a Queensland
+              wind farm banks $3.70 from a megawatt-hour where a solar farm banks $1.00.
+            </p>
+            <p class="prose" style="font-size:.93rem;margin-top:12px;">
+              The mechanism is the effective revenue factor: capture rate multiplied by loss factor.
+              Wind <strong>103.8% &times; 96.1% = 99.8%</strong>. Solar
+              <strong>28.9% &times; 94.0% = 27.1%</strong>. A solar farm at $45/MWh needs the flat
+              regional price to average $166/MWh before energy revenue covers it. Queensland's
+              averaged $84.89.
+            </p>
+            <div class="btn-row" style="margin-top:24px;">
+              <a class="btn btn-primary" href="assets/docs/kanav-verma-qld-scenario-altenergy-2026-08-14.pdf" target="_blank" rel="noopener">Read my article (PDF)</a>
+              <a class="btn btn-glass" href="https://www.altenergy.com.au" target="_blank" rel="noopener">AltEnergy</a>
+            </div>
+          </div>
+          <div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Queensland, CY2025</th><th>Wind</th><th>Solar</th></tr></thead>
+                <tbody>
+                  <tr><td>Capture rate</td><td class="num">103.8%</td><td class="num">28.9%</td></tr>
+                  <tr><td>Loss factor (MLF)</td><td class="num">96.1%</td><td class="num">94.0%</td></tr>
+                  <tr><td>Effective revenue factor</td><td class="num ok">99.8%</td><td class="num bad">27.1%</td></tr>
+                  <tr><td>Energy settled at zero or below</td><td class="num">12.5%</td><td class="num bad">51.5%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">
+              7 wind farms, 37 solar farms, 10.4 TWh. Units with a full calendar year of data,
+              energy-weighted, regional time-weighted price as the denominator. Energy revenue only
+              &mdash; no FCAS, no LGCs, no contract positions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="band band-3" id="work">
+    <div class="shell">
+      <div class="mod-num js-fade">Selected work</div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">&ldquo;Why did our capture rate fall, and <span class="accent">could we have seen it coming?</span>&rdquo;</h2>
+      <p class="prose js-fade">
+        A NSW portfolio owner &mdash; <strong>Beijing Energy International (Australia)</strong>
+        &mdash; watched dispatch-weighted capture across three assets slide from about 85&ndash;90%
+        to roughly 75%, and asked two questions. What caused it, and was it forecastable.
+      </p>
+
+      <div class="split js-fade" style="margin-top:26px;">
+        <div class="card">
+          <span class="eyebrow" style="margin-bottom:14px;">1. What actually happened</span>
+          <p class="prose" style="font-size:.9rem;margin-bottom:14px;">
+            I pulled five-minute SCADA and price data across the full operating history of all three
+            assets, December 2019 to January 2026. The deterioration is real, and it accelerated.
+          </p>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Capture rate</th><th>2020</th><th>2023</th><th>2024</th><th>2025</th><th>Q1 26</th></tr></thead>
+              <tbody>
+                <tr><td>Gullen Range Wind</td><td class="num">84%</td><td class="num">87%</td><td class="num">70%</td><td class="num">73%</td><td class="num bad">67%</td></tr>
+                <tr><td>Biala Wind</td><td class="num">80%</td><td class="num">89%</td><td class="num">75%</td><td class="num">75%</td><td class="num bad">70%</td></tr>
+                <tr><td>Wollar Solar</td><td class="num dim">&mdash;</td><td class="num dim">&mdash;</td><td class="num dim">&mdash;</td><td class="num bad">25%</td><td class="num dim">&mdash;</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption">Wollar has data only from late 2024. Public DUIDs, public prices &mdash; anyone can reproduce this.</p>
+        </div>
+
+        <div class="card">
+          <span class="eyebrow" style="margin-bottom:14px;">2. Why</span>
+          <ul class="plain">
+            <li><strong>VRE cannibalisation.</strong> NSW average VRE output doubled in four years &mdash; 957 MW in Jan 2021 to 2,171 MW in Jan 2025. More generation in the same hours.</li>
+            <li><strong>Negative prices.</strong> NSW went from ~0.2% of intervals in 2020 to <strong>25.1% in Q4 2025</strong>. Gullen Range now generates 19% of its output at negative prices. Wollar Solar, 51%.</li>
+            <li><strong>The duck curve deepened.</strong> Solar-hours price over evening-peak price fell from 0.29 in 2021 to <strong>0.17 in 2025</strong> &mdash; $40.3/MWh midday against $236.6 at the peak.</li>
+            <li><strong>Batteries took the peak.</strong> Setting the marginal price in 40% of evening-peak intervals by Q4 2025, up from under 5% a year earlier.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note note-accent js-fade">
+        <span class="note-title">3. Could it have been forecast?</span>
+        <strong>Yes &mdash; 12 to 18 months ahead.</strong> The negative-price trend was visibly
+        exponential; a regression on quarterly data flags it by mid-2023. The solar-to-peak spread
+        compressed 0.29 &rarr; 0.27 &rarr; 0.23 across 2021&ndash;2024, which makes 2025's 0.17
+        highly predictable. Rolling three-month capture fell below 80% from mid-2023 and never
+        recovered. The connection pipeline was public the whole time.
+      </div>
+
+      <div class="card js-fade" style="margin-top:22px;">
+        <span class="eyebrow" style="margin-bottom:12px;">4. Then the forward model</span>
+        <p class="prose" style="font-size:.92rem;">
+          The follow-on question was where it goes. I built a probability-weighted forward capture
+          model to 2031 across <strong>seven scenarios</strong> &mdash; ISP Step Change as the base
+          at 35%, plus accelerated VRE, coal life extension, BESS saturation, demand uplift,
+          regulatory delay and a combined stress case.
+        </p>
+        <p class="prose" style="font-size:.92rem;margin-top:12px;">
+          The central result: capture keeps falling under <em>every</em> scenario. Eraring's April
+          2029 closure gives a temporary price uplift and does not reverse the trend. Wind capture
+          runs <strong>69.3% today to 43.5% by 2031</strong>; the solar asset from 23.3% to 6.3%.
+          The coal-extension case is the counter-intuitive one &mdash; keeping 8,240 MW online
+          suppresses wholesale prices and makes the capture floor <em>lower</em>, not higher.
+        </p>
+        <div class="btn-row" style="margin-top:22px;">
+          <a class="btn btn-glass" href="assets/docs/forward-capture-rate-scenarios-2026-05.pdf" target="_blank" rel="noopener">Read the scenario report (PDF)</a>
+        </div>
+        <p class="caption" style="margin-top:16px;">
+          Prepared May 2026 as an indicative analytical piece to demonstrate the framework, not for
+          formal commercial or investment use. Asset-level figures derive from public AEMO dispatch
+          and price data; commercial terms are excluded.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ NUMBERS ═══ -->
   <section class="band band-tight band-2">
     <div class="shell">
@@ -84,8 +219,8 @@
           <div class="stat-lbl">Highest engagement rate</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="1400">0</span><span class="stat-sfx">+</span></div>
-          <div class="stat-lbl">Industry followers</div>
+          <div class="stat-num-row"><span class="stat-num" data-count="2273">0</span></div>
+          <div class="stat-lbl">LinkedIn followers</div>
         </div>
       </div>
       <p class="caption js-fade" style="text-align:center;margin-top:18px;">
@@ -306,7 +441,7 @@ var POSTS = [
   });
 })();
 </script>
-<script src="assets/shared.js?v=20260819n"></script>
-<script src="assets/main.js?v=20260819n"></script>
+<script src="assets/shared.js?v=20260819q"></script>
+<script src="assets/main.js?v=20260819q"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819q">
+<link rel="stylesheet" href="assets/style.css?v=20260819r">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -50,6 +50,18 @@
   .rule-t { font-size: .9rem; line-height: 1.68; color: var(--ink-60); }
   .rule-t b { color: var(--ink); font-weight: 600; }
   .feature { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset, var(--shadow-lg); }
+  .rec-list { margin-top: 20px; }
+  .rec { display: grid; grid-template-columns: 130px 1fr; gap: 20px;
+         padding: 22px 0; border-bottom: 1px solid var(--ink-08); }
+  .rec:last-child { border-bottom: none; }
+  .rec-when { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+              color: var(--accent); padding-top: 3px; }
+  .rec-body h3 { font-size: 1.02rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 9px; }
+  .rec-body p { font-size: .89rem; line-height: 1.68; color: var(--ink-60); }
+  .rec-note { margin-top: 12px; padding: 12px 15px; border-left: 2px solid var(--ink-14);
+              background: var(--ink-08); border-radius: 0 8px 8px 0; font-size: .84rem !important; }
+  .rec-note strong { color: var(--ink); }
+  @media (max-width: 700px) { .rec { grid-template-columns: 1fr; gap: 8px; } }
   ul.plain { list-style: none; }
   ul.plain li { font-size: .88rem; line-height: 1.68; color: var(--ink-60);
                 padding: 11px 0; border-bottom: 1px solid var(--ink-08); }
@@ -120,6 +132,28 @@
             </p>
           </div>
         </div>
+      </div>
+
+      <div class="rec-list js-fade" data-stagger=".rec">
+        <article class="rec">
+          <div class="rec-when">April 2026</div>
+          <div class="rec-body">
+            <h3>Asked for the research behind the battery-value post</h3>
+            <p>
+              An <strong>Honorary Member of CIGRE and Fellow of the Australian Institute of
+              Energy</strong> read my analysis of battery value, shared it with two colleagues, and
+              asked for more detail &mdash; they were putting together an Australian perspective on
+              storage for an international workshop. I said yes, on the condition that any reference
+              carried my name and a link back.
+            </p>
+            <p class="rec-note">
+              <strong>What actually happened:</strong> the session ran 20 minutes to an
+              international audience, so it stayed high-level and my work wasn't cited in the final
+              deck. I'm listing this as inbound interest from a senior regulatory figure, not as a
+              speaking credit &mdash; because that's what it was.
+            </p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -441,7 +475,7 @@ var POSTS = [
   });
 })();
 </script>
-<script src="assets/shared.js?v=20260819q"></script>
-<script src="assets/main.js?v=20260819q"></script>
+<script src="assets/shared.js?v=20260819r"></script>
+<script src="assets/main.js?v=20260819r"></script>
 </body>
 </html>

@@ -1,103 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Platform &mdash; ARIA</title>
-  <meta name="description" content="What ARIA actually serves: per-unit curtailment attribution, revenue capture, merit-order counterfactuals, coal exit modelling, storage economics and a five-region system model. No AI forecasting claims." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=20260819" />
-  <style>
-    .mod { padding: 42px 0; border-top: 1px solid var(--border); }
-    .mod:first-of-type { border-top: none; }
-    .mod-head { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
-    @media (max-width: 860px) { .mod-head { grid-template-columns: 1fr; gap: 24px; } }
-    .mod-num {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
-    }
-    .mod-title { font-size: clamp(1.28rem, 2.8vw, 1.85rem); line-height: 1.28; font-weight: 700; margin-bottom: 13px; }
-    .mod-desc { font-size: 0.95rem; line-height: 1.75; color: var(--text-2); }
-    .mod-desc p { margin-top: 13px; }
-    .mod-desc strong { color: var(--text); }
-
-    .panel {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 22px;
-    }
-    .panel-label {
-      font-size: 0.68rem; color: var(--text-3); text-transform: uppercase;
-      letter-spacing: 0.09em; margin-bottom: 15px; font-family: var(--font-mono);
-    }
-
-    .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .stat {
-      background: var(--bg-2); border-radius: var(--radius-sm); padding: 14px 12px; text-align: center;
-    }
-    .stat-v { font-size: 1.32rem; font-weight: 800; font-family: var(--font-mono); line-height: 1.15; }
-    .stat-l { font-size: 0.7rem; color: var(--text-3); margin-top: 5px; line-height: 1.45; }
-
-    table.m { width: 100%; border-collapse: collapse; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
-    table.m th, table.m td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--border); }
-    table.m th:first-child, table.m td:first-child { text-align: left; }
-    table.m thead th {
-      font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase;
-      color: var(--text-3); font-weight: 600; border-bottom: 1px solid var(--text-3);
-    }
-    table.m tbody tr:last-child td { border-bottom: none; }
-
-    .bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 9px; margin-bottom: 7px; }
-    .bar-lab { font-size: 0.74rem; color: var(--text-2); }
-    .bar-track { height: 17px; background: var(--bg-2); border-radius: 3px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 3px; }
-    .bar-val { font-size: 0.74rem; font-family: var(--font-mono); color: var(--text-2); text-align: right; }
-
-    .endpoints {
-      margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .ep {
-      font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3);
-      border: 1px solid var(--border); border-radius: 4px; padding: 3px 8px;
-    }
-
-    .caveat {
-      margin-top: 16px; font-size: 0.79rem; line-height: 1.65; color: var(--text-3);
-      padding-left: 13px; border-left: 2px solid var(--border);
-    }
-    .caveat strong { color: var(--text-2); }
-
-    .basis { border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; background: var(--card-bg); }
-    .basis table { width: 100%; border-collapse: collapse; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
-    .basis th, .basis td { padding: 9px 10px; border-bottom: 1px solid var(--border); text-align: right; }
-    .basis th:first-child, .basis td:first-child { text-align: left; }
-    .basis thead th { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); border-bottom: 1px solid var(--text-3); }
-    .basis tbody tr:last-child td { border-bottom: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform — ARIA</title>
+<meta name="description" content="Eight analytical layers over seventeen years of AEMO data. Each states what it measures, the figure it returns, and the condition under which it stops being reliable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260819b">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .endpoints { margin-top:18px; padding-top:15px; border-top:1px solid var(--ink-08); display:flex; flex-wrap:wrap; gap:6px; }
+  .ep { font-family:var(--font-mono); font-size:.68rem; color:var(--ink-45);
+        border:1px solid var(--ink-08); border-radius:5px; padding:4px 9px; }
+  .mini-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:11px; }
+  .mini { background:var(--ink-08); border-radius:var(--radius-sm); padding:15px 13px; text-align:center; }
+  .mini-v { font-size:1.3rem; font-weight:900; letter-spacing:-.04em; line-height:1.15; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .mini-l { font-size:.71rem; color:var(--ink-52); margin-top:6px; line-height:1.5; }
+</style>
 </head>
 <body>
-<div class="main-content">
+<div class="main">
 
-  <div class="page-header" style="background: linear-gradient(180deg, rgba(59,130,246,0.06) 0%, var(--bg) 100%);">
-    <div class="container">
-      <span class="section-label">Platform</span>
-      <h1>Every Module, and <span class="gradient-text">How It's Computed</span></h1>
-      <p>Eight analytical layers over seventeen years of AEMO data. Each one below states what it measures, the figure it currently returns, and the condition under which it stops being reliable.</p>
+  <header class="page-head">
+    <div class="band-glow" style="top:-12%;left:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">Platform</span>
+      <h1 class="js-lines">Every module, and<br><span class="accent">how it's computed.</span></h1>
+      <p class="lede js-fade">
+        Eight analytical layers over seventeen years of AEMO data. Each one below states what it
+        measures, the figure it currently returns, and the condition under which it stops being
+        reliable.
+      </p>
     </div>
-  </div>
+  </header>
 
-  <section style="padding-top: 8px;">
-    <div class="container--wide">
+  <section class="band band-2" style="padding-top:clamp(30px,4vw,50px);">
+    <div class="shell">
 
       <!-- 01 CURTAILMENT -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">01 &mdash; Curtailment attribution</div>
-            <div class="mod-title">Not how much was lost. <em>Why</em> it was lost.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">01 &mdash; Curtailment attribution</div>
+            <h2 class="mod-title js-lines">Not how much was lost. <span class="accent"><em>Why</em> it was lost.</span></h2>
+            <div class="prose js-fade">
               <p>
                 Curtailment is measured against each unit's unconstrained intermittent generation
                 forecast &mdash; what the plant itself told the market it could have produced &mdash;
@@ -111,27 +62,28 @@
                 problem, and it is priced and hedged differently.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>Limits.</strong> The cause split is attributed over the semi-dispatch-capped
               subset &mdash; 7.60 TWh of the 8.37 TWh total in 2025. The residual is reported as
-              unattributed rather than assigned to either bucket. Behind-the-meter solar is not in
-              scope.
+              unattributed rather than assigned to either bucket. Behind-the-meter solar is out of scope.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Curtailed energy by cause (TWh)</div>
-            <table class="m">
-              <thead><tr><th>Year</th><th>Total</th><th>Network</th><th>Economic</th><th>Econ %</th></tr></thead>
-              <tbody>
-                <tr><td>2021</td><td>2.89</td><td>1.04</td><td>1.24</td><td>54%</td></tr>
-                <tr><td>2022</td><td>3.15</td><td>1.13</td><td>1.36</td><td>55%</td></tr>
-                <tr><td>2023</td><td>4.68</td><td>1.07</td><td>3.03</td><td>74%</td></tr>
-                <tr><td>2024</td><td>5.32</td><td>1.04</td><td>3.65</td><td>78%</td></tr>
-                <tr><td>2025</td><td>8.37</td><td>1.16</td><td>6.44</td><td>85%</td></tr>
-              </tbody>
-            </table>
-            <div class="panel-label" style="margin-top:20px;">Utility solar curtailed, share of available, 2025</div>
-            <div id="curt-bars"></div>
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Curtailed energy by cause (TWh)</span>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Year</th><th>Total</th><th>Network</th><th>Economic</th><th>Econ share</th></tr></thead>
+                <tbody>
+                  <tr><td>2021</td><td class="num">2.89</td><td class="num">1.04</td><td class="num">1.24</td><td class="num">54%</td></tr>
+                  <tr><td>2022</td><td class="num">3.15</td><td class="num">1.13</td><td class="num">1.36</td><td class="num">55%</td></tr>
+                  <tr><td>2023</td><td class="num">4.68</td><td class="num">1.07</td><td class="num">3.03</td><td class="num">74%</td></tr>
+                  <tr><td>2024</td><td class="num">5.32</td><td class="num">1.04</td><td class="num">3.65</td><td class="num">78%</td></tr>
+                  <tr><td>2025</td><td class="num">8.37</td><td class="num">1.16</td><td class="num">6.44</td><td class="num bad">85%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <span class="eyebrow" style="margin:22px 0 12px;">Utility solar curtailed, share of available, 2025</span>
+            <div id="curtBars" data-bars></div>
             <div class="endpoints">
               <span class="ep">/curtailment/ranking</span>
               <span class="ep">/curtailment/monthly/{duid}</span>
@@ -143,18 +95,18 @@
       </div>
 
       <!-- 02 CAPTURE -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">02 &mdash; Revenue capture</div>
-            <div class="mod-title">What each unit earned, against the right denominator.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">02 &mdash; Revenue capture</div>
+            <h2 class="mod-title js-lines">What each unit earned, against <span class="accent">the right denominator.</span></h2>
+            <div class="prose js-fade">
               <p>
                 Capture ratio is generation-weighted price divided by the region's
-                <em>time</em>-weighted average price. That denominator choice is not cosmetic:
-                AEMO publishes both a time-weighted and a volume-weighted series, and the
-                volume-weighted one sits above the time-weighted one by construction. Benchmarking
-                capture against it understates every renewable asset in the market.
+                <em>time</em>-weighted average price. That denominator choice is not cosmetic: AEMO
+                publishes both a time-weighted and a volume-weighted series, and the volume-weighted
+                one sits above the time-weighted one by construction. Benchmarking capture against
+                it understates every renewable asset in the market.
               </p>
               <p>
                 Computed per unit at five-minute granularity across 22.3 million records, so the
@@ -162,19 +114,19 @@
                 spread was more than eight-fold.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>Limits.</strong> Capture is a ratio and both halves move. Fleet solar capture
               "recovered" from 41.9% to 58.7% between H1 2025 and H1 2026 while solar's actual
               earnings <em>fell</em> from $47.38 to $40.18/MWh &mdash; the denominator collapsed
               faster. Both numbers are always shown together for this reason.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Capture ratio, calendar year 2025</div>
-            <div id="cap-bars"></div>
-            <div class="stat-row" style="margin-top:18px;">
-              <div class="stat"><div class="stat-v gradient-text">72.1%</div><div class="stat-l">Wind fleet median</div></div>
-              <div class="stat"><div class="stat-v gradient-text">39.8%</div><div class="stat-l">Solar fleet median</div></div>
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Capture ratio, calendar year 2025</span>
+            <div id="capBars" data-bars></div>
+            <div class="mini-grid" style="margin-top:20px;">
+              <div class="mini"><div class="mini-v">72.1%</div><div class="mini-l">Wind fleet median</div></div>
+              <div class="mini"><div class="mini-v">39.8%</div><div class="mini-l">Solar fleet median</div></div>
             </div>
             <div class="endpoints">
               <span class="ep">/revenue/capture/{duid}</span>
@@ -187,12 +139,12 @@
       </div>
 
       <!-- 03 COUNTERFACTUAL -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">03 &mdash; Merit-order counterfactual engine</div>
-            <div class="mod-title">Re-clear the market twice. Report the difference.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">03 &mdash; Merit-order counterfactual engine</div>
+            <h2 class="mod-title js-lines">Re-clear the market twice. <span class="accent">Report the difference.</span></h2>
+            <div class="prose js-fade">
               <p>
                 The engine builds a national supply stack from per-unit short-run marginal cost
                 &mdash; 169 units priced from AEMO's own published heat rates, station fuel prices
@@ -206,29 +158,27 @@
                 227-unit stack. <strong>The gap between the two is the markup component.</strong>
               </p>
             </div>
-            <div class="caveat">
-              <strong>Limits, stated in the output.</strong> The conduct bound's absolute price
-              level is unvalidated &mdash; clearing the unconstrained offer stack gives $43.77
-              against $94.84 observed, correlation 0.415, because the stack has no network
-              constraints, ramp limits or unit commitment. The counterfactual is a difference
-              between two clears of the same stack so systematic level bias largely cancels, but
-              <strong>only the mean is readable, never interval-level impacts</strong>, and the
-              result is published as a range.
+            <div class="caveat js-fade">
+              <strong>Limits, stated in the output.</strong> The conduct bound's absolute price level
+              is unvalidated &mdash; clearing the unconstrained offer stack gives $43.77 against
+              $94.84 observed, correlation 0.415, because the stack has no network constraints, ramp
+              limits or unit commitment. The counterfactual is a difference between two clears of
+              the same stack so systematic level bias largely cancels, but <strong>only the mean is
+              readable, never interval-level impacts</strong>, and the result is published as a range.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Coal closure impact, two bounds ($/MWh)</div>
-            <div class="stat-row">
-              <div class="stat"><div class="stat-v gradient-text">$1&ndash;2</div><div class="stat-l">Cost-based &mdash; Liddell replay, NSW1</div></div>
-              <div class="stat"><div class="stat-v gradient-text">$14&ndash;21</div><div class="stat-l">Conduct-based &mdash; Hazelwood replay</div></div>
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Coal closure impact, two bounds ($/MWh)</span>
+            <div class="mini-grid">
+              <div class="mini"><div class="mini-v">$1&ndash;2</div><div class="mini-l">Cost-based &mdash; Liddell replay, NSW1</div></div>
+              <div class="mini"><div class="mini-v">$14&ndash;21</div><div class="mini-l">Conduct-based &mdash; Hazelwood replay</div></div>
             </div>
-            <div class="panel-label" style="margin-top:20px;">NSW black coal, marginal cost from workbook ($/MWh)</div>
-            <div id="srmc-bars"></div>
-            <p style="font-size:0.74rem; color:var(--text-3); line-height:1.55; margin-top:12px;">
+            <span class="eyebrow" style="margin:22px 0 12px;">NSW black coal, marginal cost from workbook ($/MWh)</span>
+            <div id="srmcBars" data-bars></div>
+            <p class="caption">
               Eight units sit between $71.98 and $72.73 &mdash; a genuine 4,760 MW plateau. Median
               regional demand lands inside it, which is why removing 1,350 MW moves nothing until
-              demand exceeds about 7 GW. That is a market structure result, not a modelling
-              artefact.
+              demand exceeds about 7 GW. That is a market-structure result, not a modelling artefact.
             </p>
             <div class="endpoints">
               <span class="ep">/merit-order/curve</span>
@@ -241,17 +191,17 @@
       </div>
 
       <!-- 04 COAL -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">04 &mdash; Coal exit &amp; supply&ndash;demand</div>
-            <div class="mod-title">Closure schedules, and what the stack looks like afterwards.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">04 &mdash; Coal exit &amp; supply&ndash;demand</div>
+            <h2 class="mod-title js-lines">Closure schedules, and what the stack <span class="accent">looks like afterwards.</span></h2>
+            <div class="prose js-fade">
               <p>
                 Tracks the announced retirement schedule across the black and brown coal fleet
-                &mdash; 45 units, 21.1 GW &mdash; with closure history, station-level context,
-                fleet outlook, interconnector flows and supply&ndash;demand balance. Closure impact
-                runs through the counterfactual engine rather than a rule of thumb.
+                &mdash; 45 units, 21.1 GW &mdash; with closure history, station-level context, fleet
+                outlook, interconnector flows and supply&ndash;demand balance. Closure impact runs
+                through the counterfactual engine rather than a rule of thumb.
               </p>
               <p>
                 It also carries the diagnostics that make a closure study honest: the midday squeeze,
@@ -259,31 +209,33 @@
                 actually settles into.
               </p>
             </div>
-            <div class="caveat">
-              <strong>Limits.</strong> Announced closure dates are policy statements, not physics,
-              and have moved repeatedly. The module reports the schedule as published and models
+            <div class="caveat js-fade">
+              <strong>Limits.</strong> Announced closure dates are policy statements, not physics, and
+              have moved repeatedly. The module reports the schedule as published and models
               sensitivity to it &mdash; it does not forecast whether a date will hold.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Registered fleet by fuel</div>
-            <table class="m">
-              <thead><tr><th>Fuel</th><th>Units</th><th>GW</th></tr></thead>
-              <tbody>
-                <tr><td>Black coal</td><td>35</td><td>16.43</td></tr>
-                <tr><td>Wind</td><td>108</td><td>14.87</td></tr>
-                <tr><td>Utility solar</td><td>131</td><td>14.57</td></tr>
-                <tr><td>Storage (grid-charged)</td><td>58</td><td>10.44</td></tr>
-                <tr><td>Hydro</td><td>70</td><td>8.67</td></tr>
-                <tr><td>Natural gas</td><td>65</td><td>8.60</td></tr>
-                <tr><td>Brown coal</td><td>10</td><td>4.69</td></tr>
-              </tbody>
-            </table>
-            <p style="font-size:0.74rem; color:var(--text-3); line-height:1.55; margin-top:12px;">
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Registered fleet by fuel</span>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Fuel</th><th>Units</th><th>GW</th></tr></thead>
+                <tbody>
+                  <tr><td>Black coal</td><td class="num">35</td><td class="num">16.43</td></tr>
+                  <tr><td>Wind</td><td class="num">108</td><td class="num">14.87</td></tr>
+                  <tr><td>Utility solar</td><td class="num">131</td><td class="num">14.57</td></tr>
+                  <tr><td>Storage (grid-charged)</td><td class="num">58</td><td class="num">10.44</td></tr>
+                  <tr><td>Hydro</td><td class="num">70</td><td class="num">8.67</td></tr>
+                  <tr><td>Natural gas</td><td class="num">65</td><td class="num">8.60</td></tr>
+                  <tr><td>Brown coal</td><td class="num">10</td><td class="num">4.69</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">
               562 registered units in total. Fuel is keyed per unit, never from the station-level
-              technology tag &mdash; co-located hybrid sites otherwise put their wind and solar
-              units in the storage bucket, a defect that overstated one month's battery discharge
-              by 29% before it was caught.
+              technology tag &mdash; co-located hybrid sites otherwise put their wind and solar units
+              in the storage bucket, a defect that overstated one month's battery discharge by 29%
+              before it was caught.
             </p>
             <div class="endpoints">
               <span class="ep">/coal/closures</span>
@@ -297,44 +249,43 @@
       </div>
 
       <!-- 05 STORAGE -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">05 &mdash; Storage economics</div>
-            <div class="mod-title">Half of a battery's value is invisible to a spread calculation.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">05 &mdash; Storage economics</div>
+            <h2 class="mod-title js-lines">Half a battery's value is <span class="accent">invisible to a spread calculation.</span></h2>
+            <div class="prose js-fade">
               <p>
                 Per-unit charge and discharge, cycling, utilisation, price heatmaps, strategy
-                clustering and offtake structure across the storage fleet. Battery energy is
-                summed from positive intervals at native resolution &mdash; monthly net energy is
-                approximately zero because charging cancels discharging, so a monthly aggregate
-                makes the entire fleet disappear.
+                clustering and offtake structure across the storage fleet. Battery energy is summed
+                from positive intervals at native resolution &mdash; monthly net energy is
+                approximately zero because charging cancels discharging, so a monthly aggregate makes
+                the entire fleet disappear.
               </p>
               <p>
                 Valuation runs against the full scarcity-event distribution, not a mean spread.
-                Events run a mean of 7.3 hours and <strong>84.7% of them exceed four hours</strong>,
-                so a four-hour battery empties partway through most of the events it was bought
-                for. Net value per MW per year: <strong>$287,776 at four hours,
-                $442,879 at eight</strong>.
+                Events run a mean of 7.3 hours and <strong>84.7% exceed four hours</strong>, so a
+                four-hour battery empties partway through most of the events it was bought for. Net
+                value per MW per year: <strong>$287,776 at four hours, $442,879 at eight</strong>.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>Limits.</strong> The eight-hour result survives a capital-cost scenario switch
               but is no longer described as "the optimum" &mdash; switching between two published
               cost scenarios zeroes an entire 19 GW four-hour fleet, which is more sensitivity than
               the word implies.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Battery discharge, Q2 2025 &rarr; Q2 2026</div>
-            <div class="stat-row">
-              <div class="stat"><div class="stat-v gradient-text">+213%</div><div class="stat-l">312.5 &rarr; 977.1 GWh</div></div>
-              <div class="stat"><div class="stat-v gradient-text">78%</div><div class="stat-l">Of that growth in six hours, 16:00&ndash;21:00</div></div>
-              <div class="stat"><div class="stat-v gradient-text">69%</div><div class="stat-l">Of the gas decline it accounts for</div></div>
-              <div class="stat"><div class="stat-v gradient-text">1:1</div><div class="stat-l">Gas-for-battery substitution at 16:00 and 17:00</div></div>
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Battery discharge, Q2 2025 &rarr; Q2 2026</span>
+            <div class="mini-grid">
+              <div class="mini"><div class="mini-v">+213%</div><div class="mini-l">312.5 &rarr; 977.1 GWh</div></div>
+              <div class="mini"><div class="mini-v">1.2%</div><div class="mini-l">Gap to AEMO's own published evening-window figure</div></div>
+              <div class="mini"><div class="mini-v">69%</div><div class="mini-l">Of the gas decline it accounts for</div></div>
+              <div class="mini"><div class="mini-v">1:1</div><div class="mini-l">Gas-for-battery substitution at 16:00 and 17:00</div></div>
             </div>
-            <div class="panel-label" style="margin-top:20px;">Net value per MW per year, by duration</div>
-            <div id="dur-bars"></div>
+            <span class="eyebrow" style="margin:22px 0 12px;">Net value per MW per year, by duration</span>
+            <div id="durBars" data-bars></div>
             <div class="endpoints">
               <span class="ep">/bess/fleet-snapshot</span>
               <span class="ep">/bess/revenue/{duid}</span>
@@ -347,18 +298,17 @@
       </div>
 
       <!-- 06 WEATHER -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">06 &mdash; Weather &amp; resource reconstruction</div>
-            <div class="mod-title">Thirty-six years of weather, so the drought year shows up.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">06 &mdash; Weather &amp; resource reconstruction</div>
+            <h2 class="mod-title js-lines">Thirty-six years of weather, so the <span class="accent">drought year shows up.</span></h2>
+            <div class="prose js-fade">
               <p>
-                Hourly wind and solar traces reconstructed from reanalysis for
-                <strong>286 projects and 50,168 MW across 36 weather years, 1990 to 2025</strong>,
-                calibrated against each unit's unconstrained forecast rather than metered output
-                &mdash; metered output is already depressed by curtailment, so calibrating to it
-                bakes the curtailment in.
+                Hourly wind and solar traces reconstructed from reanalysis for <strong>286 projects
+                and 50,168 MW across 36 weather years, 1990 to 2025</strong>, calibrated against each
+                unit's unconstrained forecast rather than metered output &mdash; metered output is
+                already depressed by curtailment, so calibrating to it bakes the curtailment in.
               </p>
               <p>
                 The point of the long record is the tail. Sampling weather years by mean resource
@@ -367,29 +317,31 @@
                 standard 25-fold because it contains a deep 72-hour drought.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>Limits, and a negative result.</strong> Calibration is keyed by region, not by
               site &mdash; five scalars serve 286 projects, and between-site variation runs
-              0.935&ndash;1.331, so a regional factor can be wrong by up to 17 percentage points at
-              an individual site. A higher-resolution Australian reanalysis was tested as a
-              replacement and was <strong>worse in every region</strong>, so the migration was
-              cancelled rather than shipped.
+              0.935&ndash;1.331, so a regional factor can be wrong by up to 17 percentage points at an
+              individual site. A higher-resolution Australian reanalysis was tested as a replacement
+              and was <strong>worse in every region</strong>, so the migration was cancelled rather
+              than shipped.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Solar capacity-factor bias vs unconstrained forecast</div>
-            <table class="m">
-              <thead><tr><th>Region</th><th>BARRA</th><th>ERA5</th><th>Better</th></tr></thead>
-              <tbody>
-                <tr><td>NSW1</td><td>+32.7%</td><td>+29.6%</td><td>ERA5</td></tr>
-                <tr><td>QLD1</td><td>+37.7%</td><td>+26.6%</td><td>ERA5</td></tr>
-                <tr><td>SA1</td><td>+35.2%</td><td>+29.3%</td><td>ERA5</td></tr>
-                <tr><td>VIC1</td><td>+36.5%</td><td>+32.2%</td><td>ERA5</td></tr>
-                <tr><td>NEM</td><td>+35.3%</td><td>+28.7%</td><td>ERA5</td></tr>
-                <tr><td>Lowest decile</td><td>+46.9%</td><td>+34.4%</td><td>ERA5</td></tr>
-              </tbody>
-            </table>
-            <p style="font-size:0.74rem; color:var(--text-3); line-height:1.55; margin-top:12px;">
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Solar capacity-factor bias vs unconstrained forecast</span>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Region</th><th>BARRA</th><th>ERA5</th><th>Better</th></tr></thead>
+                <tbody>
+                  <tr><td>NSW1</td><td class="num">+32.7%</td><td class="num">+29.6%</td><td class="ok">ERA5</td></tr>
+                  <tr><td>QLD1</td><td class="num">+37.7%</td><td class="num">+26.6%</td><td class="ok">ERA5</td></tr>
+                  <tr><td>SA1</td><td class="num">+35.2%</td><td class="num">+29.3%</td><td class="ok">ERA5</td></tr>
+                  <tr><td>VIC1</td><td class="num">+36.5%</td><td class="num">+32.2%</td><td class="ok">ERA5</td></tr>
+                  <tr><td>NEM</td><td class="num">+35.3%</td><td class="num">+28.7%</td><td class="ok">ERA5</td></tr>
+                  <tr><td>Lowest decile</td><td class="num bad">+46.9%</td><td class="num">+34.4%</td><td class="ok">ERA5</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">
               116 sites, 18,677 MW, 3.05 million site-hours, both products uncalibrated so the
               comparison is like-for-like. The result was negative and is published anyway.
             </p>
@@ -403,12 +355,12 @@
       </div>
 
       <!-- 07 SYSTEM MODEL -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">07 &mdash; System model</div>
-            <div class="mod-title">A five-region build, with the sensitivities published first.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">07 &mdash; System model</div>
+            <h2 class="mod-title js-lines">A five-region build, with the <span class="accent">sensitivities published first.</span></h2>
+            <div class="prose js-fade">
               <p>
                 A least-cost capacity expansion across five regions and six interconnectors, with
                 transmission priced <em>inside</em> the optimisation rather than added afterwards as
@@ -420,27 +372,25 @@
                 The most useful output is the sensitivity ranking, and it is uncomfortable. Moving
                 the discount rate two percentage points changes system cost by <strong>15.6%</strong>.
                 Correcting a regional wind calibration by 40% changes it by <strong>0.6%</strong>.
-                And switching between two <em>published</em> capital-cost scenarios does not adjust
-                the answer, it transforms it.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>The honest headline.</strong> <strong>The capacity mix is a function of the
               capital-cost scenario, not a result of the model.</strong> Switching scenarios moves
-              solar &minus;41%, wind +61%, and takes a 19 GW four-hour battery fleet to zero with
-              the resource traces untouched. Any capacity outlook that does not name its cost
-              scenario is not telling you anything &mdash; ours included.
+              solar &minus;41%, wind +61%, and takes a 19 GW four-hour battery fleet to zero with the
+              resource traces untouched. Any capacity outlook that does not name its cost scenario is
+              not telling you anything &mdash; ours included.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">What actually moves system cost</div>
-            <div id="sens-bars"></div>
-            <p style="font-size:0.74rem; color:var(--text-3); line-height:1.55; margin-top:14px;">
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">What actually moves system cost</span>
+            <div id="sensBars" data-bars></div>
+            <p class="caption" style="margin-top:16px;">
               Reference case $108.65/MWh. Two percentage points of discount rate moves cost
-              <strong>26&times; more</strong> than a 40% error in a regional wind calibration.
-              The demand basis is deliberate and stated: the model answers what it would cost to
-              serve <em>today's</em> demand from a decarbonised fleet &mdash; comparing its peaks to
-              a future-year planning standard would be a category error.
+              <strong>26&times; more</strong> than a 40% error in a regional wind calibration. The
+              demand basis is deliberate and stated: the model answers what it would cost to serve
+              <em>today's</em> demand from a decarbonised fleet &mdash; comparing its peaks to a
+              future-year planning standard would be a category error.
             </p>
             <div class="endpoints">
               <span class="ep">/system-cost/band</span>
@@ -453,12 +403,12 @@
       </div>
 
       <!-- 08 SCENARIOS -->
-      <div class="mod reveal">
-        <div class="mod-head">
+      <div class="mod">
+        <div class="split">
           <div>
-            <div class="mod-num">08 &mdash; Scenarios, price paths &amp; forecast error</div>
-            <div class="mod-title">An explicit clear with published assumptions. Not a black box.</div>
-            <div class="mod-desc">
+            <div class="mod-num js-fade">08 &mdash; Scenarios, price paths &amp; forecast error</div>
+            <h2 class="mod-title js-lines">An explicit clear with published assumptions. <span class="accent">Not a black box.</span></h2>
+            <div class="prose js-fade">
               <p>
                 Forward scenarios are produced by re-clearing the merit-order stack under changed
                 inputs &mdash; closure timing, build trajectory, fuel price, demand &mdash; with
@@ -467,32 +417,31 @@
               </p>
               <p>
                 Alongside it sits a forecast-error layer that decomposes where AEMO's own
-                pre-dispatch forecast goes wrong: by hour, by region, and by whether the interval
-                was a price spike. <strong>Spikes account for roughly 99% of five-minute forecast
-                error</strong>, which is a structural fact about the supply curve, not a modelling
-                choice &mdash; the offer stack is flat, flat, flat, then a cliff.
+                pre-dispatch forecast goes wrong: by hour, by region, and by whether the interval was
+                a price spike. <strong>Spikes account for roughly 99% of five-minute forecast
+                error</strong> &mdash; a structural fact about the supply curve, not a modelling
+                choice.
               </p>
             </div>
-            <div class="caveat">
+            <div class="caveat js-fade">
               <strong>What is deliberately not sold here.</strong> The spike classifier beats a naive
-              "pre-dispatch above $300" rule by <strong>1.1%</strong> at an equal alert budget, so
-              it is not presented as a capability and its area-under-curve figure is never quoted.
-              The pre-dispatch bias correction is the result that survives &mdash; and its own
+              "pre-dispatch above $300" rule by <strong>1.1%</strong> at an equal alert budget, so it
+              is not presented as a capability and its area-under-curve figure is never quoted. The
+              pre-dispatch bias correction is the result that survives &mdash; and its own
               significance statistic was inflated 3.3&times; until the error autocorrelation was
-              handled properly. Both figures are reported so the size of the correction stays
-              visible.
+              handled properly. Both figures are reported so the size of the correction stays visible.
             </div>
           </div>
-          <div class="panel">
-            <div class="panel-label">Where the error lives</div>
-            <div class="stat-row">
-              <div class="stat"><div class="stat-v gradient-text">~99%</div><div class="stat-l">Of 5-minute forecast error is spike intervals</div></div>
-              <div class="stat"><div class="stat-v gradient-text">1.011</div><div class="stat-l">Classifier lift over the naive rule &mdash; so it isn't sold</div></div>
-              <div class="stat"><div class="stat-v gradient-text">$0</div><div class="stat-l">Median offer step between used bands</div></div>
-              <div class="stat"><div class="stat-v gradient-text">$15,795</div><div class="stat-l">Maximum offer step &mdash; the cliff</div></div>
+          <div class="card js-fade">
+            <span class="eyebrow" style="margin-bottom:14px;">Where the error lives</span>
+            <div class="mini-grid">
+              <div class="mini"><div class="mini-v">~99%</div><div class="mini-l">Of 5-minute forecast error is spike intervals</div></div>
+              <div class="mini"><div class="mini-v">1.011</div><div class="mini-l">Classifier lift over the naive rule &mdash; so it isn't sold</div></div>
+              <div class="mini"><div class="mini-v">$0</div><div class="mini-l">Median offer step between used bands</div></div>
+              <div class="mini"><div class="mini-v">$15,795</div><div class="mini-l">Maximum offer step &mdash; the cliff</div></div>
             </div>
-            <div class="panel-label" style="margin-top:20px;">Offered MW by price band, 2009 vs 2026</div>
-            <div id="band-bars"></div>
+            <span class="eyebrow" style="margin:22px 0 12px;">Offered MW by price band, 2009 vs 2026</span>
+            <div id="bandBars" data-bars></div>
             <div class="endpoints">
               <span class="ep">/forecasting/run-scenario</span>
               <span class="ep">/forecasting/assumptions</span>
@@ -503,48 +452,51 @@
         </div>
       </div>
 
-      <!-- DATA BASIS -->
-      <div class="mod reveal">
-        <div class="mod-num">Data basis</div>
-        <div class="mod-title" style="margin-bottom:20px;">What is underneath all of it.</div>
-        <div class="basis">
-          <table>
+    </div>
+  </section>
+
+  <!-- DATA BASIS -->
+  <section class="band band-3">
+    <div class="shell">
+      <div class="mod-num js-fade">Data basis</div>
+      <h2 class="h-md js-lines" style="max-width:18ch;">What is <span class="accent">underneath all of it.</span></h2>
+      <div class="card js-fade" style="margin-top:26px;">
+        <div class="table-wrap">
+          <table class="data">
             <thead><tr><th>Dataset</th><th>From</th><th>To</th><th>Records</th></tr></thead>
             <tbody>
-              <tr><td>Hourly generation, per unit</td><td>Dec 2019</td><td>Jun 2026</td><td>24,472,554</td></tr>
-              <tr><td>Regional prices</td><td>Jul 2009</td><td>Aug 2026</td><td>750,480</td></tr>
-              <tr><td>Revenue capture, per unit</td><td>Dec 2019</td><td>Jun 2026</td><td>22,342,213</td></tr>
-              <tr><td>Curtailment, monthly per unit</td><td>Dec 2019</td><td>Jun 2026</td><td>13,279</td></tr>
-              <tr><td>Reconstructed offer stack</td><td colspan="2">163 months available, 12 built</td><td>22.7M rows</td></tr>
-              <tr><td>Weather traces</td><td>1990</td><td>2025</td><td>36 years &times; 5 regions</td></tr>
-              <tr><td>Development pipeline</td><td colspan="2">announcement to commissioning</td><td>2,083 projects</td></tr>
+              <tr><td>Hourly generation, per unit</td><td>Dec 2019</td><td>Jun 2026</td><td class="num">24,472,554</td></tr>
+              <tr><td>Regional prices</td><td>Jul 2009</td><td>Aug 2026</td><td class="num">750,480</td></tr>
+              <tr><td>Revenue capture, per unit</td><td>Dec 2019</td><td>Jun 2026</td><td class="num">22,342,213</td></tr>
+              <tr><td>Curtailment, monthly per unit</td><td>Dec 2019</td><td>Jun 2026</td><td class="num">13,279</td></tr>
+              <tr><td>Reconstructed offer stack</td><td colspan="2">163 months available, 12 built</td><td class="num">22.7M rows</td></tr>
+              <tr><td>Weather traces</td><td>1990</td><td>2025</td><td class="num">36 yrs &times; 5 regions</td></tr>
+              <tr><td>Development pipeline</td><td colspan="2">announcement to commissioning</td><td class="num">2,083 projects</td></tr>
             </tbody>
           </table>
-          <p style="font-size:0.79rem; color:var(--text-3); line-height:1.6; margin-top:16px;">
-            Sourced from AEMO's public NEMWeb and MMS archives with attribution. Five-minute dispatch
-            data is held in a staging layer for anything that must be time-weighted correctly; hourly
-            aggregates are used only where the weighting does not change the answer. Figures on this
-            page were re-derived 19 August 2026.
-          </p>
         </div>
+        <p class="caption">
+          Sourced from AEMO's public NEMWeb and MMS archives with attribution. Five-minute dispatch
+          data is held in a staging layer for anything that must be time-weighted correctly; hourly
+          aggregates are used only where the weighting does not change the answer. Figures on this
+          page were re-derived 19 August 2026.
+        </p>
       </div>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section style="padding: 30px 0 76px;">
-    <div class="container" style="text-align: center;">
-      <div class="card card-glass" style="padding: 44px 32px;">
-        <h2>The findings behind these modules</h2>
-        <p style="max-width: 560px; margin: 12px auto 26px; font-size: 1rem; line-height: 1.7;">
-          Seven results, each with its method and its failure mode &mdash; including the ones that
-          did not work.
-        </p>
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-          <a class="btn btn-primary" href="research.html">Read the Research</a>
-          <a class="btn btn-secondary" href="positioning.html">Where ARIA Fits</a>
-        </div>
+  <section class="band band-4" style="text-align:center;overflow:hidden;">
+    <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
+    <div class="shell-narrow">
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">The findings behind<br><span class="accent">these modules.</span></h2>
+      <p class="lede js-fade" style="margin:26px auto 42px;max-width:560px;">
+        Seven results, each with its method and its failure mode &mdash; including the ones that did
+        not work.
+      </p>
+      <div class="btn-row center js-fade">
+        <a class="btn btn-signal" href="research.html">Read the research</a>
+        <a class="btn btn-glass" href="positioning.html">Where ARIA fits</a>
       </div>
     </div>
   </section>
@@ -552,86 +504,71 @@
 </div>
 
 <script>
-  // All series below are re-derived ARIA outputs, 2026-08-19. See research.html for method.
-  function hbars(elId, rows, colour, unit, maxOverride) {
-    var el = document.getElementById(elId);
-    if (!el) return;
-    var max = maxOverride || Math.max.apply(null, rows.map(function (r) { return r[1]; }));
-    el.innerHTML = rows.map(function (r) {
-      var pct = max ? (r[1] / max * 100) : 0;
-      var fill = typeof colour === 'function' ? colour(r) : colour;
-      return '<div class="bar-row">' +
-        '<div class="bar-lab">' + r[0] + '</div>' +
-        '<div class="bar-track"><div class="bar-fill" style="width:' + pct.toFixed(1) + '%;background:' + fill + ';"></div></div>' +
-        '<div class="bar-val">' + r[2] + '</div>' +
-      '</div>';
-    }).join('');
-  }
+window.addEventListener('load', function () {
+  if (!window.ariaBars) return;
 
-  // 01 — utility solar curtailed as share of available, CY2025
-  hbars('curt-bars', [
+  ariaBars('curtBars', [
     ['SA1', 39.4, '39.4%'], ['VIC1', 18.9, '18.9%'], ['NSW1', 18.6, '18.6%'], ['QLD1', 17.4, '17.4%']
-  ], '#f59e0b', '%', 45);
+  ], { max: 45, colour: 'var(--signal)' });
 
-  // 02 — capture ratio, CY2025, GWAP / regional TWAP
-  hbars('cap-bars', [
+  ariaBars('capBars', [
     ['Coopers Gap', 106.6, '106.6%'],
     ['MacIntyre', 105.1, '105.1%'],
     ['Wind median', 72.1, '72.1%'],
     ['Solar median', 39.8, '39.8%'],
     ['Aldoga Solar', 17.6, '17.6%'],
     ['Darling Downs', 12.9, '12.9%']
-  ], function (r) { return r[1] >= 100 ? '#4ade80' : (r[1] >= 60 ? '#60a5fa' : '#f87171'); }, '%', 110);
+  ], { max: 112, colour: function (r) {
+    return r[1] >= 100 ? 'var(--good)' : (r[1] >= 60 ? 'var(--accent)' : 'var(--signal)');
+  }});
 
-  // 03 — NSW black coal per-unit SRMC from the AEMO workbook
-  hbars('srmc-bars', [
-    ['Bayswater', 46.49, '$46.49'],
-    ['Mt Piper', 71.98, '$71.98'],
-    ['Eraring', 72.55, '$72.55'],
-    ['Vales Point B', 72.73, '$72.73']
-  ], '#8b5cf6', '$', 80);
+  ariaBars('srmcBars', [
+    ['Bayswater', 46.49, '$46'],
+    ['Mt Piper', 71.98, '$72'],
+    ['Eraring', 72.55, '$73'],
+    ['Vales Point B', 72.73, '$73']
+  ], { max: 80, colour: 'var(--accent)' });
 
-  // 05 — storage net value per MW per year, by duration
-  hbars('dur-bars', [
+  ariaBars('durBars', [
     ['4 hour', 287776, '$288k'],
     ['8 hour', 442879, '$443k'],
     ['24 hour', 238219, '$238k']
-  ], function (r) { return r[1] > 400000 ? '#4ade80' : '#60a5fa'; }, '$', 460000);
+  ], { max: 460000, colour: function (r) { return r[1] > 400000 ? 'var(--good)' : 'var(--accent)'; }});
 
-  // 07 — SEM sensitivity, % change in system cost from the $108.65/MWh reference
-  hbars('sens-bars', [
-    ['Discount rate &minus;2pp', 15.6, '&minus;15.6%'],
-    ['Capex scenario', 11.0, '+11.0%'],
-    ['Wind calibration', 0.6, '+0.6%']
-  ], function (r) { return r[1] > 10 ? '#f87171' : '#60a5fa'; }, '%', 17);
+  ariaBars('sensBars', [
+    ['Discount &minus;2pp', 15.6, '15.6%'],
+    ['Capex scenario', 11.0, '11.0%'],
+    ['Wind calibration', 0.6, '0.6%']
+  ], { max: 17, colour: function (r) { return r[1] > 10 ? 'var(--signal)' : 'var(--accent)'; }});
+});
 
-  // 08 — offered MW by price band, mean per dispatch interval
-  (function () {
-    var el = document.getElementById('band-bars');
-    if (!el) return;
-    var rows = [
-      ['&le; $0', 16664, 38214], ['$0&ndash;50', 9704, 3756], ['$50&ndash;300', 3081, 5756],
-      ['$300&ndash;1k', 870, 2227], ['&gt; $1k', 5213, 7769]
-    ];
-    var max = 38214;
-    el.innerHTML = rows.map(function (r) {
-      return '<div style="margin-bottom:11px;">' +
-        '<div style="display:flex;justify-content:space-between;font-size:0.74rem;color:var(--text-2);margin-bottom:4px;">' +
-          '<span>' + r[0] + '</span>' +
-          '<span style="font-family:var(--font-mono);color:var(--text-3);">' +
-            r[1].toLocaleString() + ' &rarr; ' + r[2].toLocaleString() + ' MW</span>' +
-        '</div>' +
-        '<div style="height:8px;background:var(--bg-2);border-radius:2px;overflow:hidden;margin-bottom:3px;">' +
-          '<div style="height:100%;width:' + (r[1] / max * 100).toFixed(1) + '%;background:var(--text-3);opacity:0.55;"></div></div>' +
-        '<div style="height:8px;background:var(--bg-2);border-radius:2px;overflow:hidden;">' +
-          '<div style="height:100%;width:' + (r[2] / max * 100).toFixed(1) + '%;background:' +
-            (r[2] > r[1] ? '#60a5fa' : '#f87171') + ';"></div></div>' +
-      '</div>';
-    }).join('') +
-    '<div style="font-size:0.7rem;color:var(--text-3);margin-top:8px;">Upper bar 2009, lower bar 2026. Mean MW offered per dispatch interval, capped at unit availability.</div>';
-  })();
+/* Offered MW by price band, 2009 vs 2026 */
+(function () {
+  var el = document.getElementById('bandBars');
+  if (!el) return;
+  var rows = [
+    ['&le; $0', 16664, 38214], ['$0&ndash;50', 9704, 3756], ['$50&ndash;300', 3081, 5756],
+    ['$300&ndash;1k', 870, 2227], ['&gt; $1k', 5213, 7769]
+  ];
+  var max = 38214;
+  el.innerHTML = rows.map(function (r) {
+    var up = r[2] > r[1];
+    return '<div style="margin-bottom:13px;">' +
+      '<div style="display:flex;justify-content:space-between;font-size:.74rem;color:var(--ink-60);margin-bottom:5px;gap:10px;">' +
+        '<span>' + r[0] + '</span>' +
+        '<span style="font-variant-numeric:tabular-nums;color:var(--ink-45);white-space:nowrap;">' +
+          r[1].toLocaleString() + ' &rarr; ' + r[2].toLocaleString() + ' MW</span></div>' +
+      '<div style="height:8px;background:var(--ink-08);border-radius:3px;overflow:hidden;margin-bottom:3px;">' +
+        '<div class="bar-fill" style="height:100%;width:' + (r[1] / max * 100).toFixed(1) + '%;background:var(--ink-28);"></div></div>' +
+      '<div style="height:8px;background:var(--ink-08);border-radius:3px;overflow:hidden;">' +
+        '<div class="bar-fill" style="height:100%;width:' + (r[2] / max * 100).toFixed(1) + '%;background:' +
+          (up ? 'var(--accent)' : 'var(--signal)') + ';"></div></div>' +
+    '</div>';
+  }).join('') +
+  '<div style="font-size:.7rem;color:var(--ink-45);margin-top:8px;">Upper bar 2009, lower bar 2026. Capped at unit availability.</div>';
+})();
 </script>
-<script src="assets/shared.js?v=20260819"></script>
-<script src="assets/main.js?v=20260819"></script>
+<script src="assets/shared.js?v=20260819b"></script>
+<script src="assets/main.js?v=20260819b"></script>
 </body>
 </html>

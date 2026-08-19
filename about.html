@@ -8,27 +8,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819z">
+<link rel="stylesheet" href="assets/style.css?v=20260820c">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
 <style>
   .tl { position:relative; padding-left:32px; }
-  .tl::before { content:""; position:absolute; left:7px; top:8px; bottom:8px; width:1px; background:var(--ink-14); }
+  .tl:before { content:""; position:absolute; left:7px; top:8px; bottom:8px; width:1px; background:var(--ink-14); }
   .tl-item { position:relative; padding-bottom:34px; }
   .tl-item:last-child { padding-bottom:0; }
-  .tl-item::before {
+  .tl-item:before {
     content:""; position:absolute; left:-31px; top:6px; width:15px; height:15px; border-radius:50%;
     background:var(--surface); border:2px solid var(--accent);
   }
-  .tl-item.now::before { background:var(--signal); border-color:var(--signal); box-shadow:0 0 0 4px var(--signal-10); }
-  .tl-date { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
+  .tl-item.now:before { background:var(--signal); border-color:var(--signal); box-shadow:0 0 0 4px var(--signal-10); }
+  .tl-date { font-size.72rem; font-weight:700; letter-spacing.1em; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
   .tl-title { font-size:1.08rem; font-weight:800; letter-spacing:-.02em; margin-bottom:3px; }
-  .tl-org { font-size:.85rem; color:var(--ink-52); margin-bottom:10px; }
-  .tl-body { font-size:.9rem; line-height:1.7; color:var(--ink-60); }
+  .tl-org { font-size.85rem; color:var(--ink-52); margin-bottom:10px; }
+  .tl-body { font-size.9rem; line-height:1.7; color:var(--ink-60); }
   .badge {
-    display:inline-block; margin-left:9px; font-size:.73rem; font-weight:700; letter-spacing:.08em;
+    display:inline-block; margin-left:9px; font-size.73rem; font-weight:700; letter-spacing.08em;
     text-transform:uppercase; padding:4px 10px; border-radius:var(--radius-pill); vertical-align:middle;
     background:var(--accent-10); color:var(--accent);
   }
@@ -37,15 +37,15 @@
   @media(max-width:640px){ .fact-row{grid-template-columns:1fr} }
   .fact { padding:18px; border-radius:var(--radius-sm); background:var(--glass); border:1px solid var(--glass-edge); }
   [data-theme="dark"] .fact { border-color:var(--ink-08); }
-  .fact-k { font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-45); font-weight:700; }
+  .fact-k { font-size.72rem; text-transform:uppercase; letter-spacing.12em; color:var(--ink-45); font-weight:700; }
   .fact-v { font-size:1rem; font-weight:800; letter-spacing:-.02em; margin-top:6px; }
-  .fact-s { font-size:.78rem; color:var(--ink-52); margin-top:3px; }
+  .fact-s { font-size.78rem; color:var(--ink-52); margin-top:3px; }
   .proj-card { display:block; color:inherit; }
   .proj-card:hover { color:inherit; }
   .proj-tags { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
-  .proj-tag { font-size:.73rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  .proj-tag { font-size.73rem; font-weight:700; letter-spacing.08em; text-transform:uppercase;
               padding:5px 11px; border-radius:var(--radius-pill); background:var(--accent-10); color:var(--accent); }
-  .proj-arrow { display:inline-block; margin-top:14px; font-size:.83rem; font-weight:600; color:var(--accent); }
+  .proj-arrow { display:inline-block; margin-top:14px; font-size.83rem; font-weight:600; color:var(--accent); }
 </style>
 </head>
 <body>
@@ -83,8 +83,7 @@
               building the tooling that makes them faster and better evidenced.
             </p>
             <p>
-              Right now that's <strong>Renewable Project Engineer at GSES</strong> in Waterloo
-              &mdash; Solar PV, BESS and EV charging infrastructure for federal, state and corporate
+              Right now that's <strong>Renewable Project Engineer at GSES</strong> in Waterloo, Solar PV, BESS and EV charging infrastructure for federal, state and corporate
               clients, plus the data-science and automation workstream that modernises how the team
               delivers.
             </p>
@@ -126,7 +125,7 @@
         <div class="card js-fade" style="text-align:center;">
           <span class="eyebrow" style="margin-bottom:16px;">At GSES</span>
           <div class="ring-row"><div class="ring-item"><div id="ringGses"></div></div></div>
-          <p class="prose" style="font-size:.9rem;margin-top:14px;">
+          <p class="prose" style="font-size.9rem;margin-top:14px;">
             Back-office minutes removed per inspection site, across 1,066 active inspections.
             Seven tools in four weeks.
           </p>
@@ -137,9 +136,9 @@
         <div class="card js-fade" style="text-align:center;">
           <span class="eyebrow" style="margin-bottom:16px;">On ARIA</span>
           <div class="ring-row"><div class="ring-item"><div id="ringAria"></div></div></div>
-          <p class="prose" style="font-size:.9rem;margin-top:14px;">
+          <p class="prose" style="font-size.9rem;margin-top:14px;">
             Coal reproduced against AEMO's published quarterly to the gigawatt-hour, and every
-            regional price to the dollar &mdash; before making a claim of my own.
+            regional price to the dollar, before making a claim of my own.
           </p>
           <div class="btn-row center" style="margin-top:18px;">
             <a class="btn btn-glass btn-sm" href="research.html">The research</a>
@@ -158,11 +157,10 @@
       <div class="grid-2 js-fade" data-stagger=".card" style="margin-top:24px;">
         <article class="card card-hover">
           <span class="eyebrow" style="margin-bottom:12px;">AltEnergy Watts News &middot; 14 Aug 2026</span>
-          <h3 class="h-sm" style="margin-bottom:10px;">&ldquo;$3.70 against $1.00 &mdash; a Queensland scenario&rdquo;</h3>
-          <p class="prose" style="font-size:.89rem;">
+          <h3 class="h-sm" style="margin-bottom:10px;">&ldquo;$3.70 against $1.00: a Queensland scenario&rdquo;</h3>
+          <p class="prose" style="font-size.89rem;">
             My analysis ran as the Analysis feature, pages 8&ndash;9, credited to ARIA Energy.
-            A Queensland wind farm banks $3.70 from a megawatt-hour where solar banks $1.00 &mdash;
-            capture rate times loss factor, 99.8% against 27.1%.
+            A Queensland wind farm banks $3.70 from a megawatt-hour where solar banks $1.00, capture rate times loss factor, 99.8% against 27.1%.
           </p>
           <div class="btn-row" style="margin-top:20px;">
             <a class="btn btn-glass btn-sm" href="assets/docs/kanav-verma-qld-scenario-altenergy-2026-08-14.pdf" target="_blank" rel="noopener">Read my article</a>
@@ -172,9 +170,9 @@
         <article class="card card-hover">
           <span class="eyebrow" style="margin-bottom:12px;">Beijing Energy International &middot; May 2026</span>
           <h3 class="h-sm" style="margin-bottom:10px;">Forward capture scenarios to 2031</h3>
-          <p class="prose" style="font-size:.89rem;">
+          <p class="prose" style="font-size.89rem;">
             A NSW portfolio owner asked why capture had fallen from ~85&ndash;90% to ~75%, and
-            whether it was forecastable. It was &mdash; 12 to 18 months ahead. Then I built the
+            whether it was forecastable. It was: 12 to 18 months ahead. Then I built the
             probability-weighted forward model across seven scenarios to 2031.
           </p>
           <div class="btn-row" style="margin-top:20px;">
@@ -193,12 +191,12 @@
 
       <div class="tl js-fade" data-stagger=".tl-item" style="margin-top:34px;max-width:760px;">
         <div class="tl-item now">
-          <div class="tl-date">Jun 2026 &mdash; Present</div>
+          <div class="tl-date">Jun 2026, Present</div>
           <div class="tl-title">Renewable Project Engineer<span class="badge badge-now">Current</span></div>
-          <div class="tl-org">Global Sustainable Energy Solutions (GSES) &mdash; Waterloo, NSW</div>
+          <div class="tl-org">Global Sustainable Energy Solutions (GSES), Waterloo, NSW</div>
           <p class="tl-body">
             Solar PV, BESS and EV charging infrastructure consulting for federal, state and
-            corporate clients &mdash; techno-economic analysis, procurement, quality assurance and
+            corporate clients, techno-economic analysis, procurement, quality assurance and
             operational optimisation. Alongside that I lead the data-science and automation
             workstream: <strong>seven tools in four weeks</strong>, taking about 93 minutes of
             back-office work off every inspection site.
@@ -208,25 +206,24 @@
           </p>
         </div>
         <div class="tl-item now">
-          <div class="tl-date">Nov 2024 &mdash; Present</div>
+          <div class="tl-date">Nov 2024, Present</div>
           <div class="tl-title">Energy Market Analyst &amp; Platform Developer<span class="badge badge-now">ARIA</span></div>
-          <div class="tl-org">ARIA &mdash; independent platform</div>
+          <div class="tl-org">ARIA, independent platform</div>
           <p class="tl-body">
-            Built ARIA from a blank page &mdash; live ETL off AEMO NEMWeb, a Python/Streamlit
+            Built ARIA from a blank page, live ETL off AEMO NEMWeb, a Python/Streamlit
             application, then a Next.js/FastAPI backend over a precomputed DuckDB layer.
             18+ analytical modules across GWAP/TWAP capture pricing, curtailment decomposition,
             BESS revenue stacking, coal closure scenarios, DER-corrected demand and a multi-model
             price-path engine. Also the research engine behind original analysis published to
-            2,273 followers &mdash; built from AEMO data, not commentary.
+            2,273 followers, built from AEMO data, not commentary.
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Dec 2025 &mdash; Apr 2026</div>
+          <div class="tl-date">Dec 2025, Apr 2026</div>
           <div class="tl-title">Energy Market Analyst<span class="badge">Work</span></div>
-          <div class="tl-org">Energy Synapse &mdash; Pyrmont, Sydney</div>
+          <div class="tl-org">Energy Synapse, Pyrmont, Sydney</div>
           <p class="tl-body">
-            NEM market intelligence and commercial analysis for developer and asset-manager clients
-            &mdash; wholesale spot dynamics, BESS dispatch economics, curtailment risk and REZ
+            NEM market intelligence and commercial analysis for developer and asset-manager clients, wholesale spot dynamics, BESS dispatch economics, curtailment risk and REZ
             access across all regions. Built a structured database of 500+ pipeline projects
             cross-referenced against AEMO, CER and CIS sources, and automated Python scrapers for
             planning approvals that cut research time from about four days to hours. Supported
@@ -234,7 +231,7 @@
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Oct 2025 &mdash; Jan 2026</div>
+          <div class="tl-date">Oct 2025, Jan 2026</div>
           <div class="tl-title">Google Advanced Data Analytics<span class="badge">Certificate</span></div>
           <div class="tl-org">Google / Coursera</div>
           <p class="tl-body">
@@ -243,9 +240,9 @@
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Oct 2024 &mdash; Sep 2025</div>
+          <div class="tl-date">Oct 2024, Sep 2025</div>
           <div class="tl-title">Vehicle &amp; GSE Data Specialist<span class="badge">Work</span></div>
-          <div class="tl-org">FedEx Express Australasia &mdash; Mascot HQ, Sydney</div>
+          <div class="tl-org">FedEx Express Australasia, Mascot HQ, Sydney</div>
           <p class="tl-body">
             Data analysis and reporting for a 3,000+ asset fleet across Australia, New Zealand and
             Fiji. Power BI dashboards for depot managers and US executive leadership, Python
@@ -254,9 +251,9 @@
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Nov 2023 &mdash; Jul 2024</div>
-          <div class="tl-title">Project Engineer &mdash; partner project<span class="badge">Work</span></div>
-          <div class="tl-org">Aurecon &times; TransGrid &mdash; Sydney</div>
+          <div class="tl-date">Nov 2023, Jul 2024</div>
+          <div class="tl-title">Project Engineer, partner project<span class="badge">Work</span></div>
+          <div class="tl-org">Aurecon &times; TransGrid, Sydney</div>
           <p class="tl-body">
             Assessed grid-stability solutions for TransGrid's NSW transmission network, focused on
             DER integration and the operational impact of rising rooftop solar penetration.
@@ -265,8 +262,8 @@
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Sep 2022 &mdash; Aug 2024</div>
-          <div class="tl-title">MEng Science &mdash; Renewable Energy<span class="badge">Education</span></div>
+          <div class="tl-date">Sep 2022, Aug 2024</div>
+          <div class="tl-title">MEng Science, Renewable Energy<span class="badge">Education</span></div>
           <div class="tl-org">University of New South Wales, Sydney</div>
           <p class="tl-body">
             WAM 75.8 (High Distinction). Energy market economics, power systems, storage, project
@@ -274,9 +271,9 @@
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Mar 2018 &mdash; Aug 2022</div>
-          <div class="tl-title">BEng &mdash; Electronics &amp; Communication<span class="badge">Education</span></div>
-          <div class="tl-org">BMS College of Engineering &mdash; Bengaluru, India</div>
+          <div class="tl-date">Mar 2018, Aug 2022</div>
+          <div class="tl-title">BEng, Electronics &amp; Communication<span class="badge">Education</span></div>
+          <div class="tl-org">BMS College of Engineering, Bengaluru, India</div>
           <p class="tl-body">CGPA 8.0/10 (High Distinction).</p>
         </div>
       </div>
@@ -292,38 +289,38 @@
       <div class="grid-auto js-fade" data-stagger=".card" style="margin-top:30px;">
         <a class="card card-hover proj-card" href="platform.html">
           <div class="proj-tags"><span class="proj-tag">Energy</span><span class="proj-tag">Counterfactuals</span><span class="proj-tag">Platform</span></div>
-          <h3 class="h-sm" style="margin-bottom:10px;">ARIA &mdash; NEM analytics platform</h3>
-          <p class="prose" style="font-size:.87rem;">Counterfactual analytics for Australia's electricity market. Curtailment cause attribution, per-unit revenue capture, merit-order closure counterfactuals, and a five-region system model.</p>
+          <h3 class="h-sm" style="margin-bottom:10px;">ARIA, NEM analytics platform</h3>
+          <p class="prose" style="font-size.87rem;">Counterfactual analytics for Australia's electricity market. Curtailment cause attribution, per-unit revenue capture, merit-order closure counterfactuals, and a five-region system model.</p>
           <span class="proj-arrow">Explore ARIA &rarr;</span>
         </a>
         <a class="card card-hover proj-card" href="project-detail.html?id=wind-tool">
           <div class="proj-tags"><span class="proj-tag">Energy</span><span class="proj-tag">Data</span></div>
           <h3 class="h-sm" style="margin-bottom:10px;">Wind farm analysis tool</h3>
-          <p class="prose" style="font-size:.87rem;">Streamlit dashboard analysing Australian wind farm performance from AEMO dispatch data &mdash; capacity factors, generation summaries and emissions avoided.</p>
+          <p class="prose" style="font-size.87rem;">Streamlit dashboard analysing Australian wind farm performance from AEMO dispatch data, capacity factors, generation summaries and emissions avoided.</p>
           <span class="proj-arrow">View details &rarr;</span>
         </a>
         <a class="card card-hover proj-card" href="project-detail.html?id=utility-solar-p50">
           <div class="proj-tags"><span class="proj-tag">Energy</span><span class="proj-tag">Modelling</span></div>
-          <h3 class="h-sm" style="margin-bottom:10px;">117 MW solar &mdash; P50/P90</h3>
-          <p class="prose" style="font-size:.87rem;">Investment-grade yield model producing 246 GWh/year at an 82% performance ratio.</p>
+          <h3 class="h-sm" style="margin-bottom:10px;">117 MW solar, P50/P90</h3>
+          <p class="prose" style="font-size.87rem;">Investment-grade yield model producing 246 GWh/year at an 82% performance ratio.</p>
           <span class="proj-arrow">View details &rarr;</span>
         </a>
         <a class="card card-hover proj-card" href="project-detail.html?id=agrivoltaics">
           <div class="proj-tags"><span class="proj-tag">Energy</span><span class="proj-tag">Modelling</span></div>
           <h3 class="h-sm" style="margin-bottom:10px;">Agrivoltaics + battery</h3>
-          <p class="prose" style="font-size:.87rem;">10.1 MW solar with 27.4 MWh of storage, delivering an 11% IRR and an 8.4-year payback.</p>
+          <p class="prose" style="font-size.87rem;">10.1 MW solar with 27.4 MWh of storage, delivering an 11% IRR and an 8.4-year payback.</p>
           <span class="proj-arrow">View details &rarr;</span>
         </a>
         <a class="card card-hover proj-card" href="project-detail.html?id=hybrid-mini-grid">
           <div class="proj-tags"><span class="proj-tag">Energy</span><span class="proj-tag">Modelling</span></div>
           <h3 class="h-sm" style="margin-bottom:10px;">Hybrid mini-grid assessment</h3>
-          <p class="prose" style="font-size:.87rem;">A solar&ndash;wind&ndash;grid hybrid cutting cost 30% and eliminating 76,000 tonnes of CO&#8322; a year.</p>
+          <p class="prose" style="font-size.87rem;">A solar&ndash;wind&ndash;grid hybrid cutting cost 30% and eliminating 76,000 tonnes of CO&#8322; a year.</p>
           <span class="proj-arrow">View details &rarr;</span>
         </a>
         <a class="card card-hover proj-card" href="project-detail.html?id=offshore-wind">
           <div class="proj-tags"><span class="proj-tag">Energy</span></div>
           <h3 class="h-sm" style="margin-bottom:10px;">150 MW offshore wind</h3>
-          <p class="prose" style="font-size:.87rem;">Feasibility and yield assessment for an offshore wind development.</p>
+          <p class="prose" style="font-size.87rem;">Feasibility and yield assessment for an offshore wind development.</p>
           <span class="proj-arrow">View details &rarr;</span>
         </a>
       </div>
@@ -344,8 +341,8 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+          Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
         <div class="btn-row center">
@@ -378,7 +375,7 @@ window.addEventListener('load', function () {
     alt:'Ten of ten AEMO price figures reproduced' });
 });
 </script>
-<script src="assets/shared.js?v=20260819z"></script>
-<script src="assets/main.js?v=20260819z"></script>
+<script src="assets/shared.js?v=20260820c"></script>
+<script src="assets/main.js?v=20260820c"></script>
 </body>
 </html>

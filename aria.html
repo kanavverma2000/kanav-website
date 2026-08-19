@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819z">
+<link rel="stylesheet" href="assets/style.css?v=20260820c">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -16,60 +16,60 @@
 <style>
   .mods { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
   .mod-card { padding:24px; }
-  .mod-card .n { font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  .mod-card .n { font-size.7rem; font-weight:700; letter-spacing.14em; text-transform:uppercase;
                  color:var(--accent); margin-bottom:12px; }
   .mod-card h3 { font-size:1.04rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; margin-bottom:10px; }
-  .mod-card p { font-size:.88rem; line-height:1.66; color:var(--ink-60); }
+  .mod-card p { font-size.88rem; line-height:1.66; color:var(--ink-60); }
   .mod-card .lim { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
-                   font-size:.78rem; color:var(--ink-52); line-height:1.55; }
+                   font-size.78rem; color:var(--ink-52); line-height:1.55; }
   .mod-card .lim b { color:var(--ink-70); font-weight:600; }
 
   .qframe { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:30px; }
   @media(max-width:900px){ .qframe{grid-template-columns:1fr} }
-  .q-tense { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-45);
+  .q-tense { font-size.72rem; letter-spacing.14em; text-transform:uppercase; color:var(--ink-45);
              margin-bottom:10px; font-weight:700; }
   .q.open { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset, var(--shadow-lg); }
   .q.open .q-tense { color:var(--accent); }
   .q-q { font-size:1.18rem; font-weight:900; letter-spacing:-.03em; line-height:1.25; margin-bottom:12px; }
   .q-verdict { margin-top:15px; padding-top:12px; border-top:1px solid var(--ink-08);
-               font-size:.78rem; font-weight:600; color:var(--ink-45); }
+               font-size.78rem; font-weight:600; color:var(--ink-45); }
   .q.open .q-verdict { color:var(--accent); }
 
   .mx-wrap { overflow-x:auto; max-width:100%; margin-top:24px; -webkit-overflow-scrolling:touch; }
-  .mx-wrap::-webkit-scrollbar { height:6px; }
-  .mx-wrap::-webkit-scrollbar-thumb { background:var(--ink-14); border-radius:3px; }
+  .mx-wrap:-webkit-scrollbar { height:6px; }
+  .mx-wrap:-webkit-scrollbar-thumb { background:var(--ink-14); border-radius:3px; }
   .scroll-cue { display:none; }
   @media (max-width:900px){ .scroll-cue { display:block; color:var(--accent); font-weight:600; } }
-  table.mx { width:100%; border-collapse:collapse; font-size:.82rem; min-width:800px; }
+  table.mx { width:100%; border-collapse:collapse; font-size.82rem; min-width:800px; }
   table.mx th, table.mx td { padding:11px 9px; border-bottom:1px solid var(--ink-08); text-align:center; }
   table.mx th:first-child, table.mx td:first-child { text-align:left; min-width:200px; }
-  table.mx thead th { font-size:.73rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-45);
+  table.mx thead th { font-size.73rem; letter-spacing.05em; text-transform:uppercase; color:var(--ink-45);
                       font-weight:700; border-bottom:1px solid var(--ink-28); vertical-align:bottom; line-height:1.3; }
   table.mx thead th.acol { color:var(--accent); }
   table.mx td.acol { background:var(--accent-10); }
   table.mx tbody tr:last-child td { border-bottom:none; }
   .yes { color:var(--good); font-weight:800; }
-  .part { color:var(--accent); font-weight:800; opacity:.55; }
+  .part { color:var(--accent); font-weight:800; opacity.55; }
   .no { color:var(--ink-28); }
 
   .vend { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px; margin-top:26px; }
-  .vend h4 { font-size:.98rem; font-weight:800; letter-spacing:-.02em; margin-bottom:8px; }
-  .vend .role { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+  .vend h4 { font-size.98rem; font-weight:800; letter-spacing:-.02em; margin-bottom:8px; }
+  .vend .role { font-size.72rem; letter-spacing.12em; text-transform:uppercase; color:var(--accent);
                 font-weight:700; margin-bottom:9px; }
-  .vend p { font-size:.85rem; line-height:1.62; color:var(--ink-60); }
+  .vend p { font-size.85rem; line-height:1.62; color:var(--ink-60); }
   .vend .ov { margin-top:12px; padding-top:10px; border-top:1px solid var(--ink-08);
-              font-size:.79rem; line-height:1.58; color:var(--ink-52); }
+              font-size.79rem; line-height:1.58; color:var(--ink-52); }
   .vend .ov b { color:var(--ink-70); font-weight:600; }
 
-  table.price { width:100%; border-collapse:collapse; font-size:.86rem; min-width:460px; font-variant-numeric:tabular-nums; }
+  table.price { width:100%; border-collapse:collapse; font-size.86rem; min-width:460px; font-variant-numeric:tabular-nums; }
   table.price th, table.price td { padding:11px 13px; border-bottom:1px solid var(--ink-08); text-align:right; }
   table.price th:first-child, table.price td:first-child { text-align:left; }
-  table.price thead th { font-size:.73rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-45);
+  table.price thead th { font-size.73rem; text-transform:uppercase; letter-spacing.06em; color:var(--ink-45);
                          font-weight:700; border-bottom:1px solid var(--ink-28); }
   table.price tbody tr:last-child td { border-bottom:none; }
   /* Drawn dot — U+25CF is not guaranteed in the display font. */
   .d { display:inline-block; width:9px; height:9px; border-radius:50%; background:currentColor; vertical-align:middle; }
-  .no .d { width:11px; height:2px; border-radius:1px; opacity:.9; }
+  .no .d { width:11px; height:2px; border-radius:1px; opacity.9; }
   .dv { width:7px; height:7px; margin-right:5px; }
 </style>
 </head>
@@ -102,7 +102,7 @@
       <div class="mods js-fade" data-stagger=".card" style="margin-top:8px;">
 
         <article class="card card-hover mod-card">
-          <div class="n">01 &mdash; Curtailment attribution</div>
+          <div class="n">01, Curtailment attribution</div>
           <h3>Not how much was lost. Why.</h3>
           <p>
             Measured against each unit's unconstrained forecast, then split by cause. A semi-dispatch
@@ -110,11 +110,11 @@
             Network has been flat near <strong>1 TWh a year since 2021</strong>; economic is up
             <strong>420%</strong>.
           </p>
-          <span class="lim"><b>Limit.</b> The split is attributed over the capped subset &mdash; 7.60 of 8.37 TWh in 2025. The rest stays unattributed rather than guessed. No behind-the-meter.</span>
+          <span class="lim"><b>Limit.</b> The split is attributed over the capped subset: 7.60 of 8.37 TWh in 2025. The rest stays unattributed rather than guessed. No behind-the-meter.</span>
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">02 &mdash; Revenue capture</div>
+          <div class="n">02, Revenue capture</div>
           <h3>Against the right denominator.</h3>
           <p>
             Generation-weighted price over the region's <em>time</em>-weighted average, per unit, at
@@ -125,7 +125,7 @@
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">03 &mdash; Counterfactual engine</div>
+          <div class="n">03, Counterfactual engine</div>
           <h3>Clear it twice. Report the difference.</h3>
           <p>
             169 units priced from AEMO's own heat rates, fuel prices and variable O&amp;M. Clear the
@@ -133,11 +133,11 @@
             <em>bid</em>, over a 227-unit stack. <strong>The gap between the two bounds is the
             markup.</strong>
           </p>
-          <span class="lim"><b>Limit.</b> The conduct bound's level is unvalidated &mdash; $43.77 modelled vs $94.84 observed, corr 0.415. Only the mean is readable. Published as a range.</span>
+          <span class="lim"><b>Limit.</b> The conduct bound's level is unvalidated: $43.77 modelled vs $94.84 observed, corr 0.415. Only the mean is readable. Published as a range.</span>
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">04 &mdash; Coal exit</div>
+          <div class="n">04, Coal exit</div>
           <h3>45 units. 21.1 GW. What's left after.</h3>
           <p>
             Retirement schedule, closure history, station context, fleet outlook, interconnector
@@ -148,41 +148,41 @@
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">05 &mdash; Storage economics</div>
+          <div class="n">05, Storage economics</div>
           <h3>Half a battery's value is invisible to a spread.</h3>
           <p>
             Charge, discharge, cycling, utilisation, price heatmaps, strategy clustering, offtake.
-            Scarcity events run a mean of 7.3 hours and <strong>84.7% exceed four</strong> &mdash; so
+            Scarcity events run a mean of 7.3 hours and <strong>84.7% exceed four</strong>, so
             a four-hour battery empties partway through most events it was bought for.
             <strong>$287,776/MW/yr at 4h, $442,879 at 8h.</strong>
           </p>
-          <span class="lim"><b>Limit.</b> The 8-hour result survives a capex scenario switch, but I no longer call it "the optimum" &mdash; switching scenarios zeroes a whole 19 GW four-hour fleet.</span>
+          <span class="lim"><b>Limit.</b> The 8-hour result survives a capex scenario switch, but I no longer call it "the optimum", switching scenarios zeroes a whole 19 GW four-hour fleet.</span>
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">06 &mdash; Weather &amp; resource</div>
+          <div class="n">06, Weather &amp; resource</div>
           <h3>36 years, so the drought year shows up.</h3>
           <p>
             Hourly wind and solar rebuilt for <strong>286 projects, 50,168 MW, 1990&ndash;2025</strong>,
-            calibrated to the unconstrained forecast rather than metered output &mdash; metered is
+            calibrated to the unconstrained forecast rather than metered output, metered is
             already depressed by curtailment, so calibrating to it bakes the curtailment in.
           </p>
           <span class="lim"><b>Limit.</b> Calibration is regional, not per-site: five scalars serve 286 projects and between-site variation runs 0.935&ndash;1.331.</span>
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">07 &mdash; System model</div>
+          <div class="n">07, System model</div>
           <h3>Five regions, transmission priced inside.</h3>
           <p>
             Least-cost expansion across five regions and six interconnectors, plus pumped hydro,
             hydrogen storage and a reserve margin. Interconnector limits derived from AEMO's own
-            dispatch-interval limits against eight years of realised flow &mdash; not asserted.
+            dispatch-interval limits against eight years of realised flow: not asserted.
           </p>
           <span class="lim"><b>Limit.</b> <b>The capacity mix is a function of the capex scenario, not a result.</b> Switching published scenarios moves solar &minus;41%, wind +61%, and a 19 GW battery fleet to zero. Mine included.</span>
         </article>
 
         <article class="card card-hover mod-card">
-          <div class="n">08 &mdash; Scenarios &amp; forecast error</div>
+          <div class="n">08, Scenarios &amp; forecast error</div>
           <h3>An explicit clear. Not a black box.</h3>
           <p>
             Scenarios are the merit-order stack re-cleared under changed inputs, every assumption
@@ -219,7 +219,7 @@
         <p class="caption">
           AEMO NEMWeb and MMS, with attribution. Five-minute data sits in a staging layer for
           anything that must be time-weighted correctly. Fuel keys on per-unit registry fuel, never
-          the station technology tag &mdash; hybrid sites otherwise drop their wind and solar into
+          the station technology tag, hybrid sites otherwise drop their wind and solar into
           the battery bucket, which overstated one month's battery discharge by 29% before I caught it.
         </p>
       </div>
@@ -245,8 +245,8 @@
         <div class="card js-fade">
           <span class="eyebrow" style="margin-bottom:14px;">2025 curtailment, by cause</span>
           <div class="ring-row" style="margin-top:8px;">
-            <div class="ring-item"><div id="ringEcon"></div><p>Economic &mdash; a price decision</p></div>
-            <div class="ring-item"><div id="ringNet"></div><p>Network &mdash; a grid limit</p></div>
+            <div class="ring-item"><div id="ringEcon"></div><p>Economic: a price decision</p></div>
+            <div class="ring-item"><div id="ringNet"></div><p>Network: a grid limit</p></div>
           </div>
           <p class="chart-note">
             Of the 7.60 TWh attributable by cause in 2025. The remaining 0.77 TWh stays
@@ -266,8 +266,8 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+          Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
         <div class="btn-row center">
@@ -283,8 +283,7 @@
     <div class="shell-narrow">
       <h2 class="h-lg js-lines" style="margin:0 auto;max-width:16ch;">Nine tools do this.<br><span class="accent">One does it backwards.</span></h2>
       <p class="lede js-fade" style="margin:24px auto 38px;max-width:520px;">
-        Where this sits against Global-Roam, gridIQ, Aurora, Endgame, Cornwall Insight and Modo
-        &mdash; including the places I have no advantage at all.
+        Where this sits against Global-Roam, gridIQ, Aurora, Endgame, Cornwall Insight and Modo, including the places I have no advantage at all.
       </p>
       <div class="btn-row center js-fade">
         <a class="btn btn-primary" href="positioning.html">Where it fits</a>
@@ -310,7 +309,7 @@ window.addEventListener('load', function () {
   function in4(){ return 4; }
 });
 </script>
-<script src="assets/shared.js?v=20260819z"></script>
-<script src="assets/main.js?v=20260819z"></script>
+<script src="assets/shared.js?v=20260820c"></script>
+<script src="assets/main.js?v=20260820c"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819z">
+<link rel="stylesheet" href="assets/style.css?v=20260820c">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -17,9 +17,9 @@
   .big-num { font-size: clamp(2.1rem,4.6vw,3.2rem); font-weight:900; letter-spacing:-.05em;
              line-height:1; font-variant-numeric:tabular-nums; color:var(--accent); margin-bottom:12px; }
   .find h3 { font-size:1.02rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; margin-bottom:9px; }
-  .find p { font-size:.89rem; line-height:1.66; color:var(--ink-60); }
+  .find p { font-size.89rem; line-height:1.66; color:var(--ink-60); }
   .find .src { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
-               font-size:.76rem; color:var(--ink-45); line-height:1.5; }
+               font-size.76rem; color:var(--ink-45); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -125,13 +125,13 @@
           </div>
           <p class="caption">
             <strong>Coal agrees to the gigawatt-hour.</strong> Wind and gas run ~1% under because I
-            sum positive intervals only and drop the biogas family &mdash; a stated basis difference,
+            sum positive intervals only and drop the biogas family: a stated basis difference,
             not an error.
           </p>
         </div>
 
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">Price, Q2 2026 &mdash; both weightings</span>
+          <span class="eyebrow" style="margin-bottom:14px;">Price, Q2 2026, both weightings</span>
           <div class="table-wrap">
             <table class="data">
               <thead>
@@ -159,7 +159,7 @@
         <span class="note-title">Why it isn't trivial</span>
         AEMO's headline is a <strong>time-weighted</strong> average over five-minute dispatch
         periods. Its separate volume-weighted series is weighted by <strong>initial supply plus
-        total intermittent generation</strong> &mdash; not total demand. Use total demand, the
+        total intermittent generation</strong>: not total demand. Use total demand, the
         obvious guess, and you run <strong>$1&ndash;2/MWh high in every region</strong>. That one
         wrong choice quietly invalidates any capture benchmark built on it.
       </div>
@@ -177,14 +177,14 @@
         <article class="card card-hover find">
           <div class="big-num">+30 GWh</div>
           <h3>Midday gas <em>rose</em> while evening gas collapsed</h3>
-          <p>Gas fell 30% over the year. AEMO reports the evening window and names batteries. It doesn't report that midday output went <strong>up</strong> &mdash; charging adds load. Weather is a level effect. It can't do both.</p>
+          <p>Gas fell 30% over the year. AEMO reports the evening window and names batteries. It doesn't report that midday output went <strong>up</strong>, charging adds load. Weather is a level effect. It can't do both.</p>
           <span class="src">Total sent-out flat at +0.5%. Substitution 1:1 at 16:00 and 17:00.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">85%</div>
           <h3>Curtailment is a price decision, not a grid limit</h3>
-          <p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission &mdash; so your exposure is to what gets built <em>around</em> you.</p>
+          <p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission, so your exposure is to what gets built <em>around</em> you.</p>
           <span class="src">212 semi-scheduled units, 2021&ndash;2025.</span>
         </article>
 
@@ -233,7 +233,7 @@
       <span class="eyebrow js-fade">The mechanism, in one chart</span>
       <h2 class="h-lg js-lines" style="max-width:20ch;">Evening gas down.<br><span class="accent">Midday gas up.</span></h2>
       <p class="lede js-fade" style="margin-bottom:34px;">
-        Change in energy by hour of day, Q2 2025 to Q2 2026. Weather is a level effect &mdash; it
+        Change in energy by hour of day, Q2 2025 to Q2 2026. Weather is a level effect, it
         cannot pull the evening down and push the middle of the day up at the same time.
       </p>
       <div class="split">
@@ -249,8 +249,7 @@
           <span class="eyebrow" style="margin-bottom:14px;">Solar capture, first half of each year</span>
           <div id="captureLine"></div>
           <p class="chart-note">
-            The 2026 uptick isn't recovery. Capture is a ratio and the denominator collapsed &mdash;
-            solar earned <strong>less</strong> per MWh in H1 2026 ($40.18) than in H1 2025 ($47.38).
+            The 2026 uptick isn't recovery. Capture is a ratio and the denominator collapsed, solar earned <strong>less</strong> per MWh in H1 2026 ($40.18) than in H1 2025 ($47.38).
           </p>
         </div>
       </div>
@@ -279,13 +278,13 @@
         <div class="scope-col scope-no">
           <h4>Doesn't</h4>
           <ul>
-            <li><strong>No AI price forecasting</strong> &mdash; the scenario engine is an explicit merit-order clear with published assumptions</li>
-            <li><strong>No forward loss-factor product</strong> &mdash; Cornwall Insight and Aurora already sell one</li>
-            <li><strong>No spike-prediction edge</strong> &mdash; ours beats a naive rule by 1.1%, so it isn't sold</li>
-            <li><strong>No real-time monitoring</strong> &mdash; ez2view and gridIQ are the tools for that</li>
-            <li><strong>No automated bidding</strong> &mdash; running an optimiser and benchmarking one is a conflict</li>
+            <li><strong>No AI price forecasting</strong>: the scenario engine is an explicit merit-order clear with published assumptions</li>
+            <li><strong>No forward loss-factor product</strong>, Cornwall Insight and Aurora already sell one</li>
+            <li><strong>No spike-prediction edge</strong>, ours beats a naive rule by 1.1%, so it isn't sold</li>
+            <li><strong>No real-time monitoring</strong>, ez2view and gridIQ are the tools for that</li>
+            <li><strong>No automated bidding</strong>, running an optimiser and benchmarking one is a conflict</li>
             <li><strong>No Western Australian coverage</strong></li>
-            <li>No interval-level accuracy on the conduct clear &mdash; only the mean is readable</li>
+            <li>No interval-level accuracy on the conduct clear, only the mean is readable</li>
           </ul>
         </div>
       </div>
@@ -306,8 +305,8 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+          Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
         <div class="btn-row center">
@@ -356,7 +355,7 @@ window.addEventListener('load', function () {
        alt:'Fleet capture ratio for solar and wind, first half of each year 2022 to 2026' });
 });
 </script>
-<script src="assets/shared.js?v=20260819z"></script>
-<script src="assets/main.js?v=20260819z"></script>
+<script src="assets/shared.js?v=20260820c"></script>
+<script src="assets/main.js?v=20260820c"></script>
 </body>
 </html>

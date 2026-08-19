@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819z">
+<link rel="stylesheet" href="assets/style.css?v=20260820c">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -19,11 +19,11 @@
         padding:18px 16px; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
   [data-theme="dark"] .kv { border-color:var(--ink-08); }
   .kv-v { font-size:1.6rem; font-weight:900; letter-spacing:-.04em; line-height:1.05; font-variant-numeric:tabular-nums; }
-  .kv-l { font-size:.78rem; color:var(--ink-52); margin-top:8px; line-height:1.5; }
+  .kv-l { font-size.78rem; color:var(--ink-52); margin-top:8px; line-height:1.5; }
   .hour-row { display:grid; grid-template-columns:52px 1fr 62px; align-items:center; gap:10px; margin-bottom:5px; }
-  .hour-lab { font-size:.74rem; color:var(--ink-45); text-align:right; font-variant-numeric:tabular-nums; }
+  .hour-lab { font-size.74rem; color:var(--ink-45); text-align:right; font-variant-numeric:tabular-nums; }
   .hour-track { height:16px; background:var(--ink-08); border-radius:3px; position:relative; overflow:hidden; }
-  .hour-val { font-size:.74rem; color:var(--ink-60); font-variant-numeric:tabular-nums; }
+  .hour-val { font-size.74rem; color:var(--ink-60); font-variant-numeric:tabular-nums; }
   .bound-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; }
   @media(max-width:720px){ .bound-grid{grid-template-columns:1fr} }
   .bound-v { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:900; letter-spacing:-.05em; color:var(--accent); margin-top:16px; }
@@ -58,10 +58,10 @@
   <!-- ═══════════ 00 REPRODUCTION ═══════════ -->
   <section class="band band-2" id="reproduction">
     <div class="shell">
-      <div class="mod-num js-fade">00 &mdash; The credibility anchor</div>
+      <div class="mod-num js-fade">00, The credibility anchor</div>
       <h2 class="h-md js-lines" style="max-width:22ch;">Before anything new, I reproduce <span class="accent">what you already know.</span></h2>
       <p class="prose js-fade">
-        I downloaded AEMO's Q2 2026 quarterly &mdash; 91 pages &mdash; and compared it line by line
+        I downloaded AEMO's Q2 2026 quarterly, 91 pages, and compared it line by line
         against 24.5 million hourly generation records joined to the registry. Nothing was tuned to
         match.
       </p>
@@ -72,7 +72,7 @@
             <tr><th>Fuel</th><th>AEMO average MW</th><th>AEMO implied GWh</th><th>ARIA GWh</th><th>Gap</th></tr>
           </thead>
           <tbody>
-            <tr><td>Coal &mdash; black + brown</td><td class="num">13,158</td><td class="num">28,737.1</td><td class="num">28,737.1</td><td class="num ok">0.00%</td></tr>
+            <tr><td>Coal, black + brown</td><td class="num">13,158</td><td class="num">28,737.1</td><td class="num">28,737.1</td><td class="num ok">0.00%</td></tr>
             <tr><td>Grid-scale solar</td><td class="num">1,860</td><td class="num">4,062.2</td><td class="num">4,060.2</td><td class="num ok">&minus;0.05%</td></tr>
             <tr><td>Wind</td><td class="num">4,198</td><td class="num">9,168.4</td><td class="num">9,075.8</td><td class="num ok">&minus;1.01%</td></tr>
             <tr><td>Gas</td><td class="num">1,050</td><td class="num">2,293.2</td><td class="num">2,257.5</td><td class="num ok">&minus;1.56%</td></tr>
@@ -91,7 +91,7 @@
       </div>
 
       <p class="prose js-fade" style="margin-top:30px;">
-        Prices are the harder test. The average price isn't one number &mdash; it's a choice of
+        Prices are the harder test. The average price isn't one number, it's a choice of
         weighting, and AEMO makes two different choices in the same document. Both reproduce to the
         dollar.
       </p>
@@ -125,7 +125,7 @@
         <span class="note-title">Why this is not trivial</span>
         AEMO's own footnote defines the headline as a <strong>time-weighted average over each
         five-minute dispatch period</strong>. Not demand-weighted. Its volume-weighted series is
-        weighted by <strong>initial supply plus total intermittent generation</strong> &mdash; not
+        weighted by <strong>initial supply plus total intermittent generation</strong>: not
         total demand. Substitute total demand, the obvious guess, and you run
         <strong>$1&ndash;2/MWh high in every region</strong>. Visible error, not rounding. So I
         compute capture against the <em>time</em>-weighted denominator, always.
@@ -136,12 +136,12 @@
   <!-- ═══════════ 01 GAS ═══════════ -->
   <section class="band band-1" id="gas">
     <div class="shell">
-      <div class="mod-num js-fade">01 &mdash; Decomposing the gas collapse</div>
+      <div class="mod-num js-fade">01, Decomposing the gas collapse</div>
       <h2 class="h-md js-lines" style="max-width:20ch;">Gas fell 30%. The mechanism is in the <span class="accent">midday</span>, not the evening.</h2>
       <p class="prose js-fade">
         AEMO reports the fall and names batteries. It even names the window: in NSW the decrease was
         "most evident during the evening peak period (1600 hrs to 2100 hrs)".
-        <strong>That much is published, and I reproduce it</strong> &mdash; my battery discharge
+        <strong>That much is published, and I reproduce it</strong>, my battery discharge
         increase over AEMO's exact window comes to 479.2 GWh against their stated 485.0. A 1.2% gap.
       </p>
       <p class="prose js-fade">
@@ -149,7 +149,7 @@
       </p>
 
       <div class="kv-grid js-fade" data-stagger=".kv">
-        <div class="kv"><div class="kv-v accent">+0.5%</div><div class="kv-l">Total NEM sent-out energy, Q2 2025 &rarr; Q2 2026. Flat. Gas was displaced, not switched off &mdash; no demand destruction.</div></div>
+        <div class="kv"><div class="kv-v accent">+0.5%</div><div class="kv-l">Total NEM sent-out energy, Q2 2025 &rarr; Q2 2026. Flat. Gas was displaced, not switched off: no demand destruction.</div></div>
         <div class="kv"><div class="kv-v accent">69%</div><div class="kv-l">Share of the 963 GWh gas fall covered by the 665 GWh rise in battery discharge (+213%).</div></div>
         <div class="kv"><div class="kv-v accent">1:1</div><div class="kv-l">Substitution at 16:00 (&minus;64.0 vs +64.0 GWh) and 17:00 (&minus;138.9 vs +140.1 GWh).</div></div>
         <div class="kv"><div class="kv-v signal">+30 GWh</div><div class="kv-l">Midday gas generation <em>rose</em>, 11:00&ndash;14:00, because charging batteries adds load.</div></div>
@@ -157,7 +157,7 @@
 
       <p class="prose js-fade">
         That last number is the one that settles it, and it's mine. AEMO notes charging "raises
-        demand, and therefore prices, during midday" &mdash; but never reports that midday gas
+        demand, and therefore prices, during midday", but never reports that midday gas
         <em>output</em> went up. Weather is a level effect. <strong>It cannot cut evening gas by
         160 GWh and raise midday gas at the same time.</strong> Displacement can, because the asset
         that removes the evening peak creates the midday trough it charges into.
@@ -165,14 +165,14 @@
 
       <div class="card js-fade" style="margin-top:30px;">
         <span class="eyebrow" style="margin-bottom:8px;">Change in energy by hour of day, Q2 2025 &rarr; Q2 2026 (GWh)</span>
-        <div style="display:flex;gap:18px;font-size:.75rem;color:var(--ink-52);margin-bottom:16px;">
+        <div style="display:flex;gap:18px;font-size.75rem;color:var(--ink-52);margin-bottom:16px;">
           <span><span style="display:inline-block;width:9px;height:9px;background:var(--signal);border-radius:2px;vertical-align:middle;"></span> Gas</span>
           <span><span style="display:inline-block;width:9px;height:9px;background:var(--good);border-radius:2px;vertical-align:middle;"></span> Battery discharge</span>
         </div>
         <div id="hourBars" data-bars></div>
         <p class="caption">
           Gas extends left of the centre line when it falls, right when it rises. Battery discharge
-          always extends right. The two shapes are mirror images from 15:00 onward &mdash; and
+          always extends right. The two shapes are mirror images from 15:00 onward, and
           diverge in the middle of the day, which is the whole argument.
         </p>
       </div>
@@ -190,8 +190,8 @@
         </table>
         <p class="caption">
           Three of four regions land within 1.7 percentage points of AEMO's published figure.
-          <strong>New South Wales is the one real gap</strong> &mdash; ARIA &minus;46.9% against
-          AEMO &minus;51% &mdash; and the reason is the same positive-intervals-only basis, amplified
+          <strong>New South Wales is the one real gap</strong>, ARIA &minus;46.9% against
+          AEMO &minus;51%, and the reason is the same positive-intervals-only basis, amplified
           because NSW gas ran at very low duty in Q2 2026. I publish the gap rather than quietly
           rounding toward AEMO.
         </p>
@@ -200,7 +200,7 @@
       <p class="prose js-fade" style="margin-top:26px;">
         It's a change in <em>shape</em>, not a de-rating. Units running went 71 to 76; unit-hours
         running fell 16.0% to 12.0%; output when on fell 114.1 to 106.0 MW. A running-hours story
-        means swing and peaking contracts, not baseload &mdash; a different commercial question from
+        means swing and peaking contracts, not baseload: a different commercial question from
         "gas is in decline".
       </p>
 
@@ -209,7 +209,7 @@
         Q2 2023 gas fell <strong>34%</strong> and then rebounded 17% the following year. A 30% fall
         proves nothing structural on its own. What separates the two is the mechanism: 2023 was a
         level effect across the day; 2026 is a six-hour displacement <em>plus</em> a midday
-        increase. Also, wind added 1,533 GWh over the same period &mdash; the 69% battery coverage
+        increase. Also, wind added 1,533 GWh over the same period: the 69% battery coverage
         is an <strong>accounting correspondence, not a causal attribution</strong>, and should be
         quoted that way.
       </div>
@@ -220,13 +220,13 @@
   <section class="band band-2" id="curtailment">
     <div class="band-glow" style="bottom:5%;right:-8%;" aria-hidden="true"></div>
     <div class="shell">
-      <div class="mod-num js-fade">02 &mdash; Curtailment attribution</div>
+      <div class="mod-num js-fade">02, Curtailment attribution</div>
       <h2 class="h-md js-lines" style="max-width:22ch;">Curtailment grew five-fold in four years. The grid had almost <span class="accent">nothing to do with it.</span></h2>
       <p class="prose js-fade">
         "Curtailment" gets used as one thing. It's two, they have opposite fixes, and only one is
-        growing. Network curtailment &mdash; a constraint physically stopping export &mdash; has been
-        flat near 1 TWh a year since 2021. Economic curtailment &mdash; you choosing not to generate
-        because the price doesn't justify it &mdash; is up 5.2&times;.
+        growing. Network curtailment, a constraint physically stopping export, has been
+        flat near 1 TWh a year since 2021. Economic curtailment, you choosing not to generate
+        because the price doesn't justify it, is up 5.2&times;.
       </p>
 
       <div class="table-wrap js-fade" style="margin-top:26px;">
@@ -244,7 +244,7 @@
           </tfoot>
         </table>
         <p class="caption">
-          Total is measured against unconstrained intermittent generation forecast &mdash; what the
+          Total is measured against unconstrained intermittent generation forecast, what the
           plant told the market it could have produced. The cause split is attributed over the
           semi-dispatch-capped subset (7.60 TWh of the 8.37 TWh in 2025); the residual is reported
           as unattributed rather than assigned to either bucket.
@@ -254,7 +254,7 @@
       <p class="prose js-fade" style="margin-top:26px;">
         That inverts the usual policy conclusion. If the growth were a network problem, transmission
         is the fix and every curtailed megawatt-hour argues for it. It isn't.
-        <strong>85% of curtailed energy in 2025 was a price decision</strong> &mdash; so the fix is
+        <strong>85% of curtailed energy in 2025 was a price decision</strong>, so the fix is
         storage, load flexibility and contract structure, and your curtailment risk is mostly a
         function of what gets built <em>around</em> you, not <em>to</em> you.
       </p>
@@ -265,15 +265,15 @@
           <div id="curtBars" data-bars></div>
           <p class="caption">
             South Australia curtailed 552.6 GWh against 850.5 GWh delivered. New South Wales is the
-            largest absolute loss at 1,920.5 GWh &mdash; simply because it has the most solar.
+            largest absolute loss at 1,920.5 GWh, simply because it has the most solar.
           </p>
         </div>
         <div>
           <div class="kv-grid" style="margin-top:0;">
-            <div class="kv"><div class="kv-v signal">63.4%</div><div class="kv-l">Culcairn Solar Farm, NSW1, 466 MW &mdash; 126.7 of 199.8 GWh available, curtailed in 2025.</div></div>
+            <div class="kv"><div class="kv-v signal">63.4%</div><div class="kv-l">Culcairn Solar Farm, NSW1, 466 MW: 126.7 of 199.8 GWh available, curtailed in 2025.</div></div>
             <div class="kv"><div class="kv-v signal">51.3%</div><div class="kv-l">Port Augusta Renewable Energy Park solar, SA1.</div></div>
-            <div class="kv"><div class="kv-v signal">37.4%</div><div class="kv-l">Murra Warra Wind Farm, VIC1 &mdash; 275.1 GWh, the largest single-asset wind loss.</div></div>
-            <div class="kv"><div class="kv-v accent">4.38 / 3.98</div><div class="kv-l">TWh curtailed in 2025, solar versus wind. Close in total &mdash; very different in cause.</div></div>
+            <div class="kv"><div class="kv-v signal">37.4%</div><div class="kv-l">Murra Warra Wind Farm, VIC1: 275.1 GWh, the largest single-asset wind loss.</div></div>
+            <div class="kv"><div class="kv-v accent">4.38 / 3.98</div><div class="kv-l">TWh curtailed in 2025, solar versus wind. Close in total, very different in cause.</div></div>
           </div>
         </div>
       </div>
@@ -283,12 +283,12 @@
   <!-- ═══════════ 03 CAPTURE ═══════════ -->
   <section class="band band-1" id="capture">
     <div class="shell">
-      <div class="mod-num js-fade">03 &mdash; Capture-price divergence</div>
+      <div class="mod-num js-fade">03, Capture-price divergence</div>
       <h2 class="h-md js-lines" style="max-width:22ch;">The best and the worst asset in the NEM are in <span class="accent">the same price region.</span></h2>
       <p class="prose js-fade">
         Capture ratio is what a generator actually earned per megawatt-hour over the time-weighted
         average price in its region. A regional price forecast assumes assets in that region earn
-        something close to it. In Queensland in 2025 they did not &mdash; the spread inside one
+        something close to it. In Queensland in 2025 they did not: the spread inside one
         region was more than eight-fold.
       </p>
 
@@ -320,7 +320,7 @@
       <p class="prose js-fade" style="margin-top:28px;">
         Same market, same reference price, about 100 km apart. One beats the market average; the
         other keeps thirteen cents in the dollar. Nothing in a regional curve tells you which one you
-        bought. That's the whole argument for per-unit modelling &mdash; and it's not a Queensland
+        bought. That's the whole argument for per-unit modelling, and it's not a Queensland
         anomaly, it's what happens anywhere solar ran ahead of storage.
       </p>
 
@@ -335,7 +335,7 @@
         </table>
         <p class="caption">
           First half of each year, so seasons are held constant.
-          <strong>The 2026 capture recovery is not good news &mdash; it is arithmetic.</strong>
+          <strong>The 2026 capture recovery is not good news. It is arithmetic.</strong>
           Capture is a ratio and the denominator collapsed: the NEM time-weighted average fell from
           $140.18 to $74.12. Solar earned <em>less</em> per megawatt-hour in H1 2026 than in H1 2025.
           Reading the ratio without the denominator inverts the conclusion, which is exactly why
@@ -348,11 +348,11 @@
   <!-- ═══════════ 04 COUNTERFACTUAL ═══════════ -->
   <section class="band band-3" id="counterfactual">
     <div class="shell">
-      <div class="mod-num js-fade">04 &mdash; Counterfactual engine</div>
+      <div class="mod-num js-fade">04, Counterfactual engine</div>
       <h2 class="h-md js-lines" style="max-width:24ch;">What does closing a coal station do to price? There are two answers, and <span class="accent">the gap is the point.</span></h2>
       <p class="prose js-fade">
-        A counterfactual clears the market twice &mdash; once as it happened, once with the unit
-        added back &mdash; and reports the difference. Which answer you get depends entirely on
+        A counterfactual clears the market twice, once as it happened, once with the unit
+        added back, and reports the difference. Which answer you get depends entirely on
         whether you clear at what plant <em>costs</em> to run or at what it actually
         <em>offered</em>. I run both. They don't agree.
       </p>
@@ -360,18 +360,18 @@
       <div class="bound-grid js-fade" data-stagger=".card">
         <div class="card">
           <span class="eyebrow" style="margin-bottom:10px;">Cost-based bound</span>
-          <p class="prose" style="font-size:.88rem;">
+          <p class="prose" style="font-size.88rem;">
             Clear the stack at short-run marginal cost, taken per unit from AEMO's own published
             heat rates, station fuel prices and variable operating costs. Replay the Liddell
-            closures &mdash; 450 MW in 2022, 1,350 MW in 2023 &mdash; into the New South Wales stack.
+            closures, 450 MW in 2022, 1,350 MW in 2023, into the New South Wales stack.
           </p>
           <div class="bound-v">~$1&ndash;2/MWh</div>
         </div>
         <div class="card">
           <span class="eyebrow" style="margin-bottom:10px;">Conduct-based bound</span>
-          <p class="prose" style="font-size:.88rem;">
+          <p class="prose" style="font-size.88rem;">
             Clear the same market at the prices participants actually bid, reconstructed from
-            AEMO's offer archive. Replay the Hazelwood closure &mdash; 1,238 MW re-inserted &mdash;
+            AEMO's offer archive. Replay the Hazelwood closure, 1,238 MW re-inserted,
             across the full 227-unit national offer stack.
           </p>
           <div class="bound-v">$14&ndash;21/MWh</div>
@@ -379,21 +379,21 @@
       </div>
 
       <p class="prose js-fade" style="margin-top:28px;">
-        <strong>The gap between the bounds is the markup component</strong> &mdash; the part of a
+        <strong>The gap between the bounds is the markup component</strong>: the part of a
         closure's impact that comes not from losing cheap capacity but from how the remaining plant
         chooses to offer once it's gone. A single number can't decompose that, which is why I publish
         both rather than averaging them.
       </p>
 
       <div class="note js-fade">
-        <span class="note-title">Where this stops working &mdash; read before using either number</span>
+        <span class="note-title">Where this stops working, read before using either number</span>
         The two bounds are <strong>different closures, in different years, in different
         regions</strong>. They bracket a mechanism; they do not validate each other, and neither
         should ever be presented as confirming the other. The conduct bound's absolute price level
         is <strong>unvalidated</strong>: clearing the unconstrained offer stack gives $43.77 against
         $94.84 observed, mean absolute error 51, correlation 0.415. The counterfactual is a
         <em>difference</em> between two clears of the same stack, so systematic level bias largely
-        cancels &mdash; but only the mean is readable, not interval-level impacts. It moves
+        cancels, but only the mean is readable, not interval-level impacts. It moves
         $14.00 &rarr; $20.59 across treatments, a 32% spread, so it is published as a range and
         never as a point.
       </div>
@@ -407,9 +407,7 @@
           <h4>A modelled zero is not always a bug.</h4>
           <p>
             The engine returned no price impact for the Liddell closures at median demand, which
-            looked like a defect for a year. It was not. New South Wales has a genuine cost plateau
-            &mdash; <strong>eight units priced between $71.98 and $72.73, 4,760 MW derated</strong>
-            &mdash; and median regional demand sits inside it. Removing 1,350 MW cannot move the
+            looked like a defect for a year. It was not. New South Wales has a genuine cost plateau: <strong>eight units priced between $71.98 and $72.73, 4,760 MW derated</strong>, and median regional demand sits inside it. Removing 1,350 MW cannot move the
             marginal cost when the next 4,760 MW cost essentially the same. The impact only bites
             above roughly 7 GW. Merit-order substitution genuinely explains only $1&ndash;2/MWh;
             the rest is conduct.
@@ -423,9 +421,8 @@
             <strong>Bayswater is the cheapest at $46.49 and Eraring is near the dearest at
             $72.55</strong>, where the capacity proxy had Eraring cheapest. The dispersion is driven
             by <strong>fuel price</strong>, which varies 3.2&times; across stations
-            ($2.06&ndash;6.57/GJ), not by unit size &mdash; heat rates barely move. In the same
-            pass, Loy Yang A &mdash; the largest brown-coal station in the country, 2,210 MW &mdash;
-            turned out to have been silently dropped from the brown-coal class average for years,
+            ($2.06&ndash;6.57/GJ), not by unit size, heat rates barely move. In the same
+            pass, Loy Yang A, the largest brown-coal station in the country, 2,210 MW, turned out to have been silently dropped from the brown-coal class average for years,
             because one AEMO sheet calls it "Loy Yang A" and another "Loy Yang A Power Station".
             It prices at $19.57/MWh.
           </p>
@@ -437,38 +434,37 @@
   <!-- ═══════════ 05 BID STACK ═══════════ -->
   <section class="band band-1" id="bidstack">
     <div class="shell">
-      <div class="mod-num js-fade">05 &mdash; Supply-curve structure</div>
+      <div class="mod-num js-fade">05, Supply-curve structure</div>
       <h2 class="h-md js-lines" style="max-width:20ch;">The bid stack barely changes. That is <span class="accent">why</span> the market is volatile.</h2>
       <p class="prose js-fade">
-        Rebuilding the national offer stack from AEMO's bid archive &mdash; 163 months, every fuel
-        &mdash; gives a result that sounds contradictory until you look at the curve.
+        Rebuilding the national offer stack from AEMO's bid archive, 163 months, every fuel, gives a result that sounds contradictory until you look at the curve.
       </p>
 
       <div class="kv-grid js-fade" data-stagger=".kv">
         <div class="kv"><div class="kv-v accent">92.8%</div><div class="kv-l">Of unit-days in 2024&ndash;26, the price ladder is <em>identical</em> to the previous trading day. Up from 89.4% pre-2021.</div></div>
         <div class="kv"><div class="kv-v accent">98.6%</div><div class="kv-l">Of consecutive five-minute interval pairs have unchanged band volumes.</div></div>
         <div class="kv"><div class="kv-v accent">$0</div><div class="kv-l">Median price step between adjacent used bands within a unit-day. The 90th percentile is $55.</div></div>
-        <div class="kv"><div class="kv-v signal">$15,795</div><div class="kv-l">Maximum step between adjacent used bands. Flat, flat, flat &mdash; cliff.</div></div>
+        <div class="kv"><div class="kv-v signal">$15,795</div><div class="kv-l">Maximum step between adjacent used bands. Flat, flat, flat, cliff.</div></div>
       </div>
 
       <p class="prose js-fade">
         A near-static supply curve doesn't imply stable prices. Once the curve is non-linear enough
         it implies the opposite. About 22.5 GW is offered at or below zero, and national demand sits
-        right at the top of that must-run block &mdash; so all price formation happens in a thin,
+        right at the top of that must-run block, so all price formation happens in a thin,
         steep middle. Volatility is demand sliding across a nearly-discontinuous curve. Same
         mechanism that makes spikes ~99% of five-minute forecast error.
       </p>
       <p class="prose js-fade">And the cliff is getting steeper.</p>
 
       <div class="card js-fade" style="margin-top:24px;">
-        <span class="eyebrow" style="margin-bottom:8px;">Mean MW offered per dispatch interval &mdash; 2009 vs 2026</span>
+        <span class="eyebrow" style="margin-bottom:8px;">Mean MW offered per dispatch interval: 2009 vs 2026</span>
         <div id="bandBars" data-bars style="margin-top:16px;"></div>
         <p class="caption">
           Upper bar 2009, lower bar 2026, capped at each unit's maximum availability and excluding
           AEMO's reserve-trader pseudo-units. <strong>The must-run floor more than doubles while
           the cheap-but-positive middle collapses 61%.</strong> The bridge between the sub-zero
           block and the scarcity tail has thinned from 12,785 MW to 9,512 MW in absolute terms
-          while demand grew &mdash; a bigger floor, a thinner bridge, a bigger tail, which is
+          while demand grew: a bigger floor, a thinner bridge, a bigger tail, which is
           precisely the structure that produces more volatility.
         </p>
       </div>
@@ -481,13 +477,13 @@
 
       <div class="note js-fade">
         <span class="note-title">Reconstruction is where this goes wrong</span>
-        The bid data is public and the edge is not access &mdash; it is rebuilding it correctly.
+        The bid data is public and the edge is not access, it is rebuilding it correctly.
         The sum of a unit's band volumes is <strong>not</strong> its offered capacity: 82% of rows
         over-offer, and uncapped the fleet appears to offer 2,000 MW against a 1,600 MW nameplate.
         Capping at maximum availability moved one published Hazelwood figure by more than a third.
         AEMO's settlement date is a <em>trading</em> day running 04:05 to 04:00, so a naive join
         silently mixes months. And a first run of the curve-shape analysis that bypassed these
-        guards reported 101,594 MW offered below zero in 2018 &mdash; more than the entire
+        guards reported 101,594 MW offered below zero in 2018, more than the entire
         installed capacity of the market. Every figure above comes from the guarded path.
       </div>
     </div>
@@ -497,11 +493,11 @@
   <section class="band band-2" id="adequacy">
     <div class="band-glow" style="top:14%;left:-8%;" aria-hidden="true"></div>
     <div class="shell">
-      <div class="mod-num js-fade">06 &mdash; Weather, adequacy and system cost</div>
+      <div class="mod-num js-fade">06, Weather, adequacy and system cost</div>
       <h2 class="h-md js-lines" style="max-width:20ch;">The worst year for reliability is not the <span class="accent">worst year for weather.</span></h2>
       <p class="prose js-fade">
         I rebuild hourly wind and solar for 36 weather years, 1990 to 2025, across every region, then
-        run a capacity-expansion model against them with outages drawn stochastically &mdash; 3,000
+        run a capacity-expansion model against them with outages drawn stochastically: 3,000
         realisations.
       </p>
       <p class="prose js-fade">
@@ -518,7 +514,7 @@
       </p>
       <p class="prose js-fade">
         The same ensemble sizes storage honestly. Events run a mean of 7.3 hours and
-        <strong>84.7% exceed four</strong> &mdash; so a four-hour battery empties partway through
+        <strong>84.7% exceed four</strong>, so a four-hour battery empties partway through
         most of what it was bought for. Valued against the full event distribution rather than a mean
         spread: <strong>$287,776/MW/yr at four hours, $442,879 at eight</strong>. At eight hours only
         about half that value is arbitrage, which is why a spread calculation can't see it.
@@ -540,7 +536,7 @@
         19 GW four-hour battery fleet goes to zero, with the resource traces untouched.
         <strong>The capacity mix is a function of the capital-cost scenario, not a result of the
         model.</strong> Any capacity outlook that does not say which cost scenario produced it is
-        not telling you anything &mdash; mine included. My own "eight-hour battery is optimal"
+        not telling you anything, mine included. My own "eight-hour battery is optimal"
         finding survives the switch, but "optimal" implies a robustness that a result sitting next
         to a zeroed-out 19 GW fleet has not earned, and it is no longer stated that way.
       </div>
@@ -550,7 +546,7 @@
   <!-- ═══════════ 07 NEGATIVE ═══════════ -->
   <section class="band band-1" id="negative">
     <div class="shell">
-      <div class="mod-num js-fade">07 &mdash; Negative results</div>
+      <div class="mod-num js-fade">07, Negative results</div>
       <h2 class="h-md js-lines" style="max-width:20ch;">Things I tested, that failed, and <span class="accent">publish anyway.</span></h2>
       <p class="prose js-fade">
         A method is worth what the tests it survived are worth. These are the ones it didn't. Each
@@ -564,8 +560,8 @@
           beat the global ERA5 product for solar. Measured across 116 operating sites, 18,677 MW and
           3.05 million site-hours, it does not: capacity-factor bias against the unconstrained
           forecast is <strong>+35.3% for BARRA against +28.7% for ERA5</strong> nationally, worse in
-          every region. On the lowest decile of daily fleet output &mdash; the drought tail the whole
-          exercise existed to probe &mdash; ERA5 is better again, <strong>+34.4% against
+          every region. On the lowest decile of daily fleet output, the drought tail the whole
+          exercise existed to probe, ERA5 is better again, <strong>+34.4% against
           +46.9%</strong>. The migration was cancelled. It cost one day, which is what the gate was for.
         </li>
         <li>
@@ -573,14 +569,13 @@
           0.998 area-under-curve, which is meaningless at a 0.37% event rate. Held to the same alert
           budget as the naive rule "the five-minute pre-dispatch forecast is above $300", it wins by
           <strong>1.1%</strong>. It is not sold as a differentiator and the AUC figure is never
-          quoted. The pre-dispatch bias correction underneath it is the result that stands up
-          &mdash; and its own significance statistic was inflated 3.3&times; until the error
+          quoted. The pre-dispatch bias correction underneath it is the result that stands up, and its own significance statistic was inflated 3.3&times; until the error
           autocorrelation was handled properly.
         </li>
         <li>
           <strong>The leading explanation for my clearing error was wrong.</strong> The
           conduct-based stack offers 38,707 MW against 21,970 MW actually generated, and hydro is
-          much the largest block of undelivered offer &mdash; 6,541 MW offered against 925 delivered,
+          much the largest block of undelivered offer: 6,541 MW offered against 925 delivered,
           held back by water value rather than price. Removing hydro from the price-setting stack
           should have fixed the level. It made it <strong>worse</strong>: mean absolute error
           51.24 &rarr; 56.18, correlation 0.415 &rarr; 0.357. Network constraints remain the leading
@@ -588,7 +583,7 @@
         </li>
         <li>
           <strong>The registry's per-unit solar capacity cannot be used as a denominator.</strong>
-          One unit is registered at 2,421 MW and never forecasts above 29 MW &mdash; an 83&times;
+          One unit is registered at 2,421 MW and never forecasts above 29 MW: an 83&times;
           error. Three others are out by 76&times;, 69&times; and 56&times;. Using registry capacity
           produced capacity factors above 1.0, which is physically impossible, and drove one region's
           apparent bias to +3,396%. The registry disagrees by more than 1.5&times; on 52 of 86
@@ -596,12 +591,11 @@
         </li>
         <li>
           <strong>The obvious validation target is not trustworthy.</strong> A
-          difference-in-differences estimate of the Liddell closures &mdash; New South Wales against
-          Queensland as a control &mdash; is <em>non-monotonic in capacity removed</em>: it reports a
+          difference-in-differences estimate of the Liddell closures, New South Wales against
+          Queensland as a control, is <em>non-monotonic in capacity removed</em>: it reports a
           <em>smaller</em> price effect for 1,350 MW than for 450 MW. It is dominated by the 2022 gas
           crisis. The engine is monotonic; the observational estimate is not, so the engine is not
-          calibrated to it. "The model brackets the observation" was also rejected as a pass &mdash;
-          a range of $0.61 to $41.96 cannot fail.
+          calibrated to it. "The model brackets the observation" was also rejected as a pass: a range of $0.61 to $41.96 cannot fail.
         </li>
         <li>
           <strong>A published figure of ours was never produced by the model.</strong> A curtailment
@@ -626,7 +620,7 @@
           <h4>Built and serving</h4>
           <ul>
             <li>Per-unit curtailment with an economic-versus-network cause split, 217 semi-scheduled units</li>
-            <li>Merit-order counterfactual engine &mdash; per-unit marginal cost from AEMO's published workbook, 169 units</li>
+            <li>Merit-order counterfactual engine: per-unit marginal cost from AEMO's published workbook, 169 units</li>
             <li>Conduct-based closure replay over a reconstructed 227-unit national offer stack</li>
             <li>Per-unit revenue capture at five-minute granularity, 22.3 million records</li>
             <li>36 weather years of reconstructed hourly wind and solar, 286 projects, 50,168 MW</li>
@@ -640,9 +634,9 @@
           <ul>
             <li>No forward marginal-loss-factor forecasting. A prototype exists; it is unwired, runs on 16 hard-coded units, and is not a capability</li>
             <li>No AI price forecasting. The scenario engine is an explicit merit-order clear with published assumptions, not a learned black box</li>
-            <li>No spike-prediction edge &mdash; measured at 1.1% over a naive rule</li>
+            <li>No spike-prediction edge, measured at 1.1% over a naive rule</li>
             <li>No automated bidding. Running an optimiser and benchmarking optimisers are a conflict of interest</li>
-            <li>No constraint-level dollar attribution &mdash; that needs a full network solver, which this is not</li>
+            <li>No constraint-level dollar attribution, that needs a full network solver, which this is not</li>
             <li>No solar coverage in the second-opinion weather product, and its wind coverage is 68 of 130 farms</li>
             <li>No interval-level accuracy on the conduct-based clear. Only the mean is readable</li>
           </ul>
@@ -654,7 +648,7 @@
         Prices 2009-07 to 2026-08, five-minute and hourly. Revenue capture 22,342,213 records.
         Curtailment monthly, 2019-12 to 2026-06. 562 registered units. All fuel aggregation keys on
         per-unit registry fuel, never on the station-level technology tag, because co-located hybrid
-        sites otherwise put their wind and solar units in the battery bucket &mdash; a defect that
+        sites otherwise put their wind and solar units in the battery bucket: a defect that
         overstated one month's battery discharge by 29% before it was found. Figures re-derived
         19 August 2026; AEMO comparison values read directly from AEMO's Quarterly Energy Dynamics
         Q2 2026, downloaded and verified the same day.
@@ -672,8 +666,8 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+          Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
         <div class="btn-row center">
@@ -687,7 +681,7 @@
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
-      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">Want the working,<br><span class="accent">not just the answer?</span></h2>
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">Want the working.<br><span class="accent">not just the answer?</span></h2>
       <p class="lede js-fade" style="margin:26px auto 42px;max-width:560px;">
         Every figure here traces back to a query against AEMO's own published data. Happy to walk
         through the method, the failure modes, or where it would break on your portfolio.
@@ -723,12 +717,12 @@ var HOURLY = [
     return '<div class="hour-row">' +
       '<div class="hour-lab">' + hr + '</div>' +
       '<div class="hour-track">' +
-        '<div class="bar-fill-abs" style="right:50%;width:' + (gas < 0 ? gw : 0) + '%;background:var(--signal);"></div>' +
-        '<div class="bar-fill-abs" style="left:50%;width:' + (gas > 0 ? gw : 0) + '%;background:var(--signal);opacity:.55;"></div>' +
-        '<div class="bar-fill-abs" style="left:50%;width:' + bw + '%;background:var(--good);opacity:.7;"></div>' +
+        '<div class="bar-fill-abs" style="right:50%;width:' + (gas < 0 ? gw: 0) + '%;background:var(--signal);"></div>' +
+        '<div class="bar-fill-abs" style="left:50%;width:' + (gas > 0 ? gw: 0) + '%;background:var(--signal);opacity.55;"></div>' +
+        '<div class="bar-fill-abs" style="left:50%;width:' + bw + '%;background:var(--good);opacity.7;"></div>' +
         '<div class="bar-zero" style="left:50%;"></div>' +
       '</div>' +
-      '<div class="hour-val">' + (gas > 0 ? '+' : '') + gas.toFixed(1) + '</div>' +
+      '<div class="hour-val">' + (gas > 0 ? '+': '') + gas.toFixed(1) + '</div>' +
     '</div>';
   }).join('');
 })();
@@ -750,7 +744,7 @@ window.addEventListener('load', function () {
     ['Aldoga Solar', 17.6, '17.6%'],
     ['Darling Downs', 12.9, '12.9%']
   ], { max: 112, colour: function (r) {
-    return r[1] >= 100 ? 'var(--good)' : (r[1] >= 60 ? 'var(--accent)' : 'var(--signal)');
+    return r[1] >= 100 ? 'var(--good)': (r[1] >= 60 ? 'var(--accent)': 'var(--signal)');
   }});
 
   /* 06 — SEM sensitivity, % change in system cost from the $108.65/MWh reference */
@@ -758,7 +752,7 @@ window.addEventListener('load', function () {
     ['Discount &minus;2pp', 15.6, '15.6%'],
     ['Capex scenario', 11.0, '11.0%'],
     ['Wind calibration', 0.6, '0.6%']
-  ], { max: 17, colour: function (r) { return r[1] > 10 ? 'var(--signal)' : 'var(--accent)'; }});
+  ], { max: 17, colour: function (r) { return r[1] > 10 ? 'var(--signal)': 'var(--accent)'; }});
 });
 
 /* 05 — offered MW by price band, 2009 vs 2026 */
@@ -766,32 +760,32 @@ window.addEventListener('load', function () {
   var el = document.getElementById('bandBars');
   if (!el) return;
   var rows = [
-    ['Zero or below &mdash; must-run floor', 16664, 38214],
-    ['$0&ndash;50 &mdash; cheap middle', 9704, 3756],
+    ['Zero or below, must-run floor', 16664, 38214],
+    ['$0&ndash;50, cheap middle', 9704, 3756],
     ['$50&ndash;300', 3081, 5756],
     ['$300&ndash;1,000', 870, 2227],
-    ['&gt; $1,000 &mdash; scarcity tail', 5213, 7769]
+    ['&gt; $1,000, scarcity tail', 5213, 7769]
   ];
   var max = 38214;
   el.innerHTML = rows.map(function (r) {
     var up = r[2] > r[1];
     return '<div style="margin-bottom:15px;">' +
-      '<div style="display:flex;justify-content:space-between;font-size:.76rem;color:var(--ink-60);margin-bottom:6px;gap:12px;">' +
+      '<div style="display:flex;justify-content:space-between;font-size.76rem;color:var(--ink-60);margin-bottom:6px;gap:12px;">' +
         '<span>' + r[0] + '</span>' +
         '<span style="font-variant-numeric:tabular-nums;color:var(--ink-45);white-space:nowrap;">' +
-          r[1].toLocaleString() + ' &rarr; <strong style="color:' + (up ? 'var(--accent)' : 'var(--signal)') + '">' +
+          r[1].toLocaleString() + ' &rarr; <strong style="color:' + (up ? 'var(--accent)': 'var(--signal)') + '">' +
           r[2].toLocaleString() + '</strong> MW</span>' +
       '</div>' +
       '<div style="height:9px;background:var(--ink-08);border-radius:3px;overflow:hidden;margin-bottom:4px;">' +
         '<div class="bar-fill" style="height:100%;width:' + (r[1] / max * 100).toFixed(1) + '%;background:var(--ink-28);"></div></div>' +
       '<div style="height:9px;background:var(--ink-08);border-radius:3px;overflow:hidden;">' +
         '<div class="bar-fill" style="height:100%;width:' + (r[2] / max * 100).toFixed(1) + '%;background:' +
-          (up ? 'var(--accent)' : 'var(--signal)') + ';"></div></div>' +
+          (up ? 'var(--accent)': 'var(--signal)') + ';"></div></div>' +
     '</div>';
   }).join('');
 })();
 </script>
-<script src="assets/shared.js?v=20260819z"></script>
-<script src="assets/main.js?v=20260819z"></script>
+<script src="assets/shared.js?v=20260820c"></script>
+<script src="assets/main.js?v=20260820c"></script>
 </body>
 </html>

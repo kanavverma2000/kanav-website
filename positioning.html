@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819z">
+<link rel="stylesheet" href="assets/style.css?v=20260820c">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -16,60 +16,60 @@
 <style>
   .mods { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
   .mod-card { padding:24px; }
-  .mod-card .n { font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  .mod-card .n { font-size.7rem; font-weight:700; letter-spacing.14em; text-transform:uppercase;
                  color:var(--accent); margin-bottom:12px; }
   .mod-card h3 { font-size:1.04rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; margin-bottom:10px; }
-  .mod-card p { font-size:.88rem; line-height:1.66; color:var(--ink-60); }
+  .mod-card p { font-size.88rem; line-height:1.66; color:var(--ink-60); }
   .mod-card .lim { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
-                   font-size:.78rem; color:var(--ink-52); line-height:1.55; }
+                   font-size.78rem; color:var(--ink-52); line-height:1.55; }
   .mod-card .lim b { color:var(--ink-70); font-weight:600; }
 
   .qframe { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:30px; }
   @media(max-width:900px){ .qframe{grid-template-columns:1fr} }
-  .q-tense { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-45);
+  .q-tense { font-size.72rem; letter-spacing.14em; text-transform:uppercase; color:var(--ink-45);
              margin-bottom:10px; font-weight:700; }
   .q.open { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset, var(--shadow-lg); }
   .q.open .q-tense { color:var(--accent); }
   .q-q { font-size:1.18rem; font-weight:900; letter-spacing:-.03em; line-height:1.25; margin-bottom:12px; }
   .q-verdict { margin-top:15px; padding-top:12px; border-top:1px solid var(--ink-08);
-               font-size:.78rem; font-weight:600; color:var(--ink-45); }
+               font-size.78rem; font-weight:600; color:var(--ink-45); }
   .q.open .q-verdict { color:var(--accent); }
 
   .mx-wrap { overflow-x:auto; max-width:100%; margin-top:24px; -webkit-overflow-scrolling:touch; }
-  .mx-wrap::-webkit-scrollbar { height:6px; }
-  .mx-wrap::-webkit-scrollbar-thumb { background:var(--ink-14); border-radius:3px; }
+  .mx-wrap:-webkit-scrollbar { height:6px; }
+  .mx-wrap:-webkit-scrollbar-thumb { background:var(--ink-14); border-radius:3px; }
   .scroll-cue { display:none; }
   @media (max-width:900px){ .scroll-cue { display:block; color:var(--accent); font-weight:600; } }
-  table.mx { width:100%; border-collapse:collapse; font-size:.82rem; min-width:800px; }
+  table.mx { width:100%; border-collapse:collapse; font-size.82rem; min-width:800px; }
   table.mx th, table.mx td { padding:11px 9px; border-bottom:1px solid var(--ink-08); text-align:center; }
   table.mx th:first-child, table.mx td:first-child { text-align:left; min-width:200px; }
-  table.mx thead th { font-size:.73rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-45);
+  table.mx thead th { font-size.73rem; letter-spacing.05em; text-transform:uppercase; color:var(--ink-45);
                       font-weight:700; border-bottom:1px solid var(--ink-28); vertical-align:bottom; line-height:1.3; }
   table.mx thead th.acol { color:var(--accent); }
   table.mx td.acol { background:var(--accent-10); }
   table.mx tbody tr:last-child td { border-bottom:none; }
   .yes { color:var(--good); font-weight:800; }
-  .part { color:var(--accent); font-weight:800; opacity:.55; }
+  .part { color:var(--accent); font-weight:800; opacity.55; }
   .no { color:var(--ink-28); }
 
   .vend { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px; margin-top:26px; }
-  .vend h4 { font-size:.98rem; font-weight:800; letter-spacing:-.02em; margin-bottom:8px; }
-  .vend .role { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+  .vend h4 { font-size.98rem; font-weight:800; letter-spacing:-.02em; margin-bottom:8px; }
+  .vend .role { font-size.72rem; letter-spacing.12em; text-transform:uppercase; color:var(--accent);
                 font-weight:700; margin-bottom:9px; }
-  .vend p { font-size:.85rem; line-height:1.62; color:var(--ink-60); }
+  .vend p { font-size.85rem; line-height:1.62; color:var(--ink-60); }
   .vend .ov { margin-top:12px; padding-top:10px; border-top:1px solid var(--ink-08);
-              font-size:.79rem; line-height:1.58; color:var(--ink-52); }
+              font-size.79rem; line-height:1.58; color:var(--ink-52); }
   .vend .ov b { color:var(--ink-70); font-weight:600; }
 
-  table.price { width:100%; border-collapse:collapse; font-size:.86rem; min-width:460px; font-variant-numeric:tabular-nums; }
+  table.price { width:100%; border-collapse:collapse; font-size.86rem; min-width:460px; font-variant-numeric:tabular-nums; }
   table.price th, table.price td { padding:11px 13px; border-bottom:1px solid var(--ink-08); text-align:right; }
   table.price th:first-child, table.price td:first-child { text-align:left; }
-  table.price thead th { font-size:.73rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-45);
+  table.price thead th { font-size.73rem; text-transform:uppercase; letter-spacing.06em; color:var(--ink-45);
                          font-weight:700; border-bottom:1px solid var(--ink-28); }
   table.price tbody tr:last-child td { border-bottom:none; }
   /* Drawn dot — U+25CF is not guaranteed in the display font. */
   .d { display:inline-block; width:9px; height:9px; border-radius:50%; background:currentColor; vertical-align:middle; }
-  .no .d { width:11px; height:2px; border-radius:1px; opacity:.9; }
+  .no .d { width:11px; height:2px; border-radius:1px; opacity.9; }
   .dv { width:7px; height:7px; margin-right:5px; }
 </style>
 </head>
@@ -82,7 +82,7 @@
       <span class="eyebrow js-fade">Where it fits</span>
       <h1 class="js-lines" style="max-width:17ch;">The NEM has plenty of analytics.<br><span class="accent">It's missing one tense.</span></h1>
       <p class="lede js-fade">
-        Who sells what, read from each vendor's own published material &mdash; including where I
+        Who sells what, read from each vendor's own published material, including where I
         have no advantage.
       </p>
       <div class="chips js-fade" style="margin-top:26px;">
@@ -107,26 +107,26 @@
         <div class="card q">
           <div class="q-tense">Past tense</div>
           <div class="q-q">What happened?</div>
-          <p class="prose" style="font-size:.86rem;">
+          <p class="prose" style="font-size.86rem;">
             Real-time and forensic data. <strong>Global-Roam</strong> (ez2view, NEMreview),
             <strong>gridIQ</strong>. Fast and accurate.
           </p>
-          <div class="q-verdict"><span class="d dv"></span> Well served &mdash; don't compete</div>
+          <div class="q-verdict"><span class="d dv"></span> Well served, don't compete</div>
         </div>
         <div class="card q">
           <div class="q-tense">Future tense</div>
           <div class="q-q">What might happen?</div>
-          <p class="prose" style="font-size:.86rem;">
+          <p class="prose" style="font-size.86rem;">
             Long-horizon projections. <strong>Aurora</strong>, <strong>Endgame</strong>,
             <strong>Cornwall Insight</strong>. Prices, mix and loss factors to 2050 under named
             scenarios.
           </p>
-          <div class="q-verdict"><span class="d dv"></span> Well served &mdash; don't compete</div>
+          <div class="q-verdict"><span class="d dv"></span> Well served, don't compete</div>
         </div>
         <div class="card q open">
           <div class="q-tense">Subjunctive</div>
           <div class="q-q">What <em>would have</em> happened?</div>
-          <p class="prose" style="font-size:.86rem;">
+          <p class="prose" style="font-size.86rem;">
             What would this unit have earned but for that constraint? What did that closure actually
             do to price, as opposed to what coincided with it? How much of this curtailment is the
             grid?
@@ -136,7 +136,7 @@
       </div>
 
       <p class="prose js-fade" style="margin-top:26px;">
-        A forecast gives you a price. A counterfactual gives you <em>why</em> &mdash; the only form
+        A forecast gives you a price. A counterfactual gives you <em>why</em>: the only form
         you can argue in a negotiation or defend in an investment committee.
       </p>
 
@@ -146,15 +146,15 @@
       <div class="vend js-fade" data-stagger=".card">
         <article class="card card-hover">
           <div class="role">Real-time &amp; forensic</div>
-          <h4>Global-Roam &mdash; ez2view / NEMreview</h4>
+          <h4>Global-Roam, ez2view / NEMreview</h4>
           <p>Real-time monitoring plus after-the-fact forensics. 50+ widgets including a Bid Explorer and bid stack charts, unit and station dashboards, constraint-equation tooling.</p>
-          <div class="ov"><b>Overlap:</b> substantial. ez2view genuinely has bid-stack tooling &mdash; the difference is it <em>shows</em> the stack, I <em>re-clear</em> it.</div>
+          <div class="ov"><b>Overlap:</b> substantial. ez2view genuinely has bid-stack tooling: the difference is it <em>shows</em> the stack, I <em>re-clear</em> it.</div>
         </article>
         <article class="card card-hover">
           <div class="role">Live data &amp; AI delivery</div>
           <h4>gridIQ</h4>
-          <p>Live NEM and WEM across six regions, bid stack reconstruction, rebid monitor, curtailment analysis, PPA and IRSR spreads, a price forecast and an AI assistant.</p>
-          <div class="ov"><b>Overlap:</b> the closest competitor, and the only one covering both markets. My separation is cause attribution, not coverage.</div>
+          <p>Live NEM and WEM across six regions, bid stack reconstruction, rebid monitor, curtailment estimates, PPA and IRSR spreads and an AI assistant. The price forecast they surface is AEMO's own pre-dispatch, relayed; their methodology page says they do not model the market.</p>
+          <div class="ov"><b>Overlap:</b> the closest competitor on coverage, and they publish their pricing too. They estimate curtailment volume; their API returns no cause field. And they rule out the modelling category entirely, which is exactly where I sit.</div>
         </article>
         <article class="card card-hover">
           <div class="role">Long-horizon fundamentals</div>
@@ -165,8 +165,8 @@
         <article class="card card-hover">
           <div class="role">Dispatch simulation</div>
           <h4>Endgame Economics</h4>
-          <p>Half-hourly forecasts of pool prices and plant output, three house scenarios refreshed every six months, raw outcomes in CSV over a 20&ndash;25 year horizon.</p>
-          <div class="ov"><b>Overlap:</b> they simulate forward at half-hourly resolution. I re-clear backwards against what was actually bid.</div>
+          <p>Half-hourly forecasts of pool prices and plant output, three house scenarios, raw outcomes in CSV over a 20&ndash;25 year horizon, refreshed quarterly. They also ship live NEM tooling (pd4castr, DAEG), a bid-stack product (pdBidr) and a battery model.</p>
+          <div class="ov"><b>Overlap:</b> more than I first credited. They have live tooling and a bid-stack product alongside the projection. They simulate forward; I re-clear backwards against what was actually bid.</div>
         </article>
         <article class="card card-hover">
           <div class="role">Loss factors</div>
@@ -177,7 +177,7 @@
         <article class="card card-hover">
           <div class="role">Storage benchmarking</div>
           <h4>Modo Energy</h4>
-          <p>The ME BESS AUS NEM Index &mdash; a standardised benchmark for battery revenues and operations across five regions, with MLFs in every revenue calculation.</p>
+          <p>The ME BESS AUS NEM Index: a standardised benchmark for battery revenues and operations across five regions, with MLFs in every revenue calculation.</p>
           <div class="ov"><b>Overlap:</b> battery benchmarking is theirs and they are the reference. I cover storage as one technology.</div>
         </article>
       </div>
@@ -198,28 +198,28 @@
                 <th>Aurora</th><th>Endgame</th><th>Cornwall</th><th>Modo</th></tr>
           </thead>
           <tbody>
-            <tr><td>Historical dispatch &amp; price</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
-            <tr><td>Real-time monitoring</td><td class="acol no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Bid / offer stack visibility</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
+            <tr><td>Historical dispatch &amp; price</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
+            <tr><td>Real-time monitoring</td><td class="acol no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
+            <tr><td>Bid / offer stack visibility</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
             <tr><td>Per-unit capture benchmarking</td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
             <tr><td>Curtailment measurement</td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td><strong>Curtailment cause split</strong></td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
+            <tr><td><strong>Curtailment attributed to cause</strong></td><td class="acol yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
             <tr><td><strong>Counterfactual re-clearing</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
             <tr><td><strong>Cost and conduct bounds, separated</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Long-horizon projection to 2050</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
+            <tr><td>Long-horizon projection to 2050</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td></tr>
             <tr><td>Forward marginal loss factors</td><td class="acol no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Battery revenue index</td><td class="acol part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td></tr>
-            <tr><td>Western Australia (WEM)</td><td class="acol no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
+            <tr><td>Battery revenue index</td><td class="acol part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="yes"><span class="d"></span></td></tr>
+            <tr><td>Western Australia (WEM)</td><td class="acol no"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="part"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
             <tr><td><strong>Published AEMO reproduction</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
             <tr><td><strong>Published error bands and failures</strong></td><td class="acol yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
-            <tr><td>Published price list</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
+            <tr><td>Published price list</td><td class="acol yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="yes"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td><td class="no"><span class="d"></span></td></tr>
           </tbody>
         </table>
         <p class="caption">
           <span class="yes"><span class="d"></span></span> core published capability &middot;
           <span class="part"><span class="d"></span></span> partial or a by-product &middot;
           <span class="no"><span class="d"></span></span> not advertised. A dash means the vendor doesn't advertise
-          it, not that they can't do it &mdash; several are quote-only. Bold rows are where the map
+          it, not that they can't do it, several are quote-only. Bold rows are where the map
           is genuinely thin. If one is wrong, tell me and I'll fix it.
         </p>
       </div>
@@ -238,7 +238,7 @@
           <p>
             Re-clear at cost: ~$1&ndash;2/MWh. Re-clear at what was actually offered:
             $14&ndash;21/MWh. Both real, neither alone the answer. The difference separates physical
-            substitution from bidding conduct &mdash; a decomposition a single price number
+            substitution from bidding conduct: a decomposition a single price number
             structurally cannot give you.
           </p>
           <span class="proof-chip">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit stack</span>
@@ -247,7 +247,7 @@
           <h4>Curtailment split by cause, and it overturns the usual conclusion.</h4>
           <p>
             Global-Roam's annual Generator Statistical Digest estimates the economic and network
-            split too &mdash; so this is not mine alone, and I've marked them accordingly. The
+            split too, so this is not mine alone, and I've marked them accordingly. The
             difference is delivery: theirs lands once a year in a report, mine is per unit per month
             in the platform. Either way the finding stands. Network sits flat near 1 TWh since 2021
             while economic rose 5.2&times;; in 2025 <strong>85% was a price decision, not a grid
@@ -267,8 +267,7 @@
         <li>
           <h4>The reproduction test is published before the claim.</h4>
           <p>
-            Coal to the gigawatt-hour, both price series in all five regions to the dollar &mdash;
-            published <em>first</em>. Cheap to pass, expensive to fake, and it turns "trust my
+            Coal to the gigawatt-hour, both price series in all five regions to the dollar, published <em>first</em>. Cheap to pass, expensive to fake, and it turns "trust my
             model" into "check my arithmetic".
           </p>
           <span class="proof-chip">Q2 2026 &middot; 10 of 10 on price &middot; coal to 0.00%</span>
@@ -294,7 +293,7 @@
           <li><strong>Battery benchmarking belongs to Modo.</strong> Their index is the reference.</li>
           <li><strong>No WEM coverage.</strong> gridIQ covers both markets; Aurora models both.</li>
           <li><strong>No live offer feed.</strong> AEMO publishes bids next day. "Live" would be false; next-day is the truth.</li>
-          <li><strong>No track record.</strong> I'm new. Which is exactly why the reproduction test and the error bands exist &mdash; they're what a new entrant can offer instead of a reputation.</li>
+          <li><strong>No track record.</strong> I'm new. Which is exactly why the reproduction test and the error bands exist, they're what a new entrant can offer instead of a reputation.</li>
         </ul>
       </div>
     </div>
@@ -341,9 +340,10 @@
         <span class="eyebrow" style="margin-bottom:16px;">Core capabilities advertised, of the 15 on this page</span>
         <div id="coverBars" data-bars></div>
         <p class="chart-note">
-          Counted straight off the map above &mdash; solid dots only, partials excluded. Breadth
-          isn't the argument. The four rows nobody else advertises are why this exists at all, and
-          on real-time and forward loss factors I score zero on purpose.
+          Counted straight off the map above, solid dots only. Breadth isn't the argument, and
+          these counts moved after I checked every vendor's own material rather than trusting my
+          first read. The rows nobody else advertises are why this exists at all, and on real-time
+          and forward loss factors I score zero on purpose.
         </p>
       </div>
     </div>
@@ -358,8 +358,8 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
-          Happy to walk through any of it live &mdash; the counterfactual engine, the curtailment
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+          Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
         <div class="btn-row center">
@@ -375,7 +375,7 @@
     <div class="shell-narrow">
       <h2 class="h-lg js-lines" style="margin:0 auto;max-width:18ch;">Think a row in that table<br><span class="accent">is wrong?</span></h2>
       <p class="lede js-fade" style="margin:24px auto 38px;max-width:520px;">
-        Good &mdash; tell me and it gets corrected. The map is built from public product pages, and
+        Good, tell me and it gets corrected. The map is built from public product pages, and
         public product pages understate what vendors can do.
       </p>
       <div class="btn-row center js-fade">
@@ -392,16 +392,16 @@ window.addEventListener('load', function () {
   if (!window.ariaBars) return;
   ariaBars('coverBars', [
     ['ARIA', 10, '10 of 15'],
-    ['gridIQ', 5, '5'],
+    ['gridIQ', 6, '6'],
     ['Global-Roam', 5, '5'],
-    ['Aurora', 2, '2'],
+    ['Aurora', 3, '3'],
+    ['Endgame', 3, '3'],
     ['Cornwall', 2, '2'],
-    ['Endgame', 1, '1'],
     ['Modo', 1, '1']
-  ], { max: 15, colour: function (r) { return r[0] === 'ARIA' ? 'var(--accent)' : 'var(--ink-28)'; } });
+  ], { max: 15, colour: function (r) { return r[0] === 'ARIA' ? 'var(--accent)': 'var(--ink-28)'; } });
 });
 </script>
-<script src="assets/shared.js?v=20260819z"></script>
-<script src="assets/main.js?v=20260819z"></script>
+<script src="assets/shared.js?v=20260820c"></script>
+<script src="assets/main.js?v=20260820c"></script>
 </body>
 </html>

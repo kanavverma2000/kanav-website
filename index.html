@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820c">
+<link rel="stylesheet" href="assets/style.css?v=20260820e">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -17,9 +17,9 @@
   .big-num { font-size: clamp(2.1rem,4.6vw,3.2rem); font-weight:900; letter-spacing:-.05em;
              line-height:1; font-variant-numeric:tabular-nums; color:var(--accent); margin-bottom:12px; }
   .find h3 { font-size:1.02rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; margin-bottom:9px; }
-  .find p { font-size.89rem; line-height:1.66; color:var(--ink-60); }
+  .find p { font-size:.89rem; line-height:1.66; color:var(--ink-60); }
   .find .src { display:block; margin-top:13px; padding-top:11px; border-top:1px solid var(--ink-08);
-               font-size.76rem; color:var(--ink-45); line-height:1.5; }
+               font-size:.76rem; color:var(--ink-45); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -177,43 +177,37 @@
         <article class="card card-hover find">
           <div class="big-num">+30 GWh</div>
           <h3>Midday gas <em>rose</em> while evening gas collapsed</h3>
-          <p>Gas fell 30% over the year. AEMO reports the evening window and names batteries. It doesn't report that midday output went <strong>up</strong>, charging adds load. Weather is a level effect. It can't do both.</p>
-          <span class="src">Total sent-out flat at +0.5%. Substitution 1:1 at 16:00 and 17:00.</span>
+          <p class="scan-line">Gas fell 30% over the year.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Gas fell 30% over the year. AEMO reports the evening window and names batteries. It doesn't report that midday output went <strong>up</strong>, charging adds load. Weather is a level effect. It can't do both.</p></div></details><span class="src">Total sent-out flat at +0.5%. Substitution 1:1 at 16:00 and 17:00.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">85%</div>
           <h3>Curtailment is a price decision, not a grid limit</h3>
-          <p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission, so your exposure is to what gets built <em>around</em> you.</p>
-          <span class="src">212 semi-scheduled units, 2021&ndash;2025.</span>
+          <p class="scan-line">Network curtailment has sat near 1 TWh a year since 2021.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Network curtailment has sat near 1 TWh a year since 2021. Economic curtailment is up <strong>420%</strong>. The growth is market structure, not transmission, so your exposure is to what gets built <em>around</em> you.</p></div></details><span class="src">212 semi-scheduled units, 2021&ndash;2025.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">8&times;</div>
           <h3>Best and worst asset in the NEM, same region</h3>
-          <p>Coopers Gap Wind captured <strong>106.6%</strong> of the Queensland average in 2025. Darling Downs Solar captured <strong>12.9%</strong>. About 100 km apart, same settlement price. No regional curve tells you which one you bought.</p>
-          <span class="src">125 assets over 150 GWh. Wind median 72.1%, solar 39.8%.</span>
+          <p class="scan-line">Coopers Gap Wind captured 106.6% of the Queensland average in 2025.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Coopers Gap Wind captured <strong>106.6%</strong> of the Queensland average in 2025. Darling Downs Solar captured <strong>12.9%</strong>. About 100 km apart, same settlement price. No regional curve tells you which one you bought.</p></div></details><span class="src">125 assets over 150 GWh. Wind median 72.1%, solar 39.8%.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">$1 or $20</div>
           <h3>A coal closure is worth both. Per MWh.</h3>
-          <p>Clear at what plant <em>costs</em>: ~$1&ndash;2/MWh. Clear at what they actually <em>bid</em>: $14&ndash;21/MWh. The gap between the bounds is the markup component. One number can't show you that.</p>
-          <span class="src">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit offer stack.</span>
+          <p class="scan-line">Clear at what plant costs: ~$1&ndash;2/MWh.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Clear at what plant <em>costs</em>: ~$1&ndash;2/MWh. Clear at what they actually <em>bid</em>: $14&ndash;21/MWh. The gap between the bounds is the markup component. One number can't show you that.</p></div></details><span class="src">Liddell 2022&ndash;23 &middot; Hazelwood 2017 &middot; 227-unit offer stack.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">92.8%</div>
           <h3>The bid stack barely moves. That's <em>why</em> prices swing.</h3>
-          <p>Ladders identical to yesterday in 92.8% of unit-days, volumes unchanged in 98.6% of intervals. But the median step between used bands is <strong>$0</strong> and the maximum is <strong>$15,795</strong>. Flat, flat, flat, cliff.</p>
-          <span class="src">163 months of AEMO offers. Cheap middle down 61% since 2009.</span>
+          <p class="scan-line">Ladders identical to yesterday in 92.8% of unit-days, volumes unchanged in 98.6% of intervals.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>Ladders identical to yesterday in 92.8% of unit-days, volumes unchanged in 98.6% of intervals. But the median step between used bands is <strong>$0</strong> and the maximum is <strong>$15,795</strong>. Flat, flat, flat, cliff.</p></div></details><span class="src">163 months of AEMO offers. Cheap middle down 61% since 2009.</span>
         </article>
 
         <article class="card card-hover find">
           <div class="big-num">25&times;</div>
           <h3>The worst weather year caused no blackouts</h3>
-          <p>1992 has the worst mean resource in 36 years and returns zero unserved energy. 2009 is mid-pack and breaches the standard 25-fold, because it holds the third-deepest 72-hour drought. Adequacy is coincidence, not average.</p>
-          <span class="src">1990&ndash;2025 &middot; 3,000 outage draws.</span>
+          <p class="scan-line">1992 has the worst mean resource in 36 years and returns zero unserved energy.</p><details class="working"><summary><span class="chev" aria-hidden="true"></span>Show the working</summary><div class="working-body"><p>1992 has the worst mean resource in 36 years and returns zero unserved energy. 2009 is mid-pack and breaches the standard 25-fold, because it holds the third-deepest 72-hour drought. Adequacy is coincidence, not average.</p></div></details><span class="src">1990&ndash;2025 &middot; 3,000 outage draws.</span>
         </article>
 
       </div>
@@ -305,7 +299,7 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
           Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
@@ -355,7 +349,7 @@ window.addEventListener('load', function () {
        alt:'Fleet capture ratio for solar and wind, first half of each year 2022 to 2026' });
 });
 </script>
-<script src="assets/shared.js?v=20260820c"></script>
-<script src="assets/main.js?v=20260820c"></script>
+<script src="assets/shared.js?v=20260820e"></script>
+<script src="assets/main.js?v=20260820e"></script>
 </body>
 </html>

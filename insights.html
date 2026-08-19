@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820c">
+<link rel="stylesheet" href="assets/style.css?v=20260820e">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -65,126 +65,157 @@
     <div class="band-glow" style="top:-12%;right:-8%;" aria-hidden="true"></div>
     <div class="shell">
       <span class="eyebrow js-fade">Insights</span>
-      <h1 class="js-lines">59 posts.<br><span class="accent">Every figure re-derived first.</span></h1>
+      <h1 class="js-lines" style="max-width:15ch;">Published, and <span class="accent">put to work.</span></h1>
       <p class="lede js-fade">
-        I publish NEM analysis built from AEMO data, not commentary on it. The number comes from my
-        own query, the method note goes at the bottom, and when I get something wrong I post that too.
+        Analysis built from AEMO data, not commentary on it. Three pieces below, and 59 posts behind them.
       </p>
     </div>
   </header>
 
-  <!-- RECOGNITION -->
-  <section class="band band-1" id="recognition">
+  <section class="band band-tight band-2">
     <div class="shell">
-      <div class="mod-num js-fade">Recognition</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">Picked up and <span class="accent">republished.</span></h2>
+      <div class="stat-grid js-fade" data-stagger=".stat-card">
+        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="59">0</span></div><div class="stat-lbl">Posts published</div></div>
+        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="6708">0</span></div><div class="stat-lbl">Best post, impressions</div></div>
+        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="2273">0</span></div><div class="stat-lbl">LinkedIn followers</div></div>
+        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="3">0</span></div><div class="stat-lbl">Named clients and publishers</div></div>
+      </div>
+    </div>
+  </section>
 
-      <div class="card feature js-fade" style="margin-top:22px;">
-        <div class="split" style="gap:30px;align-items:center;">
-          <div>
-            <span class="pill pill-hot" style="display:inline-block;margin-bottom:14px;">Published &middot; 14 August 2026</span>
-            <h3 class="h-sm" style="margin-bottom:12px;">&ldquo;$3.70 against $1.00: a Queensland scenario&rdquo;</h3>
-            <p class="prose" style="font-size.93rem;">
-              Run as the Analysis feature in <strong>AltEnergy Watts News</strong>, pages 8&ndash;9,
-              credited to ARIA Energy. Same grid, same year, same prices, and a Queensland
-              wind farm banks $3.70 from a megawatt-hour where a solar farm banks $1.00.
-            </p>
-            <p class="prose" style="font-size.93rem;margin-top:12px;">
-              The mechanism is the effective revenue factor: capture rate multiplied by loss factor.
-              Wind <strong>103.8% &times; 96.1% = 99.8%</strong>. Solar
-              <strong>28.9% &times; 94.0% = 27.1%</strong>. A solar farm at $45/MWh needs the flat
-              regional price to average $166/MWh before energy revenue covers it. Queensland's
-              averaged $84.89.
-            </p>
-            <div class="btn-row" style="margin-top:24px;">
-              <a class="btn btn-primary" href="assets/docs/kanav-verma-qld-scenario-altenergy-2026-08-14.pdf" target="_blank" rel="noopener">Read my article (PDF)</a>
-              <a class="btn btn-glass" href="https://www.altenergy.com.au" target="_blank" rel="noopener">AltEnergy</a>
-            </div>
+  <!-- PUBLISHED -->
+  <section class="band band-1" id="published">
+    <div class="shell">
+      <div class="split" style="align-items:center;">
+        <div class="scan js-fade">
+          <div class="mod-num">Published &middot; AltEnergy Watts News, 14 Aug 2026</div>
+          <div class="scan-fig">$3.70 : $1.00</div>
+          <div class="scan-claim">Queensland wind earns 3.7&times; what solar does.</div>
+          <div class="scan-line">Same grid, same year, same prices. My analysis ran as their Analysis feature, pages 8 to 9.</div>
+          <div class="btn-row" style="margin-top:18px;">
+            <a class="btn btn-primary" href="assets/docs/kanav-verma-qld-scenario-altenergy-2026-08-14.pdf" target="_blank" rel="noopener">Read my article</a>
           </div>
-          <div>
-            <div class="table-wrap">
-              <table class="data">
-                <thead><tr><th>Queensland, CY2025</th><th>Wind</th><th>Solar</th></tr></thead>
-                <tbody>
-                  <tr><td>Capture rate</td><td class="num">103.8%</td><td class="num">28.9%</td></tr>
-                  <tr><td>Loss factor (MLF)</td><td class="num">96.1%</td><td class="num">94.0%</td></tr>
-                  <tr><td>Effective revenue factor</td><td class="num ok">99.8%</td><td class="num bad">27.1%</td></tr>
-                  <tr><td>Energy settled at zero or below</td><td class="num">12.5%</td><td class="num bad">51.5%</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="ring-row" style="margin:18px 0 6px;">
-              <div class="ring-item"><div id="ringWind"></div><p>Wind, effective revenue factor</p></div>
-              <div class="ring-item"><div id="ringSolar"></div><p>Solar, effective revenue factor</p></div>
-            </div>
-            <p class="caption">
-              7 wind farms, 37 solar farms, 10.4 TWh. Units with a full calendar year of data,
-              energy-weighted, regional time-weighted price as the denominator. Energy revenue only: no FCAS, no LGCs, no contract positions.
-            </p>
-          </div>
+          <details class="working"><summary><span class="chev" aria-hidden="true"></span>The mechanism, and the method</summary><div class="working-body">
+            <p>Two things sit between megawatt-hours produced and dollars received: capture rate, and
+            the loss factor on the trip down the wires. Multiply them and you get the effective
+            revenue factor.</p>
+            <p>Wind: 103.8% capture times 96.1% MLF is 99.8% effective. Solar: 28.9% times 94.0% is
+            27.1%. A solar farm at $45/MWh needs the flat regional price to average $166/MWh before
+            energy revenue covers it. Queensland's averaged $84.89.</p>
+            <p>51.5% of Queensland solar energy settled at zero or below last year. For wind it was
+            12.5%. Method: 7 wind farms, 37 solar farms, 10.4 TWh, calendar 2025, energy-weighted,
+            regional time-weighted price as the denominator. Energy revenue only, so no FCAS, no
+            LGCs, no contract positions.</p></div></details>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Effective revenue factor, QLD 2025</span>
+          <div class="ring-row"><div class="ring-item"><div id="ringWind"></div><p>Wind</p></div><div class="ring-item"><div id="ringSolar"></div><p>Solar</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SELECTED WORK -->
-  <section class="band band-3" id="work">
+  <!-- HAZELWOOD x YALLOURN -->
+  <section class="band band-2" id="closures">
     <div class="shell">
-      <div class="mod-num js-fade">Selected work</div>
-      <h2 class="h-md js-lines" style="max-width:22ch;">Why capture fell, and whether <span class="accent">it was forecastable.</span></h2>
+      <div class="split" style="align-items:center;">
+        <div class="scan js-fade">
+          <div class="mod-num">Client work &middot; Core Markets, Apr 2026</div>
+          <div class="scan-fig neg">+85%</div>
+          <div class="scan-claim">Hazelwood took Victorian prices up 85%. Yallourn won't.</div>
+          <div class="scan-line">A retrospective on the largest single generator exit in NEM history, and a forward scenario for the next one.</div>
+          <div class="btn-row" style="margin-top:18px;">
+            <a class="btn btn-glass" href="assets/docs/hazelwood-yallourn-closure-analysis-2026-04.pdf" target="_blank" rel="noopener">Read the analysis</a>
+          </div>
+          <details class="working"><summary><span class="chev" aria-hidden="true"></span>Both closures, and the risk</summary><div class="working-body">
+            <p><strong>Hazelwood, 2017.</strong> 1,600 MW of brown coal closed on 29 March with under
+            five months' notice. Victorian wholesale prices rose about 85% year on year, calendar
+            average $47.17 to $90.85. Victoria flipped from net exporter to net importer for the
+            first time in a decade, with summer imports up from 181 to 915 GWh. Gas generation rose
+            about 500% over the following summer. The peer-reviewed causal estimate puts the upper
+            bound at $24.02/MWh and $6,527 million NEM-wide.</p>
+            <p><strong>The part that matters commercially:</strong> remaining coal generators
+            captured $3.47 billion in incremental revenue through bidding. That is the conduct
+            effect, and it is the same thing my two-bound counterfactual is built to separate.</p>
+            <p><strong>Yallourn, 2028.</strong> 1,480 MW, confirmed for 30 June 2028. Three things
+            differ: seven years of notice rather than five months, Victorian renewable share up from
+            about 13% to 43%, and battery storage from zero to 773 MW with 2,326 MW building. Base
+            case is a $12 to 18/MWh uplift against Hazelwood's roughly $50.</p>
+            <p><strong>The risk nobody prices:</strong> Eraring, 2,880 MW in NSW, closes April 2029,
+            ten months after Yallourn. That is 4,360 MW of NEM coal gone inside a year, and if
+            replacement capacity slips it becomes an inter-regional contagion problem rather than a
+            Victorian one.</p>
+            <p>Validated against AEMO, ACCC, AER and peer-reviewed literature. Price data from 6.07
+            million NEMWeb settlement records, 2015 to 2025.</p></div></details>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">VIC annual average price, $/MWh</span>
+          <div id="hazChart" data-bars></div>
+          <p class="caption">Hazelwood closed March 2017. Yallourn is modelled at a $12 to 18 uplift, not $50.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="split" style="align-items:center;margin-top:20px;">
-        <div class="prose js-fade">
-          <p>
-            <strong>Beijing Energy International (Australia)</strong> watched dispatch-weighted
-            capture across three NSW assets slide from about 85&ndash;90% to roughly 75%, and asked
-            what caused it. I pulled five-minute SCADA and price data across the full operating
-            history: Gullen Range fell 84% to 67%, Biala 80% to 70%, Wollar Solar sat at 25%. The
-            causes were VRE cannibalisation, negative prices hitting 25.1% of NSW intervals, a duck
-            curve that deepened from 0.29 to 0.17, and batteries taking 40% of evening-peak price
-            setting. <strong>It was forecastable 12 to 18 months ahead</strong>, so I built
-            the probability-weighted forward model to 2031 across seven scenarios.
-          </p>
-          <div class="btn-row" style="margin-top:22px;">
+  <!-- BJEI -->
+  <section class="band band-1" id="work">
+    <div class="shell">
+      <div class="split" style="align-items:center;">
+        <div class="scan js-fade">
+          <div class="mod-num">Client work &middot; Beijing Energy International, May 2026</div>
+          <div class="scan-fig neg">85% &rarr; 67%</div>
+          <div class="scan-claim">Why capture fell, and whether it was forecastable.</div>
+          <div class="scan-line">It was, 12 to 18 months ahead. So I built the forward model to 2031 across seven scenarios.</div>
+          <div class="btn-row" style="margin-top:18px;">
             <a class="btn btn-glass" href="assets/docs/forward-capture-rate-scenarios-2026-05.pdf" target="_blank" rel="noopener">Read the scenario report</a>
           </div>
+          <details class="working"><summary><span class="chev" aria-hidden="true"></span>The diagnosis, and the leading indicators</summary><div class="working-body">
+            <p>Three NSW assets slid from about 85 to 90% dispatch-weighted capture to roughly 75%.
+            I pulled five-minute SCADA and price data across the full operating history: Gullen
+            Range 84% to 67%, Biala 80% to 70%, Wollar Solar at 25%.</p>
+            <p>Four causes. VRE output in NSW doubled in four years, 957 MW to 2,171 MW. Negative
+            prices went from about 0.2% of intervals to 25.1% in Q4 2025, and Wollar now generates
+            51% of its output at negative prices. The duck curve deepened from 0.29 to 0.17,
+            $40.3/MWh midday against $236.6 at the peak. And batteries took 40% of evening-peak
+            price setting, up from under 5% a year earlier.</p>
+            <p>The leading indicators were all public. The negative-price trend was visibly
+            exponential by mid-2023, the solar-to-peak spread compressed 0.29 to 0.27 to 0.23 across
+            2021 to 2024, and rolling three-month capture fell below 80% from mid-2023 and never
+            recovered.</p>
+            <p>Public DUIDs, public prices, reproducible by anyone. Commercial terms excluded.</p></div></details>
         </div>
         <div class="card js-fade">
           <span class="eyebrow" style="margin-bottom:14px;">Capture rate, NSW portfolio</span>
           <div id="bjeiChart" data-bars></div>
-          <p class="caption">
-            Public DUIDs, public prices, reproducible by anyone. Commercial terms excluded.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ THE POSTS ═══ -->
-  <section class="band band-2" id="posts">
+  <!-- POSTS -->
+  <section class="band band-3" id="posts">
     <div class="shell">
       <div class="mod-num js-fade">The analysis</div>
-      <h2 class="h-md js-lines" style="max-width:20ch;">What each one <span class="accent">actually found.</span></h2>
-      <p class="prose js-fade">
-        Every one of these is a number I computed, not one I read. Method note at the bottom of each
-        post, closing question to a role that can answer it.
-      </p>
+      <h2 class="h-md js-lines" style="max-width:18ch;">59 posts. <span class="accent">Every figure re-derived first.</span></h2>
+      <div class="scan-line js-fade" style="max-width:58ch;">
+        The number comes from my own query, never one I read. Best performer: 6,708 impressions,
+        about five times my median, arguing that operational demand is the wrong number.
+      </div>
 
       <div class="filters js-fade" id="filters" role="group" aria-label="Filter analysis by theme">
         <button type="button" data-f="all" aria-pressed="true">All</button>
-        <button type="button" data-f="capture" aria-pressed="false">Capture &amp; revenue</button>
+        <button type="button" data-f="capture" aria-pressed="false">Capture</button>
         <button type="button" data-f="curtail" aria-pressed="false">Curtailment</button>
         <button type="button" data-f="storage" aria-pressed="false">Storage</button>
         <button type="button" data-f="household" aria-pressed="false">Household</button>
-        <button type="button" data-f="system" aria-pressed="false">System &amp; pipeline</button>
+        <button type="button" data-f="system" aria-pressed="false">System</button>
       </div>
-
       <div class="post-grid" id="postGrid"></div>
+      <div class="btn-row center" style="margin-top:24px;">
+        <button type="button" class="btn btn-glass" id="morePosts" hidden>Show all</button>
+      </div>
     </div>
   </section>
-
-  <!-- CTA -->
-
   <!-- DEMO -->
   <section class="band band-tight band-4" id="demo">
     <div class="shell">
@@ -193,7 +224,7 @@
         <h2 class="h-sm" style="margin-bottom:12px;max-width:26ch;margin-left:auto;margin-right:auto;">
           Want a demo of ARIA? Reach out on LinkedIn or email me.
         </h2>
-        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size.92rem;">
+        <p class="prose" style="margin:0 auto 24px;max-width:52ch;font-size:.92rem;">
           Happy to walk through any of it live: the counterfactual engine, the curtailment
           split, or just the query behind a number you don't believe.
         </p>
@@ -204,7 +235,6 @@
       </div>
     </div>
   </section>
-
   <section class="band band-4" style="text-align:center;overflow:hidden;">
     <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
     <div class="shell-narrow">
@@ -281,8 +311,9 @@ var POSTS = [
   if (!grid) return;
 
   function render(cat) {
-    grid.innerHTML = POSTS
-      .filter(function (p) { return cat === 'all' || p.c === cat; })
+    var sel = POSTS.filter(function (p) { return cat === 'all' || p.c === cat; });
+    var shown = expanded ? sel : sel.slice(0, 6);
+    grid.innerHTML = shown
       .map(function (p) {
         return '<article class="card card-hover post">' +
           '<div class="fig">' + p.f + '</div>' +
@@ -292,7 +323,18 @@ var POSTS = [
         '</article>';
       }).join('');
     grid.style.display = 'grid';
+    if (more) {
+      var hidden = sel.length - shown.length;
+      more.hidden = sel.length <= 6;
+      more.textContent = expanded ? 'Show fewer' : 'Show all ' + sel.length + ' pieces';
+    }
   }
+  var expanded = false;
+  var more = document.getElementById('morePosts');
+  if (more) more.addEventListener('click', function () {
+    expanded = !expanded;
+    render(filters.querySelector('[aria-pressed="true"]').dataset.f);
+  });
   render('all');
 
   filters.addEventListener('click', function (e) {
@@ -305,23 +347,23 @@ var POSTS = [
   });
 })();
 </script>
-
 <script>
 window.addEventListener('load', function () {
   if (window.ariaRing) {
-    ariaRing('ringWind', 99.8, { label:'99.8%', colour:'var(--good)', size:126, alt:'Wind effective revenue factor 99.8 per cent' });
-    ariaRing('ringSolar', 27.1, { label:'27.1%', colour:'var(--signal)', size:126, alt:'Solar effective revenue factor 27.1 per cent' });
+    ariaRing('ringWind', 99.8, { label:'99.8%', colour:'var(--good)', size:126, alt:'Wind 99.8 per cent' });
+    ariaRing('ringSolar', 27.1, { label:'27.1%', colour:'var(--signal)', size:126, alt:'Solar 27.1 per cent' });
   }
   if (window.ariaBars) {
     ariaBars('bjeiChart', [
-      ['Gullen Range', 67, '84% \u2192 67%'],
-      ['Biala', 70, '80% \u2192 70%'],
-      ['Wollar Solar', 25, '25%']
-    ], { max: 100, colour: function (r) { return r[1] < 40 ? 'var(--signal)': 'var(--accent)'; } });
+      ['Gullen Range', 67, '84 to 67%'], ['Biala', 70, '80 to 70%'], ['Wollar Solar', 25, '25%']
+    ], { max: 100, colour: function (r) { return r[1] < 40 ? 'var(--signal)' : 'var(--accent)'; } });
+    ariaBars('hazChart', [
+      ['2016', 47.17, '$47'], ['2017', 90.85, '$91'], ['Yallourn base', 15, '+$12-18']
+    ], { max: 95, colour: function (r) { return r[0] === '2017' ? 'var(--signal)' : 'var(--accent)'; } });
   }
 });
 </script>
-<script src="assets/shared.js?v=20260820c"></script>
-<script src="assets/main.js?v=20260820c"></script>
+<script src="assets/shared.js?v=20260820e"></script>
+<script src="assets/main.js?v=20260820e"></script>
 </body>
 </html>

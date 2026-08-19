@@ -467,6 +467,61 @@ th.ok::before, th.bad::before { display: none; }
 .card table.data th:first-child, .card table.data td:first-child { padding-left: 2px; }
 .card table.data th:last-child, .card table.data td:last-child { padding-right: 2px; }
 
+/* ── Progressive disclosure ──
+   The scan layer is headline + figure + one line. Everything that proves it
+   lives behind this, so the page reads in under a minute but nothing is lost. */
+details.working {
+  margin-top: 18px; border-top: 1px solid var(--ink-08); padding-top: 4px;
+}
+details.working > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 0; font-size: .84rem; font-weight: 600; color: var(--accent);
+  transition: color .2s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+details.working > summary::-webkit-details-marker { display: none; }
+details.working > summary::marker { content: ''; }
+details.working > summary:hover { color: var(--accent-hi); }
+details.working > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+details.working > summary .chev {
+  width: 16px; height: 16px; flex-shrink: 0; border-radius: 50%;
+  border: 1.5px solid currentColor; position: relative;
+  transition: transform .28s var(--ease-out);
+}
+details.working > summary .chev::before,
+details.working > summary .chev::after {
+  content: ''; position: absolute; background: currentColor; border-radius: 1px;
+}
+details.working > summary .chev::before { left: 3px; right: 3px; top: 6.2px; height: 1.6px; }
+details.working > summary .chev::after  { top: 3px; bottom: 3px; left: 6.2px; width: 1.6px;
+  transition: opacity .2s var(--ease-out), transform .28s var(--ease-out); }
+details.working[open] > summary .chev { transform: rotate(180deg); }
+details.working[open] > summary .chev::after { opacity: 0; transform: scaleY(0); }
+details.working .working-body {
+  padding: 4px 0 8px; font-size: .92rem; line-height: 1.75; color: var(--ink-60);
+}
+details.working .working-body > * + * { margin-top: 14px; }
+details.working .working-body p { max-width: 70ch; }
+details.working[open] .working-body { animation: workingIn .34s var(--ease-out); }
+@keyframes workingIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  details.working[open] .working-body { animation: none; }
+  details.working > summary .chev { transition: none; }
+}
+
+/* The scan layer itself: a big figure, a one-line claim, then the visual. */
+.scan { display: grid; gap: 10px; }
+.scan-fig {
+  font-size: clamp(2.4rem, 5.4vw, 3.8rem); font-weight: 900; letter-spacing: -.05em;
+  line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.scan-fig.neg { color: var(--signal); }
+.scan-claim {
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 800; letter-spacing: -.025em;
+  line-height: 1.3; color: var(--ink); max-width: 26ch;
+}
+.scan-line { font-size: .95rem; line-height: 1.65; color: var(--ink-60); max-width: 56ch; }
+
 /* ── Note / caveat ── */
 .note {
   border-left: 3px solid var(--signal); background: var(--signal-10);
@@ -768,4 +823,21 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
           --glass: #161B24; --glass-edge: rgba(240,241,243,.4); }
   .card, .stat-card, .scope-col, .chip { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .band-glow { display: none; }
+}
+
+/* Status chip for a vendor claim that no longer verifies. Warm, not alarming:
+   the product was real, it is its current availability that is in doubt. */
+.tag-warn {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--signal) 26%, transparent);
 }

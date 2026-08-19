@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820f">
+<link rel="stylesheet" href="assets/style.css?v=20260820h">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -78,7 +78,7 @@
         <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="59">0</span></div><div class="stat-lbl">Posts published</div></div>
         <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="6708">0</span></div><div class="stat-lbl">Best post, impressions</div></div>
         <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="2273">0</span></div><div class="stat-lbl">LinkedIn followers</div></div>
-        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="3">0</span></div><div class="stat-lbl">Named clients and publishers</div></div>
+        <div class="stat-card"><div class="stat-num-row"><span class="stat-num" data-count="3">0</span></div><div class="stat-lbl">Long-form pieces</div></div>
       </div>
     </div>
   </section>
@@ -120,7 +120,7 @@
     <div class="shell">
       <div class="split" style="align-items:center;">
         <div class="scan js-fade">
-          <div class="mod-num">Client work &middot; Core Markets, Apr 2026</div>
+          <div class="mod-num">Case study &middot; April 2026</div>
           <div class="scan-fig neg">+85%</div>
           <div class="scan-claim">Hazelwood took Victorian prices up 85%. Yallourn won't.</div>
           <div class="scan-line">A retrospective on the largest single generator exit in NEM history, and a forward scenario for the next one.</div>
@@ -157,12 +157,12 @@
     </div>
   </section>
 
-  <!-- BJEI -->
+  <!-- FORWARD CAPTURE -->
   <section class="band band-1" id="work">
     <div class="shell">
       <div class="split" style="align-items:center;">
         <div class="scan js-fade">
-          <div class="mod-num">Client work &middot; Beijing Energy International, May 2026</div>
+          <div class="mod-num">Portfolio analysis &middot; May 2026</div>
           <div class="scan-fig neg">85% &rarr; 67%</div>
           <div class="scan-claim">Why capture fell, and whether it was forecastable.</div>
           <div class="scan-line">It was, 12 to 18 months ahead. So I built the forward model to 2031 across seven scenarios.</div>
@@ -186,7 +186,7 @@
         </div>
         <div class="card js-fade">
           <span class="eyebrow" style="margin-bottom:14px;">Capture rate, NSW portfolio</span>
-          <div id="bjeiChart" data-bars></div>
+          <div id="captureChart" data-bars></div>
         </div>
       </div>
     </div>
@@ -354,7 +354,7 @@ window.addEventListener('load', function () {
     ariaRing('ringSolar', 27.1, { label:'27.1%', colour:'var(--signal)', size:126, alt:'Solar 27.1 per cent' });
   }
   if (window.ariaBars) {
-    ariaBars('bjeiChart', [
+    ariaBars('captureChart', [
       ['Gullen Range', 67, '84 to 67%'], ['Biala', 70, '80 to 70%'], ['Wollar Solar', 25, '25%']
     ], { max: 100, colour: function (r) { return r[1] < 40 ? 'var(--signal)' : 'var(--accent)'; } });
     ariaBars('hazChart', [
@@ -363,7 +363,7 @@ window.addEventListener('load', function () {
   }
 });
 </script>
-<script src="assets/shared.js?v=20260820f"></script>
-<script src="assets/main.js?v=20260820f"></script>
+<script src="assets/shared.js?v=20260820h"></script>
+<script src="assets/main.js?v=20260820h"></script>
 </body>
 </html>

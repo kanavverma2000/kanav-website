@@ -8,29 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260820f">
+<link rel="stylesheet" href="assets/style.css?v=20260820h">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
 <style>
-  .field { margin-bottom: 18px; }
-  .field label {
-    display:block; font-size:.74rem; font-weight:700; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-52); margin-bottom:8px;
-  }
-  .field input, .field textarea {
-    width:100%; padding:14px 16px; border-radius:var(--radius-sm);
-    border:1px solid var(--ink-14); background:var(--glass); color:var(--ink);
-    font-family:var(--font); font-size:.94rem; line-height:1.5;
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    transition:border-color .2s var(--ease-out), background .2s var(--ease-out);
-  }
-  .field textarea { min-height:150px; resize:vertical; }
-  .field input:focus, .field textarea:focus {
-    outline:none; border-color:var(--accent); background:var(--glass-hi);
-  }
-  .field input:placeholder, .field textarea:placeholder { color:var(--ink-28); }
   .direct { display:grid; gap:12px; }
   .direct-item {
     padding:18px 20px; border-radius:var(--radius-sm); background:var(--glass);
@@ -72,30 +55,6 @@
       <div class="split">
 
         <div class="js-fade">
-          <h2 class="h-sm" style="margin-bottom:22px;">Send a message</h2>
-          <form id="contactForm" novalidate>
-            <div class="field">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="What's this about?">
-            </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="What would you like to know?" required></textarea>
-            </div>
-            <div id="formStatus" role="status" style="font-size:.85rem;color:var(--signal);display:none;padding:6px 0 12px;"></div>
-            <button type="submit" class="btn btn-primary">Send message &rarr;</button>
-          </form>
-        </div>
-
-        <div class="js-fade">
           <h2 class="h-sm" style="margin-bottom:22px;">Direct</h2>
           <div class="direct">
             <div class="direct-item">
@@ -115,15 +74,21 @@
               <span class="direct-v">Sydney, NSW, Australia</span>
             </div>
           </div>
+        </div>
 
-          <div class="card" style="margin-top:22px;">
-            <div class="direct-k" style="color:var(--accent);">Open to</div>
+        <div class="js-fade">
+          <h2 class="h-sm" style="margin-bottom:22px;">Open to</h2>
+          <div class="card">
             <ul class="open-list">
               <li>Energy analytics roles and contracts</li>
               <li>Collaboration on NEM data projects</li>
               <li>ARIA platform partnerships</li>
+              <li>A demo of ARIA, walked through live</li>
               <li>Corrections to anything published here</li>
             </ul>
+          </div>
+          <div class="btn-row" style="margin-top:22px;">
+            <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Message me on LinkedIn</a>
           </div>
         </div>
 
@@ -133,35 +98,7 @@
 
 </div>
 
-<script>
-(function () {
-  var form = document.getElementById('contactForm');
-  var status = document.getElementById('formStatus');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = form.name.value.trim();
-    var email = form.email.value.trim();
-    var msg = form.message.value.trim();
-    if (!name || !email || !msg) {
-      status.textContent = 'Please fill in your name, email and message.';
-      status.style.color = 'var(--signal)';
-      status.style.display = 'block';
-      return;
-    }
-    /* Static site — no backend. Hand the message to the visitor's mail client. */
-    var subject = form.subject.value.trim() || ('Website enquiry from ' + name);
-    var body = msg + '\n\n—\n' + name + '\n' + email;
-    status.textContent = 'Opening your email client…';
-    status.style.color = 'var(--accent)';
-    status.style.display = 'block';
-    window.location.href = 'mailto:kanavverma2000@gmail.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-  });
-})();
-</script>
-<script src="assets/shared.js?v=20260820f"></script>
-<script src="assets/main.js?v=20260820f"></script>
+<script src="assets/shared.js?v=20260820h"></script>
+<script src="assets/main.js?v=20260820h"></script>
 </body>
 </html>

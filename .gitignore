@@ -1,0 +1,7 @@
+# Local agent settings - has held an API key before, must never be committed
+.claude/
+
+# Local scratch
+*.tmp
+.DS_Store
+Thumbs.db

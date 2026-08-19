@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819v">
+<link rel="stylesheet" href="assets/style.css?v=20260819y">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -27,7 +27,8 @@
     font-size:.72rem; font-weight:500; padding:5px 11px; border-radius:var(--radius-pill);
     border:1px solid var(--ink-14); color:var(--ink-52);
   }
-  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:11px; margin-top:20px; }
+  .kpi { display:grid; grid-template-columns:repeat(2,1fr); gap:11px; }
+  @media (max-width:420px){ .kpi { grid-template-columns:1fr; } }
   .kpi div { background:var(--ink-08); border-radius:var(--radius-sm); padding:15px 12px; text-align:center; }
   .kpi b { display:block; font-size:1.25rem; font-weight:900; letter-spacing:-.04em; color:var(--accent);
            font-variant-numeric:tabular-nums; }
@@ -79,71 +80,47 @@
           <div class="stat-lbl">Active inspections in scope</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num-row"><span class="stat-num" data-count="1600">0</span><span class="stat-sfx">h</span></div>
+          <div class="stat-num-row"><span class="stat-num" data-count="1639">0</span><span class="stat-sfx">h</span></div>
           <div class="stat-lbl">Person-hours removed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-sfx">~$</span><span class="stat-num" data-count="184">0</span><span class="stat-sfx">k</span></div>
+          <div class="stat-lbl">Value of that time</div>
         </div>
       </div>
       <p class="caption js-fade" style="text-align:center;margin-top:18px;">
-        Built 14 June to 13 July 2026. Volumes are taken from the live workbooks; per-task minute
-        figures are reasoned estimates, and I've said which is which.
+        Built 14 June to 13 July 2026. Volumes come from the live workbooks; per-task minutes are
+        reasoned estimates. Value is those hours at a standard consultant hour.
       </p>
     </div>
   </section>
 
-  <!-- 01 PIPELINE -->
+  <!-- 01 -->
   <section class="band band-1" id="pipeline">
     <div class="shell">
       <div class="tool-head js-fade">
         <span class="tool-n">01 &mdash; Ops platform</span>
-        <span class="tool-status">Live</span>
+        <span class="tool-status ">Live</span>
       </div>
-      <h2 class="h-md js-lines" style="max-width:22ch;">Inspection Pipeline Tool &mdash; <span class="accent">the flagship.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              End-to-end management for national solar and battery inspections. Homeowner consent,
-              dispatch, inspector scheduling and matching, a live status board, SafetyCulture sync,
-              ops dashboards, reconciliation against the Clean Energy Regulator's records, the
-              inspector registry, the report pipeline, and CER portal form-fill.
-            </p>
-            <p>
-              Web, mobile and API. It powers national CER residential battery and PV inspections
-              plus the QLD Battery Booster program.
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>How it grew.</b> v0.3 CER/SRES compliance &rarr; v0.4 GPS and geocoding &rarr;
-            v0.5 CEC product validation and PDF reports &rarr; v0.8 SafetyCulture ingest,
-            reconciliation and the CER filler. Then a template registry, unified inspector
-            profiles, a dispatch matching engine, a mobile "My Jobs" view with a dynamic form
-            renderer, bulk email campaigns, three-way login with inspector self-application, the
-            QLD SSFR portal, and go-live on Railway.
-          </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Inspection Pipeline Tool &mdash; <span class="accent">the flagship.</span></h2>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>End-to-end management for national solar and battery inspections &mdash; homeowner
+        consent, dispatch, inspector scheduling and matching, a live status board, SafetyCulture
+        sync, ops dashboards, reconciliation against the regulator's records, the inspector
+        registry and the report pipeline. Web, mobile and API. It powers national CER residential
+        battery and PV inspections plus the QLD Battery Booster program.</p>
+          <div class="stack"><span>FastAPI</span><span>Next.js</span><span>Expo / React Native</span><span>SQLite</span><span>Playwright</span><span>Railway</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>105</b><small>Commits</small></div>
-            <div><b>190</b><small>Inspector profiles</small></div>
-            <div><b>3</b><small>Live CER templates</small></div>
-            <div><b>50+</b><small>Tests</small></div>
-          </div>
-          <div class="stack">
-            <span>FastAPI</span><span>Next.js</span><span>Expo / React Native</span>
-            <span>SQLite (WAL)</span><span>Playwright</span><span>Railway</span>
-          </div>
-          <p class="caption" style="margin-top:16px;">
-            Used by the inspections ops team for dispatch and status, by field inspectors through
-            the mobile app, and by management for the KPI dashboards.
-          </p>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>750 h</b><small>Time saved</small></div><div><b>~$84k</b><small>Value of that time</small></div><div><b>105</b><small>Commits</small></div><div><b>190</b><small>Inspector profiles</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 02 FORM FILLER -->
+  <!-- 02 -->
   <section class="band band-2" id="formfiller">
     <div class="shell">
       <div class="tool-head js-fade">
@@ -151,188 +128,103 @@
         <span class="tool-status build">Pre-production</span>
       </div>
       <h2 class="h-md js-lines" style="max-width:24ch;">CER Form Filler &mdash; <span class="accent">150 fields, never submitted.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              Browser automation that opens a Clean Energy Regulator draft submission and fills
-              every field from a single canonical inspection record, PV and battery. Around
-              <strong>150 fields</strong> that were being keyed by hand, per site.
-            </p>
-            <p>
-              <strong>It never clicks Submit.</strong> That is a design constraint, not an
-              oversight &mdash; a human reviews the filled form and submits it. Regulatory
-              submissions are not somewhere to put a fully autonomous agent.
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>How it grew.</b> Born inside the pipeline tool, then split out. Field maps grounded
-            in three real SafetyCulture templates, attach-to-existing-browser so two-factor auth is
-            never replayed, self-healing locators, screenshots at each step. Validated read-only
-            against <strong>50 real draft submissions</strong> before anything was written.
-          </div>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>Browser automation that opens a Clean Energy Regulator draft submission and fills every
+        field from one canonical inspection record &mdash; about <strong>150 fields</strong> that
+        were keyed by hand, per site. It never clicks Submit: a human reviews and submits. That is
+        a design constraint, not an oversight. Field maps were grounded in real templates and
+        validated read-only against 50 live drafts before anything was written.</p>
+          <div class="stack"><span>Python</span><span>Playwright</span><span>Chrome DevTools Protocol</span><span>PyInstaller</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>~150</b><small>Fields per submission</small></div>
-            <div><b>50</b><small>Real drafts crawled</small></div>
-            <div><b>~30&rarr;5</b><small>Minutes per submission</small></div>
-            <div><b>0</b><small>Auto-submits, by design</small></div>
-          </div>
-          <div class="stack">
-            <span>Python</span><span>Playwright</span><span>Chrome DevTools Protocol</span><span>PyInstaller</span>
-          </div>
-          <p class="caption" style="margin-top:16px;">
-            Ships with a reconnaissance recorder that maps the portal read-only, reference
-            checklists, a data standardiser and a knowledge base.
-          </p>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>444 h</b><small>Time saved</small></div><div><b>~$50k</b><small>Value of that time</small></div><div><b>~30&rarr;5</b><small>Min per submission</small></div><div><b>50</b><small>Drafts crawled</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 03 SSFR -->
+  <!-- 03 -->
   <section class="band band-3" id="ssfr">
     <div class="shell">
       <div class="tool-head js-fade">
         <span class="tool-n">03 &mdash; Reporting / BI</span>
-        <span class="tool-status">Built</span>
+        <span class="tool-status ">Built</span>
       </div>
       <h2 class="h-md js-lines" style="max-width:24ch;">QLD Government SSFR reporting &mdash; <span class="accent">written by code, not by hand.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              Reporting for <strong>Supercharged Solar for Renters</strong>, run under the
-              Queensland Government Energy Programs Inspectorate. Three pages: programme overview
-              with the scheduling pipeline and LGA spread, contractor and equipment allocation, and
-              inspection outcomes with pre- and post-rectification tranche matrices.
-            </p>
-            <p>
-              The unusual part is that the report isn't clicked together. Two Python scripts author
-              the data model, the report JSON, the theme and the logo programmatically, so the whole
-              thing is reproducible and diffable rather than a binary somebody has to remember how
-              to rebuild.
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>Why that matters.</b> Government reporting recurs on a schedule. A hand-built report
-            decays the moment the person who made it is unavailable; a generated one regenerates.
-          </div>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>Reporting for <strong>Supercharged Solar for Renters</strong> under the Queensland
+        Government Energy Programs Inspectorate: programme overview and scheduling pipeline,
+        contractor and equipment allocation, and inspection outcomes with pre- and
+        post-rectification tranche matrices. The report isn't clicked together &mdash; Python
+        authors the data model, report JSON, theme and logo, so it regenerates instead of decaying
+        when the person who built it is unavailable.</p>
+          <div class="stack"><span>Python</span><span>Power BI (PBIP)</span><span>Pillow</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>3</b><small>Report pages</small></div>
-            <div><b>~3h&rarr;15m</b><small>Per reporting period</small></div>
-            <div><b>2</b><small>Generator scripts</small></div>
-            <div><b>QLD</b><small>Government branded theme</small></div>
-          </div>
-          <div class="stack"><span>Python</span><span>Power BI (PBIP)</span><span>Pillow</span></div>
-          <p class="caption" style="margin-top:16px;">
-            Program OE2220, Queensland Government Energy Programs Inspectorate.
-          </p>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>15 h</b><small>Time saved</small></div><div><b>~$1.7k</b><small>Value of that time</small></div><div><b>~3h&rarr;15m</b><small>Per period</small></div><div><b>3</b><small>Report pages</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 04 SALES -->
+  <!-- 04 -->
   <section class="band band-1" id="sales">
     <div class="shell">
       <div class="tool-head js-fade">
         <span class="tool-n">04 &mdash; Sales / CRM</span>
-        <span class="tool-status">Delivered</span>
+        <span class="tool-status ">Delivered</span>
       </div>
-      <h2 class="h-md js-lines" style="max-width:24ch;">Sales automation &mdash; <span class="accent">with the guardrails in the code.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              An account-based workflow: seed the CRM with target companies, confirm decision-makers
-              manually, enrich business emails, and draft personalised intro emails into Outlook.
-              The CRM stays the system of record and everything is logged against the organisation
-              and contact.
-            </p>
-            <p>
-              Three guarantees are enforced in code rather than in a policy document:
-              <strong>no automated LinkedIn actions, no auto-send, nothing leaves as a draft you
-              haven't read.</strong> Outreach tooling that can send on its own is a reputational
-              liability, and the constraint belongs where it can't be forgotten.
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>Delivered</b> as a self-contained web app with idempotent CRM setup and
-            credit-guarded enrichment, packaged and handed to the Managing Director.
-          </div>
+      <h2 class="h-md js-lines" style="max-width:24ch;">Sales automation &mdash; <span class="accent">guardrails in the code.</span></h2>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>An account-based workflow: seed the CRM with target companies, confirm decision-makers
+        manually, enrich business emails, and draft personalised intros into Outlook. Three
+        guarantees are enforced in code rather than in a policy document &mdash; <strong>no
+        automated LinkedIn actions, no auto-send, nothing leaves as a draft you haven't
+        read</strong>. Outreach tooling that can send on its own is a reputational liability, and
+        the constraint belongs where it can't be forgotten. Packaged and delivered to the Managing
+        Director.</p>
+          <div class="stack"><span>FastAPI</span><span>Plain JS</span><span>SQLite</span><span>Pipedrive API</span><span>Hunter</span><span>MS Graph</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>8</b><small>Pipeline stages</small></div>
-            <div><b>33</b><small>Tests</small></div>
-            <div><b>~25&rarr;3</b><small>Minutes per prospect</small></div>
-            <div><b>0</b><small>Auto-sends, by design</small></div>
-          </div>
-          <div class="stack">
-            <span>FastAPI</span><span>Plain JS</span><span>SQLite</span>
-            <span>Pipedrive API</span><span>Hunter</span><span>MS Graph</span><span>Anthropic</span>
-          </div>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>110 h</b><small>Time saved</small></div><div><b>~$12k</b><small>Value of that time</small></div><div><b>~25&rarr;3</b><small>Min per prospect</small></div><div><b>33</b><small>Tests</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 05 PHOTO -->
+  <!-- 05 -->
   <section class="band band-2" id="photo">
     <div class="shell">
       <div class="tool-head js-fade">
         <span class="tool-n">05 &mdash; Desktop utility</span>
-        <span class="tool-status">Packaged</span>
+        <span class="tool-status ">Packaged</span>
       </div>
       <h2 class="h-md js-lines" style="max-width:24ch;">Photo evidence tool &mdash; <span class="accent">defensible metadata.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              A desktop app that corrects and stamps capture timestamps and applies watermarks to
-              battery inspection photos, so field evidence carries consistent, defensible metadata
-              when it goes to the regulator.
-            </p>
-            <p>
-              Small problem, real consequence: an inspection photo whose timestamp can't be trusted
-              is an inspection photo that can be challenged. Handles HEIC and HEIF alongside JPG and
-              PNG, because that's what phones actually produce.
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>How it grew.</b> A metadata-amending script that turned into a full GUI with an
-            auto-installer, then bundled into a one-click Windows executable with desktop shortcuts
-            so inspectors never see a terminal.
-          </div>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>A desktop app that corrects capture timestamps and applies watermarks to battery
+        inspection photos, so field evidence carries consistent metadata when it reaches the
+        regulator. Small problem, real consequence: a photo whose timestamp can't be trusted is a
+        photo that can be challenged. Handles HEIC and HEIF alongside JPG and PNG, because that is
+        what phones actually produce, and ships as a one-click executable so inspectors never see a
+        terminal.</p>
+          <div class="stack"><span>Python</span><span>CustomTkinter</span><span>Pillow</span><span>pillow-heif</span><span>PyInstaller</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>5</b><small>Image formats</small></div>
-            <div><b>~20&rarr;1.5</b><small>Minutes per site</small></div>
-            <div><b>1</b><small>Click to run</small></div>
-          </div>
-          <div class="stack">
-            <span>Python</span><span>CustomTkinter</span><span>Pillow</span>
-            <span>pillow-heif</span><span>PyInstaller</span>
-          </div>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>320 h</b><small>Time saved</small></div><div><b>~$36k</b><small>Value of that time</small></div><div><b>~20&rarr;1.5</b><small>Min per site</small></div><div><b>5</b><small>Image formats</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 06 WEBSITE -->
+  <!-- 06 -->
   <section class="band band-3" id="website">
     <div class="shell">
       <div class="tool-head js-fade">
@@ -340,63 +232,45 @@
         <span class="tool-status build">In build</span>
       </div>
       <h2 class="h-md js-lines" style="max-width:24ch;">Website rebuild &mdash; <span class="accent">and a repositioning.</span></h2>
-
-      <div class="split" style="margin-top:22px;">
-        <div>
-          <div class="prose js-fade">
-            <p>
-              A rebuild of the public site, repositioning the company from "a training company that
-              also consults" to independent renewable energy engineering and assurance. Static
-              multi-page build on a custom design system, with an interactive world map of the 40+
-              project countries.
-            </p>
-            <p>
-              The part I'd argue for hardest isn't visual. I compiled a knowledge base from the live
-              site, the rebrand draft and internal documents, and flagged every claim that needed
-              verifying before publication. <strong>A compliance and assurance brand cannot afford
-              an unverified claim on its own website.</strong>
-            </p>
-          </div>
-          <div class="evolved js-fade">
-            <b>Note.</b> This site you're reading now runs a descendant of that design system.
-          </div>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>A rebuild of the public site, repositioning the company from "a training company that
+        also consults" to independent renewable energy engineering and assurance &mdash; a static
+        multi-page build on a custom design system, with an interactive world map of the 40+ project
+        countries. The part I'd argue for hardest isn't visual: I compiled a knowledge base from the
+        live site and internal documents and flagged every claim needing verification before
+        publication. A compliance brand cannot afford an unverified claim on its own website.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GSAP</span></div>
         </div>
         <div class="card js-fade">
-          <span class="eyebrow" style="margin-bottom:14px;">By the numbers</span>
-          <div class="kpi">
-            <div><b>4</b><small>Pages</small></div>
-            <div><b>9</b><small>Commits</small></div>
-            <div><b>40+</b><small>Project countries mapped</small></div>
-            <div><b>0</b><small>Build step</small></div>
-          </div>
-          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GSAP</span></div>
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>4</b><small>Pages</small></div><div><b>9</b><small>Commits</small></div><div><b>40+</b><small>Countries mapped</small></div><div><b>0</b><small>Build step</small></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 07 TRACKER -->
+  <!-- 07 -->
   <section class="band band-1" id="tracker">
     <div class="shell">
       <div class="tool-head js-fade">
         <span class="tool-n">07 &mdash; Measurement</span>
-        <span class="tool-status">Live</span>
+        <span class="tool-status ">Live</span>
       </div>
       <h2 class="h-md js-lines" style="max-width:24ch;">Work tracker &mdash; <span class="accent">so the claims have a source.</span></h2>
-      <div class="prose js-fade" style="margin-top:6px;">
-        <p>
-          Every figure on this page comes from a tracker I built to record what was made, when, what
-          it replaced and what it saved &mdash; alongside the improvement backlog and the known
-          gaps in each tool.
-        </p>
-        <p>
-          It exists for the same reason the research page publishes its error bands. A time-saving
-          claim with no method behind it is a number somebody made up, and I would rather be able to
-          show the working than be believed on assertion.
-        </p>
-      </div>
-      <div class="stack js-fade" style="margin-top:18px;">
-        <span>Excel / openpyxl</span><span>Python</span><span>PowerShell</span><span>Markdown mirror for diffing</span>
+      <div class="split" style="margin-top:20px;">
+        <div class="prose js-fade">
+          <p>Every figure on this page comes from a tracker I built to record what was made, when,
+        what it replaced and what it saved &mdash; alongside the improvement backlog and the known
+        gaps in each tool. It exists for the same reason the research pages publish their error
+        bands: a time-saving claim with no method behind it is a number somebody made up, and I'd
+        rather show the working than be believed on assertion.</p>
+          <div class="stack"><span>Excel / openpyxl</span><span>Python</span><span>PowerShell</span><span>Markdown mirror</span></div>
+        </div>
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">Impact</span>
+          <div class="kpi"><div><b>7</b><small>Tools tracked</small></div><div><b>1,639 h</b><small>Total time saved</small></div><div><b>~$184k</b><small>Total value</small></div><div><b>1</b><small>Source of truth</small></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -507,7 +381,7 @@ window.addEventListener('load', function () {
   ], { max: 32, aLabel: 'Manual', bLabel: 'With the tool', bColour: 'var(--good)' });
 });
 </script>
-<script src="assets/shared.js?v=20260819v"></script>
-<script src="assets/main.js?v=20260819v"></script>
+<script src="assets/shared.js?v=20260819y"></script>
+<script src="assets/main.js?v=20260819y"></script>
 </body>
 </html>

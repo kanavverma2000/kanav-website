@@ -166,23 +166,18 @@
           <div class="scan-fig neg">85% &rarr; 67%</div>
           <div class="scan-claim">Why capture fell, and whether it was forecastable.</div>
           <div class="scan-line">It was, 12 to 18 months ahead. So I built the forward model to 2031 across seven scenarios.</div>
-          <div class="btn-row" style="margin-top:18px;">
-            <a class="btn btn-glass" href="assets/docs/forward-capture-rate-scenarios-2026-05.pdf" target="_blank" rel="noopener">Read the scenario report</a>
-          </div>
           <details class="working"><summary><span class="chev" aria-hidden="true"></span>The diagnosis, and the leading indicators</summary><div class="working-body">
-            <p>Three NSW assets slid from about 85 to 90% dispatch-weighted capture to roughly 75%.
-            I pulled five-minute SCADA and price data across the full operating history: Gullen
-            Range 84% to 67%, Biala 80% to 70%, Wollar Solar at 25%.</p>
+            <p>A three-asset NSW portfolio slid from about 85 to 90% dispatch-weighted capture to
+            roughly 75%. Five-minute output and price data across the full operating history put the
+            two wind assets at 67% and 70%, and the solar asset at 25%.</p>
             <p>Four causes. VRE output in NSW doubled in four years, 957 MW to 2,171 MW. Negative
-            prices went from about 0.2% of intervals to 25.1% in Q4 2025, and Wollar now generates
-            51% of its output at negative prices. The duck curve deepened from 0.29 to 0.17,
-            $40.3/MWh midday against $236.6 at the peak. And batteries took 40% of evening-peak
-            price setting, up from under 5% a year earlier.</p>
-            <p>The leading indicators were all public. The negative-price trend was visibly
-            exponential by mid-2023, the solar-to-peak spread compressed 0.29 to 0.27 to 0.23 across
-            2021 to 2024, and rolling three-month capture fell below 80% from mid-2023 and never
-            recovered.</p>
-            <p>Public DUIDs, public prices, reproducible by anyone. Commercial terms excluded.</p></div></details>
+            prices went from about 0.2% of intervals to 25.1% in Q4 2025, and the solar asset now
+            generates 51% of its output at negative prices. The duck curve deepened from 0.29 to
+            0.17, $40.3/MWh midday against $236.6 at the peak. And batteries took 40% of
+            evening-peak price setting, up from under 5% a year earlier.</p>
+            <p>The leading indicators were all public: the negative-price trend was visibly
+            exponential by mid-2023, and rolling three-month capture fell below 80% from mid-2023
+            and never recovered. The full scenario report is client work and isn't published.</p></div></details>
         </div>
         <div class="card js-fade">
           <span class="eyebrow" style="margin-bottom:14px;">Capture rate, NSW portfolio</span>
@@ -355,7 +350,7 @@ window.addEventListener('load', function () {
   }
   if (window.ariaBars) {
     ariaBars('captureChart', [
-      ['Gullen Range', 67, '84 to 67%'], ['Biala', 70, '80 to 70%'], ['Wollar Solar', 25, '25%']
+      ['Wind A', 67, '84 to 67%'], ['Wind B', 70, '80 to 70%'], ['Solar', 25, '25%']
     ], { max: 100, colour: function (r) { return r[1] < 40 ? 'var(--signal)' : 'var(--accent)'; } });
     ariaBars('hazChart', [
       ['2016', 47.17, '$47'], ['2017', 90.85, '$91'], ['Yallourn base', 15, '+$12-18']

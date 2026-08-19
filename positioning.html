@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819b">
+<link rel="stylesheet" href="assets/style.css?v=20260819j">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -16,18 +16,22 @@
 <style>
   .qframe { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:34px; }
   @media(max-width:900px){ .qframe{grid-template-columns:1fr} }
-  .q-tense { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-45); margin-bottom:10px; font-weight:700; }
+  .q-tense { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-45); margin-bottom:10px; font-weight:700; }
   .q.open { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset, var(--shadow-lg); }
   .q.open .q-tense { color:var(--accent); }
   .q-q { font-size:1.2rem; font-weight:900; letter-spacing:-.03em; line-height:1.25; margin-bottom:14px; }
   .q-verdict { margin-top:16px; padding-top:13px; border-top:1px solid var(--ink-08); font-size:.76rem; font-weight:600; color:var(--ink-45); }
   .q.open .q-verdict { color:var(--accent); }
 
-  .mx-wrap { overflow-x:auto; margin-top:28px; }
+  .mx-wrap { overflow-x:auto; max-width:100%; margin-top:28px; -webkit-overflow-scrolling:touch; }
+  .mx-wrap::-webkit-scrollbar { height:6px; }
+  .mx-wrap::-webkit-scrollbar-thumb { background:var(--ink-14); border-radius:3px; }
+  .scroll-cue { display:none; }
+  @media (max-width:900px){ .scroll-cue { display:block; color:var(--accent); font-weight:600; } }
   table.mx { width:100%; border-collapse:collapse; font-size:.82rem; min-width:820px; }
   table.mx th, table.mx td { padding:11px 9px; border-bottom:1px solid var(--ink-08); text-align:center; }
   table.mx th:first-child, table.mx td:first-child { text-align:left; min-width:210px; }
-  table.mx thead th { font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-45);
+  table.mx thead th { font-size:.73rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-45);
                       font-weight:700; border-bottom:1px solid var(--ink-28); vertical-align:bottom; line-height:1.35; }
   table.mx thead th.acol { color:var(--accent); }
   table.mx td.acol { background:var(--accent-10); }
@@ -36,14 +40,14 @@
   .part { color:var(--accent); font-weight:800; opacity:.6; }
   .no { color:var(--ink-28); }
 
-  .vrole { font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; font-weight:700; }
+  .vrole { font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; font-weight:700; }
   .voverlap { margin-top:14px; padding-top:12px; border-top:1px solid var(--ink-08); font-size:.8rem; line-height:1.65; color:var(--ink-52); }
   .voverlap strong { color:var(--ink-70); }
 
-  table.price { width:100%; border-collapse:collapse; font-size:.86rem; min-width:520px; font-variant-numeric:tabular-nums; }
+  table.price { width:100%; border-collapse:collapse; font-size:.86rem; min-width:460px; font-variant-numeric:tabular-nums; }
   table.price th, table.price td { padding:11px 13px; border-bottom:1px solid var(--ink-08); text-align:right; }
   table.price th:first-child, table.price td:first-child { text-align:left; }
-  table.price thead th { font-size:.66rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-45); font-weight:700; border-bottom:1px solid var(--ink-28); }
+  table.price thead th { font-size:.7rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-45); font-weight:700; border-bottom:1px solid var(--ink-28); }
   table.price tbody tr:last-child td { border-bottom:none; }
 </style>
 </head>
@@ -239,6 +243,7 @@
       <h2 class="h-md js-lines" style="max-width:18ch;">Where the lines <span class="accent">actually fall.</span></h2>
 
       <div class="mx-wrap js-fade">
+        <p class="caption scroll-cue" style="margin:0 0 10px;">Scroll the table sideways to see every vendor &rarr;</p>
         <table class="mx">
           <thead>
             <tr>
@@ -454,7 +459,7 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819b"></script>
-<script src="assets/main.js?v=20260819b"></script>
+<script src="assets/shared.js?v=20260819j"></script>
+<script src="assets/main.js?v=20260819j"></script>
 </body>
 </html>

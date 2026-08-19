@@ -1,319 +1,307 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV - ARIA | Kanav Verma</title>
-  <meta name="description" content="CV for Kanav Verma - energy-market analytics and data-driven engineering." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=20260819b">
-  <link rel="stylesheet" href="assets/legacy.css?v=20260819b">
-  <script>(function(){try{document.documentElement.setAttribute("data-theme",localStorage.getItem("aria-theme")||"light")}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Kanav Verma</title>
+<meta name="description" content="Kanav Verma — Energy Market Analyst, renewable engineering, data and analytical tooling. Sydney, NSW.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260819j">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .cv { max-width: 900px; margin: 0 auto; padding: 0 var(--gutter); }
+  .cv-sec { padding: 34px 0; border-top: 1px solid var(--ink-08); }
+  .cv-sec:first-of-type { border-top: none; }
+  .cv-sec > h2 {
+    font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 26px;
+  }
+  .role { margin-bottom: 34px; }
+  .role:last-child { margin-bottom: 0; }
+  .role-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .role-title { font-size: 1.08rem; font-weight: 800; letter-spacing: -.02em; }
+  .role-date { font-size: .8rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .role-org { font-size: .88rem; color: var(--ink-52); margin-top: 3px; }
+  .role ul { list-style: none; margin-top: 14px; }
+  .role li {
+    font-size: .91rem; line-height: 1.72; color: var(--ink-60);
+    padding: 6px 0 6px 20px; position: relative;
+  }
+  .role li::before { content: "—"; position: absolute; left: 0; color: var(--ink-28); }
+  .role li strong { color: var(--ink); font-weight: 600; }
+  .stack {
+    font-size: .74rem; color: var(--ink-45); margin-top: 5px;
+    font-family: var(--font-mono); letter-spacing: -.01em;
+  }
+  .skill-grid { display: grid; grid-template-columns: 150px 1fr; gap: 14px 22px; align-items: start; }
+  @media (max-width: 700px) { .skill-grid { grid-template-columns: 1fr; gap: 4px 0; } }
+  .skill-k {
+    font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); padding-top: 2px;
+  }
+  .skill-v { font-size: .9rem; line-height: 1.72; color: var(--ink-60); margin-bottom: 12px; }
+  .edu-grid { display: grid; gap: 22px; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: .9rem; margin-top: 22px; }
+  .contact-row span, .contact-row a { color: var(--ink-60); }
+  @media (max-width:820px){ .contact-row a { display:inline-block; padding:10px 0; } }
+  .contact-row a:hover { color: var(--accent); }
+</style>
 </head>
 <body>
-<div class="main-content">
+<div class="main">
 
-  <div class="cv-container">
-    <!-- CV HEADER -->
-    <div class="cv-header">
-      <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
-        <a class="btn btn-primary btn-sm" href="assets/kanav-verma-resume.pdf" download>Download PDF</a>
-        <a class="btn btn-secondary btn-sm" href="contact.html">Contact</a>
-      </div>
-      <h1 class="cv-name">Kanav Verma</h1>
-      <p class="cv-tagline">Energy-Market Analytics | Renewable Energy Engineering | Data-Driven Operations</p>
-      <div class="cv-links">
-        <span>Sydney, NSW</span>
-        <span>485 Post-Graduate Work VISA (Full Working rights)</span>
-        <a href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a>
-        <span>+61 434 349 348</span>
-        <span>LinkedIn</span>
-      </div>
-    </div>
-
-    <!-- SUMMARY -->
-    <div class="cv-section">
-      <h2>Summary</h2>
-      <p style="font-size:0.95rem;line-height:1.75;">
-        Energy-market analytics professional with a Master of Engineering Science in Renewable Energy and hands-on experience building Python-based data products, techno-economic models, and market-facing insights for Australia’s power system. Strong fit for quantitative consulting environments requiring clear assumptions, scenario analysis, and stakeholder-ready communication in the context of the energy transition.
+  <header class="page-head">
+    <div class="band-glow" style="top:-14%;right:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">Curriculum vitae</span>
+      <h1 class="js-lines">Kanav Verma</h1>
+      <p class="lede js-fade">
+        Energy Market Analyst &mdash; renewable engineering, data and analytical tooling.
       </p>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="cv-section">
-      <h2>Skills</h2>
-      <div class="cv-skills-grid">
-        <div class="cv-skill-group">
-          <h3>Certifications</h3>
-          <p>Google Advanced Data Analytics Professional Certificate</p>
-        </div>
-        <div class="cv-skill-group">
-          <h3>Energy Markets & Modelling</h3>
-          <p>NEM fundamentals, LCOE, NPC, NPV, IRR, scenario and sensitivity analysis, P50/P90, demand-side participation (WDR/market DR)</p>
-        </div>
-        <div class="cv-skill-group">
-          <h3>Data & Software</h3>
-          <p>Python (pandas, numpy), SQL, web scraping and data pipelines, Streamlit, Plotly, forecasting workflows, reproducible reporting (CSV/exportable summaries)</p>
-        </div>
-        <div class="cv-skill-group">
-          <h3>Analytics & Reporting</h3>
-          <p>Advanced Excel (pivot tables, XLOOKUP), Power BI dashboards, data cleansing and validation, KPI tracking, trend analysis, structured reporting</p>
-        </div>
-        <div class="cv-skill-group">
-          <h3>Tools</h3>
-          <p>HOMER Pro, NREL SAM, PVsyst, Windographer, AutoCAD, OpenLCA (Ecoinvent/ReCiPe), IBM Maximo</p>
-        </div>
+      <div class="contact-row js-fade">
+        <span>Sydney, NSW</span>
+        <span>&middot;</span>
+        <a href="tel:+61434349348">+61 434 349 348</a>
+        <span>&middot;</span>
+        <a href="mailto:kanavverma2000@gmail.com">kanavverma2000@gmail.com</a>
+        <span>&middot;</span>
+        <a href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">LinkedIn</a>
+        <span>&middot;</span>
+        <span>Full Australian working rights</span>
       </div>
     </div>
+  </header>
 
-    <!-- EXPERIENCE -->
-    <div class="cv-section">
-      <h2>Experience</h2>
+  <section class="band band-2" style="padding-top:clamp(30px,4vw,50px);">
+    <div class="cv">
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Market Analyst</span>
-          <span class="cv-entry-date">Dec 2025 - Present</span>
-        </div>
-        <div class="cv-entry-org">Energy Synapse | Pyrmont, Sydney, AU</div>
-        <div class="cv-entry-body">
+      <!-- PROFILE -->
+      <div class="cv-sec js-fade">
+        <h2>Profile</h2>
+        <p class="prose" style="max-width:none;">
+          Energy market analyst and renewable engineer working across both consulting delivery and
+          the analytical tooling that supports it. Designed and built <strong>ARIA</strong>, a
+          production NEM analytics platform running on live AEMO dispatch and SCADA data across
+          500+ wind, solar, BESS and hydro assets &mdash; covering revenue capture, curtailment
+          decomposition, BESS dispatch modelling and multi-model price forecasting. Currently at
+          <strong>GSES</strong> delivering Solar PV, BESS and EV infrastructure consulting
+          engagements while modernising internal workflows through automation, API integrations and
+          AI-assisted tooling. Prior client-facing market analyst work at
+          <strong>Energy Synapse</strong> combined NEM market intelligence with direct business
+          development support. Master of Engineering Science in Renewable Energy, UNSW
+          (WAM 75.8, High Distinction) and Google Advanced Data Analytics certified. Comfortable
+          across the full analytical stack from raw AEMO data to structured advisory output.
+        </p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="cv-sec js-fade">
+        <h2>Experience</h2>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Renewable Project Engineer</div>
+              <div class="role-org">Global Sustainable Energy Solutions (GSES) &mdash; Waterloo, NSW</div>
+            </div>
+            <div class="role-date">Jun 2026 &mdash; Present</div>
+          </div>
           <ul>
-            <li>Built a structured database of 500+ wind, solar, and BESS projects across the NEM to support internal market briefings and pipeline analysis.</li>
-            <li>Built automated Excel and Python workflows to structure and monitor infrastructure project datasets.</li>
-            <li>Built Python web-scraping workflows to extract planning and project documents from government portals, reducing research time from 4 days to hours.</li>
-            <li>Analyzed revenue drivers and risk factors influencing renewable project bankability and investment positioning.</li>
-            <li>Researched energy policies such as CIS and LTESA and translated them into asset-level risk and performance implications for developers.</li>
-            <li>Tracked Renewable Energy Zone access-right and grid-connection updates, summarizing implications for storage build-out and project timing assumptions.</li>
-            <li>Supported business development by sourcing leads, delivering platform demos, and providing tailored analyses.</li>
-            <li>Coordinated between analysts, leadership, and external stakeholders to ensure data accuracy and consistency in reporting outputs.</li>
+            <li>Delivering <strong>Solar PV, BESS and EV charging infrastructure</strong> consulting engagements for federal, state and corporate clients across techno-economic analysis, procurement, quality assurance and operational optimisation.</li>
+            <li>Leading data-science and automation workstreams to modernise internal delivery &mdash; refining project processes, building tools, and integrating APIs, databases and web-based systems to connect engineering, monitoring and business platforms.</li>
+            <li>Developing AI-assisted workflows and scripting to automate previously manual technical tasks, improving data visibility across engineering, compliance and operational activities and creating scalable frameworks for repeat engagements.</li>
+            <li>Supporting the consulting team on live Solar PV and BESS projects &mdash; modelling, monitoring analysis, site-works coordination and compliance datasets.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Energy Market Analyst &amp; Platform Developer</div>
+              <div class="role-org">ARIA &mdash; independent platform, Australia</div>
+            </div>
+            <div class="role-date">Nov 2024 &mdash; Present</div>
+          </div>
+          <ul>
+            <li>Designed and built <strong>ARIA</strong> (Australian Renewable Intelligence Analysis Tool) from a blank page &mdash; a live NEM analytics platform processing AEMO dispatch and SCADA data across 500+ wind, solar, BESS and hydro assets.</li>
+            <li>Architected the full stack: a live ETL pipeline ingesting AEMO NEMWeb data, a Python/Streamlit application, and a Next.js/FastAPI backend serving a precomputed DuckDB layer &mdash; bridging a consulting analyst's day-to-day tooling needs and the software that produces the answers.</li>
+            <li>Built <strong>18+ analytical modules</strong> covering GWAP/TWAP capture pricing, curtailment decomposition, BESS revenue stacking, coal closure scenario modelling, DER-corrected demand, and a multi-model price forecasting engine (XGBoost quantile regression, STL decomposition, EGARCH volatility) with scenarios to 2031.</li>
+            <li>Uses ARIA as the research engine behind original technical analysis published to <strong>1,400+ industry followers</strong> on BESS gross spreads, negative pricing frequency, curtailment hotspots and coal closure scenarios &mdash; market insight built directly from AEMO data, not commentary.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Energy Market Analyst</div>
+              <div class="role-org">Energy Synapse &mdash; Pyrmont, Sydney</div>
+            </div>
+            <div class="role-date">Dec 2025 &mdash; Apr 2026</div>
+          </div>
+          <ul>
+            <li>Delivered NEM market intelligence and commercial analysis for developer and asset-manager clients &mdash; wholesale spot dynamics, BESS dispatch economics, curtailment risk and REZ access developments across all NEM regions.</li>
+            <li>Supported business development directly &mdash; generating leads, preparing tailored NEM analyses and delivering platform demonstrations for prospective clients.</li>
+            <li>Built and maintained a structured database of <strong>500+ wind, solar and BESS pipeline projects</strong>, cross-referenced against AEMO, Clean Energy Regulator and CIS sources.</li>
+            <li>Researched CIS and LTESA policy developments and translated them into asset-level commercial implications; tracked REZ access-right allocations and grid-connection timelines across NSW, VIC and QLD.</li>
+            <li>Built automated Python scrapers to extract planning approvals and project documents from government portals, <strong>cutting research time from around four days to hours</strong> while improving data quality.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Vehicle &amp; GSE Data Specialist &mdash; Sustainability &amp; Fleet</div>
+              <div class="role-org">FedEx Express Australasia &mdash; Mascot HQ, Sydney</div>
+            </div>
+            <div class="role-date">Oct 2024 &mdash; Sep 2025</div>
+          </div>
+          <ul>
+            <li>Owned data analysis and reporting for a <strong>3,000+ asset fleet</strong> across Australia, New Zealand and Fiji, using IBM Maximo to validate asset records and manage servicing compliance.</li>
+            <li>Designed Power BI dashboards for depot managers and US executive leadership tracking utilisation, service compliance and a "Weeks Overdue" KPI; built Python anomaly-detection routines and structured Excel architectures that replaced fragmented manual processes.</li>
+            <li>Developed carbon-abatement and cost-benefit models supporting the EV rollout and Net Zero 2040 roadmap; coordinated with airports, energy providers and government bodies on EV charging infrastructure under PPP frameworks.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Project Engineer &mdash; partner project</div>
+              <div class="role-org">Aurecon &times; TransGrid &mdash; Sydney</div>
+            </div>
+            <div class="role-date">Nov 2023 &mdash; Jul 2024</div>
+          </div>
+          <ul>
+            <li>Assessed grid-stability solutions for TransGrid's NSW transmission network, focused on DER integration and the operational impact of rising rooftop solar penetration; delivered prototype recommendations to senior stakeholders and built automated reporting templates that reduced manual processing time.</li>
           </ul>
         </div>
       </div>
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Veh/GSE Data Specialist - Sustainability & Fleet</span>
-          <span class="cv-entry-date">Oct 2024 - Sept 2025</span>
-        </div>
-        <div class="cv-entry-org">FedEx Express Australasia | Mascot HQ, Sydney</div>
-        <div class="cv-entry-body">
+      <!-- PROJECTS -->
+      <div class="cv-sec js-fade">
+        <h2>Key projects</h2>
+
+        <div class="role">
+          <div class="role-title">ARIA &mdash; Australian Renewable Intelligence Analysis Tool</div>
+          <div class="stack">Python · Streamlit · FastAPI · Next.js · DuckDB · XGBoost · AEMO data</div>
           <ul>
-            <li>Managed and reconciled a 3,000+ asset fleet dataset across AU, NZ, and FJ using IBM Maximo, fleet lists, fuel records, and telematics systems.</li>
-            <li>Rebuilt the master fleet dataset, eliminating inconsistencies and reporting errors through cross-source reconciliation.</li>
-            <li>Developed structured Excel architecture (XLOOKUP-based) to replace manual linkages, improving data reliability and auditability.</li>
-            <li>Built Power BI dashboards tracking utilization, service compliance, and performance KPIs for depot managers and executive leadership.</li>
-            <li>Designed anomaly-detection and trend checks (Python + spreadsheets) to strengthen odometer accuracy and preventive maintenance reliability.</li>
-            <li>Designed a weekly odometer accuracy and service compliance report comparing Maximo records, fuel transactions, and telematics mileage.</li>
-            <li>Built and validated vehicle operating cost models (depreciation, fuel, annual operating costs) to improve fleet benchmarking by subtype.</li>
-            <li>Delivered utilization and rental efficiency analysis supporting intra-state asset reallocation to reduce rental costs.</li>
-            <li>Developed a Power BI service status dashboard tracking service overdue vehicles and a “Weeks Overdue” KPI.</li>
-            <li>Introduced data quality control checks and reporting governance standards to reduce recurring errors.</li>
-            <li>Developed carbon abatement and cost-benefit models supporting EV rollout and Net Zero 2040 roadmap decisions.</li>
-            <li>Supported EV-readiness and sustainability-linked fleet analysis by aligning asset datasets with emissions and electrification planning.</li>
-            <li>Collaborated with Custom Fleet and local government authorities for compliance and operational requirements for EV deployments at major airports.</li>
-            <li>Supported Public-Private Partnership (PPP) projects for EV charging infrastructure rollout.</li>
-            <li>Drafted carbon abatement and cost-benefit analyses for Sustainable Aviation Fuel (SAF) adoption.</li>
-            <li>Communicated across stakeholder groups using concise written updates and documented assumptions for consistent interpretation.</li>
+            <li>Full-stack NEM analytics platform: Python/Streamlit v1 (9,000+ lines), Next.js/FastAPI v2 backend with <strong>50+ REST endpoints</strong> over a precomputed DuckDB serving layer. Live ETL from AEMO NEMWeb continuously ingests 5-minute Dispatch_SCADA, DispatchPrice, DISPATCHLOAD and UIGF &mdash; <strong>278M+ rows across 500+ assets</strong>. 18+ modules from asset-level revenue capture and curtailment decomposition through to portfolio scenario modelling and forecasting.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Hybrid mini-grid economic &amp; environmental assessment &mdash; UNSW thesis</div>
+          <div class="stack">HOMER Pro</div>
+          <ul>
+            <li>Modelled a solar&ndash;wind&ndash;grid hybrid system for Moree, NSW achieving a <strong>30% LCOE reduction</strong> ($0.098 vs $0.144/kWh grid baseline), a $13.4M reduction in net present cost and roughly <strong>76 kt CO&#8322;e per year</strong> in avoided emissions. Developed deployment recommendations for NSW Renewable Energy Zones.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">117 MW utility-scale solar &mdash; yield and P50/P90 analysis</div>
+          <div class="stack">PVsyst</div>
+          <ul>
+            <li>Modelled <strong>~246 GWh/year</strong> generation at an 82% performance ratio using multi-source resource reconciliation (NREL, Solcast, Meteonorm, BOM); ran investment-grade P50/P90 uncertainty analysis and identified temperature and mismatch as the primary loss drivers.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">8 MW agrivoltaics solar farm + BESS &mdash; NSW financial model</div>
+          <div class="stack">Excel · HOMER Pro</div>
+          <ul>
+            <li>Built an investor-grade financial model for a 10.1 MW DC solar + 27.4 MWh BESS project achieving <strong>11% IRR and an 8.4-year payback</strong>, with revenue stacking across wholesale capture, FCAS and offtake contracts.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Google Advanced Data Analytics capstone</div>
+          <div class="stack">Python · Scikit-learn · XGBoost</div>
+          <ul>
+            <li>Analysed a 15,000-record dataset to identify attrition drivers; built and compared logistic regression, decision tree, random forest and XGBoost models, balancing predictive accuracy with interpretability and translating outputs for a non-technical audience.</li>
           </ul>
         </div>
       </div>
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Data and Business Growth Consultant (Freelance)</span>
-          <span class="cv-entry-date">Jul 2025 - Present</span>
-        </div>
-        <div class="cv-entry-org">Freelance</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Partnered with SMEs (Calmosis and La Soiree), achieving up to 180% growth within 2 months through data-driven marketing and operational analytics.</li>
-            <li>Built Power BI and Excel dashboards for revenue tracking, sales forecasting, and ROI visualization using regression analysis.</li>
-            <li>Conducted business process audits to identify inefficiencies and improve operational productivity.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Project Engineering and Management Intern</span>
-          <span class="cv-entry-date">Feb 2024 - May 2024</span>
-        </div>
-        <div class="cv-entry-org">Aurecon | Sydney, NSW</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Developed and implemented power system solutions and demand management strategies, improving grid efficiency by 15% and reducing operational costs by 10% (approximately $150,000 annual savings).</li>
-            <li>Facilitated installation of 5 kW smart inverters and $300 smart meters, improving grid stability by 25% during emergencies.</li>
-            <li>Contributed to policy recommendations, increasing system reliability by 12% and integrating 3 MW of renewable energy.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Project Engineering & Management (Partner Project) - Aurecon x TransGrid</span>
-          <span class="cv-entry-date">Nov 2021 - Jan 2022</span>
-        </div>
-        <div class="cv-entry-org">University of New South Wales</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Project Engineer focusing on grid stability solutions for TransGrid’s transmission network and the rise of rooftop PV in NSW.</li>
-            <li>Explored AEMO policy frameworks and related research to define the problem statement.</li>
-            <li>Assessed technical and financial solution options and delivered feasible prototype solutions to stakeholders.</li>
-          </ul>
+      <!-- EDUCATION -->
+      <div class="cv-sec js-fade">
+        <h2>Education &amp; certifications</h2>
+        <div class="edu-grid">
+          <div class="role" style="margin-bottom:0;">
+            <div class="role-head">
+              <div>
+                <div class="role-title">Google Advanced Data Analytics Professional Certificate</div>
+                <div class="role-org">Google / Coursera</div>
+              </div>
+              <div class="role-date">Oct 2025 &mdash; Jan 2026</div>
+            </div>
+            <p class="stack" style="margin-top:8px;">Statistics · Regression · Machine learning · Data quality · Python (Pandas, NumPy) · SQL · BigQuery</p>
+          </div>
+          <div class="role" style="margin-bottom:0;">
+            <div class="role-head">
+              <div>
+                <div class="role-title">Master of Engineering Science &mdash; Renewable Energy</div>
+                <div class="role-org">University of New South Wales (UNSW), Sydney &mdash; WAM 75.8 (High Distinction)</div>
+              </div>
+              <div class="role-date">Sep 2022 &mdash; Aug 2024</div>
+            </div>
+            <p class="stack" style="margin-top:8px;">Energy market economics · Power systems · Storage · Project finance · PVsyst · HOMER Pro</p>
+          </div>
+          <div class="role" style="margin-bottom:0;">
+            <div class="role-head">
+              <div>
+                <div class="role-title">Bachelor of Engineering &mdash; Electronics &amp; Communication</div>
+                <div class="role-org">BMS College of Engineering, Bengaluru, India &mdash; CGPA 8.0/10 (High Distinction)</div>
+              </div>
+              <div class="role-date">Mar 2018 &mdash; Aug 2022</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Trainee</span>
-          <span class="cv-entry-date">Dec 2021 - Jan 2022</span>
-        </div>
-        <div class="cv-entry-org">Hindustan Aeronautics Limited | Bengaluru, India</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Assisted in the design and production of helicopters.</li>
-            <li>Participated in case study presentations and industry exposure to enhance technical and managerial skills.</li>
-            <li>Collaborated with experts and working professionals to improve executive training programs.</li>
-            <li>Developed skills in avionics, software development, and spare parts supply.</li>
-          </ul>
+      <!-- SKILLS -->
+      <div class="cv-sec js-fade">
+        <h2>Skills &amp; tools</h2>
+        <div class="skill-grid">
+          <div class="skill-k">NEM &amp; markets</div>
+          <div class="skill-v">AEMO MMS querying (SCADA, DispatchPrice, DISPATCHLOAD, UIGF, BIDPEROFFER_D), NEMOSIS, NEMSEER, capture pricing (GWAP/TWAP), MLF, FCAS, BESS dispatch, curtailment decomposition, ISP/REZ analysis, CIS/LTESA frameworks</div>
+
+          <div class="skill-k">Modelling</div>
+          <div class="skill-v">BESS revenue stacking, LCOE/NPV/IRR, P50/P90 yield analysis, coal closure scenarios, DER-corrected demand, multi-model price forecasting (XGBoost quantile regression, STL, EGARCH), techno-economic analysis</div>
+
+          <div class="skill-k">Programming</div>
+          <div class="skill-v">Python (advanced), SQL, Git, JavaScript; REST API integration, web scraping (Selenium), ETL pipeline design, AI-assisted workflows</div>
+
+          <div class="skill-k">Data &amp; ML</div>
+          <div class="skill-v">Pandas, NumPy, PyArrow, DuckDB, BigQuery, Scikit-learn, Statsmodels, XGBoost, time-series forecasting, Power BI, advanced Excel (XLOOKUP, pivots, macros)</div>
+
+          <div class="skill-k">Platforms</div>
+          <div class="skill-v">Streamlit, FastAPI, Next.js, Plotly, Jupyter, IBM Maximo, HOMER Pro, PVsyst</div>
+
+          <div class="skill-k">Renewables</div>
+          <div class="skill-v">Solar PV design and yield (PVsyst, HOMER Pro), BESS dispatch and revenue modelling, EV charging infrastructure, techno-economic assessment, project finance</div>
         </div>
       </div>
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Customer Success Intern</span>
-          <span class="cv-entry-date">Nov 2021 - Jan 2022</span>
-        </div>
-        <div class="cv-entry-org">ZenEquity | Bengaluru, India</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Managed customer relationships and promoted ESOP services.</li>
-            <li>Attracted new owners/customers to the platform to drive business growth.</li>
-            <li>Collaborated with top management to ensure client retention and enhance brand experience.</li>
-          </ul>
-        </div>
-      </div>
+    </div>
+  </section>
 
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Cyber Security Internship Trainee</span>
-          <span class="cv-entry-date">Jan 2021 - Feb 2021</span>
-        </div>
-        <div class="cv-entry-org">SmartKnower | Bengaluru, India</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Assisted in cybersecurity tasks and gained exposure to threat detection and mitigation.</li>
-            <li>Collaborated with team members to analyze potential security risks and strengthen system protection.</li>
-            <li>Participated in cybersecurity training sessions to build threat detection and prevention skills.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Intern</span>
-          <span class="cv-entry-date">Jan 2019 - Feb 2019</span>
-        </div>
-        <div class="cv-entry-org">B-Automate India Pvt Ltd | Bengaluru, India</div>
+  <section class="band band-4" style="text-align:center;overflow:hidden;">
+    <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
+    <div class="shell-narrow">
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:16ch;">See the work,<br><span class="accent">not just the CV.</span></h2>
+      <div class="btn-row center js-fade" style="margin-top:34px;">
+        <a class="btn btn-primary" href="research.html">The research</a>
+        <a class="btn btn-glass" href="contact.html">Get in touch</a>
       </div>
     </div>
-
-    <!-- PROJECTS -->
-    <div class="cv-section">
-      <h2>Projects</h2>
-      <p style="margin-bottom:16px;">For project details, see the Projects page.</p>
-      <div class="cv-entry">
-        <div class="cv-entry-body">
-          <ul>
-            <li><strong>Google Advanced Data Analytics Capstone - Employee Turnover Modelling:</strong> Analyzed a 15,000-record HR dataset; built logistic regression and tree-based ML models (decision tree, random forest, XGBoost); balanced predictive accuracy with interpretability; translated insights into retention recommendations for non-technical stakeholders.</li>
-            <li><strong>Australian Wind Farm Analysis Tool (Python/Streamlit; AEMO data via NEMOSIS):</strong> Built a multi-farm analytics tool producing capacity factors, generation summaries, forecasts, CO2 avoided estimates, and exportable reports for repeatable model-as-a-product analysis.</li>
-            <li><strong>Hybrid Mini-Grid Economic & Environmental Impact Assessment:</strong> Modelled a solar-wind-grid hybrid system reducing LCOE by 30% ($0.098 vs $0.144/kWh) and reducing NPC by $13.4M while avoiding approximately 76 kt CO2e per year.</li>
-            <li><strong>117 MW Utility-Scale Solar - Yield & P50/P90 Analysis:</strong> Modelled generation (~246 GWh/year) using PVsyst (82% PR); conducted uncertainty analysis for investment-grade confidence; assessed O&M and revenue sensitivity factors.</li>
-            <li><strong>8 MW Agrivoltaics Solar Farm - NSW:</strong> Developed a 10.1 MW DC solar + 27.4 MWh BESS financial model; achieved 11% IRR and 8.4-year payback; produced an investor-ready commercial summary.</li>
-            <li><strong>Demand-Side Participation in the NEM Wholesale Market:</strong> Modelled demand response participation for flexible loads; developed baseline methodology; compared pre/post dispatch patterns to translate operational flexibility into market value.</li>
-            <li><strong>Hybrid Mini-Grid Systems Thesis (Moree, NSW):</strong> Reduced LCOE from $0.144 to $0.0983/kWh; reduced NPC from $367M to $354M; 76.5 billion gCO2e/year emission reduction; developed policy-aligned recommendations for NSW Renewable Energy Zones.</li>
-            <li><strong>Plastic vs Paper Straws LCA:</strong> Gate-to-grave LCA using Ecoinvent and ReCiPe Midpoint (H); paper straws showed ~2.5x higher climate impact and ~4.5x higher human toxicity impact; sensitivity analysis compared rail vs lorry transport.</li>
-            <li><strong>70.4 kW SUNPARK PV System LCA (UNSW):</strong> Cradle-to-gate LCA using OpenLCA + Ecoinvent + ReCiPe (H); inverter and transformer were largest impact hotspots; PV electricity showed significantly lower lifecycle emissions versus NSW grid; recommended materials substitution and recycling strategies.</li>
-            <li><strong>Hybrid Renewable Energy System - Bamyan Hospital, Afghanistan:</strong> 150-bed remote hospital at 2,565 m; developed seasonal load profiles; confirmed solar PV as primary source; designed three-generator diesel system with N-1 redundancy; modelled scenarios in HOMER: Diesel Only LCOE $2.30/kWh, Solar-Diesel Hybrid (30% RE) LCOE $2.28/kWh, Least Cost System LCOE $2.28/kWh with ~69% PV contribution.</li>
-            <li><strong>RE Minigrid Project (Mount Garnet, QLD):</strong> 430-person community; designed PV-BESS-diesel system; optimal scenario achieved ~89% renewable penetration; LCOE $0.172/kWh vs QLD tariff ~$0.33/kWh; NPC reduced ~68% ($72M to $23M); sensitivity showed LCOE falling to $0.13/kWh at 50% storage cost reduction.</li>
-            <li><strong>117 MWp Utility-Scale Solar Farm - Moore Aero, NSW:</strong> 117.2 MWp single-axis tracking system; estimated ~246 GWh/year at 82.2% PR; P50 (Year 1) 246.4 GWh; P90 (Year 1) 237.4 GWh; 25-year long-term P50 ~178 GWh/year; identified temperature and mismatch as primary losses.</li>
-            <li><strong>Commercial PV Project Tender:</strong> 107.17 kW DC system; CSI Solar 90 kW inverter; verified compliance with AS/NZS 5033 and AS/NZS 4777; SAM output ~16,716 kWh/year; CAPEX ~$122k.</li>
-            <li><strong>Performance Analysis and Inverter Comparison (UNSW TETB Rooftop PV):</strong> 150 kW PV across 11 inverters; identified underperforming inverter strings; PVsyst validation (VC0 PR 81.7%, VC2 PR 81.6%, VC3 PR 82.2%).</li>
-            <li><strong>Utility Scale PV Project - Murrumburrah, NSW:</strong> 8 MW AC / 10.1 MW DC agrivoltaic system; 27.4 MWh BESS; yield ~17.32 GWh/year at 83% PR; $17.5M positive NPV, 11% IRR, 8.4-year payback.</li>
-            <li><strong>Demand-Side Participation Project (UNSW):</strong> Analysed WDR and RERT; modelled DR for co-generation and HVAC/chiller load-flex; developed baseline consumption methods; demonstrated revenue streams and cost reduction from DR participation.</li>
-            <li><strong>Offshore Wind Farm Feasibility:</strong> 150 MW offshore wind project; designed 66 kV and 110 kV cable layouts; assessed capital costs ($5.3M/MW); developed debt and debt-equity (50:50) scenarios; nominal discount rate 16.73%.</li>
-            <li><strong>Biomass Gasification Equilibrium Modelling:</strong> Modelled downdraft gasifier with NASA 7-term polynomials; adiabatic flame temperature ~1341 K at AFR 3 with 20% moisture; syngas composition (CO 11.65 m3/kg, H2 7.37 m3/kg, CH4 3.99 m3/kg); LCV ~7.96 MJ/m3.</li>
-            <li><strong>Off-grid Solar Home PV Project (Geraldton, WA):</strong> Load assessment, component sizing, solar resource assessment, and costing; automated calculations in Python; applied LTspice workshop knowledge.</li>
-            <li><strong>Brand Audit & Strategic Growth Analysis - Cartier:</strong> Brand equity and market positioning; STP and SWOT analysis; competitive benchmarking; recommended selective innovation strategy to modernize brand appeal without eroding exclusivity.</li>
-            <li><strong>PLANTIK:</strong> Built an automated hydroponics system prototype; final year project grade 10 CGPA.</li>
-            <li><strong>Obstacle Detection Robot using SLAM:</strong> Built for an Indian military use case; designed for obstacle detection and avoidance.</li>
-            <li><strong>SMARK (Smart Parking):</strong> Built a sensor-based system to detect vacant parking slots and provide reverse parking alerts.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- EDUCATION & CERTIFICATIONS -->
-    <div class="cv-section">
-      <h2>Education & Certifications</h2>
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Master of Engineering Science in Renewable Energy</span>
-          <span class="cv-entry-date">Sept 2022 - Aug 2024</span>
-        </div>
-        <div class="cv-entry-org">University of New South Wales (Sydney, AU)</div>
-        <div class="cv-entry-body">WAM: 75.8 (High Distinction)</div>
-      </div>
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Bachelor of Electronics and Communication Engineering</span>
-          <span class="cv-entry-date">Mar 2018 - Aug 2022</span>
-        </div>
-        <div class="cv-entry-org">BMS College of Engineering (Bengaluru, India)</div>
-        <div class="cv-entry-body">CGPA: 8/10 (High Distinction)</div>
-      </div>
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Google Advanced Data Analytics Professional Certificate (Coursera)</span>
-          <span class="cv-entry-date">Oct 2025 - Jan 2026</span>
-        </div>
-        <div class="cv-entry-org">Statistics, Regression, Data quality, Machine Learning, and Applied analytics for business and product use cases</div>
-      </div>
-    </div>
-
-    <!-- LEADERSHIP -->
-    <div class="cv-section">
-      <h2>Leadership & Community Engagement</h2>
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Head of Chapter Program</span>
-          <span class="cv-entry-date">May 2021 - Aug 2023</span>
-        </div>
-        <div class="cv-entry-org">OutOfBlue</div>
-        <div class="cv-entry-body">
-          <ul>
-            <li>Led the Chapter Program, establishing student-led clubs across schools and colleges to promote mental health awareness and early education on emotional wellbeing.</li>
-            <li>Launched “Talk to a Friend” during COVID-19, a peer support online portal connecting individuals with trained volunteers.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  </section>
 
 </div>
-<script src="assets/shared.js?v=20260819b"></script>
-<script src="assets/main.js?v=20260819b"></script>
+<script src="assets/shared.js?v=20260819j"></script>
+<script src="assets/main.js?v=20260819j"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

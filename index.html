@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819b">
+<link rel="stylesheet" href="assets/style.css?v=20260819j">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -19,21 +19,12 @@
 
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
-    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero-vignette" aria-hidden="true"></div>
-
-    <div class="hero-sunwrap" aria-hidden="true">
-      <div class="hero-sun" id="heroSun">
-        <div class="hero-sun-rays"></div>
-        <div class="hero-sun-core"></div>
-        <div class="hero-sun-ring"></div>
-      </div>
-    </div>
-    <div class="hero-wordmark" id="heroWordmark" aria-hidden="true">ARIA</div>
+    <div class="band-glow" style="top:-14%;left:50%;transform:translateX(-50%);width:min(900px,120vw);height:min(700px,90vh);max-width:none;max-height:none;" aria-hidden="true"></div>
 
     <div class="hero-fg" id="heroFg">
       <span class="hero-eyebrow" data-in><span class="hero-dot"></span>NEM Counterfactual Analytics</span>
-      <h1 class="h-xl" data-in style="max-width:17ch;margin:0 auto;">We reproduce the market.<br><span class="accent">Then we re&#8209;run it.</span></h1>
+      <h1 class="h-xl" data-in style="max-width:19ch;margin:0 auto;">We reproduce the market.<br><span class="accent">Then we <span style="white-space:nowrap">re-run</span> it.</span></h1>
       <p class="hero-sub" data-in>
         ARIA rebuilds AEMO's published quarterly numbers from raw dispatch data &mdash; coal to the
         <strong>gigawatt-hour</strong>, every regional price to the <strong>dollar</strong> &mdash;
@@ -322,7 +313,7 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819b"></script>
-<script src="assets/main.js?v=20260819b"></script>
+<script src="assets/shared.js?v=20260819j"></script>
+<script src="assets/main.js?v=20260819j"></script>
 </body>
 </html>

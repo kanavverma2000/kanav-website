@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260819b">
+<link rel="stylesheet" href="assets/style.css?v=20260819j">
 <script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
@@ -28,8 +28,8 @@
   .tl-org { font-size:.85rem; color:var(--ink-52); margin-bottom:10px; }
   .tl-body { font-size:.9rem; line-height:1.7; color:var(--ink-60); }
   .badge {
-    display:inline-block; margin-left:9px; font-size:.62rem; font-weight:700; letter-spacing:.1em;
-    text-transform:uppercase; padding:3px 9px; border-radius:var(--radius-pill); vertical-align:middle;
+    display:inline-block; margin-left:9px; font-size:.73rem; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; padding:4px 10px; border-radius:var(--radius-pill); vertical-align:middle;
     background:var(--accent-10); color:var(--accent);
   }
   .badge-now { background:var(--signal-10); color:var(--signal); }
@@ -37,14 +37,14 @@
   @media(max-width:640px){ .fact-row{grid-template-columns:1fr} }
   .fact { padding:18px; border-radius:var(--radius-sm); background:var(--glass); border:1px solid var(--glass-edge); }
   [data-theme="dark"] .fact { border-color:var(--ink-08); }
-  .fact-k { font-size:.68rem; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-45); font-weight:700; }
+  .fact-k { font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-45); font-weight:700; }
   .fact-v { font-size:1rem; font-weight:800; letter-spacing:-.02em; margin-top:6px; }
   .fact-s { font-size:.78rem; color:var(--ink-52); margin-top:3px; }
   .proj-card { display:block; color:inherit; }
   .proj-card:hover { color:inherit; }
   .proj-tags { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
-  .proj-tag { font-size:.62rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-              padding:4px 10px; border-radius:var(--radius-pill); background:var(--accent-10); color:var(--accent); }
+  .proj-tag { font-size:.73rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+              padding:5px 11px; border-radius:var(--radius-pill); background:var(--accent-10); color:var(--accent); }
   .proj-arrow { display:inline-block; margin-top:14px; font-size:.83rem; font-weight:600; color:var(--accent); }
 </style>
 </head>
@@ -57,12 +57,15 @@
       <span class="eyebrow js-fade">The builder</span>
       <h1 class="js-lines">Kanav Verma</h1>
       <p class="lede js-fade">
-        Energy analytics, built around one habit: re-derive the number before you say it out loud.
+        Energy market analyst and renewable engineer &mdash; consulting delivery on one side, the
+        analytical tooling that supports it on the other. Built around one habit: re-derive the
+        number before you say it out loud.
       </p>
       <div class="chips js-fade" style="margin-top:26px;">
         <span class="chip">Sydney, NSW</span>
+        <span class="chip">Renewable Project Engineer, GSES</span>
         <span class="chip">MEng Renewable Energy, UNSW</span>
-        <span class="chip">Founder &amp; developer, ARIA</span>
+        <span class="chip">Builder of ARIA</span>
       </div>
     </div>
   </header>
@@ -76,17 +79,29 @@
           <h2 class="mod-title js-lines" style="max-width:16ch;">What I actually <span class="accent">do.</span></h2>
           <div class="prose js-fade">
             <p>
-              Master of Engineering Science in Renewable Energy from UNSW Sydney, with a Google
-              Advanced Data Analytics Professional Certificate. Engineering fundamentals plus
-              data-driven decision-making, aimed at turning complex energy problems into
-              recommendations people can act on.
+              I work across two sides of the same problem: delivering renewable consulting
+              engagements, and building the analytical tooling that makes them faster and better
+              evidenced. Currently a <strong>Renewable Project Engineer at GSES</strong> in Waterloo,
+              on Solar PV, BESS and EV charging infrastructure for federal, state and corporate
+              clients &mdash; techno-economic analysis, procurement, quality assurance and
+              operational optimisation &mdash; while leading the data-science and automation
+              workstream that modernises how the team delivers.
             </p>
             <p>
-              I build tools that make Australia's electricity market legible.
-              <strong>ARIA is the culmination</strong> &mdash; a platform over 24.5 million hourly
-              generation records and seventeen years of prices, which reproduces AEMO's published
-              quarterly numbers before it makes a claim of its own, and publishes its error bands
-              and its failed validations alongside its results.
+              <strong>ARIA is the other half.</strong> I designed and built it from a blank page:
+              a live NEM analytics platform ingesting AEMO dispatch and SCADA data across 500+ wind,
+              solar, battery and hydro assets. A live ETL pipeline off NEMWeb, a Python/Streamlit
+              first version, then a Next.js/FastAPI backend over a precomputed DuckDB serving layer
+              &mdash; 18+ analytical modules covering capture pricing, curtailment decomposition,
+              battery revenue stacking, coal closure scenarios and a multi-model price-path engine.
+              It exists because a consulting analyst's tooling needs and the software that would
+              answer them were not the same thing.
+            </p>
+            <p>
+              Before GSES: market intelligence for developers and asset managers at
+              <strong>Energy Synapse</strong>, fleet and EV-transition analytics for a 3,000-asset
+              fleet at <strong>FedEx</strong>, and grid-stability work on TransGrid's NSW
+              transmission network through <strong>Aurecon</strong>.
             </p>
             <p>
               The discipline matters more than the stack. A figure read off a rendered chart is not
@@ -105,20 +120,24 @@
           <div class="card">
             <span class="eyebrow" style="margin-bottom:14px;">Skills &amp; expertise</span>
             <div class="chips">
-              <span class="chip">Energy analytics</span>
-              <span class="chip">Python</span>
-              <span class="chip">Merit-order modelling</span>
-              <span class="chip">NEM markets</span>
-              <span class="chip">DuckDB / SQL</span>
-              <span class="chip">Pandas</span>
-              <span class="chip">Data visualisation</span>
-              <span class="chip">Financial modelling</span>
-              <span class="chip">LCOE / IRR / NPV</span>
-              <span class="chip">PVsyst</span>
-              <span class="chip">HOMER Pro</span>
+              <span class="chip">AEMO MMS &amp; NEMWeb</span>
+              <span class="chip">NEMOSIS / NEMSEER</span>
+              <span class="chip">Capture pricing (GWAP/TWAP)</span>
+              <span class="chip">Curtailment decomposition</span>
+              <span class="chip">BESS dispatch &amp; revenue stacking</span>
+              <span class="chip">MLF &amp; FCAS</span>
+              <span class="chip">ISP / REZ analysis</span>
+              <span class="chip">CIS / LTESA frameworks</span>
+              <span class="chip">Python (advanced)</span>
+              <span class="chip">SQL / DuckDB / BigQuery</span>
+              <span class="chip">FastAPI / Next.js / Streamlit</span>
+              <span class="chip">XGBoost / STL / EGARCH</span>
+              <span class="chip">ETL pipeline design</span>
+              <span class="chip">LCOE / NPV / IRR</span>
+              <span class="chip">P50/P90 yield</span>
+              <span class="chip">PVsyst / HOMER Pro</span>
               <span class="chip">Power BI</span>
-              <span class="chip">Capacity expansion (LP)</span>
-              <span class="chip">Reanalysis weather data</span>
+              <span class="chip">Solar PV, BESS &amp; EV infrastructure</span>
             </div>
           </div>
           <div class="fact-row">
@@ -139,50 +158,89 @@
 
       <div class="tl js-fade" data-stagger=".tl-item" style="margin-top:34px;max-width:760px;">
         <div class="tl-item now">
-          <div class="tl-date">2026 &mdash; Present</div>
-          <div class="tl-title">Building ARIA<span class="badge badge-now">Product</span></div>
-          <div class="tl-org">Independent</div>
+          <div class="tl-date">Jun 2026 &mdash; Present</div>
+          <div class="tl-title">Renewable Project Engineer<span class="badge badge-now">Current</span></div>
+          <div class="tl-org">Global Sustainable Energy Solutions (GSES) &mdash; Waterloo, NSW</div>
           <p class="tl-body">
-            Counterfactual analytics platform for the NEM &mdash; 24.5 million hourly generation
-            records, curtailment cause attribution, per-unit revenue capture, merit-order closure
-            counterfactuals with published error bands, and a five-region system model.
+            Solar PV, BESS and EV charging infrastructure consulting for federal, state and
+            corporate clients &mdash; techno-economic analysis, procurement, quality assurance and
+            operational optimisation. Leading the data-science and automation workstream:
+            integrating APIs, databases and web systems across engineering, monitoring and business
+            platforms, and building AI-assisted workflows that replace previously manual technical
+            tasks with repeatable frameworks.
+          </p>
+        </div>
+        <div class="tl-item now">
+          <div class="tl-date">Nov 2024 &mdash; Present</div>
+          <div class="tl-title">Energy Market Analyst &amp; Platform Developer<span class="badge badge-now">ARIA</span></div>
+          <div class="tl-org">ARIA &mdash; independent platform</div>
+          <p class="tl-body">
+            Built ARIA from a blank page &mdash; live ETL off AEMO NEMWeb, a Python/Streamlit
+            application, then a Next.js/FastAPI backend over a precomputed DuckDB layer.
+            18+ analytical modules across GWAP/TWAP capture pricing, curtailment decomposition,
+            BESS revenue stacking, coal closure scenarios, DER-corrected demand and a multi-model
+            price-path engine. Also the research engine behind original analysis published to
+            1,400+ industry followers &mdash; built from AEMO data, not commentary.
           </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Dec 2025 &mdash; Present</div>
-          <div class="tl-title">Market Analyst<span class="badge">Work</span></div>
-          <div class="tl-org">Energy Synapse &mdash; Sydney</div>
-          <p class="tl-body">NEM project intelligence and policy analysis. Built a 500+ project database and automated research workflows.</p>
+          <div class="tl-date">Dec 2025 &mdash; Apr 2026</div>
+          <div class="tl-title">Energy Market Analyst<span class="badge">Work</span></div>
+          <div class="tl-org">Energy Synapse &mdash; Pyrmont, Sydney</div>
+          <p class="tl-body">
+            NEM market intelligence and commercial analysis for developer and asset-manager clients
+            &mdash; wholesale spot dynamics, BESS dispatch economics, curtailment risk and REZ
+            access across all regions. Built a structured database of 500+ pipeline projects
+            cross-referenced against AEMO, CER and CIS sources, and automated Python scrapers for
+            planning approvals that cut research time from about four days to hours. Supported
+            business development directly with tailored analyses and platform demonstrations.
+          </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Oct 2025</div>
+          <div class="tl-date">Oct 2025 &mdash; Jan 2026</div>
           <div class="tl-title">Google Advanced Data Analytics<span class="badge">Certificate</span></div>
-          <div class="tl-org">Coursera</div>
-          <p class="tl-body">Statistics, regression, machine learning, and applied business analytics.</p>
+          <div class="tl-org">Google / Coursera</div>
+          <p class="tl-body">
+            Statistics, regression, machine learning, data quality, Python (Pandas, NumPy), SQL and
+            BigQuery, applied to business analytics.
+          </p>
         </div>
         <div class="tl-item">
           <div class="tl-date">Oct 2024 &mdash; Sep 2025</div>
-          <div class="tl-title">Fleet Data Specialist<span class="badge">Work</span></div>
-          <div class="tl-org">FedEx Express Australasia &mdash; Sydney</div>
-          <p class="tl-body">Fleet analytics and EV readiness for 3,000+ vehicles. Built dashboards, anomaly detection, and Net Zero 2040 planning tools.</p>
+          <div class="tl-title">Vehicle &amp; GSE Data Specialist<span class="badge">Work</span></div>
+          <div class="tl-org">FedEx Express Australasia &mdash; Mascot HQ, Sydney</div>
+          <p class="tl-body">
+            Data analysis and reporting for a 3,000+ asset fleet across Australia, New Zealand and
+            Fiji. Power BI dashboards for depot managers and US executive leadership, Python
+            anomaly detection replacing fragmented manual processes, and carbon-abatement and
+            cost-benefit models supporting the EV rollout and the Net Zero 2040 roadmap.
+          </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">Feb &mdash; May 2024</div>
-          <div class="tl-title">Engineering Intern<span class="badge">Work</span></div>
-          <div class="tl-org">Aurecon &mdash; Sydney</div>
-          <p class="tl-body">Power system solutions and renewable integration.</p>
+          <div class="tl-date">Nov 2023 &mdash; Jul 2024</div>
+          <div class="tl-title">Project Engineer &mdash; partner project<span class="badge">Work</span></div>
+          <div class="tl-org">Aurecon &times; TransGrid &mdash; Sydney</div>
+          <p class="tl-body">
+            Assessed grid-stability solutions for TransGrid's NSW transmission network, focused on
+            DER integration and the operational impact of rising rooftop solar penetration.
+            Delivered prototype recommendations to senior stakeholders and built automated
+            reporting templates.
+          </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">2022 &mdash; 2024</div>
-          <div class="tl-title">MEng Renewable Energy<span class="badge">Education</span></div>
-          <div class="tl-org">UNSW Sydney</div>
-          <p class="tl-body">WAM 75.8 (High Distinction). Energy markets, PV systems, grid integration, techno-economic modelling.</p>
+          <div class="tl-date">Sep 2022 &mdash; Aug 2024</div>
+          <div class="tl-title">MEng Science &mdash; Renewable Energy<span class="badge">Education</span></div>
+          <div class="tl-org">University of New South Wales, Sydney</div>
+          <p class="tl-body">
+            WAM 75.8 (High Distinction). Energy market economics, power systems, storage, project
+            finance, PVsyst and HOMER Pro.
+          </p>
         </div>
         <div class="tl-item">
-          <div class="tl-date">2018 &mdash; 2022</div>
-          <div class="tl-title">B.E. Electronics &amp; Communication<span class="badge">Education</span></div>
-          <div class="tl-org">BMS College of Engineering &mdash; Bengaluru</div>
-          <p class="tl-body">CGPA 8/10. Signal processing, embedded systems, and automation.</p>
+          <div class="tl-date">Mar 2018 &mdash; Aug 2022</div>
+          <div class="tl-title">BEng &mdash; Electronics &amp; Communication<span class="badge">Education</span></div>
+          <div class="tl-org">BMS College of Engineering &mdash; Bengaluru, India</div>
+          <p class="tl-body">CGPA 8.0/10 (High Distinction).</p>
         </div>
       </div>
     </div>
@@ -252,7 +310,7 @@
   </section>
 
 </div>
-<script src="assets/shared.js?v=20260819b"></script>
-<script src="assets/main.js?v=20260819b"></script>
+<script src="assets/shared.js?v=20260819j"></script>
+<script src="assets/main.js?v=20260819j"></script>
 </body>
 </html>

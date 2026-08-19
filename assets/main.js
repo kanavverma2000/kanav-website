@@ -14,7 +14,11 @@
       el.style.opacity = '1'; el.style.transform = 'none';
     });
     document.querySelectorAll('[data-count]').forEach(function (el) {
-      el.textContent = el.dataset.countText || el.dataset.count;
+      var v = parseFloat(el.dataset.count), dp = parseInt(el.dataset.dp || '0', 10);
+      el.textContent = el.dataset.countText ||
+        ((el.dataset.pre || '') +
+         v.toLocaleString('en-AU', { minimumFractionDigits: dp, maximumFractionDigits: dp }) +
+         (el.dataset.post || ''));
     });
     document.querySelectorAll('.bar-fill').forEach(function (el) { el.style.transform = 'scaleX(1)'; });
     var sc = document.getElementById('heroScrollCue'); if (sc) sc.style.opacity = '1';
@@ -157,10 +161,13 @@
           var dp = parseInt(el.dataset.dp || '0', 10);
           var pre = el.dataset.pre || '', post = el.dataset.post || '';
           var o = { v: 0 };
+          function fmt(v) {
+            return pre + v.toLocaleString('en-AU', { minimumFractionDigits: dp, maximumFractionDigits: dp }) + post;
+          }
           gsap.to(o, {
             v: target, duration: 1.7, ease: 'power2.out',
-            onUpdate: function () { el.textContent = pre + o.v.toFixed(dp) + post; },
-            onComplete: function () { el.textContent = el.dataset.countText || (pre + target.toFixed(dp) + post); }
+            onUpdate: function () { el.textContent = fmt(o.v); },
+            onComplete: function () { el.textContent = el.dataset.countText || fmt(target); }
           });
         });
       }, { rootMargin: '0px 0px -7% 0px', threshold: .1 });

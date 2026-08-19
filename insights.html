@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — ARIA Energy</title>
+<meta name="description" content="Published NEM analysis: 59 posts, what they found, what performed, and the rules I write them under. Every figure re-derived from AEMO data before it goes out.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20260819n">
+<script>(function(){try{document.documentElement.setAttribute('data-theme',localStorage.getItem('aria-theme')||'light')}catch(e){}})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<style>
+  .top-post { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset, var(--shadow-lg); }
+  .post { padding: 24px; display: flex; flex-direction: column; height: 100%; }
+  .post .fig {
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 900; letter-spacing: -.05em;
+    line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; margin-bottom: 12px;
+  }
+  .post h3 { font-size: 1rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.35; margin-bottom: 9px; }
+  .post p { font-size: .87rem; line-height: 1.65; color: var(--ink-60); flex: 1; }
+  .post .meta {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px;
+    border-top: 1px solid var(--ink-08);
+  }
+  .pill {
+    font-size: .7rem; font-weight: 600; letter-spacing: .04em; padding: 4px 10px;
+    border-radius: var(--radius-pill); background: var(--ink-08); color: var(--ink-52);
+  }
+  .pill-hot { background: var(--signal-10); color: var(--signal); }
+  .pill-src { background: transparent; border: 1px solid var(--ink-14); }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 26px; }
+  .filters button {
+    font-size: .82rem; font-weight: 500; padding: 9px 16px; border-radius: var(--radius-pill);
+    border: 1px solid var(--ink-14); color: var(--ink-60); background: var(--glass);
+    cursor: pointer; transition: border-color .25s var(--ease-out), color .25s var(--ease-out),
+                                 background .25s var(--ease-out), transform 140ms var(--ease-out);
+  }
+  .filters button:active { transform: scale(.97); }
+  .filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-10); font-weight: 600; }
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; align-items: stretch; }
+  .post-grid > * { display: contents; }
+  .rule { display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--ink-08); }
+  .rule:last-child { border-bottom: none; }
+  .rule-n { font-size: .8rem; font-weight: 800; color: var(--accent); flex-shrink: 0; width: 22px; font-variant-numeric: tabular-nums; }
+  .rule-t { font-size: .9rem; line-height: 1.68; color: var(--ink-60); }
+  .rule-t b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 820px) { .filters button { padding: 11px 16px; } }
+</style>
+</head>
+<body>
+<div class="main">
+
+  <header class="page-head">
+    <div class="band-glow" style="top:-12%;right:-8%;" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow js-fade">Insights</span>
+      <h1 class="js-lines">59 posts.<br><span class="accent">Every figure re-derived first.</span></h1>
+      <p class="lede js-fade">
+        I publish NEM analysis built from AEMO data, not commentary on it. The number comes from my
+        own query, the method note goes at the bottom, and when I get something wrong I post that too.
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══ NUMBERS ═══ -->
+  <section class="band band-tight band-2">
+    <div class="shell">
+      <div class="stat-grid js-fade" data-stagger=".stat-card">
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="59">0</span></div>
+          <div class="stat-lbl">Original posts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="6708">0</span></div>
+          <div class="stat-lbl">Best post, impressions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="3.3" data-dp="1">0</span><span class="stat-sfx">%</span></div>
+          <div class="stat-lbl">Highest engagement rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num-row"><span class="stat-num" data-count="1400">0</span><span class="stat-sfx">+</span></div>
+          <div class="stat-lbl">Industry followers</div>
+        </div>
+      </div>
+      <p class="caption js-fade" style="text-align:center;margin-top:18px;">
+        May&ndash;Aug 2026, personal profile. Median ~1,300 impressions, median ~13 reactions.
+        I calibrate against my own distribution, not a generic benchmark.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ TOP POST ═══ -->
+  <section class="band band-1">
+    <div class="shell">
+      <div class="mod-num js-fade">Most-read post</div>
+      <h2 class="h-md js-lines" style="max-width:22ch;">Operational demand is <span class="accent">the wrong number.</span></h2>
+      <div class="card top-post js-fade" style="margin-top:20px;">
+        <div class="split" style="gap:28px;align-items:center;">
+          <div>
+            <p class="prose" style="font-size:.95rem;">
+              The post that went furthest wasn't a forecast or a hot take. It was an argument that the
+              metric everyone quotes &mdash; operational demand &mdash; systematically mismeasures what
+              the system is actually doing, because it nets off the fastest-growing generator in the
+              country before you ever see it.
+            </p>
+            <p class="prose" style="font-size:.95rem;margin-top:12px;">
+              <strong>6,708 impressions.</strong> Roughly five times my median. The lesson I took from
+              it: the highest-reach posts aren't predictions, they're corrections to a number people
+              already use every day.
+            </p>
+          </div>
+          <div class="mini-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
+            <div class="stat-card" style="padding:18px 12px;">
+              <div class="stat-num" style="font-size:1.5rem;">6,708</div>
+              <div class="stat-lbl">Impressions</div>
+            </div>
+            <div class="stat-card" style="padding:18px 12px;">
+              <div class="stat-num" style="font-size:1.5rem;">5&times;</div>
+              <div class="stat-lbl">Above my median</div>
+            </div>
+            <div class="stat-card" style="padding:18px 12px;">
+              <div class="stat-num" style="font-size:1.5rem;">25</div>
+              <div class="stat-lbl">Most comments on one post</div>
+            </div>
+            <div class="stat-card" style="padding:18px 12px;">
+              <div class="stat-num" style="font-size:1.5rem;">4.5&times;</div>
+              <div class="stat-lbl">Australian-number opens beat foreign ones</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ THE POSTS ═══ -->
+  <section class="band band-2" id="posts">
+    <div class="shell">
+      <div class="mod-num js-fade">The analysis</div>
+      <h2 class="h-md js-lines" style="max-width:20ch;">What each one <span class="accent">actually found.</span></h2>
+      <p class="prose js-fade">
+        Every one of these is a number I computed, not one I read. Method note at the bottom of each
+        post, closing question to a role that can answer it.
+      </p>
+
+      <div class="filters js-fade" id="filters" role="group" aria-label="Filter analysis by theme">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="capture" aria-pressed="false">Capture &amp; revenue</button>
+        <button type="button" data-f="curtail" aria-pressed="false">Curtailment</button>
+        <button type="button" data-f="storage" aria-pressed="false">Storage</button>
+        <button type="button" data-f="household" aria-pressed="false">Household</button>
+        <button type="button" data-f="system" aria-pressed="false">System &amp; pipeline</button>
+      </div>
+
+      <div class="post-grid" id="postGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══ METHOD ═══ -->
+  <section class="band band-3" id="method">
+    <div class="shell">
+      <div class="mod-num js-fade">How I write them</div>
+      <h2 class="h-md js-lines" style="max-width:20ch;">Rules I set after<br><span class="accent">reading my own data.</span></h2>
+      <p class="prose js-fade">
+        I pulled the engagement on all 59 posts and let it decide the format rather than guessing.
+        Some of what it said was unflattering.
+      </p>
+
+      <div class="split" style="margin-top:24px;">
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">What the data said to do</span>
+          <div class="rule"><div class="rule-n">01</div><div class="rule-t"><b>Open with a bare Australian figure.</b> Number alone on line one, named on line two. Australian-number opens averaged 2,617 impressions against 577 for foreign ones &mdash; about 4.5&times;.</div></div>
+          <div class="rule"><div class="rule-n">02</div><div class="rule-t"><b>Provenance first, number second, mechanism third.</b> "I processed 5.1 million dispatch intervals to answer one question." That line is the whole difference between analysis and commentary.</div></div>
+          <div class="rule"><div class="rule-n">03</div><div class="rule-t"><b>Name real assets, DUIDs and constraint IDs.</b> Manildra, Coopers Gap, LD01&ndash;04, Q_NIL_STRGTH_CKWF. Specificity <em>is</em> the credibility.</div></div>
+          <div class="rule"><div class="rule-n">04</div><div class="rule-t"><b>Close with one question I genuinely can't answer from my own data</b>, addressed to a specific role. The post that did that and credited a named person got 25 comments on 1,383 impressions &mdash; my highest engagement rate.</div></div>
+          <div class="rule"><div class="rule-n">05</div><div class="rule-t"><b>Publish the negative result.</b> Including my own. Almost nobody in this market does, and it consistently reads above median.</div></div>
+        </div>
+
+        <div class="card js-fade">
+          <span class="eyebrow" style="margin-bottom:14px;">What the data said to stop</span>
+          <ul class="crossed">
+            <li><strong>Foreign-number cold opens.</strong> My four worst posts all opened with a Germany, UK, Texas or California figure. Average 6 reactions. The material is fine &mdash; as a second beat, never the first line.</li>
+            <li><strong>Hashtag stuffing.</strong> 20&ndash;30 per post, some mid-sentence, which breaks the prose. My highest-reach post used 8. Now 3&ndash;5, at the end.</li>
+            <li><strong>Generic closers.</strong> "Any thoughts?" does nothing when no real question is being asked.</li>
+            <li><strong>Curiosity-gap hooks.</strong> "Here's what the ISP isn't telling you." My own data doesn't reward them either.</li>
+            <li><strong>Mid-sentence caps and multiple exclamation marks.</strong> Sharp is on-voice. Melodramatic isn't.</li>
+            <li><strong>Publishing the same post twice.</strong> I did that once. Process failure, not style.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note note-accent js-fade">
+        <span class="note-title">The standing rule</span>
+        <strong>Re-derive every figure the morning it goes out.</strong> No placeholder numbers,
+        ever. A figure read off a rendered chart is not a figure from the model &mdash; I learned
+        that when a curtailment projection I published at 84% turned out to come from a hard-coded
+        array while the model said 78.4%.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band band-4" style="text-align:center;overflow:hidden;">
+    <div class="band-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);max-width:none;max-height:none;" aria-hidden="true"></div>
+    <div class="shell-narrow">
+      <h2 class="h-lg js-lines" style="margin:0 auto;max-width:16ch;">New analysis,<br><span class="accent">twice a week.</span></h2>
+      <p class="lede js-fade" style="margin:24px auto 38px;max-width:520px;">
+        Tuesday and Thursday, on LinkedIn. If you want the working behind any of these, ask &mdash;
+        the query is the point.
+      </p>
+      <div class="btn-row center js-fade">
+        <a class="btn btn-signal" href="https://linkedin.com/in/kanavverma" target="_blank" rel="noopener">Follow on LinkedIn</a>
+        <a class="btn btn-glass" href="research.html">The deeper research</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* Each entry is a published or verified piece of analysis. The figure is the one
+   the post opens with; the source line is its method note in short form. */
+var POSTS = [
+  { f:'$3.70', t:'Queensland wind earns 3.7&times; what solar does',
+    b:'Same grid, same year, same prices. A Queensland wind farm banks $3.70 from a megawatt-hour where solar banks $1.00. Levelised cost cannot tell you which of those is a business.',
+    s:'7 wind farms, 37 solar farms, 10.4 TWh, CY2025', c:'capture' },
+  { f:'45%', t:'Nearly half of Victorian solar sells for nothing',
+    b:'Not curtailment &mdash; curtailment is energy you never made. This is energy that left the panel, crossed the network, got consumed, and earned zero. Queensland 43.9%, SA 39.5%, NSW 30.8%.',
+    s:'All NEM solar and wind units, CY2025', c:'capture' },
+  { f:'20.6 pts', t:'The marginal loss factor spread inside one region',
+    b:'One western NSW solar farm loses 18% of everything it generates before anyone pays for it. Another, same state, same price region, gets paid for more than it produces.',
+    s:'AEMO MLF register, all regions', c:'capture' },
+  { f:'Both ways', t:'Scale makes wind more money and solar less',
+    b:'Same market, same year. Solar under 80 MW captures 41.3%; 80&ndash;250 MW drops to 35.2%. Wind runs the other way. Everyone applies one size doctrine to both, and half of it is wrong.',
+    s:'Every NEM wind and solar farm, three size bands, CY2025', c:'capture' },
+  { f:'Postcode', t:'Wind capture is a location, not a trend',
+    b:'Region alone explains 77% of wind capture. Adding penetration adds 0.1%. Adding weather adds another 0.1%. For solar the same test gives 12% from region and 80% once penetration is added &mdash; solar is cannibalising itself, wind is not. Yet.',
+    s:'30 region-years, 2020&ndash;2025, plus 36-year reanalysis', c:'capture' },
+  { f:'85% / 4%', t:'Small projects and large ones face different curtailment',
+    b:'Two very different risks get reported as one number. For projects under 30 MW, 85% of curtailed energy is economic and 4% is network. The mix changes systematically with size, and not in the direction people expect.',
+    s:'217 semi-scheduled units, 2024 onward', c:'curtail' },
+  { f:'1.87 h', t:'Australia builds batteries a quarter of the modelled size',
+    b:'The operating fleet averages 1.87 hours. The modelled optimum is 8, where net value peaks before falling 46% by 24 hours. The gap is not a mistake &mdash; it is a correct answer to a different question.',
+    s:'Capacity-expansion model, three tightest weather years of 36', c:'storage' },
+  { f:'$26 / $290', t:'The duck curve is now a two-hour cliff',
+    b:'Average NSW price at 10am and at 5pm, across a whole year. In 2020 those hours were $93 and $133. The belly barely moved; the neck went from $85 to $234. The spread is growing almost entirely from the top.',
+    s:'All NEM regions, 2020 vs 2025', c:'system' },
+  { f:'88 hours', t:'A quarter of SA revenue lands in 88 hours',
+    b:'Out of 8,760. The top nine hours of the year &mdash; one thousandth &mdash; carried 10.3%. SA 25.0%, NSW 20.9%, VIC 18.5%, QLD 14.0%, TAS 9.0%. Availability in 88 hours beats efficiency across 8,760.',
+    s:'Every hour of 2025 sorted by price, constant 1 MW block', c:'system' },
+  { f:'343,874', t:'Households built a fifth of the battery fleet in ten months',
+    b:'4,263 MWh of storage against 19,125 MWh of grid-scale that took about five years. Almost none of it is dispatchable, and the market cannot see it, call on it, or count it.',
+    s:'Clean Energy Regulator installs, Jul 2025&ndash;Apr 2026', c:'household' },
+  { f:'2.4 &rarr; 9.5 kW', t:'The average rooftop system quadrupled',
+    b:'2011 to 2025. The average new system is now about four times bigger than the house underneath it needs during the day. That one number explains the midday price collapse better than any policy did.',
+    s:'CER installation records, 2011&ndash;2025', c:'household' },
+  { f:'27c', t:'Most of your power bill is not electricity',
+    b:'Out of 37 cents a kilowatt-hour, about 10 is energy. The rest is network, metering, retail margin and schemes &mdash; 72% of the bill. That single fact decides the home-battery-versus-grid-battery argument.',
+    s:'NSW retail stack, household vs grid storage through identical physics', c:'household' },
+  { f:'5 or 22 yrs', t:'Two numbers nobody puts in the battery brochure',
+    b:'Same battery, same tariffs, same engine, no rebate. Payback swings from 5 years to 22 on installed cost per usable kWh and daily cycling depth. I ran four cases through identical physics.',
+    s:'90% round-trip, NSW retail, rebate excluded deliberately', c:'household' },
+  { f:'69 years', t:'The pipeline is 69 years of building',
+    b:'622 GW in the queue. 9 GW entered service last year, 8.5 the year before, 2.3 before that. Pipeline gigawatts get reported as supply. They are closer to an order book, and a speculative one.',
+    s:'AEMO connection pipeline, active projects only', c:'system' },
+  { f:'1.1%', t:'The missing middle in Australian renewables',
+    b:'2,083 projects in the pipeline and not one under 5 MW. Below 100 kW we have one of the most electrified consumer markets on earth; above 50 MW a 622 GW pipeline. Between them, 1.1% of registered capacity.',
+    s:'AEMO registration list plus pipeline, all technologies', c:'system' },
+  { f:'25&times;', t:'The worst weather year caused no blackouts',
+    b:'A better-than-average year broke the grid instead. 2009 returns 90,273 MWh of unserved energy and about $2.7bn of value-of-lost-load; four other years return nothing. Adequacy is coincidence, not average resource.',
+    s:'One capacity-expansion build, five weather years, 300 outage draws each', c:'system' }
+];
+
+(function () {
+  var grid = document.getElementById('postGrid');
+  var filters = document.getElementById('filters');
+  if (!grid) return;
+
+  function render(cat) {
+    grid.innerHTML = POSTS
+      .filter(function (p) { return cat === 'all' || p.c === cat; })
+      .map(function (p) {
+        return '<article class="card card-hover post">' +
+          '<div class="fig">' + p.f + '</div>' +
+          '<h3>' + p.t + '</h3>' +
+          '<p>' + p.b + '</p>' +
+          '<div class="meta"><span class="pill pill-src">' + p.s + '</span></div>' +
+        '</article>';
+      }).join('');
+    grid.style.display = 'grid';
+  }
+  render('all');
+
+  filters.addEventListener('click', function (e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    filters.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b === btn));
+    });
+    render(btn.dataset.f);
+  });
+})();
+</script>
+<script src="assets/shared.js?v=20260819n"></script>
+<script src="assets/main.js?v=20260819n"></script>
+</body>
+</html>

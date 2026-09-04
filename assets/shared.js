@@ -34,9 +34,9 @@
      Three sections. Each owns its subpages, and the sub-nav only appears when
      you are inside one, so the top bar never grows past five items. */
   var SECTIONS = [
-    { href: 'positioning.html', label: 'Why',
+    { href: 'positioning.html', label: 'Approach',
       sub: [] },
-    { href: 'for-you.html',     label: "Who it's for",
+    { href: 'for-you.html',     label: "What I do",
       sub: [] },
     { href: 'aria.html',        label: 'ARIA',
       sub: [['aria.html','Platform'], ['aria.html#short','In 45 seconds'], ['aria.html#proof','The AEMO test']] },
@@ -64,7 +64,7 @@
   nav.id = 'nav';
   nav.setAttribute('aria-label', 'Main navigation');
   nav.innerHTML =
-    '<a class="nav-logo" href="index.html"><span class="mark"></span><span>ARIA<em>Energy</em></span></a>' +
+    '<a class="nav-logo" href="index.html"><span class="mark"></span><span>Kanav<em>Verma</em></span></a>' +
     '<ul class="nav-links" id="navLinks" role="list">' +
       '<li><a href="index.html"' + (here === 'index.html' ? ' class="active"' : '') + '>Home</a></li>' +
       SECTIONS.map(function (sec) {
@@ -136,12 +136,12 @@
   footer.innerHTML =
     '<div class="footer-inner">' +
       '<div>' +
-        '<div class="footer-brand"><span class="mark"></span><span>ARIA<em>Energy</em></span></div>' +
-        '<div class="footer-copy" style="margin-top:6px;">Advanced Renewable Intelligent Analytics Energy</div>' +
+        '<div class="footer-brand"><span class="mark"></span><span>Kanav<em>Verma</em></span></div>' +
+        '<div class="footer-copy" style="margin-top:6px;">Energy analyst. Modeller. Builder of ARIA.</div>' +
       '</div>' +
       '<div class="footer-links">' +
-        '<a href="positioning.html">Why</a>' +
-        '<a href="for-you.html">Who it\'s for</a>' +
+        '<a href="positioning.html">Approach</a>' +
+        '<a href="for-you.html">What I do</a>' +
         '<a href="aria.html">ARIA</a>' +
         '<a href="research.html">Research</a>' +
         '<a href="insights.html">Published</a>' +

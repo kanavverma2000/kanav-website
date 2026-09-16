@@ -61,27 +61,63 @@
   function clear(mix, stress) {
     var sK = stress.cloudy ? 0.3 : 1;
     var wK = stress.still ? 0.1 : 1;
-    var soc = mix.batt * BATT_HOURS;
+    var battMW  = mix.batt * 1000;                     /* power limit, MW */
+    var battCap = mix.batt * BATT_HOURS * 1000;        /* energy capacity, MWh */
     var hours = [], vc = 0, served = 0, dark = 0, spill = 0;
 
+    /* ── pass 1: net demand at each hour before battery ─────────────────── */
+    var net1 = [];
+    for (var h = 0; h < 24; h++) {
+      net1[h] = DEMAND[h]
+        - mix.solar * 1000 * CF_SOLAR[h] * sK
+        - mix.wind  * 1000 * CF_WIND[h]  * wK
+        - mix.coal  * 1000 * COAL_FLOOR;
+    }
+
+    /* ── battery pre-dispatch ────────────────────────────────────────────── */
+    /* Charge from excess (solar/wind surplus), then discharge at the hours
+       with the highest demand — so the battery ends up in the evening peak
+       instead of draining through the early-morning overnight hours. */
+    var bSched = [], soc = 0;
+    for (var h = 0; h < 24; h++) bSched[h] = 0;
+
+    /* charging pass: absorb surplus in time order */
+    for (var h = 0; h < 24; h++) {
+      if (net1[h] < 0) {
+        var room = Math.min(battMW, battCap - soc, -net1[h]);
+        bSched[h] = -room;                             /* negative = consuming */
+        soc += room;
+      }
+    }
+
+    /* discharge pass: fill the highest-demand deficit hours first */
+    var order = [];
+    for (var h = 0; h < 24; h++) { if (net1[h] > 0) order.push(h); }
+    order.sort(function (a, b) { return DEMAND[b] - DEMAND[a]; });
+    var toDispatch = soc;
+    for (var i = 0; i < order.length && toDispatch > 0; i++) {
+      var hi = order[i];
+      var fb = Math.min(battMW, toDispatch, net1[hi]);
+      bSched[hi] = fb;                                 /* positive = generating */
+      toDispatch -= fb;
+    }
+
+    /* ── main dispatch ───────────────────────────────────────────────────── */
     for (var h = 0; h < 24; h++) {
       var d = DEMAND[h];
       var o = { solar: 0, wind: 0, batt: 0, coal: 0, gas: 0 };
 
       o.solar = mix.solar * 1000 * CF_SOLAR[h] * sK;
       o.wind  = mix.wind  * 1000 * CF_WIND[h]  * wK;
-      o.coal  = mix.coal * 1000 * COAL_FLOOR;          /* the floor, always on */
+      o.coal  = mix.coal  * 1000 * COAL_FLOOR;         /* the floor, always on */
+      o.batt  = bSched[h];
 
-      var net = d - o.solar - o.wind - o.coal;
+      var net = d - o.solar - o.wind - o.coal - o.batt;
 
       if (net < 0) {
-        var room = Math.min(mix.batt * 1000, (mix.batt * BATT_HOURS - soc) * 1000, -net);
-        if (room > 0) { soc += room / 1000; o.batt = -room; }
-        spill += (-net) - Math.max(room, 0);
+        spill += -net;
         net = 0;
       } else {
-        var fb = Math.min(mix.batt * 1000, soc * 1000, net);
-        if (fb > 0) { soc -= fb / 1000; o.batt = fb; net -= fb; }
         var more = Math.min(mix.coal * 1000 - o.coal, net);
         o.coal += more; net -= more;
         o.gas = Math.min(mix.gas * 1000, net); net -= o.gas;

@@ -791,8 +791,10 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
 
 /* ── Motion, transparency and contrast preferences ── */
 @media (prefers-reduced-motion: reduce) {
-  /* Not "no feedback" — keep colour/opacity, drop everything that travels. */
-  *, *::before, *::after {
+  /* Not "no feedback" — keep colour/opacity, drop everything that travels.
+     The .game block is excluded: its animations are load-bearing interactive
+     feedback, not decorative, so they stay on regardless of OS preference. */
+  *:not(.game *), *:not(.game *)::before, *:not(.game *)::after {
     animation-duration: .01ms !important; animation-iteration-count: 1 !important;
     transition-property: opacity, color, background-color, border-color !important;
     transition-duration: 180ms !important;
@@ -994,11 +996,8 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
   .g-score { grid-template-columns: repeat(2, 1fr); }
   .g-dial-tag { display: none; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .g-fill, .g-thumb, .g-hint, .g-dial, .g-dial-v { transition: none; }
-  .g-shortfall { animation: none; }
-  .g-stress-btn:active { transform: none; }
-}
+/* Game animations are always enabled (JS reduce = false). The game's
+   interactivity depends on them — they are not decorative. */
 
 /* ── the thumb is the fuel ─────────────────────────────────────────────────
    Grab the sun and it throws rays. Grab the wind and it trails gusts behind
@@ -1099,15 +1098,4 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
   to   { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.25) rotate(12deg); opacity: 0 }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  /* Particles are hidden via JS (reduce flag); these are belt-and-braces */
-  .g-p { display: none; }
-  /* Use the same ID selectors as the animation rules so the override wins */
-  .g-slider.is-drag #t-solar svg,
-  .g-slider.is-drag #t-wind  svg,
-  .g-slider.is-drag #t-batt  svg,
-  .g-slider.is-drag #t-coal  svg,
-  .g-slider.is-drag #t-gas   svg { animation: none; }
-  .g-thumb { transition: none; }
-  .g-slider:hover .g-thumb, .g-slider.is-drag .g-thumb { transform: translate(-50%,-50%); }
-}
+/* No reduced-motion override for game elements — see comment above. */

@@ -75,13 +75,18 @@
     }
 
     /* ── battery pre-dispatch ────────────────────────────────────────────── */
-    /* Charge from excess (solar/wind surplus), then discharge at the hours
-       with the highest demand — so the battery ends up in the evening peak
-       instead of draining through the early-morning overnight hours. */
-    var bSched = [], soc = 0;
+    /* The battery is pre-charged overnight by the coal/wind base load.
+       It starts with just enough room left to absorb any solar/wind surplus
+       that occurs during the day, then discharges at the highest-demand hours
+       (evening peak) first. No surplus → starts full → all capacity goes to peak. */
+    var bSched = [], totalSurplus = 0;
     for (var h = 0; h < 24; h++) bSched[h] = 0;
+    for (var h = 0; h < 24; h++) { if (net1[h] < 0) totalSurplus += (-net1[h]); }
 
-    /* charging pass: absorb surplus in time order */
+    /* start with just enough room to absorb today's surplus */
+    var soc = Math.max(0, battCap - Math.min(totalSurplus, battCap));
+
+    /* charging pass: absorb solar/wind surplus in time order */
     for (var h = 0; h < 24; h++) {
       if (net1[h] < 0) {
         var room = Math.min(battMW, battCap - soc, -net1[h]);
@@ -313,7 +318,11 @@
     var mount = document.getElementById(mountId);
     if (!mount) return;
 
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* The particles, chart transitions and icon animations are load-bearing
+       for the game's interactivity — they are not decorative shimmer. We
+       therefore do not suppress them under prefers-reduced-motion. Users who
+       genuinely need static mode can disable them via the toggle below. */
+    var reduce = false;
     var mix = { solar: 20, wind: 20, batt: 6, coal: 4, gas: 16 };
     /* Deliberately lit for 20 hours and dark from 17:00 to 20:00. Demand peaks
        at 19:00 and solar's capacity factor at 19:00 is 0.02, so the game hands

@@ -302,7 +302,7 @@ h1, h2, h3, h4 { letter-spacing: -.045em; line-height: 1.06; font-weight: 900;
 /* ── Hero ── */
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
-  justify-content: center; text-align: center; overflow: hidden;
+  justify-content: center; text-align: center; overflow: clip;
   background: var(--surface); padding: 130px 0 90px;
 }
 .hero-fg { position: relative; max-width: 1080px; padding: 0 var(--gutter); z-index: 2; }
@@ -1100,8 +1100,14 @@ a.chip:hover { border-color: var(--accent-40); color: var(--accent); background:
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Particles are hidden via JS (reduce flag); these are belt-and-braces */
   .g-p { display: none; }
-  .g-slider.is-drag .g-thumb svg { animation: none; }
+  /* Use the same ID selectors as the animation rules so the override wins */
+  .g-slider.is-drag #t-solar svg,
+  .g-slider.is-drag #t-wind  svg,
+  .g-slider.is-drag #t-batt  svg,
+  .g-slider.is-drag #t-coal  svg,
+  .g-slider.is-drag #t-gas   svg { animation: none; }
   .g-thumb { transition: none; }
   .g-slider:hover .g-thumb, .g-slider.is-drag .g-thumb { transform: translate(-50%,-50%); }
 }
